@@ -1,4 +1,14 @@
 original_test_normal:
+bad_scores_train < 2: 427
+bad_scores_train < 1: 395
+bad_scores_train < 1: 349
+bad_scores_train < 0: 293
+bad_scores_train < 0: 188
+bad_scores_train < 0: 102
+bad_scores_train < -1: 52
+bad_scores_train < -1: 22
+bad_scores_train < -2: 5
+
 bad_scores_test < 2: 444
 bad_scores_test < 1: 409
 bad_scores_test < 1: 363
@@ -36,6 +46,16 @@ normal_scores < -1: 8
 normal_scores < -2: 2
 
 unlearned_test_normal:
+bad_scores_train < 2: 477
+bad_scores_train < 1: 457
+bad_scores_train < 1: 406
+bad_scores_train < 0: 329
+bad_scores_train < 0: 238
+bad_scores_train < 0: 132
+bad_scores_train < -1: 51
+bad_scores_train < -1: 24
+bad_scores_train < -2: 9
+
 bad_scores_test < 2: 478
 bad_scores_test < 1: 459
 bad_scores_test < 1: 413
@@ -112,6 +132,16 @@ normal_scores < -1: 33
 normal_scores < -2: 17
 
 opt1.3b_unlearned_0.90_0.10_100idx_test_normal:
+bad_scores_train < 2: 474
+bad_scores_train < 1: 462
+bad_scores_train < 1: 437
+bad_scores_train < 0: 394
+bad_scores_train < 0: 325
+bad_scores_train < 0: 243
+bad_scores_train < -1: 165
+bad_scores_train < -1: 97
+bad_scores_train < -2: 46
+
 bad_scores_test < 2: 478
 bad_scores_test < 1: 464
 bad_scores_test < 1: 435
@@ -150,6 +180,28 @@ normal_scores < -2: 15
 
 opt1.3b_unlearned_0.85_0.15_100idx_test_normal:
 0.85->0.80后，效果出现了整体下降 ***
+0.85-train:
+bad_scores_train < 2: 469
+bad_scores_train < 1: 452
+bad_scores_train < 1: 420
+bad_scores_train < 0: 382
+bad_scores_train < 0: 338
+bad_scores_train < 0: 279
+bad_scores_train < -1: 217
+bad_scores_train < -1: 137
+bad_scores_train < -2: 75
+
+0.80-train:
+bad_scores_train < 2: 449
+bad_scores_train < 1: 429
+bad_scores_train < 1: 384
+bad_scores_train < 0: 334
+bad_scores_train < 0: 270
+bad_scores_train < 0: 211
+bad_scores_train < -1: 147
+bad_scores_train < -1: 85
+bad_scores_train < -2: 39
+
 bad_scores_test < 2: 478
 bad_scores_test < 1: 468
 bad_scores_test < 1: 437
@@ -187,6 +239,16 @@ normal_scores < -1: 33
 normal_scores < -2: 17
 
 opt1.3b_unlearned_0.85_0.15_150idx_test_normal:
+bad_scores_train < 2: 482
+bad_scores_train < 1: 464
+bad_scores_train < 1: 439
+bad_scores_train < 0: 406
+bad_scores_train < 0: 352
+bad_scores_train < 0: 290
+bad_scores_train < -1: 214
+bad_scores_train < -1: 148
+bad_scores_train < -2: 78
+
 bad_scores_test < 2: 493
 bad_scores_test < 1: 485
 bad_scores_test < 1: 459
@@ -222,4 +284,19 @@ normal_scores < 0: 69
 normal_scores < -1: 62
 normal_scores < -1: 43
 normal_scores < -2: 18
+
+todo:
+1、lora with appropriate learning rate
+2、two settings (with another dataset)
+3、masked
+
+
+python new_score.py --model=densenet_dice --dataset=cifar10
+python new_score.py --model=densenet_dice --dataset=cifar100
+python new_score.py --model=resnet50 --dataset=cifar10
+python new_score.py --threshold=0.1 --model=resnet50 --dataset=cifar10
+python new_score.py --threshold=0.01 --model=resnet50 --dataset=cifar10
+python new_score.py --threshold=0.001 --model=resnet50 --dataset=cifar10
+python new_score.py --threshold=0.0001 --model=resnet50 --dataset=cifar10
+python new_score.py --threshold=0.00001 --model=resnet50 --dataset=cifar10
 

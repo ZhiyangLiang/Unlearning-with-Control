@@ -134,11 +134,13 @@ def main(args) -> None:
             optimizer.zero_grad()
 
             # if idx % 100 == 0:  # my try
-            if idx % 150 == 0:
-                print("idx: %d" % (idx))
-                for name, parameter in model.named_parameters():
-                    parameter.data = 0.95 * parameter.data + 0.05 * ori_state[name].data
-                    # parameter.data = 0.90 * parameter.data + 0.10 * ori_state[name].data
+            # if idx % 150 == 0:
+            #     print("idx: %d" % (idx))
+            #     for name, parameter in model.named_parameters():
+            #         parameter.data = 0.95 * parameter.data + 0.05 * ori_state[name].data
+            #         parameter.data = 0.90 * parameter.data + 0.10 * ori_state[name].data
+            #         parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
+            #         parameter.data = 0.80 * parameter.data + 0.20 * ori_state[name].data
 
             # Print.
             stats = (
@@ -170,8 +172,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument("--use_lora", type=bool, default=False)
-    # parser.add_argument("--use_lora", type=bool, default=True)
+    # parser.add_argument("--use_lora", type=bool, default=False)
+    parser.add_argument("--use_lora", type=bool, default=True)
 
     parser.add_argument(
         "--max_unlearn_steps",
@@ -197,7 +199,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "--batch_size", type=int, default=1, help="Batch size of unlearning."
     )
-    parser.add_argument("--lr", type=float, default=2e-6, help="Unlearning LR.")
+    # parser.add_argument("--lr", type=float, default=2e-6, help="Unlearning LR.")
+    # parser.add_argument("--lr", type=float, default=2e-5, help="Unlearning LR.")
+    # parser.add_argument("--lr", type=float, default=2e-4, help="Unlearning LR.")
+    # parser.add_argument("--lr", type=float, default=2e-3, help="Unlearning LR.")
+    # parser.add_argument("--lr", type=float, default=5e-4, help="Unlearning LR.")
+    parser.add_argument("--lr", type=float, default=8e-4, help="Unlearning LR.")
     parser.add_argument(
         "--max_bad_loss",
         type=float,
@@ -216,9 +223,15 @@ if __name__ == "__main__":
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.95_0.05_100idx",
         # default="models/opt1.3b_unlearned_0.90_0.10_100idx",
-        default="models/opt1.3b_unlearned_0.95_0.05_150idx",
+        # default="models/opt1.3b_unlearned_0.95_0.05_150idx",
+        # default="models/opt1.3b_unlearned_0.85_0.15_100idx",
+        # default="models/opt1.3b_unlearned_0.80_0.20_100idx",
 
-        # default="models/opt1.3b_unlearned_lora",
+        # default="models/opt1.3b_unlearned_lora_2e-5",
+        # default="models/opt1.3b_unlearned_lora_2e-4",
+        # default="models/opt1.3b_unlearned_lora_2e-3",
+        # default="models/opt1.3b_unlearned_lora_5e-4",
+        default="models/opt1.3b_unlearned_lora_8e-4",
         help="Directory to save model.",
     )
     parser.add_argument(

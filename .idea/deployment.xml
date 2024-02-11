@@ -37,6 +37,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@connect.westb.seetacloud.com:15518">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/llm_unlearn" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@connect.westc.gpuhub.com:12223">
         <serverdata>
           <mappings>
