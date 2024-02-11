@@ -148,5 +148,77 @@ normal_scores < -1: 63
 normal_scores < -1: 40
 normal_scores < -2: 15
 
+opt1.3b_unlearned_0.85_0.15_100idx_test_normal:
+0.85->0.80后，效果出现了整体下降 ***
+bad_scores_test < 2: 478
+bad_scores_test < 1: 468
+bad_scores_test < 1: 437
+bad_scores_test < 0: 435
+bad_scores_test < 0: 421
+bad_scores_test < 0: 409
+bad_scores_test < 0: 384
+bad_scores_test < 0: 369
+bad_scores_test < 0: 359
+bad_scores_test < 0: 347
+bad_scores_test < 0: 320
+bad_scores_test < 0: 289
+bad_scores_test < 0: 266
+bad_scores_test < 0: 244
+bad_scores_test < -1: 229
+bad_scores_test < -1: 122
+bad_scores_test < -2: 73
+--------------------------------------------------
+normal_scores < 2: 161
+normal_scores < 1: 159
+normal_scores < 1: 155
+normal_scores < 0: 154
+normal_scores < 0: 149
+normal_scores < 0: 146
+normal_scores < 0: 135
+normal_scores < 0: 126
+normal_scores < 0: 119
+normal_scores < 0: 116
+normal_scores < 0: 99
+normal_scores < 0: 88
+normal_scores < 0: 76
+normal_scores < 0: 68
+normal_scores < -1: 63
+normal_scores < -1: 33
+normal_scores < -2: 17
 
-
+opt1.3b_unlearned_0.85_0.15_150idx_test_normal:
+bad_scores_test < 2: 493
+bad_scores_test < 1: 485
+bad_scores_test < 1: 459
+bad_scores_test < 0: 456
+bad_scores_test < 0: 448
+bad_scores_test < 0: 431
+bad_scores_test < 0: 412
+bad_scores_test < 0: 389
+bad_scores_test < 0: 383
+bad_scores_test < 0: 369
+bad_scores_test < 0: 344
+bad_scores_test < 0: 307
+bad_scores_test < 0: 277
+bad_scores_test < 0: 243
+bad_scores_test < -1: 232
+bad_scores_test < -1: 139
+bad_scores_test < -2: 70
+--------------------------------------------------
+normal_scores < 2: 165
+normal_scores < 1: 162
+normal_scores < 1: 160
+normal_scores < 0: 159
+normal_scores < 0: 158
+normal_scores < 0: 154
+normal_scores < 0: 144
+normal_scores < 0: 138
+normal_scores < 0: 130
+normal_scores < 0: 127
+normal_scores < 0: 114
+normal_scores < 0: 104
+normal_scores < 0: 85
+normal_scores < 0: 69
+normal_scores < -1: 62
+normal_scores < -1: 43
+normal_scores < -2: 18
