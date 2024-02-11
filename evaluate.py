@@ -149,37 +149,23 @@ reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
 softmax = Softmax(dim=1)
 
-# train_bad_dataset = load_dataset("PKU-Alignment/PKU-SafeRLHF", split="train")
-test_bad_dataset = load_dataset("PKU-Alignment/PKU-SafeRLHF", split="test")
-# train_bad_loader = create_pku_dataloader_from_dataset_for_test(
-#     train_bad_dataset, batch_size=2
+train_bad_dataset = load_dataset("PKU-Alignment/PKU-SafeRLHF", split="train")
+train_bad_loader = create_pku_dataloader_from_dataset_for_test(
+    train_bad_dataset, batch_size=2
+)
+# test_bad_dataset = load_dataset("PKU-Alignment/PKU-SafeRLHF", split="test")
+# test_bad_loader = create_pku_dataloader_from_dataset_for_test(
+#     test_bad_dataset, batch_size=2
 # )
-test_bad_loader = create_pku_dataloader_from_dataset_for_test(
-    test_bad_dataset, batch_size=2
-)
-test_normal_loader = create_truthfulqa_dataloader_for_test(  # 测试集占比0.2
-    batch_size=2
-)
+# test_normal_loader = create_truthfulqa_dataloader_for_test(  # 测试集占比0.2
+#     batch_size=2
+# )
 
-# bad_scores_train = []
-bad_scores_test = []
-normal_scores = []
+bad_scores_train = []
+# bad_scores_test = []
+# normal_scores = []
 
-# for i, j in enumerate(train_bad_loader):
-#     prompt = f"### Question: {j['bad_prompt']}\n ### Answer:"
-#     generated_prompt = generator(prompt, max_length=50, truncation=True)[0]['generated_text']
-#     question = generated_prompt.split("###")[1]
-#     answer = generated_prompt.split("###")[2]
-#     print(question)
-#     print(answer)
-#     inputs = reward_tokenizer(question, answer, return_tensors='pt')
-#     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-#     print(score.max())
-#     bad_scores_train.append(score)
-#     if i >= 500:
-#         break
-# print("-"*50)
-for i, j in enumerate(test_bad_loader):
+for i, j in enumerate(train_bad_loader):
     prompt = f"### Question: {j['bad_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=50, truncation=True)[0]['generated_text']
     question = generated_prompt.split("###")[1]
@@ -189,37 +175,51 @@ for i, j in enumerate(test_bad_loader):
     inputs = reward_tokenizer(question, answer, return_tensors='pt')
     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
     print(score.max())
-    bad_scores_test.append(score)
+    bad_scores_train.append(score)
     if i >= 500:
         break
 print("-"*50)
-for i, j in enumerate(test_normal_loader):
-    prompt = f"### Question: {j['normal_prompt']}\n ### Answer:"
-    generated_prompt = generator(prompt, max_length=50, truncation=True)[0]['generated_text']
-    question = generated_prompt.split("###")[1]
-    answer = generated_prompt.split("###")[2]
-    print(question)
-    print(answer)
-    inputs = reward_tokenizer(question, answer, return_tensors='pt')
-    score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-    print(score.max())
-    normal_scores.append(score)
-    if i >= 500:
-        break
-print("-"*50)
-# bad_scores_train = torch.cat(bad_scores_train, dim=0)
-bad_scores_test = torch.cat(bad_scores_test, dim=0)
-normal_scores = torch.cat(normal_scores, dim=0)
-
-# bad_scores_train = torch.max(bad_scores_train, dim=1)[0]
-bad_scores_test = torch.max(bad_scores_test, dim=1)[0]
-normal_scores = torch.max(normal_scores, dim=1)[0]
-
-# for i in [2, 1.5, 1, 0.5, 0, -0.5, -1, -1.5, -2]:
-#     print("bad_scores_train < %d: %d" % (i, (bad_scores_train < i).sum()))
+# for i, j in enumerate(test_bad_loader):
+#     prompt = f"### Question: {j['bad_prompt']}\n ### Answer:"
+#     generated_prompt = generator(prompt, max_length=50, truncation=True)[0]['generated_text']
+#     question = generated_prompt.split("###")[1]
+#     answer = generated_prompt.split("###")[2]
+#     print(question)
+#     print(answer)
+#     inputs = reward_tokenizer(question, answer, return_tensors='pt')
+#     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
+#     print(score.max())
+#     bad_scores_test.append(score)
+#     if i >= 500:
+#         break
 # print("-"*50)
-for i in [2, 1.5, 1, 0.9, 0.7, 0.5, 0.3, 0.1, 0, -0.1, -0.3, -0.5, -0.7, -0.9, -1, -1.5, -2]:
-    print("bad_scores_test < %d: %d" % (i, (bad_scores_test < i).sum()))
-print("-"*50)
-for i in [2, 1.5, 1, 0.9, 0.7, 0.5, 0.3, 0.1, 0, -0.1, -0.3, -0.5, -0.7, -0.9, -1, -1.5, -2]:
-    print("normal_scores < %d: %d" % (i, (normal_scores < i).sum()))
+# for i, j in enumerate(test_normal_loader):
+#     prompt = f"### Question: {j['normal_prompt']}\n ### Answer:"
+#     generated_prompt = generator(prompt, max_length=50, truncation=True)[0]['generated_text']
+#     question = generated_prompt.split("###")[1]
+#     answer = generated_prompt.split("###")[2]
+#     print(question)
+#     print(answer)
+#     inputs = reward_tokenizer(question, answer, return_tensors='pt')
+#     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
+#     print(score.max())
+#     normal_scores.append(score)
+#     if i >= 500:
+#         break
+# print("-"*50)
+bad_scores_train = torch.cat(bad_scores_train, dim=0)
+# bad_scores_test = torch.cat(bad_scores_test, dim=0)
+# normal_scores = torch.cat(normal_scores, dim=0)
+
+bad_scores_train = torch.max(bad_scores_train, dim=1)[0]
+# bad_scores_test = torch.max(bad_scores_test, dim=1)[0]
+# normal_scores = torch.max(normal_scores, dim=1)[0]
+
+for i in [2, 1.5, 1, 0.5, 0, -0.5, -1, -1.5, -2]:
+    print("bad_scores_train < %d: %d" % (i, (bad_scores_train < i).sum()))
+# print("-"*50)
+# for i in [2, 1.5, 1, 0.9, 0.7, 0.5, 0.3, 0.1, 0, -0.1, -0.3, -0.5, -0.7, -0.9, -1, -1.5, -2]:
+#     print("bad_scores_test < %d: %d" % (i, (bad_scores_test < i).sum()))
+# print("-"*50)
+# for i in [2, 1.5, 1, 0.9, 0.7, 0.5, 0.3, 0.1, 0, -0.1, -0.3, -0.5, -0.7, -0.9, -1, -1.5, -2]:
+#     print("normal_scores < %d: %d" % (i, (normal_scores < i).sum()))
