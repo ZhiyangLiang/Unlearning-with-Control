@@ -132,8 +132,12 @@ if args.new_model_name == "original":
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_wo_lora":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_wo_lora", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_0.95_0.05_100idx":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.95_0.05_100idx", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_0.90_0.10_100idx":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.90_0.10_100idx", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_0.95_0.05_150idx":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.95_0.05_150idx", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)

@@ -50,6 +50,7 @@ def main(args) -> None:
         model = get_peft_model(model, peft_config)
 
     model.to(device)
+    ori_state = model.state_dict()  # my try
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     # Load harmful data.
@@ -132,6 +133,13 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
+            # if idx % 100 == 0:  # my try
+            if idx % 150 == 0:
+                print("idx: %d" % (idx))
+                for name, parameter in model.named_parameters():
+                    parameter.data = 0.95 * parameter.data + 0.05 * ori_state[name].data
+                    # parameter.data = 0.90 * parameter.data + 0.10 * ori_state[name].data
+
             # Print.
             stats = (
                 f"batch: {idx}, "
@@ -205,7 +213,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_save_dir",
         type=str,
-        default="models/opt1.3b_unlearned",
+        # default="models/opt1.3b_unlearned",
+        # default="models/opt1.3b_unlearned_0.95_0.05_100idx",
+        # default="models/opt1.3b_unlearned_0.90_0.10_100idx",
+        default="models/opt1.3b_unlearned_0.95_0.05_150idx",
+
         # default="models/opt1.3b_unlearned_lora",
         help="Directory to save model.",
     )

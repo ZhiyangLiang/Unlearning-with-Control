@@ -1,0 +1,152 @@
+original_test_normal:
+bad_scores_test < 2: 444
+bad_scores_test < 1: 409
+bad_scores_test < 1: 363
+bad_scores_test < 0: 351
+bad_scores_test < 0: 325
+bad_scores_test < 0: 295
+bad_scores_test < 0: 258
+bad_scores_test < 0: 223
+bad_scores_test < 0: 204
+bad_scores_test < 0: 186
+bad_scores_test < 0: 145
+bad_scores_test < 0: 115
+bad_scores_test < 0: 86
+bad_scores_test < 0: 65
+bad_scores_test < -1: 53
+bad_scores_test < -1: 23
+bad_scores_test < -2: 7
+--------------------------------------------------
+normal_scores < 2: 162
+normal_scores < 1: 159
+normal_scores < 1: 152
+normal_scores < 0: 148
+normal_scores < 0: 134
+normal_scores < 0: 130
+normal_scores < 0: 119
+normal_scores < 0: 103
+normal_scores < 0: 98
+normal_scores < 0: 89
+normal_scores < 0: 66
+normal_scores < 0: 50
+normal_scores < 0: 40
+normal_scores < 0: 29
+normal_scores < -1: 23
+normal_scores < -1: 8
+normal_scores < -2: 2
+
+unlearned_test_normal:
+bad_scores_test < 2: 478
+bad_scores_test < 1: 459
+bad_scores_test < 1: 413
+bad_scores_test < 0: 406
+bad_scores_test < 0: 377
+bad_scores_test < 0: 343
+bad_scores_test < 0: 307
+bad_scores_test < 0: 269
+bad_scores_test < 0: 256
+bad_scores_test < 0: 235
+bad_scores_test < 0: 186
+bad_scores_test < 0: 148
+bad_scores_test < 0: 113
+bad_scores_test < 0: 79
+bad_scores_test < -1: 68
+bad_scores_test < -1: 30
+bad_scores_test < -2: 9
+--------------------------------------------------
+normal_scores < 2: 161
+normal_scores < 1: 161
+normal_scores < 1: 152
+normal_scores < 0: 151
+normal_scores < 0: 150
+normal_scores < 0: 145
+normal_scores < 0: 134
+normal_scores < 0: 126
+normal_scores < 0: 122
+normal_scores < 0: 113
+normal_scores < 0: 103
+normal_scores < 0: 88
+normal_scores < 0: 70
+normal_scores < 0: 64
+normal_scores < -1: 53
+normal_scores < -1: 28
+normal_scores < -2: 12
+
+opt1.3b_unlearned_0.95_0.05_100idx_test_normal:
+100idx->150idx后，效果出现了整体下降 ***
+0.95->0.90后，bad_test效果上升，超越baseline；normal效果不如0.95，但也比baseline好
+bad_scores_test < 2: 470
+bad_scores_test < 1: 447
+bad_scores_test < 1: 407
+bad_scores_test < 0: 394
+bad_scores_test < 0: 371
+bad_scores_test < 0: 348
+bad_scores_test < 0: 310
+bad_scores_test < 0: 278
+bad_scores_test < 0: 256
+bad_scores_test < 0: 240
+bad_scores_test < 0: 201
+bad_scores_test < 0: 163
+bad_scores_test < 0: 141
+bad_scores_test < 0: 109
+bad_scores_test < -1: 100
+bad_scores_test < -1: 57
+bad_scores_test < -2: 26
+--------------------------------------------------
+normal_scores < 2: 164
+normal_scores < 1: 162
+normal_scores < 1: 160
+normal_scores < 0: 159
+normal_scores < 0: 157
+normal_scores < 0: 152
+normal_scores < 0: 144
+normal_scores < 0: 140
+normal_scores < 0: 132
+normal_scores < 0: 123
+normal_scores < 0: 109
+normal_scores < 0: 99
+normal_scores < 0: 77
+normal_scores < 0: 70
+normal_scores < -1: 61
+normal_scores < -1: 33
+normal_scores < -2: 17
+
+opt1.3b_unlearned_0.90_0.10_100idx_test_normal:
+bad_scores_test < 2: 478
+bad_scores_test < 1: 464
+bad_scores_test < 1: 435
+bad_scores_test < 0: 429
+bad_scores_test < 0: 410
+bad_scores_test < 0: 382
+bad_scores_test < 0: 363
+bad_scores_test < 0: 339
+bad_scores_test < 0: 333
+bad_scores_test < 0: 317
+bad_scores_test < 0: 278
+bad_scores_test < 0: 247
+bad_scores_test < 0: 205
+bad_scores_test < 0: 184
+bad_scores_test < -1: 170
+bad_scores_test < -1: 99
+bad_scores_test < -2: 49
+--------------------------------------------------
+normal_scores < 2: 164
+normal_scores < 1: 160
+normal_scores < 1: 158
+normal_scores < 0: 156
+normal_scores < 0: 153
+normal_scores < 0: 149
+normal_scores < 0: 140
+normal_scores < 0: 131
+normal_scores < 0: 123
+normal_scores < 0: 118
+normal_scores < 0: 103
+normal_scores < 0: 95
+normal_scores < 0: 76
+normal_scores < 0: 68
+normal_scores < -1: 63
+normal_scores < -1: 40
+normal_scores < -2: 15
+
+
+
