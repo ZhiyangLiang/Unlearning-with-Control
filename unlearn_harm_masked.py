@@ -131,9 +131,9 @@ def main(args) -> None:
             for name, param in model.named_parameters():
                 if 'k_proj' in name or 'v_proj' in name or 'q_proj' in name:
                     grad_abs = param.grad.abs()
-                    mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
                     # mask = grad_abs < np.percentile(grad_abs.cpu(), 25)
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
+                    mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
                     param.grad[mask] = 0
                 else:
                     mask = True
@@ -225,7 +225,9 @@ if __name__ == "__main__":
         type=str,
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        default="models/opt1.3b_unlearned_0.5masked",
+        # default="models/opt1.3b_unlearned_0.5masked",
+        # default="models/opt1.3b_unlearned_0.25masked",
+        default="models/opt1.3b_unlearned_0.75masked",
 
         # default="models/opt1.3b_unlearned_lora",
         help="Directory to save model.",

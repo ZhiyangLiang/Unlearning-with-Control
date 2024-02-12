@@ -243,6 +243,7 @@ normal_scores < -1: 33
 normal_scores < -2: 17
 
 opt1.3b_unlearned_0.85_0.15_150idx_test_normal:
+masked-0.5，masked-0.25，masked-0.75全方面效果下降
 bad_scores_train < 2: 482
 bad_scores_train < 1: 464
 bad_scores_train < 1: 439
@@ -292,7 +293,7 @@ normal_scores < -2: 18
 todo:
 1、lora with appropriate learning rate：与original的结果完全一致，但训练的loss确实出现了较大幅度的变化
 2、loss三项的消融实验：只有bad_loss项的结果整体好于三项的结果；只有random_loss项的结果、只有normal_loss项的结果，以及bad_loss项+random_loss项的都结果不如整体不如三项的结果；只有bad_loss项会导致模型输出只有空行 (无论是对bad_question，还是对normal_question)
-3、masked：
+3、masked：masked-0.5，masked-0.25，masked-0.75全方面效果下降
 4、two settings (with another dataset)：
 
 OPTForCausalLM(
@@ -340,3 +341,5 @@ python new_score.py --threshold=0.001 --model=resnet50 --dataset=cifar10
 python new_score.py --threshold=0.0001 --model=resnet50 --dataset=cifar10
 python new_score.py --threshold=0.00001 --model=resnet50 --dataset=cifar10
 
+
+差分 方差 75th-25th max-min
