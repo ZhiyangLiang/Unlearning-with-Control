@@ -46,6 +46,10 @@ normal_scores < -1: 8
 normal_scores < -2: 2
 
 unlearned_test_normal:
+只有bad_loss项的结果整体好于三项的结果；只有random_loss项的结果、只有normal_loss项的结果，以及bad_loss项+random_loss项的都结果不如整体不如三项的结果
+
+但只有bad_loss项会导致模型输出只有空行 (无论是对bad_question，还是对normal_question)
+
 bad_scores_train < 2: 477
 bad_scores_train < 1: 457
 bad_scores_train < 1: 406
@@ -286,9 +290,45 @@ normal_scores < -1: 43
 normal_scores < -2: 18
 
 todo:
-1、lora with appropriate learning rate
-2、two settings (with another dataset)
-3、masked
+1、lora with appropriate learning rate：与original的结果完全一致，但训练的loss确实出现了较大幅度的变化
+2、loss三项的消融实验：只有bad_loss项的结果整体好于三项的结果；只有random_loss项的结果、只有normal_loss项的结果，以及bad_loss项+random_loss项的都结果不如整体不如三项的结果；只有bad_loss项会导致模型输出只有空行 (无论是对bad_question，还是对normal_question)
+3、masked：
+4、two settings (with another dataset)：
+
+OPTForCausalLM(
+  (model): OPTModel(
+    (decoder): OPTDecoder(
+      (embed_tokens): Embedding(50272, 2048, padding_idx=1)
+      (embed_positions): OPTLearnedPositionalEmbedding(2050, 2048)
+      (final_layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0): OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (out_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+          (fc1): Linear(in_features=2048, out_features=8192, bias=True)
+          (fc2): Linear(in_features=8192, out_features=2048, bias=True)
+          (final_layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (out_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+          (fc1): Linear(in_features=2048, out_features=8192, bias=True)
+          (fc2): Linear(in_features=8192, out_features=2048, bias=True)
+          (final_layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        )
+...
 
 
 python new_score.py --model=densenet_dice --dataset=cifar10

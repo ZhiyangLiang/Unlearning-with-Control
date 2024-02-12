@@ -28,6 +28,7 @@ from utils import (
     get_rand_ans_loss,
     get_truthfulQA_answers_plaintext,
 )
+import pdb
 
 torch.manual_seed(8888)
 np.random.seed(8888)
@@ -121,11 +122,23 @@ def main(args) -> None:
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
-                # + args.normal_weight * normal_loss
+                + args.normal_weight * normal_loss
             )
 
             # Backprop.
             accelerator.backward(loss)
+
+            for name, param in model.named_parameters():
+                if 'k_proj' in name or 'v_proj' in name or 'q_proj' in name:
+                    grad_abs = param.grad.abs()
+                    mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 25)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
+                    param.grad[mask] = 0
+                else:
+                    mask = True
+                    param.grad[mask] = 0
+
             optimizer.step()
             # if idx % 100 == 0:
             #     print(idx)
@@ -133,14 +146,9 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
-            # if idx % 100 == 0:  # my try
-            # if idx % 150 == 0:
-            #     print("idx: %d" % (idx))
+            # if idx % 150 == 0:  # my try
             #     for name, parameter in model.named_parameters():
-            #         parameter.data = 0.95 * parameter.data + 0.05 * ori_state[name].data
-            #         parameter.data = 0.90 * parameter.data + 0.10 * ori_state[name].data
             #         parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
-            #         parameter.data = 0.80 * parameter.data + 0.20 * ori_state[name].data
 
             # Print.
             stats = (
@@ -217,10 +225,7 @@ if __name__ == "__main__":
         type=str,
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        # default="models/opt1.3b_unlearned_bad_loss",
-        # default="models/opt1.3b_unlearned_random_loss",
-        # default="models/opt1.3b_unlearned_normal_loss",
-        default="models/opt1.3b_unlearned_bad_random_loss",
+        default="models/opt1.3b_unlearned_0.5masked",
 
         # default="models/opt1.3b_unlearned_lora",
         help="Directory to save model.",

@@ -144,15 +144,14 @@ elif args.new_model_name == "opt1.3b_unlearned_0.85_0.15_150idx":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.85_0.15_150idx", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_0.80_0.20_100idx":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.80_0.20_100idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_lora_2e-4":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_lora_2e-4", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_lora_5e-4":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_lora_5e-4", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_lora_8e-4":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_lora_8e-4", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_lora_2e-3":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_lora_2e-3", tokenizer=tokenizer, device=device)
-
+elif args.new_model_name == "opt1.3b_unlearned_bad_loss":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_loss", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_random_loss":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_random_loss", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_normal_loss":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_normal_loss", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
@@ -224,6 +223,7 @@ bad_scores_train = torch.max(bad_scores_train, dim=1)[0]
 bad_scores_test = torch.max(bad_scores_test, dim=1)[0]
 normal_scores = torch.max(normal_scores, dim=1)[0]
 
+# for i in [2, 1.5, 1, 0.5, 0, -0.5, -1, -1.5, -2]:
 for i in [2, 1.5, 1, 0.9, 0.7, 0.5, 0.3, 0.1, 0, -0.1, -0.3, -0.5, -0.7, -0.9, -1, -1.5, -2]:
     print("bad_scores_train < %d: %d" % (i, (bad_scores_train < i).sum()))
 print("-"*50)
