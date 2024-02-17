@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@region-9.autodl.pro:16672" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="root@123.125.240.150:37361">
         <serverdata>
@@ -219,6 +219,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@region-9.autodl.pro:16672">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/llm_unlearn" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@region-9.autodl.pro:39046">
         <serverdata>
           <mappings>
@@ -248,5 +255,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

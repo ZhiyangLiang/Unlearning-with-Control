@@ -290,12 +290,6 @@ normal_scores < -1: 62
 normal_scores < -1: 43
 normal_scores < -2: 18
 
-todo:
-1、lora with appropriate learning rate：与original的结果完全一致，但训练的loss确实出现了较大幅度的变化
-2、loss三项的消融实验：只有bad_loss项的结果整体好于三项的结果；只有random_loss项的结果、只有normal_loss项的结果，以及bad_loss项+random_loss项的都结果不如整体不如三项的结果；只有bad_loss项会导致模型输出只有空行 (无论是对bad_question，还是对normal_question)
-3、masked：masked-0.5，masked-0.25，masked-0.75全方面效果下降
-4、two settings (with another dataset)：
-
 OPTForCausalLM(
   (model): OPTModel(
     (decoder): OPTDecoder(
@@ -331,15 +325,14 @@ OPTForCausalLM(
         )
 ...
 
+todo:
+1、lora with appropriate learning rate：与original的结果完全一致，但训练的loss确实出现了较大幅度的变化 --double check
+2、loss三项的消融实验：只有bad_loss项的结果整体好于三项的结果；只有random_loss项的结果、只有normal_loss项的结果，以及bad_loss项+random_loss项的都结果不如整体不如三项的结果；只有bad_loss项会导致模型输出只有空行 (无论是对bad_question，还是对normal_question)
+3、masked：masked-0.5，masked-0.25，masked-0.75全方面效果下降 --缓解不用第三项的效果下降 --限制parameter还是output(attention score) --换为threshold
+4、two settings (with another dataset)：
 
-python new_score.py --model=densenet_dice --dataset=cifar10
-python new_score.py --model=densenet_dice --dataset=cifar100
-python new_score.py --model=resnet50 --dataset=cifar10
-python new_score.py --threshold=0.1 --model=resnet50 --dataset=cifar10
-python new_score.py --threshold=0.01 --model=resnet50 --dataset=cifar10
-python new_score.py --threshold=0.001 --model=resnet50 --dataset=cifar10
-python new_score.py --threshold=0.0001 --model=resnet50 --dataset=cifar10
-python new_score.py --threshold=0.00001 --model=resnet50 --dataset=cifar10
+1-threshold
+2-先跑一轮 计算固定的mask
+3-删除第三项
 
-
-差分 方差 75th-25th max-min
+(outputs[0], (modified_output,), outputs[2:])

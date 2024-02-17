@@ -300,6 +300,7 @@ def get_answer_loss(operation, batch, model, device="cuda:0"):
     outputs = model(input_ids, attention_mask=attention_mask)
     loss_fct = torch.nn.CrossEntropyLoss(reduction="none")
     # Shift one to predict next token.
+
     shift_logits = outputs.logits[:, :-1, :]
     shift_labels = labels[:, 1:]
     losses = []

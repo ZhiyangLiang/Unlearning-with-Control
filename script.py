@@ -56,18 +56,46 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_loss > opt1.3b_unlearned_bad_loss.log'
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_loss > opt1.3b_unlearned_bad_loss.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_random_loss > opt1.3b_unlearned_random_loss.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_normal_loss > opt1.3b_unlearned_normal_loss.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss > opt1.3b_unlearned_bad_random_loss.log'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_1e-1_masked > opt1.3b_unlearned_bad_random_1e-1_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_1e-2_masked > opt1.3b_unlearned_bad_random_1e-2_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_1e-3_masked > opt1.3b_unlearned_bad_random_1e-3_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_1e-5_masked > opt1.3b_unlearned_bad_random_1e-5_masked.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.3_masked > opt1.3b_unlearned_bad_random_0.3_masked.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_random_loss > opt1.3b_unlearned_random_loss.log'
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked > opt1.3b_unlearned_bad_random_0.6_masked.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_normal_loss > opt1.3b_unlearned_normal_loss.log'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss > opt1.3b_unlearned_bad_random_loss.log'
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.9_masked > opt1.3b_unlearned_bad_random_0.9_masked.log'
 print(cmd)
 os.system(cmd)
