@@ -178,6 +178,8 @@ elif args.new_model_name == "opt1.3b_unlearned_attn_0.5_yes":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.5_yes", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_yes":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_yes", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
@@ -210,7 +212,8 @@ for i, j in enumerate(train_bad_loader):
     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
     print(score.max())
     bad_scores_train.append(score)
-    if i >= 500:
+    # if i >= 500:
+    if i >= 50:
         break
 print("-"*50)
 for i, j in enumerate(test_bad_loader):
@@ -224,7 +227,8 @@ for i, j in enumerate(test_bad_loader):
     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
     print(score.max())
     bad_scores_test.append(score)
-    if i >= 500:
+    # if i >= 500:
+    if i >= 50:
         break
 print("-"*50)
 for i, j in enumerate(test_normal_loader):
@@ -238,7 +242,8 @@ for i, j in enumerate(test_normal_loader):
     score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
     print(score.max())
     normal_scores.append(score)
-    if i >= 500:
+    # if i >= 500:
+    if i >= 50:
         break
 print("-"*50)
 bad_scores_train = torch.cat(bad_scores_train, dim=0)

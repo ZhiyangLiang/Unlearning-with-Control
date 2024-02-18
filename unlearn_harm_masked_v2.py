@@ -70,7 +70,7 @@ def main(args) -> None:
         model = get_peft_model(model, peft_config)
 
     model.to(device)
-    # ori_state = model.state_dict()  # my try
+    ori_state = model.state_dict()  # my try
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     # Load harmful data.
@@ -145,6 +145,21 @@ def main(args) -> None:
             )
             # Backprop.
             accelerator.backward(loss)
+
+
+            for name, param in model.named_parameters():
+                if 'k_proj' in name or 'q_proj' in name:
+                    grad_abs = param.grad.abs()
+                    mask = grad_abs < np.percentile(grad_abs.cpu(), 99)
+                    # mask = grad_abs < 1e-5
+                    # mask = grad_abs < 5e-6
+                    # mask = grad_abs < 1e-6
+                    param.grad[mask] = 0
+                elif param.grad is not None:
+                    mask = True
+                    param.grad[mask] = 0
+
+
             optimizer.step()
             # if idx % 100 == 0:
             #     print(idx)
