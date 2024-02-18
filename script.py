@@ -88,14 +88,34 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.3_masked > opt1.3b_unlearned_bad_random_0.3_masked.log'
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.3_masked > opt1.3b_unlearned_bad_random_0.3_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked > opt1.3b_unlearned_bad_random_0.6_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.9_masked > opt1.3b_unlearned_bad_random_0.9_masked.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked > opt1.3b_unlearned_bad_random_0.6_masked_new.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.1_masked > opt1.3b_unlearned_bad_random_0.1_masked_new.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_0.6_masked > opt1.3b_unlearned_bad_0.6_masked.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked > opt1.3b_unlearned_bad_random_0.6_masked.log'
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked_for_random > opt1.3b_unlearned_bad_random_0.6_masked_for_random.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.9_masked > opt1.3b_unlearned_bad_random_0.9_masked.log'
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_0.6_masked_for_all > opt1.3b_unlearned_bad_random_0.6_masked_for_all.log'
 print(cmd)
 os.system(cmd)

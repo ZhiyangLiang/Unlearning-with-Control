@@ -42,7 +42,9 @@ attention_loss = 0.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
-    if cnt % 48 < 24:
+    # if cnt % 48 < 24:
+    # if cnt % 48 >= 24:
+    if cnt % 48 < 48:
         # part_loss = torch.where(outputs[1][0] < 0.1, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
         # part_loss = torch.where(outputs[1][0] < 0.35, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
         part_loss = torch.where(outputs[1][0] < 0.6, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
@@ -240,7 +242,9 @@ if __name__ == "__main__":
 
         # default="models/opt1.3b_unlearned_bad_random_0.1_masked",
         # default="models/opt1.3b_unlearned_bad_random_0.35_masked",
-        default="models/opt1.3b_unlearned_bad_random_0.6_masked",
+        # default="models/opt1.3b_unlearned_bad_0.6_masked",
+        # default="models/opt1.3b_unlearned_bad_random_0.6_masked_for_random",
+        default="models/opt1.3b_unlearned_bad_random_0.6_masked_for_all",
         help="Directory to save model.",
     )
     parser.add_argument(

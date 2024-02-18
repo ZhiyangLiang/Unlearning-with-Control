@@ -152,20 +152,16 @@ elif args.new_model_name == "opt1.3b_unlearned_normal_loss":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_normal_loss", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_1e-1_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_1e-1_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_1e-2_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_1e-2_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_1e-3_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_1e-3_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_1e-5_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_1e-5_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.3_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.3_masked", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.1_masked":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.1_masked", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.9_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.9_masked", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_0.6_masked":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.6_masked", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_random":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_random", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_all":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_all", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
