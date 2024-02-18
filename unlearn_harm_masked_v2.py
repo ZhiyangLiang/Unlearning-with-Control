@@ -34,23 +34,26 @@ torch.manual_seed(8888)
 np.random.seed(8888)
 random.seed(8888)
 
+cnt = 0
+attention_loss = 0.0
 # def attention_mask_hook(module, inputs, outputs): # fail try
 #     outputs[1][0] = torch.where(outputs[1][0] > 0.5, outputs[1][0], torch.tensor(10.0, device=outputs[1][0].device))
 #     return outputs
 
 def attention_mask_hook(module, inputs, outputs): # success try
-    # new_output = torch.where(outputs[1][0] > 0.3, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    # new_output = torch.where(outputs[1][0] > 0.6, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    new_output = torch.where(outputs[1][0] > 0.9, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-
-    # new_output = torch.where(outputs[1][0] > 1e-1, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    # new_output = torch.where(outputs[1][0] > 1e-2, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    # new_output = torch.where(outputs[1][0] > 1e-3, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    # new_output = torch.where(outputs[1][0] > 1e-5, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
-    return (outputs[0], new_output.unsqueeze(0), outputs[2])
+    global attention_loss, cnt
+    if cnt % 48 < 24:
+        # part_loss = torch.where(outputs[1][0] < 0.1, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        # part_loss = torch.where(outputs[1][0] < 0.35, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        part_loss = torch.where(outputs[1][0] < 0.6, outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        attention_loss += part_loss
+    cnt += 1
+    return outputs
 
 
 def main(args) -> None:
+    global attention_loss
+
     accelerator = Accelerator()
     device = accelerator.device
     # model = AutoModelForCausalLM.from_pretrained(args.model_name)
@@ -122,7 +125,6 @@ def main(args) -> None:
         for bad_batch, normal_batch in zip(train_bad_loader, train_normal_loader):
             ############ GA on answer only. ############
             bad_loss = get_answer_loss("ga", bad_batch, model, device=device)
-
             ############ Random mismatch. ############
             random_loss = get_rand_ans_loss(
                 bad_batch,
@@ -134,15 +136,15 @@ def main(args) -> None:
             )
 
             ############ KL on normal samples. ############
-            normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
+            # normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
 
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
                 # + args.normal_weight * normal_loss
+                + (attention_loss / 3500)
             )
-
             # Backprop.
             accelerator.backward(loss)
             optimizer.step()
@@ -161,11 +163,13 @@ def main(args) -> None:
             stats = (
                 f"batch: {idx}, "
                 f"bad_loss: {-bad_loss:.2f}, "
-                f"current_div_loss: {normal_loss:.2f}, "
+                # f"current_div_loss: {normal_loss:.2f}, "
+                f"attention_loss / 3500: {attention_loss / 3500:.2f}, "
             )
             logging.info(stats)
             print(stats)
             idx += 1
+            attention_loss = 0.0
 
             # Save model.
             if idx % args.save_every == 0:
@@ -234,13 +238,9 @@ if __name__ == "__main__":
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
         # default="models/opt1.3b_unlearned_bad_random_loss",
 
-        # default="models/opt1.3b_unlearned_bad_random_0.3_masked",
-        # default="models/opt1.3b_unlearned_bad_random_0.6_masked",
-        default="models/opt1.3b_unlearned_bad_random_0.9_masked",
-        # default="models/opt1.3b_unlearned_bad_random_1e-1_masked",
-        # default="models/opt1.3b_unlearned_bad_random_1e-2_masked",
-        # default="models/opt1.3b_unlearned_bad_random_1e-3_masked",
-        # default="models/opt1.3b_unlearned_bad_random_1e-5_masked",
+        # default="models/opt1.3b_unlearned_bad_random_0.1_masked",
+        # default="models/opt1.3b_unlearned_bad_random_0.35_masked",
+        default="models/opt1.3b_unlearned_bad_random_0.6_masked",
         help="Directory to save model.",
     )
     parser.add_argument(
