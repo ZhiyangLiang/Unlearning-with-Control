@@ -162,6 +162,22 @@ elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_random"
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_random", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_all":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_all", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_0.1_masked":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.1_masked", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_0.8_masked_reverse":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.8_masked_reverse", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.35_no":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.35_no", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.5_no":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.5_no", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_no":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_no", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.35_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.35_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.5_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.5_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_yes", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)

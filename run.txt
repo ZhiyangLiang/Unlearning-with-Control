@@ -383,3 +383,11 @@ tensor([[[ 0.3494,  0.6538,  0.1315,  ..., -1.1114, -0.0583, -0.1508],
 
 尝试删除gradient ascent项
 
+python unlearn_harm_masked_v2.py --threshold=0.35 --robust=no --model_save_dir=models/opt1.3b_unlearned_attn_0.35_no
+python unlearn_harm_masked_v2.py --threshold=0.5 --robust=no --model_save_dir=models/opt1.3b_unlearned_attn_0.5_no
+python unlearn_harm_masked_v2.py --threshold=0.65 --robust=no --model_save_dir=models/opt1.3b_unlearned_attn_0.65_no
+python unlearn_harm_masked_v2.py --threshold=0.35 --robust=yes --model_save_dir=models/opt1.3b_unlearned_attn_0.35_yes
+python unlearn_harm_masked_v2.py --threshold=0.5 --robust=yes --model_save_dir=models/opt1.3b_unlearned_attn_0.5_yes
+python unlearn_harm_masked_v2.py --threshold=0.65 --robust=yes --model_save_dir=models/opt1.3b_unlearned_attn_0.65_yes
+
+

@@ -122,18 +122,21 @@ def main(args) -> None:
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
-                + args.normal_weight * normal_loss
+                # + args.normal_weight * normal_loss
             )
 
             # Backprop.
             accelerator.backward(loss)
 
             for name, param in model.named_parameters():
-                if 'k_proj' in name or 'v_proj' in name or 'q_proj' in name:
+                if 'k_proj' in name or 'q_proj' in name:
                     grad_abs = param.grad.abs()
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
                     # mask = grad_abs < np.percentile(grad_abs.cpu(), 25)
-                    mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
+                    # mask = grad_abs < 1e-5
+                    mask = grad_abs < 5e-6
+                    # mask = grad_abs < 1e-6
                     param.grad[mask] = 0
                 else:
                     mask = True
@@ -225,9 +228,13 @@ if __name__ == "__main__":
         type=str,
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        # default="models/opt1.3b_unlearned_0.5masked",
         # default="models/opt1.3b_unlearned_0.25masked",
-        default="models/opt1.3b_unlearned_0.75masked",
+        # default="models/opt1.3b_unlearned_0.5masked",
+        # default="models/opt1.3b_unlearned_0.75masked",
+
+        # default="models/opt1.3b_unlearned_1e-5_masked_new",
+        default="models/opt1.3b_unlearned_5e-6_masked_new",
+        # default="models/opt1.3b_unlearned_1e-6_masked_new",
 
         # default="models/opt1.3b_unlearned_lora",
         help="Directory to save model.",
