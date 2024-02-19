@@ -152,10 +152,39 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --model_save_dir=models/opt1.3b_unlearned_attn_0.85_yes'
-print(cmd)
-os.system(cmd)
+# default: 150idx; mask = grad_abs < np.percentile(grad_abs.cpu(), 99)
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --model_save_dir=models/opt1.3b_unlearned_attn_0.85_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_attn_0.85_yes > opt1.3b_unlearned_attn_0.85_yes.log'
+# print(cmd)
+# os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_attn_0.85_yes > opt1.3b_unlearned_attn_0.85_yes.log'
+cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=100 --model_save_dir=models/opt1.3b_unlearned_attn_0.85_100idx_mr99_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.90 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_attn_0.90_150idx_mr99_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99.5 --idx=150 --model_save_dir=models/opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_attn_0.85_100idx_mr99_yes > opt1.3b_unlearned_attn_0.85_100idx_mr99_yes.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_attn_0.90_150idx_mr99_yes > opt1.3b_unlearned_attn_0.90_150idx_mr99_yes.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes > opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_normal_process > opt1.3b_unlearned_normal_process.log'
 print(cmd)
 os.system(cmd)

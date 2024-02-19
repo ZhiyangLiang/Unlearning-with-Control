@@ -24,6 +24,7 @@ from utils import (
     compute_kl,
     create_pku_dataloader_from_dataset,
     create_truthfulqa_dataloader,
+    create_truthfulqa_dataloader_for_train,  # my try
     get_answer_loss,
     get_rand_ans_loss,
     get_truthfulQA_answers_plaintext,
@@ -60,7 +61,8 @@ def main(args) -> None:
     )
 
     # Get normal data.
-    train_normal_loader, _, _ = create_truthfulqa_dataloader(
+    # train_normal_loader, _, _ = create_truthfulqa_dataloader(
+    train_normal_loader, _, _ = create_truthfulqa_dataloader_for_train(  # my try
         tokenizer, batch_size=args.batch_size
     )
 
@@ -121,7 +123,7 @@ def main(args) -> None:
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
-                # + args.normal_weight * normal_loss
+                + args.normal_weight * normal_loss
             )
 
             # Backprop.
@@ -133,14 +135,10 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
-            # if idx % 100 == 0:  # my try
-            # if idx % 150 == 0:
+            # if idx % 150 == 0:  # my try
             #     print("idx: %d" % (idx))
             #     for name, parameter in model.named_parameters():
-            #         parameter.data = 0.95 * parameter.data + 0.05 * ori_state[name].data
-            #         parameter.data = 0.90 * parameter.data + 0.10 * ori_state[name].data
             #         parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
-            #         parameter.data = 0.80 * parameter.data + 0.20 * ori_state[name].data
 
             # Print.
             stats = (
@@ -217,12 +215,7 @@ if __name__ == "__main__":
         type=str,
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        # default="models/opt1.3b_unlearned_bad_loss",
-        # default="models/opt1.3b_unlearned_random_loss",
-        # default="models/opt1.3b_unlearned_normal_loss",
-        default="models/opt1.3b_unlearned_bad_random_loss",
-
-        # default="models/opt1.3b_unlearned_lora",
+        default="models/opt1.3b_unlearned_normal_process",
         help="Directory to save model.",
     )
     parser.add_argument(

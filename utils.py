@@ -88,6 +88,32 @@ def create_truthfulqa_dataloader_for_test(batch_size=4):
 
     return test_data
 
+def create_truthfulqa_dataloader_for_process(batch_size=4):
+    df = pd.read_csv("data/TruthfulQA.csv")
+    questions = df["Question"].values
+    categories = df["Category"].values
+
+    data = {"normal_prompt": []}
+    # data = {"normal_prompt": [], "category": []} # my test
+    for question, category in zip(questions, categories):
+        # if category in {"Finance", "Economics", "Sociology"}:
+        if category not in {"Finance", "Economics", "Sociology"}:
+            data["normal_prompt"].append(question)
+            # data["category"].append(category) # my test
+
+    dataset = Dataset.from_dict(data)
+
+    # Split train/val/test = 0.7/0.1/0.2.
+    # train_len = int(0.7 * len(dataset))
+    # val_len = int(0.1 * len(dataset))
+    train_len = 0
+    val_len = 0
+    test_len = len(dataset) - train_len - val_len
+    _, _, test_data = torch.utils.data.random_split(
+        dataset, [train_len, val_len, test_len]
+    )
+    return test_data
+
 def create_pku_dataloader_from_dataset(tokenizer, dataset, fraction=1.0, batch_size=4):
     """
     Given the PKU dataset, create the dataloader on the unlearned harmful Q&A pairs.
@@ -213,6 +239,39 @@ def create_truthfulqa_dataloader(tokenizer, batch_size=4):
 
     return train_dataloader, val_dataloader, test_dataloader
 
+def create_truthfulqa_dataloader_for_train(tokenizer, batch_size=4):
+    df = pd.read_csv("data/TruthfulQA.csv")
+    questions, good_answers = df["Question"].values, df["Best Answer"].values
+    categories = df["Category"].values
+
+    data = {"input_ids": [], "attention_mask": []}
+    for question, good_answer, category in zip(questions, good_answers, categories):
+        if category in {"Finance", "Economics", "Sociology"}:
+            text = f"### Question: {question}\n ### Answer: {good_answer}"
+            tokenized = tokenizer(text, truncation=True, padding="max_length")
+            data["input_ids"].append(tokenized["input_ids"])
+            data["attention_mask"].append(tokenized["attention_mask"])
+
+    dataset = Dataset.from_dict(data)
+
+    # Split train/val/test = 0.7/0.1/0.2.
+    # train_len = int(0.7 * len(dataset))
+    # val_len = int(0.1 * len(dataset))
+    test_len = 0
+    val_len = 0
+    train_len = len(dataset) - test_len - val_len
+
+    train_data, val_data, test_data = torch.utils.data.random_split(
+        dataset, [train_len, val_len, test_len]
+    )
+
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+
+    train_dataloader = torch.utils.data.DataLoader(
+        train_data, batch_size=batch_size, collate_fn=data_collator, shuffle=True
+    )
+
+    return train_dataloader
 
 def get_truthfulQA_answers_plaintext(tqa_file_path="data/TruthfulQA.csv"):
     """

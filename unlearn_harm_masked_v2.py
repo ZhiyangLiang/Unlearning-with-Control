@@ -150,7 +150,8 @@ def main(args) -> None:
             for name, param in model.named_parameters():
                 if 'k_proj' in name or 'q_proj' in name:
                     grad_abs = param.grad.abs()
-                    mask = grad_abs < np.percentile(grad_abs.cpu(), 99)
+                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 99)
+                    mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
                     # mask = grad_abs < 1e-5
                     # mask = grad_abs < 5e-6
                     # mask = grad_abs < 1e-6
@@ -168,7 +169,7 @@ def main(args) -> None:
             optimizer.zero_grad()
 
             if args.robust == "yes":
-                if idx % 150 == 0: # my try
+                if idx % int(args.idx) == 0:  # my try
                     print("idx: %d" % (idx))
                     for name, parameter in model.named_parameters():
                         parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
@@ -269,6 +270,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "--robust",
         type=str,
+    )
+    parser.add_argument(
+        "--mask_rate",
+        type=float,
+    )
+    parser.add_argument(
+        "--idx",
+        type=int,
     )
     args = parser.parse_args()
 
