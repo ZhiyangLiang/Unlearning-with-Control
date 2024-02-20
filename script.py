@@ -161,7 +161,7 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=100 --model_save_dir=models/opt1.3b_unlearned_attn_0.85_100idx_mr99_yes'
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=100 --model_save_dir=models/opt1.3b_unlearned_attn_0.85_100idx_mr99_yes'
 # print(cmd)
 # os.system(cmd)
 #
@@ -185,6 +185,38 @@ cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_ra
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_normal_process > opt1.3b_unlearned_normal_process.log'
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_normal_process > opt1.3b_unlearned_normal_process.log'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes > opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes.log'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes > opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes.log'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_bad_random_loss_fair'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss_fair > opt1.3b_unlearned_bad_random_loss_fair.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_harm_masked.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_bad_random_loss_fair_wo_mask'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss_fair_wo_mask > opt1.3b_unlearned_bad_random_loss_fair_wo_mask.log'
 print(cmd)
 os.system(cmd)

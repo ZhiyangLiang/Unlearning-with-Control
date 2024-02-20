@@ -42,9 +42,12 @@ attention_loss = 0.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
+    part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
     if cnt % 48 < 24:
-        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
         attention_loss += part_loss
+    else:
+        # attention_loss -= part_loss
+        attention_loss -= (part_loss * 0.5)
     cnt += 1
     return outputs
 
@@ -124,18 +127,16 @@ def main(args) -> None:
             ############ GA on answer only. ############
             bad_loss = get_answer_loss("ga", bad_batch, model, device=device)
             ############ Random mismatch. ############
-            random_loss = get_rand_ans_loss(
-                bad_batch,
-                tokenizer,
-                normal_ans,
-                model,
-                K=5,
-                device=device,
-            )
-
+            # random_loss = get_rand_ans_loss(
+            #     bad_batch,
+            #     tokenizer,
+            #     normal_ans,
+            #     model,
+            #     K=5,
+            #     device=device,
+            # )
             ############ KL on normal samples. ############
-            # normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
-
+            normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
                 # args.bad_weight * bad_loss
@@ -178,7 +179,7 @@ def main(args) -> None:
             stats = (
                 f"batch: {idx}, "
                 f"bad_loss: {-bad_loss:.2f}, "
-                # f"current_div_loss: {normal_loss:.2f}, "
+                f"current_div_loss: {normal_loss:.2f}, "
                 f"attention_loss: {attention_loss:.2f}, "
             )
             logging.info(stats)

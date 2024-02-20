@@ -34,11 +34,11 @@ torch.manual_seed(8888)
 np.random.seed(8888)
 random.seed(8888)
 
-
 def main(args) -> None:
     accelerator = Accelerator()
     device = accelerator.device
-    model = AutoModelForCausalLM.from_pretrained(args.model_name)
+    # model = AutoModelForCausalLM.from_pretrained(args.model_name)
+    model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     # If use LoRA.
     if args.use_lora:
         peft_config = AdaLoraConfig(
@@ -104,7 +104,6 @@ def main(args) -> None:
         for bad_batch, normal_batch in zip(train_bad_loader, train_normal_loader):
             ############ GA on answer only. ############
             bad_loss = get_answer_loss("ga", bad_batch, model, device=device)
-
             ############ Random mismatch. ############
             random_loss = get_rand_ans_loss(
                 bad_batch,
@@ -114,33 +113,27 @@ def main(args) -> None:
                 K=5,
                 device=device,
             )
-
             ############ KL on normal samples. ############
             normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
-
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
                 # + args.normal_weight * normal_loss
             )
-
             # Backprop.
             accelerator.backward(loss)
 
-            for name, param in model.named_parameters():
-                if 'k_proj' in name or 'q_proj' in name:
-                    grad_abs = param.grad.abs()
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 25)
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 50)
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 75)
-                    # mask = grad_abs < 1e-5
-                    mask = grad_abs < 5e-6
-                    # mask = grad_abs < 1e-6
-                    param.grad[mask] = 0
-                else:
-                    mask = True
-                    param.grad[mask] = 0
+
+            # for name, param in model.named_parameters(): # test
+            #     if 'k_proj' in name or 'q_proj' in name:
+            #         grad_abs = param.grad.abs()
+            #         mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+            #         param.grad[mask] = 0
+            #     elif param.grad is not None:
+            #         mask = True
+            #         param.grad[mask] = 0
+
 
             optimizer.step()
             # if idx % 100 == 0:
@@ -149,9 +142,11 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
-            # if idx % 150 == 0:  # my try
-            #     for name, parameter in model.named_parameters():
-            #         parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
+            if args.robust == "yes":
+                if idx % int(args.idx) == 0:  # my try
+                    print("idx: %d" % (idx))
+                    for name, parameter in model.named_parameters():
+                        parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
 
             # Print.
             stats = (
@@ -228,15 +223,9 @@ if __name__ == "__main__":
         type=str,
         # default="models/opt1.3b_unlearned",
         # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        # default="models/opt1.3b_unlearned_0.25masked",
-        # default="models/opt1.3b_unlearned_0.5masked",
-        # default="models/opt1.3b_unlearned_0.75masked",
 
-        # default="models/opt1.3b_unlearned_1e-5_masked_new",
-        default="models/opt1.3b_unlearned_5e-6_masked_new",
-        # default="models/opt1.3b_unlearned_1e-6_masked_new",
-
-        # default="models/opt1.3b_unlearned_lora",
+        # default="models/opt1.3b_unlearned_bad_loss_fair",
+        # default="models/opt1.3b_unlearned_bad_random_loss_fair",
         help="Directory to save model.",
     )
     parser.add_argument(
@@ -247,6 +236,18 @@ if __name__ == "__main__":
         type=str,
         default="logs/default.log",
         help="Log file name",
+    )
+    parser.add_argument(
+        "--robust",
+        type=str,
+    )
+    parser.add_argument(
+        "--mask_rate",
+        type=float,
+    )
+    parser.add_argument(
+        "--idx",
+        type=int,
     )
     args = parser.parse_args()
 

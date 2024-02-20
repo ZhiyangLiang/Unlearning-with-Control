@@ -407,3 +407,6 @@ Forget-Me-Not: Learning to Forget in Text-to-Image Diffusion Models
 Design attention resteering loss for forgetting concept
 Edit model parameters based on gradient
 TOFU: A Task of Fictitious Unlearning for LLMs
+Forget Quality
+
+python unlearn_harm_masked.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_bad_random_loss_fair
