@@ -24,79 +24,17 @@ random.seed(8888)
 
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-if args.new_model_name == "original":
-    model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b")
-    generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.95_0.05_100idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.95_0.05_100idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.90_0.10_100idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.90_0.10_100idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.95_0.05_150idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.95_0.05_150idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.85_0.15_100idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.85_0.15_100idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.85_0.15_150idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.85_0.15_150idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_0.80_0.20_100idx":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_0.80_0.20_100idx", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_loss":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_loss", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_random_loss":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_random_loss", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_normal_loss":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_normal_loss", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.1_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.1_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_0.6_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.6_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_random":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_random", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_0.6_masked_for_all":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_0.6_masked_for_all", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_0.1_masked":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.1_masked", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_0.8_masked_reverse":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_0.8_masked_reverse", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.35_no":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.35_no", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.5_no":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.5_no", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_no":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_no", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.35_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.35_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.5_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.5_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_100idx_mr99_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_100idx_mr99_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.90_150idx_mr99_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.90_150idx_mr99_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_normal_process":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_normal_process", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss_fair":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss_fair_wo_mask":
-    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair_wo_mask", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "finetune_opt1.3b_tofu_forget":
-    generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
-elif args.new_model_name == "finetune_opt1.3b_tofu_forget_ga_mismatch":
-    generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget_ga_mismatch", tokenizer=tokenizer, device=device)
+# if args.new_model_name == "original":
+#     model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b")
+#     generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device=device)
+# elif args.new_model_name == "finetune_opt1.3b_tofu_forget":
+#     generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
+# elif args.new_model_name == "finetune_opt1.3b_tofu_forget_ga_mismatch":
+#     generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget_ga_mismatch", tokenizer=tokenizer, device=device)
+
+generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu", tokenizer=tokenizer, device=device)
+generator2 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
+generator3 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget_ga_mismatch", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
@@ -111,29 +49,49 @@ rest_loader = create_tofu_dataloader_from_dataset_for_test(
 )
 
 for i, j in enumerate(forget_loader):
-    prompt = f"### Question: {j['bad_prompt']}\n ### Answer:"
+    prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
     question = generated_prompt.split("###")[1]
     answer = generated_prompt.split("###")[2]
     print(question)
     print(answer)
-    inputs = reward_tokenizer(question, answer, return_tensors='pt')
-    score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-    print(score.max())
+    question = generated_prompt2.split("###")[1]
+    answer = generated_prompt2.split("###")[2]
+    print(question)
+    print(answer)
+    question = generated_prompt3.split("###")[1]
+    answer = generated_prompt3.split("###")[2]
+    print(question)
+    print(answer)
+    # inputs = reward_tokenizer(question, answer, return_tensors='pt')
+    # score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
+    # print(score.max())
     # if i >= 500:
-    if i >= 50:
+    if i >= 200:
         break
 print("-"*50)
 for i, j in enumerate(rest_loader):
-    prompt = f"### Question: {j['bad_prompt']}\n ### Answer:"
+    prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
     question = generated_prompt.split("###")[1]
     answer = generated_prompt.split("###")[2]
     print(question)
     print(answer)
-    inputs = reward_tokenizer(question, answer, return_tensors='pt')
-    score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-    print(score.max())
+    question = generated_prompt2.split("###")[1]
+    answer = generated_prompt2.split("###")[2]
+    print(question)
+    print(answer)
+    question = generated_prompt3.split("###")[1]
+    answer = generated_prompt3.split("###")[2]
+    print(question)
+    print(answer)
+    # inputs = reward_tokenizer(question, answer, return_tensors='pt')
+    # score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
+    # print(score.max())
     # if i >= 500:
-    if i >= 50:
+    if i >= 200:
         break
