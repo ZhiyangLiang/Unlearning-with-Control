@@ -107,7 +107,7 @@ forget_loader = create_tofu_dataloader_from_dataset_for_test(
 )
 
 rest_loader = create_tofu_dataloader_from_dataset_for_test(
-    data_path="data/retrain99.json", batch_size=2
+    data_path="data/retain99.json", batch_size=2
 )
 
 for i, j in enumerate(forget_loader):
