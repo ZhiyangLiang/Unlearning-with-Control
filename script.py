@@ -241,6 +241,6 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_v2.py --model_save_dir=models/opt1.3b_unlearned_attn'
+cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --model_save_dir=models/opt1.3b_unlearned_attn'
 print(cmd)
 os.system(cmd)

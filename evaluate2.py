@@ -21,7 +21,10 @@ random.seed(8888)
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
 # generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_yes", tokenizer=tokenizer, device=device)
-generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair", tokenizer=tokenizer, device=device)
+# generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair", tokenizer=tokenizer, device=device)
+
+generator = pipeline('text-generation', model="models/opt1.3b_unlearned", tokenizer=tokenizer, device=device)
+# generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 # reward_name = "PKU-Alignment/beaver-dam-7b"
 # reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)

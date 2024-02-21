@@ -136,7 +136,7 @@ def main(args) -> None:
             normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
-                attention_loss / 5000
+                attention_loss / 500
                 # args.bad_weight * bad_loss
                 # + args.random_weight * random_loss
                 + args.normal_weight * normal_loss
@@ -173,7 +173,7 @@ def main(args) -> None:
                 f"batch: {idx}, "
                 # f"bad_loss: {-bad_loss:.2f}, "
                 f"current_div_loss: {normal_loss:.2f}, "
-                f"attention_loss / 5000: {attention_loss / 5000:.2f}, "
+                f"attention_loss / 500: {attention_loss / 500:.2f}, "
             )
             logging.info(stats)
             print(stats)
