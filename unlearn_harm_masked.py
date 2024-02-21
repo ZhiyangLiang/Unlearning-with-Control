@@ -51,7 +51,7 @@ def main(args) -> None:
         model = get_peft_model(model, peft_config)
 
     model.to(device)
-    ori_state = model.state_dict()  # my try
+    # ori_state = model.state_dict()  # my try
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     # Load harmful data.
@@ -119,7 +119,7 @@ def main(args) -> None:
             loss = (
                 args.bad_weight * bad_loss
                 + args.random_weight * random_loss
-                # + args.normal_weight * normal_loss
+                + args.normal_weight * normal_loss
             )
             # Backprop.
             accelerator.backward(loss)
@@ -142,11 +142,11 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
-            if args.robust == "yes":
-                if idx % int(args.idx) == 0:  # my try
-                    print("idx: %d" % (idx))
-                    for name, parameter in model.named_parameters():
-                        parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
+            # if args.robust == "yes":
+            #     if idx % int(args.idx) == 0:  # my try
+            #         print("idx: %d" % (idx))
+            #         for name, parameter in model.named_parameters():
+            #             parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
 
             # Print.
             stats = (
@@ -222,10 +222,6 @@ if __name__ == "__main__":
         "--model_save_dir",
         type=str,
         # default="models/opt1.3b_unlearned",
-        # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-
-        # default="models/opt1.3b_unlearned_bad_loss_fair",
-        # default="models/opt1.3b_unlearned_bad_random_loss_fair",
         help="Directory to save model.",
     )
     parser.add_argument(
@@ -237,18 +233,18 @@ if __name__ == "__main__":
         default="logs/default.log",
         help="Log file name",
     )
-    parser.add_argument(
-        "--robust",
-        type=str,
-    )
-    parser.add_argument(
-        "--mask_rate",
-        type=float,
-    )
-    parser.add_argument(
-        "--idx",
-        type=int,
-    )
+    # parser.add_argument(
+    #     "--robust",
+    #     type=str,
+    # )
+    # parser.add_argument(
+    #     "--mask_rate",
+    #     type=float,
+    # )
+    # parser.add_argument(
+    #     "--idx",
+    #     type=int,
+    # )
     args = parser.parse_args()
 
     logging.basicConfig(

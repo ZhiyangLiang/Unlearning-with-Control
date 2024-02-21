@@ -45,9 +45,6 @@ def attention_mask_hook(module, inputs, outputs): # success try
     part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
     if cnt % 48 < 24:
         attention_loss += part_loss
-    else:
-        # attention_loss -= part_loss
-        attention_loss -= (part_loss * 0.5)
     cnt += 1
     return outputs
 
@@ -73,7 +70,7 @@ def main(args) -> None:
         model = get_peft_model(model, peft_config)
 
     model.to(device)
-    ori_state = model.state_dict()  # my try
+    # ori_state = model.state_dict()  # my try
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     # Load harmful data.
@@ -88,7 +85,7 @@ def main(args) -> None:
     )
 
     # Load normal answer used for random mismatch.
-    normal_ans = get_truthfulQA_answers_plaintext()
+    # normal_ans = get_truthfulQA_answers_plaintext()
 
     optimizer = AdamW(model.parameters(), lr=args.lr)
 
@@ -139,27 +136,23 @@ def main(args) -> None:
             normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
+                attention_loss / 5000
                 # args.bad_weight * bad_loss
                 # + args.random_weight * random_loss
-                # + args.normal_weight * normal_loss
-                attention_loss
+                + args.normal_weight * normal_loss
             )
             # Backprop.
             accelerator.backward(loss)
 
 
-            for name, param in model.named_parameters():
-                if 'k_proj' in name or 'q_proj' in name:
-                    grad_abs = param.grad.abs()
-                    # mask = grad_abs < np.percentile(grad_abs.cpu(), 99)
-                    mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
-                    # mask = grad_abs < 1e-5
-                    # mask = grad_abs < 5e-6
-                    # mask = grad_abs < 1e-6
-                    param.grad[mask] = 0
-                elif param.grad is not None:
-                    mask = True
-                    param.grad[mask] = 0
+            # for name, param in model.named_parameters():
+            #     if 'k_proj' in name or 'q_proj' in name:
+            #         grad_abs = param.grad.abs()
+            #         mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+            #         param.grad[mask] = 0
+            #     elif param.grad is not None:
+            #         mask = True
+            #         param.grad[mask] = 0
 
 
             optimizer.step()
@@ -169,18 +162,18 @@ def main(args) -> None:
             lr_scheduler.step()
             optimizer.zero_grad()
 
-            if args.robust == "yes":
-                if idx % int(args.idx) == 0:  # my try
-                    print("idx: %d" % (idx))
-                    for name, parameter in model.named_parameters():
-                        parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
+            # if args.robust == "yes":
+            #     if idx % int(args.idx) == 0:  # my try
+            #         print("idx: %d" % (idx))
+            #         for name, parameter in model.named_parameters():
+            #             parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
 
             # Print.
             stats = (
                 f"batch: {idx}, "
-                f"bad_loss: {-bad_loss:.2f}, "
+                # f"bad_loss: {-bad_loss:.2f}, "
                 f"current_div_loss: {normal_loss:.2f}, "
-                f"attention_loss: {attention_loss:.2f}, "
+                f"attention_loss / 5000: {attention_loss / 5000:.2f}, "
             )
             logging.info(stats)
             print(stats)
@@ -251,8 +244,6 @@ if __name__ == "__main__":
         "--model_save_dir",
         type=str,
         # default="models/opt1.3b_unlearned",
-        # default="models/opt1.3b_unlearned_0.85_0.15_150idx",
-        # default="models/opt1.3b_unlearned_bad_random_loss",
         help="Directory to save model.",
     )
     parser.add_argument(
@@ -268,18 +259,18 @@ if __name__ == "__main__":
         "--threshold",
         type=float,
     )
-    parser.add_argument(
-        "--robust",
-        type=str,
-    )
-    parser.add_argument(
-        "--mask_rate",
-        type=float,
-    )
-    parser.add_argument(
-        "--idx",
-        type=int,
-    )
+    # parser.add_argument(
+    #     "--robust",
+    #     type=str,
+    # )
+    # parser.add_argument(
+    #     "--mask_rate",
+    #     type=float,
+    # )
+    # parser.add_argument(
+    #     "--idx",
+    #     type=int,
+    # )
     args = parser.parse_args()
 
     logging.basicConfig(
