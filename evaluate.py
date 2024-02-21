@@ -9,7 +9,7 @@ from torch.nn import Softmax
 from datasets import load_dataset
 from transformers import AutoTokenizer, pipeline, AutoModelForCausalLM, AutoModelForSequenceClassification
 from utils import get_truthfulQA_answers_plaintext, create_truthfulqa_dataloader, create_pku_dataloader_from_dataset
-from utils import create_pku_dataloader_from_dataset_for_test, create_truthfulqa_dataloader_for_test
+from utils import create_pku_dataloader_from_dataset_for_test, create_truthfulqa_dataloader_for_test, create_truthfulqa_dataloader_for_process
 
 parser = argparse.ArgumentParser(description="Unlearning", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--new_model_name", type=str)
@@ -180,6 +180,24 @@ elif args.new_model_name == "opt1.3b_unlearned_attn_0.65_yes":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.65_yes", tokenizer=tokenizer, device=device)
 elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_yes":
     generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_100idx_mr99_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_100idx_mr99_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.90_150idx_mr99_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.90_150idx_mr99_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_attn_0.85_150idx_mr99.5_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_normal_process":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_normal_process", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_double_attn_0.85_150idx_mr99_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_double_0.5w_attn_0.85_150idx_mr99_yes", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss_fair":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "opt1.3b_unlearned_bad_random_loss_fair_wo_mask":
+    generator = pipeline('text-generation', model="models/opt1.3b_unlearned_bad_random_loss_fair_wo_mask", tokenizer=tokenizer, device=device)
+elif args.new_model_name == "finetune_opt1.3b_tofu_forget":
+    generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
 # reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
 reward_name = "PKU-Alignment/beaver-dam-7b"
 reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
@@ -194,6 +212,7 @@ test_bad_loader = create_pku_dataloader_from_dataset_for_test(
     test_bad_dataset, batch_size=2
 )
 test_normal_loader = create_truthfulqa_dataloader_for_test(  # 测试集占比0.2
+# test_normal_loader = create_truthfulqa_dataloader_for_process(
     batch_size=2
 )
 

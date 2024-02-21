@@ -1,5 +1,4 @@
 import pdb
-
 from data_module import TextDatasetQA, custom_data_collator
 from dataloader import CustomTrainer
 import torch
@@ -100,7 +99,7 @@ def main(cfg):
             evaluation_strategy="no",
             # deepspeed='config/ds_config.json',
             # weight_decay=cfg["weight_decay"]
-            weight_decay=0.01
+            weight_decay=0.01,
         )
 
     # model = AutoModelForCausalLM.from_pretrained(model_id, use_flash_attention_2=model_cfg["flash_attention2"]=="true", torch_dtype=torch.bfloat16, trust_remote_code = True)

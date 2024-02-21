@@ -213,10 +213,18 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_bad_random_loss_fair_wo_mask'
+# cmd = f'python unlearn_harm_masked.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/opt1.3b_unlearned_bad_random_loss_fair_wo_mask'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss_fair_wo_mask > opt1.3b_unlearned_bad_random_loss_fair_wo_mask.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/finetune_opt1.3b_tofu_forget'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python evaluate.py --new_model_name=opt1.3b_unlearned_bad_random_loss_fair_wo_mask > opt1.3b_unlearned_bad_random_loss_fair_wo_mask.log'
+cmd = f'python evaluate.py --new_model_name=finetune_opt1.3b_tofu_forget > finetune_opt1.3b_tofu_forget.log'
 print(cmd)
 os.system(cmd)
