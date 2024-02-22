@@ -35,8 +35,16 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("retrain99_opt1.3b_tofu_forget1_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_perturbed.log")
-file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_paraphrased.log")
-file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_20th_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_20th_perturbed.log")
+file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_paraphrased.log")
+file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_perturbed.log")
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(message)s')
@@ -149,7 +157,11 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu",
         # default="models/finetune_opt1.3b_tofu_retrain99",
         # default="models/forget1_opt1.3b_tofu_attn",
-        default="models/forget1_opt1.3b_tofu_ga_mismatch",
+        # default="models/forget1_opt1.3b_tofu_ga_mismatch",
+        # default="models/forget1_opt1.3b_tofu_attn_1",
+        # default="models/forget1_opt1.3b_tofu_attn_2",
+        # default="models/forget1_opt1.3b_tofu_attn_20th",
+        default="models/forget1_opt1.3b_tofu_attn_15th",
         help="Name of the pretrained model.",
     )
     parser.add_argument(

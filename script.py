@@ -241,6 +241,18 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1'
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_2'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_20th'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_15th'
 print(cmd)
 os.system(cmd)

@@ -43,7 +43,8 @@ attention_loss = 0.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
-    if cnt % 24 == 23:
+    # if cnt % 24 == 19:
+    if cnt % 24 == 14:
         part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
         attention_loss += part_loss
     cnt += 1
@@ -158,7 +159,8 @@ def main(args) -> None:
 
 
             for name, param in model.named_parameters():
-                if 'k_proj' in name or 'q_proj' in name:
+                # if 'k_proj' in name or 'q_proj' in name:
+                if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
                     grad_abs = param.grad.abs()
                     mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
                     param.grad[mask] = 0
