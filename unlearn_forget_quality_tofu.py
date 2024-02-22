@@ -52,3 +52,4 @@ def get_forget_quality(unlearn_paraphrase_np_values, unlearn_perturbed_np_values
 
 # get_forget_quality(unlearn_forget_values, unlearn_perturbed_values, retrain_forget_values, retrain_perturbed_values)
 get_forget_quality(np.array(unlearn_forget1_paraphrased_loss), np.array(unlearn_forget1_perturbed_loss), np.array(retrain_forget1_paraphrased_loss), np.array(retrain_forget1_perturbed_loss))
+
