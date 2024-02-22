@@ -221,14 +221,6 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-# cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/finetune_opt1.3b_tofu_forget'
-# print(cmd)
-# os.system(cmd)
-#
-# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/finetune_opt1.3b_tofu_forget_ga_mismatch'
-# print(cmd)
-# os.system(cmd)
-
 # cmd = f'python evaluate_tofu.py --new_model_name=finetune_opt1.3b_tofu_forget > finetune_opt1.3b_tofu_forget.log'
 # print(cmd)
 # os.system(cmd)
@@ -241,6 +233,14 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --model_save_dir=models/opt1.3b_unlearned_attn'
+# cmd = f'python unlearn_harm_masked_v2.py --threshold=0.85 --model_save_dir=models/opt1.3b_unlearned_attn'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_ga_mismatch'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1'
 print(cmd)
 os.system(cmd)

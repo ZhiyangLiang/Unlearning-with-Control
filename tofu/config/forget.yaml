@@ -12,7 +12,7 @@ batch_size: 4
 gradient_accumulation_steps: 4
 num_epochs: 10
 forget_loss: grad_ascent
-save_dir: ${model_path}/1GPU_${forget_loss}_${lr}_${split}
+save_dir: models/finetune_opt1.3b_tofu_forget
 overwrite_dir: false
 weight_decay: 0.01
 

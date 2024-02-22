@@ -118,7 +118,7 @@ class TextForgetDatasetDPOQA(Dataset):
 
 
 class TextDatasetQA(Dataset):
-    def __init__(self, data_path, tokenizer, max_length=512, split=None, question_key='question', answer_key='answer'):
+    def __init__(self, data_path, tokenizer, max_length=512, question_key='question', answer_key='answer'):
     # def __init__(self, data_path, tokenizer, model_family, max_length=512, split = None, question_key='question', answer_key='answer'):
         super(TextDatasetQA, self).__init__()
         self.tokenizer = tokenizer

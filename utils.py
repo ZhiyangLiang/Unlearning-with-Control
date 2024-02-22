@@ -47,10 +47,68 @@ random.seed(8888)
 #
 # return results
 
-def create_tofu_dataloader_from_dataset(tokenizer, batch_size=4):
+def create_tofu_dataloader_from_dataset_paraphrased(data_path, tokenizer, batch_size=4):
 
     results = {"input_ids": [], "attention_mask": [], "start_locs": []}
-    with open("data/forget01.json", 'r') as file:
+    with open(data_path, 'r') as file:
+        for line in file:
+            # self.data.append(json.loads(line))
+            prompt = json.loads(line)["question"]
+            response = json.loads(line)["paraphrased_answer"]
+            text = f"### Question: {prompt}\n ### Answer: {response}"
+            tokenized = tokenizer(text, truncation=True, padding="max_length")
+            results["input_ids"].append(tokenized["input_ids"])
+            results["attention_mask"].append(tokenized["attention_mask"])
+            test_text = f"### Question: {prompt}\n ### Answer: "
+            test_tokenized = tokenizer(
+                test_text, truncation=True, padding="max_length"
+            )
+            results["start_locs"].append(len(test_tokenized["input_ids"]) - 1)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    forget_dataloader = torch.utils.data.DataLoader(
+        forget_data, batch_size=batch_size, collate_fn=data_collator, shuffle=True
+    )
+
+    return forget_dataloader
+
+def create_tofu_dataloader_from_dataset_perturbed(data_path, tokenizer, idx, batch_size=4):
+
+    results = {"input_ids": [], "attention_mask": [], "start_locs": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            # self.data.append(json.loads(line))
+            prompt = json.loads(line)["question"]
+            response = json.loads(line)["perturbed_answer"][idx]
+            text = f"### Question: {prompt}\n ### Answer: {response}"
+            tokenized = tokenizer(text, truncation=True, padding="max_length")
+            results["input_ids"].append(tokenized["input_ids"])
+            results["attention_mask"].append(tokenized["attention_mask"])
+            test_text = f"### Question: {prompt}\n ### Answer: "
+            test_tokenized = tokenizer(
+                test_text, truncation=True, padding="max_length"
+            )
+            results["start_locs"].append(len(test_tokenized["input_ids"]) - 1)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    forget_dataloader = torch.utils.data.DataLoader(
+        forget_data, batch_size=batch_size, collate_fn=data_collator, shuffle=True
+    )
+
+    return forget_dataloader
+
+def create_tofu_dataloader_from_dataset(data_path, tokenizer, batch_size=4):
+
+    results = {"input_ids": [], "attention_mask": [], "start_locs": []}
+    with open(data_path, 'r') as file:
         for line in file:
             # self.data.append(json.loads(line))
             prompt = json.loads(line)["question"]
@@ -75,6 +133,21 @@ def create_tofu_dataloader_from_dataset(tokenizer, batch_size=4):
     )
 
     return forget_dataloader
+
+def create_tofu_dataloader_from_dataset_for_test(data_path, batch_size=4):
+    results = {"forget_prompt": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            prompt = json.loads(line)["question"]
+            results["forget_prompt"].append(prompt)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+
+    return forget_data
+
 
 def create_pku_dataloader_from_dataset_for_test(dataset, batch_size=4):
     # Preproccess function.

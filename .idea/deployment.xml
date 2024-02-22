@@ -233,6 +233,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@region-9.autodl.pro:29496">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/llm_unlearn" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@region-9.autodl.pro:39046">
         <serverdata>
           <mappings>

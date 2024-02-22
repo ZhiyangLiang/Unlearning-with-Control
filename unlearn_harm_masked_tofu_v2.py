@@ -35,15 +35,18 @@ torch.manual_seed(8888)
 np.random.seed(8888)
 random.seed(8888)
 
+cnt = 0
 attention_loss = 0.0
 # def attention_mask_hook(module, inputs, outputs): # fail try
 #     outputs[1][0] = torch.where(outputs[1][0] > 0.5, outputs[1][0], torch.tensor(10.0, device=outputs[1][0].device))
 #     return outputs
 
 def attention_mask_hook(module, inputs, outputs): # success try
-    global attention_loss
-    part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
-    attention_loss += part_loss
+    global attention_loss, cnt
+    if cnt % 24 == 23:
+        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        attention_loss += part_loss
+    cnt += 1
     return outputs
 
 
@@ -82,7 +85,7 @@ def main(args) -> None:
     # )
 
     forget_loader = create_tofu_dataloader_from_dataset(
-        tokenizer, batch_size=args.batch_size
+        "data/forget01.json", tokenizer, batch_size=args.batch_size
     )
 
     # Load normal answer used for random mismatch.

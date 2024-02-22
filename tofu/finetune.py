@@ -59,7 +59,7 @@ def main(cfg):
     # tokenizer.pad_token = tokenizer.eos_token
 
     max_length = 500
-    torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, max_length=max_length, split=cfg["split"])
+    torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, max_length=max_length)
     # torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, model_family=cfg["model_family"], max_length=max_length, split=cfg.split)
 
     batch_size = int(cfg["batch_size"])
@@ -93,7 +93,8 @@ def main(cfg):
             logging_dir=f'{cfg["save_dir"]}/logs',
             output_dir=cfg["save_dir"],
             # optim="paged_adamw_32bit",
-            save_steps=steps_per_epoch,
+            # save_steps=steps_per_epoch,
+            save_steps=15000,  # mytry
             save_only_model=True,
             # ddp_find_unused_parameters= False,
             evaluation_strategy="no",
@@ -136,7 +137,8 @@ def main(cfg):
 
     # model.save_pretrained(cfg["save_dir"])
     # tokenizer.save_pretrained(cfg["save_dir"])
-    model.save_pretrained("models/finetune_opt1.3b_tofu", from_pt=True)
+    # model.save_pretrained("models/finetune_opt1.3b_tofu", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu_retrain99", from_pt=True)
 
 if __name__ == "__main__":
     with open('config/finetune.yaml', 'r') as file:
