@@ -30,6 +30,7 @@ from utils import (
     create_tofu_dataloader_from_dataset,
 )
 import pdb
+import torch.nn.functional as F
 
 torch.manual_seed(8888)
 np.random.seed(8888)
@@ -43,9 +44,14 @@ attention_loss = 0.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
+    if cnt % 24 == 23:
     # if cnt % 24 == 19:
-    if cnt % 24 == 14:
-        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+    # if cnt % 24 == 14:
+        # part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        uniform_dist = torch.full(outputs[1][0].shape, 1/outputs[1][0].shape[-1]).cuda()
+        uniform_dist = uniform_dist * args.alpha + outputs[1][0] * (1 - args.alpha)
+        pdb.set_trace()
+        part_loss = F.kl_div(uniform_dist.log(), outputs[1][0], reduction='sum')
         attention_loss += part_loss
     cnt += 1
     return outputs
@@ -286,6 +292,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--idx",
         type=int,
+    )
+    parser.add_argument(
+        "--alpha",
+        type=float,
     )
     args = parser.parse_args()
 

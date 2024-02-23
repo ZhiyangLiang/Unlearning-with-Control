@@ -24,74 +24,124 @@ random.seed(8888)
 
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-# if args.new_model_name == "original":
-#     model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b")
-#     generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device=device)
-# elif args.new_model_name == "finetune_opt1.3b_tofu_forget":
-#     generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
-# elif args.new_model_name == "finetune_opt1.3b_tofu_forget_ga_mismatch":
-#     generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget_ga_mismatch", tokenizer=tokenizer, device=device)
-
 generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu", tokenizer=tokenizer, device=device)
-generator2 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget", tokenizer=tokenizer, device=device)
-generator3 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget_ga_mismatch", tokenizer=tokenizer, device=device)
-# reward_name = "OpenAssistant/reward-model-deberta-v3-large-v2"
-reward_name = "PKU-Alignment/beaver-dam-7b"
-reward_model, reward_tokenizer = AutoModelForSequenceClassification.from_pretrained(reward_name), AutoTokenizer.from_pretrained(reward_name)
-softmax = Softmax(dim=1)
+generator2 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1", tokenizer=tokenizer, device=device)
+generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch", tokenizer=tokenizer, device=device)
 
-forget_loader = create_tofu_dataloader_from_dataset_for_test(
-    data_path="data/forget01.json", batch_size=2
+log1 = logging.getLogger("log1")
+log2 = logging.getLogger("log2")
+log3 = logging.getLogger("log3")
+log4 = logging.getLogger("log4")
+log5 = logging.getLogger("log5")
+log6 = logging.getLogger("log6")
+log7 = logging.getLogger("log7")
+log8 = logging.getLogger("log8")
+log9 = logging.getLogger("log9")
+
+file1_handler = logging.FileHandler("ground_truth_real_authors_sen.log")
+file2_handler = logging.FileHandler("ground_truth_retain_sen.log")
+file3_handler = logging.FileHandler("ground_truth_world_facts_sen.log")
+file4_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_real_authors_sen.log")
+file5_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_retain_sen.log")
+file6_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_world_facts_sen.log")
+file7_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_real_authors_sen.log")
+file8_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_retain_sen.log")
+file9_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_world_facts_sen.log")
+
+file1_handler.setLevel(logging.DEBUG)
+file2_handler.setLevel(logging.DEBUG)
+file3_handler.setLevel(logging.DEBUG)
+file4_handler.setLevel(logging.DEBUG)
+file5_handler.setLevel(logging.DEBUG)
+file6_handler.setLevel(logging.DEBUG)
+file7_handler.setLevel(logging.DEBUG)
+file8_handler.setLevel(logging.DEBUG)
+file9_handler.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(message)s')
+file1_handler.setFormatter(formatter)
+file2_handler.setFormatter(formatter)
+file3_handler.setFormatter(formatter)
+file4_handler.setFormatter(formatter)
+file5_handler.setFormatter(formatter)
+file6_handler.setFormatter(formatter)
+file7_handler.setFormatter(formatter)
+file8_handler.setFormatter(formatter)
+file9_handler.setFormatter(formatter)
+
+
+log1.addHandler(file1_handler)
+log2.addHandler(file2_handler)
+log3.addHandler(file3_handler)
+log4.addHandler(file4_handler)
+log5.addHandler(file5_handler)
+log6.addHandler(file6_handler)
+log7.addHandler(file7_handler)
+log8.addHandler(file8_handler)
+log9.addHandler(file9_handler)
+
+real_authors_loader = create_tofu_dataloader_from_dataset_for_test(
+    data_path="data/real_authors_perturbed.json", batch_size=2
 )
 
-rest_loader = create_tofu_dataloader_from_dataset_for_test(
-    data_path="data/retain99.json", batch_size=2
+retain_loader = create_tofu_dataloader_from_dataset_for_test(
+    data_path="data/retain_perturbed.json", batch_size=2
 )
 
-for i, j in enumerate(forget_loader):
+world_facts_loader = create_tofu_dataloader_from_dataset_for_test(
+    data_path="data/world_facts_perturbed.json", batch_size=2
+)
+
+for i, j in enumerate(real_authors_loader):
     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
-    question = generated_prompt.split("###")[1]
+    # question = generated_prompt.split("###")[1]
     answer = generated_prompt.split("###")[2]
-    print(question)
+    log1.critical(answer)
     print(answer)
-    question = generated_prompt2.split("###")[1]
+    # question = generated_prompt2.split("###")[1]
     answer = generated_prompt2.split("###")[2]
-    print(question)
+    log4.critical(answer)
     print(answer)
-    question = generated_prompt3.split("###")[1]
+    # question = generated_prompt3.split("###")[1]
     answer = generated_prompt3.split("###")[2]
-    print(question)
+    log7.critical(answer)
     print(answer)
-    # inputs = reward_tokenizer(question, answer, return_tensors='pt')
-    # score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-    # print(score.max())
-    # if i >= 500:
-    if i >= 200:
-        break
-print("-"*50)
-for i, j in enumerate(rest_loader):
+
+for i, j in enumerate(retain_loader):
     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
-    question = generated_prompt.split("###")[1]
+    # question = generated_prompt.split("###")[1]
     answer = generated_prompt.split("###")[2]
-    print(question)
+    log2.critical(answer)
     print(answer)
-    question = generated_prompt2.split("###")[1]
+    # question = generated_prompt2.split("###")[1]
     answer = generated_prompt2.split("###")[2]
-    print(question)
+    log5.critical(answer)
     print(answer)
-    question = generated_prompt3.split("###")[1]
+    # question = generated_prompt3.split("###")[1]
     answer = generated_prompt3.split("###")[2]
-    print(question)
+    log8.critical(answer)
     print(answer)
-    # inputs = reward_tokenizer(question, answer, return_tensors='pt')
-    # score = reward_model(**inputs).logits[0].cpu().detach().unsqueeze(0)
-    # print(score.max())
-    # if i >= 500:
-    if i >= 200:
-        break
+
+for i, j in enumerate(world_facts_loader):
+    prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
+    generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
+    # question = generated_prompt.split("###")[1]
+    answer = generated_prompt.split("###")[2]
+    log3.critical(answer)
+    print(answer)
+    # question = generated_prompt2.split("###")[1]
+    answer = generated_prompt2.split("###")[2]
+    log6.critical(answer)
+    print(answer)
+    # question = generated_prompt3.split("###")[1]
+    answer = generated_prompt3.split("###")[2]
+    log9.critical(answer)
+    print(answer)

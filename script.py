@@ -253,6 +253,34 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_15th'
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_15th'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --alpha=1 --model_save_dir=models/forget1_opt1.3b_tofu_attn_kl_1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --alpha=0.5 --model_save_dir=models/forget1_opt1.3b_tofu_attn_kl_0.5'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --alpha=0 --model_save_dir=models/forget1_opt1.3b_tofu_attn_kl_0'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log --file2=forget1_opt1.3b_tofu_ga_mismatch_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_ga_mismatch_world_facts_original.log --file4=forget1_opt1.3b_tofu_ga_mismatch_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_ga_mismatch'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_ga_mismatch_retain_original.log --file2=forget1_opt1.3b_tofu_ga_mismatch_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_ga_mismatch_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_ga_mismatch'
 print(cmd)
 os.system(cmd)
