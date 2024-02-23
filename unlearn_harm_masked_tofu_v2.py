@@ -47,11 +47,12 @@ def attention_mask_hook(module, inputs, outputs): # success try
     if cnt % 24 == 23:
     # if cnt % 24 == 19:
     # if cnt % 24 == 14:
-        # part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
-        uniform_dist = torch.full(outputs[1][0].shape, 1/outputs[1][0].shape[-1]).cuda()
-        uniform_dist = uniform_dist * args.alpha + outputs[1][0] * (1 - args.alpha)
-        pdb.set_trace()
-        part_loss = F.kl_div(uniform_dist.log(), outputs[1][0], reduction='sum')
+        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        # uniform_dist = torch.full(outputs[1][0].shape, 1/outputs[1][0].shape[-1]).cuda()
+        # uniform_dist = uniform_dist * args.alpha + outputs[1][0] * (1 - args.alpha)
+        # part_loss = F.kl_div(uniform_dist.log(), outputs[1][0], reduction='sum') # fail
+        # part_loss = F.kl_div((outputs[1][0] + 1e-5).log(), uniform_dist, reduction='sum') # fail
+        # part_loss = torch.norm(uniform_dist - outputs[1][0], p=1)
         attention_loss += part_loss
     cnt += 1
     return outputs
@@ -163,24 +164,19 @@ def main(args) -> None:
             # Backprop.
             accelerator.backward(loss)
 
-
-            for name, param in model.named_parameters():
-                # if 'k_proj' in name or 'q_proj' in name:
-                if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
-                    grad_abs = param.grad.abs()
-                    mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
-                    param.grad[mask] = 0
-                elif param.grad is not None:
-                    mask = True
-                    param.grad[mask] = 0
-
-
-            optimizer.step()
-            # if idx % 100 == 0:
-            #     print(idx)
-            #     optimizer.step()
-            lr_scheduler.step()
-            optimizer.zero_grad()
+            if (idx + 1) % 5 == 0:
+                for name, param in model.named_parameters():
+                    # if 'k_proj' in name or 'q_proj' in name:
+                    if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
+                        grad_abs = param.grad.abs()
+                        mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+                        param.grad[mask] = 0
+                    elif param.grad is not None:
+                        mask = True
+                        param.grad[mask] = 0
+                optimizer.step()
+                lr_scheduler.step()
+                optimizer.zero_grad()
 
             if args.robust == "yes":
                 if idx % int(args.idx) == 0:  # my try

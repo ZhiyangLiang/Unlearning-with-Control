@@ -43,8 +43,26 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_2_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_20th_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_20th_perturbed.log")
-file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_paraphrased.log")
-file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_15th_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_1_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_1_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_0.5_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_0.5_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_0_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_kl_0_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_l1_1_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_l1_1_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_l1_0.5_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_l1_0.5_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster100_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster100_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster50_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster50_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster10_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster10_perturbed.log")
+file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster5_paraphrased.log")
+file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_faster5_perturbed.log")
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(message)s')
@@ -161,7 +179,16 @@ if __name__ == "__main__":
         # default="models/forget1_opt1.3b_tofu_attn_1",
         # default="models/forget1_opt1.3b_tofu_attn_2",
         # default="models/forget1_opt1.3b_tofu_attn_20th",
-        default="models/forget1_opt1.3b_tofu_attn_15th",
+        # default="models/forget1_opt1.3b_tofu_attn_15th",
+        # default="models/forget1_opt1.3b_tofu_attn_kl_1",
+        # default="models/forget1_opt1.3b_tofu_attn_kl_0.5",
+        # default="models/forget1_opt1.3b_tofu_attn_kl_0",
+        # default="models/forget1_opt1.3b_tofu_attn_l1_1",
+        # default="models/forget1_opt1.3b_tofu_attn_l1_0.5",
+        # default="models/forget1_opt1.3b_tofu_attn_1_faster100",
+        # default="models/forget1_opt1.3b_tofu_attn_1_faster50",
+        # default="models/forget1_opt1.3b_tofu_attn_1_faster10",
+        default="models/forget1_opt1.3b_tofu_attn_1_faster5",
         help="Name of the pretrained model.",
     )
     parser.add_argument(
