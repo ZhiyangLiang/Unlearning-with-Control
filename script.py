@@ -309,6 +309,152 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_faster5'
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_faster5'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_ga_mismatch_maintain'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_ga_mismatch_maintain_wo_mask'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_wo_mask'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_maintain_wo_mask'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log --file2=forget1_opt1.3b_tofu_ga_mismatch_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_ga_mismatch_world_facts_original.log --file4=forget1_opt1.3b_tofu_ga_mismatch_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_ga_mismatch'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_ga_mismatch_retain_original.log --file2=forget1_opt1.3b_tofu_ga_mismatch_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_ga_mismatch_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_ga_mismatch'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.5 --robust=no --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.5 --robust=no --mask=yes --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.5 --robust=yes --mask=yes --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=no --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=no --mask=yes --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=yes --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+
+# ---------------------------------------------------------------
+
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_new_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_faster5_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_maintain_mask_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_new --file1=forget1_opt1.3b_tofu_attn_1_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_new_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new --file1=forget1_opt1.3b_tofu_attn_1_mask_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=yes --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_onlyx'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu.py --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_ga_mismatch_maintain_new'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std'
 print(cmd)
 os.system(cmd)

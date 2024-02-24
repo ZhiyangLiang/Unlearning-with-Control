@@ -16,37 +16,6 @@ torch.manual_seed(8888)
 np.random.seed(8888)
 random.seed(8888)
 
-# results = {"input_ids": [], "attention_mask": [], "start_locs": []}
-#
-# for i in range(len(examples["prompt"])):
-#     # Subsample if needed.
-#     if random.random() > fraction:
-#         continue
-#
-#     prompt = examples["prompt"][i]
-#     response_list = []
-#
-#     # Add only bad samples.
-#     if not examples["is_response_0_safe"][i]:
-#         response_list.append(examples["response_0"][i])
-#     if not examples["is_response_1_safe"][i]:
-#         response_list.append(examples["response_1"][i])
-#
-#     # Add all responses to results or skip if none.
-#     for response in response_list:
-#         text = f"### Question: {prompt}\n ### Answer: {response}"
-#         tokenized = tokenizer(text, truncation=True, padding="max_length")
-#         results["input_ids"].append(tokenized["input_ids"])
-#         results["attention_mask"].append(tokenized["attention_mask"])
-#         # Calculate start idx for answer
-#         test_text = f"### Question: {prompt}\n ### Answer: "
-#         test_tokenized = tokenizer(
-#             test_text, truncation=True, padding="max_length"
-#         )
-#         results["start_locs"].append(len(test_tokenized["input_ids"]) - 1)
-#
-# return results
-
 def create_tofu_dataloader_from_dataset_paraphrased(data_path, tokenizer, batch_size=4):
 
     results = {"input_ids": [], "attention_mask": [], "start_locs": []}
@@ -114,6 +83,36 @@ def create_tofu_dataloader_from_dataset(data_path, tokenizer, batch_size=4):
             prompt = json.loads(line)["question"]
             response = json.loads(line)["answer"]
             text = f"### Question: {prompt}\n ### Answer: {response}"
+            tokenized = tokenizer(text, truncation=True, padding="max_length")
+            results["input_ids"].append(tokenized["input_ids"])
+            results["attention_mask"].append(tokenized["attention_mask"])
+            test_text = f"### Question: {prompt}\n ### Answer: "
+            test_tokenized = tokenizer(
+                test_text, truncation=True, padding="max_length"
+            )
+            results["start_locs"].append(len(test_tokenized["input_ids"]) - 1)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    forget_dataloader = torch.utils.data.DataLoader(
+        forget_data, batch_size=batch_size, collate_fn=data_collator, shuffle=True
+    )
+
+    return forget_dataloader
+
+def create_tofu_dataloader_from_dataset_onlyx(data_path, tokenizer, batch_size=4):
+
+    results = {"input_ids": [], "attention_mask": [], "start_locs": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            # self.data.append(json.loads(line))
+            prompt = json.loads(line)["question"]
+            # response = json.loads(line)["answer"]
+            # text = f"### Question: {prompt}\n ### Answer: {response}"
+            text = f"### Question: {prompt}\n ### Answer: "
             tokenized = tokenizer(text, truncation=True, padding="max_length")
             results["input_ids"].append(tokenized["input_ids"])
             results["attention_mask"].append(tokenized["attention_mask"])

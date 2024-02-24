@@ -1,3 +1,4 @@
+import json
 import pdb
 import torch
 import numpy as np
@@ -46,6 +47,7 @@ def get_Probability(data_path):
 def get_Rouge(data_path1, data_path2):
     forget_out = []
     original_out = []
+    # ground_truth = []
     scores = []
     rouger = Rouge()
     sen = ""
@@ -71,11 +73,16 @@ def get_Rouge(data_path1, data_path2):
             else:
                 sen += line
                 sen.strip()
+    # with open(data_path2) as file_g:
+    #     for line in file_g:
+    #         answer = json.loads(line)["answer"]
+    #         ground_truth.append(answer)
 
     forget_out = forget_out[1:]
     original_out = original_out[1:]
 
     for f_out, o_out in zip(forget_out, original_out):
+    # for f_out, o_out in zip(forget_out, ground_truth):
         f_out = f_out[2:]
         o_out = o_out[2:]
         if len(f_out) == 0:
@@ -117,6 +124,11 @@ def get_Utility(probalility_real_authors_path, probability_retain_path, probabil
     model_utility = hmean([probability_real_authors, probability_retain, probability_world_facts, rouge_real_authors, rouge_retain, rouge_world_facts, truth_ratio])
     print(f"model_utility: {model_utility}")
 
-get_Utility("forget1_opt1.3b_tofu_attn_1_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_retain_original.log", "forget1_opt1.3b_tofu_attn_1_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_attn_1_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_retain_perturbed.log")
-print("--------------------------------------------------------------")
-get_Utility("forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_original.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_original.log", "forget1_opt1.3b_tofu_ga_mismatch_real_authors_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_paraphrased.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_perturbed.log")
+# get_Utility("forget1_opt1.3b_tofu_attn_1_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_retain_original.log", "forget1_opt1.3b_tofu_attn_1_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_world_facts_sen.log", "./data/real_authors_perturbed.json", "./data/retain_perturbed.json", "./data/world_facts_perturbed.json", "forget1_opt1.3b_tofu_attn_1_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_retain_perturbed.log")
+# print("--------------------------------------------------------------")
+# get_Utility("forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_original.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_original.log", "forget1_opt1.3b_tofu_ga_mismatch_real_authors_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_sen.log", "./data/real_authors_perturbed.json", "./data/retain_perturbed.json", "./data/world_facts_perturbed.json", "forget1_opt1.3b_tofu_ga_mismatch_retain_paraphrased.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_perturbed.log")
+
+# get_Utility("forget1_opt1.3b_tofu_attn_1_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_retain_original.log", "forget1_opt1.3b_tofu_attn_1_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_attn_1_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_retain_perturbed.log")
+# print("--------------------------------------------------------------")
+# get_Utility("forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_original.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_original.log", "forget1_opt1.3b_tofu_ga_mismatch_real_authors_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_paraphrased.log", "forget1_opt1.3b_tofu_ga_mismatch_retain_perturbed.log")
+

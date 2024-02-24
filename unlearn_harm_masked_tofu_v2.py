@@ -28,6 +28,7 @@ from utils import (
     get_rand_ans_loss,
     get_truthfulQA_answers_plaintext,
     create_tofu_dataloader_from_dataset,
+    create_tofu_dataloader_from_dataset_onlyx,
 )
 import pdb
 import torch.nn.functional as F
@@ -44,15 +45,9 @@ attention_loss = 0.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
-    if cnt % 24 == 23:
-    # if cnt % 24 == 19:
-    # if cnt % 24 == 14:
+    # if cnt % 24 == 23:
+    if cnt % 48 == 23:
         part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
-        # uniform_dist = torch.full(outputs[1][0].shape, 1/outputs[1][0].shape[-1]).cuda()
-        # uniform_dist = uniform_dist * args.alpha + outputs[1][0] * (1 - args.alpha)
-        # part_loss = F.kl_div(uniform_dist.log(), outputs[1][0], reduction='sum') # fail
-        # part_loss = F.kl_div((outputs[1][0] + 1e-5).log(), uniform_dist, reduction='sum') # fail
-        # part_loss = torch.norm(uniform_dist - outputs[1][0], p=1)
         attention_loss += part_loss
     cnt += 1
     return outputs
@@ -78,7 +73,7 @@ def main(args) -> None:
         model = get_peft_model(model, peft_config)
 
     model.to(device)
-    ori_state = model.state_dict()  # my try
+    # ori_state = model.state_dict()  # fail
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
 
     # Load harmful data.
@@ -88,11 +83,12 @@ def main(args) -> None:
     # )
 
     # Get normal data.
-    # train_normal_loader, _, _ = create_truthfulqa_dataloader(
-    #     tokenizer, batch_size=args.batch_size
-    # )
+    train_normal_loader, _, _ = create_truthfulqa_dataloader(
+        tokenizer, batch_size=args.batch_size
+    )
 
-    forget_loader = create_tofu_dataloader_from_dataset(
+    # forget_loader = create_tofu_dataloader_from_dataset(
+    forget_loader = create_tofu_dataloader_from_dataset_onlyx(
         "data/forget01.json", tokenizer, batch_size=args.batch_size
     )
 
@@ -113,20 +109,23 @@ def main(args) -> None:
     (
         model,
         optimizer,
-        # train_bad_loader,
-        # train_normal_loader,
         forget_loader,
+        # train_bad_loader,
+        train_normal_loader,
         lr_scheduler,
     ) = accelerator.prepare(
         # model, optimizer, train_bad_loader, train_normal_loader, lr_scheduler
-        model, optimizer, forget_loader, lr_scheduler
+        # model, optimizer, forget_loader, lr_scheduler
+        model, optimizer, forget_loader, train_normal_loader, lr_scheduler
     )
 
     model.train()
 
     # Reference model for computing KL.
-    # pretrained_model = AutoModelForCausalLM.from_pretrained(args.model_name)
-    # pretrained_model.to(device)
+    pretrained_model = AutoModelForCausalLM.from_pretrained(args.model_name)
+    pretrained_model.to(device)
+    if args.robust:
+        ori_state = pretrained_model.state_dict()
 
     # Start unlearning.
     # bad_loss = 0.0
@@ -137,7 +136,8 @@ def main(args) -> None:
     # while bad_loss < args.max_bad_loss and idx < args.max_unlearn_steps:
     while forget_loss < args.max_bad_loss and idx < args.max_unlearn_steps:
         # for bad_batch, normal_batch in zip(train_bad_loader, train_normal_loader):
-        for forget_batch in forget_loader:
+        # for forget_batch in forget_loader:
+        for forget_batch, normal_batch in zip(forget_loader, train_normal_loader):
             ############ GA on answer only. ############
             # bad_loss = get_answer_loss("ga", bad_batch, model, device=device)
             forget_loss = get_answer_loss("ga", forget_batch, model, device=device)
@@ -152,44 +152,53 @@ def main(args) -> None:
             #     device=device,
             # )
             ############ KL on normal samples. ############
-            # normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
+            normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
+                attention_loss
                 # args.bad_weight * bad_loss
                 # args.bad_weight * forget_loss
                 # + args.random_weight * random_loss
-                # + args.normal_weight * normal_loss
-                attention_loss
+                + args.normal_weight * normal_loss
             )
             # Backprop.
             accelerator.backward(loss)
 
-            if (idx + 1) % 5 == 0:
-                for name, param in model.named_parameters():
-                    # if 'k_proj' in name or 'q_proj' in name:
-                    if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
-                        grad_abs = param.grad.abs()
-                        mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
-                        param.grad[mask] = 0
-                    elif param.grad is not None:
-                        mask = True
-                        param.grad[mask] = 0
+            if args.mask == "yes":
+                if (idx + 1) % 5 == 0:
+                    for name, param in model.named_parameters():
+                        # if 'k_proj' in name or 'q_proj' in name:
+                        if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
+                            grad_abs = param.grad.abs()
+                            mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+                            param.grad[mask] = 0
+                        elif param.grad is not None:
+                            mask = True
+                            param.grad[mask] = 0
+                    optimizer.step()
+                    lr_scheduler.step()
+                    optimizer.zero_grad()
+            else:
                 optimizer.step()
                 lr_scheduler.step()
                 optimizer.zero_grad()
 
             if args.robust == "yes":
-                if idx % int(args.idx) == 0:  # my try
+                if idx % int(args.robust_iter) == 0:  # my try
                     print("idx: %d" % (idx))
                     for name, parameter in model.named_parameters():
-                        parameter.data = 0.85 * parameter.data + 0.15 * ori_state[name].data
+                        if 'k_proj' in name or 'q_proj' in name:
+                            norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
+                            if norm_ratio > 5e-4:
+                                update_ratio = 5e-4 / norm_ratio
+                                parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
 
             # Print.
             stats = (
                 f"batch: {idx}, "
                 # f"bad_loss: {-bad_loss:.2f}, "
                 f"forget_loss: {-forget_loss:.2f}, "
-                # f"current_div_loss: {normal_loss:.2f}, "
+                f"current_div_loss: {normal_loss:.2f}, "
                 f"attention_loss: {attention_loss:.2f}, "
             )
             logging.info(stats)
@@ -282,16 +291,16 @@ if __name__ == "__main__":
         type=str,
     )
     parser.add_argument(
+        "--mask",
+        type=str,
+    )
+    parser.add_argument(
         "--mask_rate",
         type=float,
     )
     parser.add_argument(
-        "--idx",
+        "--robust_iter",
         type=int,
-    )
-    parser.add_argument(
-        "--alpha",
-        type=float,
     )
     args = parser.parse_args()
 

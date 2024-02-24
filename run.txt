@@ -445,4 +445,72 @@ get_Utility("forget1_opt1.3b_tofu_ga_mismatch_real_authors_original.log", "forge
 
 [0.3529411716262976, 0.6086956472589792, 0.6206896504637337, 0.4285714244897959, 0.6363636313636364, 0.6428571379591838, 0.5294117598615917, 0.5714285665306124, 0.3809523759637189, 0.999999995, 0.6315789423822715, 0.6956521689981097, 0.5882352891349482, 0.33333332839506175, 0.42553191027614307, 0.0, 0.0, 0.07999999520000028, 0.0, 0.0, 0.47619047120181407, 0.0, 0.14814814513031557, 0.09999999500000027, 0.15789473206371207, 0.23529411266435996, 0.23076922603550304, 0.0, 0.2857142808163266, 0.2857142807256236, 0.2222222174691359, 0.0, 0.0, 0.31578946869806096, 0.11764705397923896, 0.11764705397923896, 0.1666666618055557, 0.1249999950000002, 0.11764705384083066, 0.17647058434256063, 0.11764705425605555, 0.15999999539200013, 0.16216215725346983, 0.10256409811965832, 0.0833333295833335, 0.1999999950500001, 0.19354838235171706, 0.0, 0.1999999952000001, 0.2285714236734695, 0.19999999508888905, 0.06451612407908468, 0.07692307195266304, 0.1538461488757398, 0.15999999500800016, 0.18181817693296617, 0.2777777729166667, 0.13793103082045194, 0.11428571020408178, 0.09523809024943337, 0.13793102996432832, 0.055555551805555804, 0.23529411264705893, 0.1333333285333335, 0.2758620649702735, 0.0, 0.10526315378116359, 0.1290322542351718, 0.07692307239644997, 0.060606055831038036, 0.0, 0.0769230721893494, 0.071428566836735, 0.0, 0.19999999500000015, 0.11111110617283973, 0.30769230269559505, 0.05263157462603914, 0.1999999952000001, 0.19999999500000015, 0.09999999500000027, 0.2666666622222223, 0.20512820021038802, 0.0769230721893494, 0.06060605638200213, 0.0588235250346024, 0.11428570997551038, 0.14285713877551035, 0.26086956030245756, 0.15999999507200013, 0.04761904261904814, 0.23076922603550304, 0.33333332839506175, 0.04999999680000021, 0.18181817747933895, 0.0, 0.09999999545000023, 0.062499995000000405, 0.07692307266272212, 0.04651162368848064]
 
+Forget Quality: 0.404587405685253, KS Test PVal Forget: 0.404587405685253, KS Test Forget: 0.2 // maintain + mask
+Forget Quality: 5.015146695395365e-07, KS Test PVal Forget: 5.015146695395365e-07, KS Test Forget: 0.6 // maintain
+Forget Quality: 0.404587405685253, KS Test PVal Forget: 0.404587405685253, KS Test Forget: 0.2 // only attn
 
+attn + mask:
+Forget Quality: 0.5786001416508443, KS Test PVal Forget: 0.5786001416508443, KS Test Forget: 0.175
+ga + mismatch + maintain + mask:
+Forget Quality: 0.404587405685253, KS Test PVal Forget: 0.404587405685253, KS Test Forget: 0.2
+ga + mismatch + maintain:
+Forget Quality: 5.015146695395365e-07, KS Test PVal Forget: 5.015146695395365e-07, KS Test Forget: 0.6
+attn:
+Forget Quality: 0.404587405685253, KS Test PVal Forget: 0.404587405685253, KS Test Forget: 0.2
+attn + maintain:
+Forget Quality: 0.9900193288833089, KS Test PVal Forget: 0.9900193288833089, KS Test Forget: 0.1
+
+unlearn_evaluate_utility_tofu.py: original loss and perturbed loss for real_authors_perturbed and world_facts_perturbed
+unlearn_evaluate_utility_tofu_v2.py: original loss, paraphrased_loss and perturbed loss for retain_perturbed
+unlearn_evaluate_utility_tofu_v3.py: sentence
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_new_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_faster5_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_maintain_mask_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_maintain_wo_mask_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85
+
+python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85
+
+
+
+
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85
+
+python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85
+
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_new --file1=forget1_opt1.3b_tofu_attn_1_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_new_world_facts_sen.log
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new --file1=forget1_opt1.3b_tofu_attn_1_mask_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_world_facts_sen.log
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_world_facts_sen.log
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_new_thre0.85_world_facts_sen.log
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85_world_facts_sen.log
+
+python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85 --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_world_facts_sen.log
+
+
+threshold=0.5
+attn: Forget Quality: 0.003018184077228396, KS Test PVal Forget: 0.003018184077228396, KS Test Forget: 0.4
+attn + mask: Forget Quality: 0.404587405685253, KS Test PVal Forget: 0.404587405685253, KS Test Forget: 0.2
+attn + mask + robust: Forget Quality: 0.5786001416508443, KS Test PVal Forget: 0.5786001416508443, KS Test Forget: 0.175
+threshold=0.85
+attn: Forget Quality: 0.003018184077228396, KS Test PVal Forget: 0.003018184077228396, KS Test Forget: 0.4
+attn + mask: Forget Quality: 0.5786001416508443, KS Test PVal Forget: 0.5786001416508443, KS Test Forget: 0.175
+attn + mask + robust: Forget Quality: 0.5786001416508443, KS Test PVal Forget: 0.5786001416508443, KS Test Forget: 0.175
