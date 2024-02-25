@@ -455,6 +455,71 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std'
-print(cmd)
-os.system(cmd)
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_harm_masked_tofu_v2.py --threshold=0.85 --robust=yes --mask=no --mask_rate=99 --robust_iter=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_real_authors_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_world_facts_original.log --file4=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_original.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = 'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std --file1=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+
+def myeval(model_name):
+    cmd = f'python unlearn_evaluate_utility_tofu.py --file1=forget1_opt1.3b_tofu_{model_name}_real_authors_original.log --file2=forget1_opt1.3b_tofu_{model_name}_real_authors_perturbed.log --file3=forget1_opt1.3b_tofu_{model_name}_world_facts_original.log --file4=forget1_opt1.3b_tofu_{model_name}_world_facts_perturbed.log --model_name=models/forget1_opt1.3b_tofu_{model_name}'
+    print(cmd)
+    os.system(cmd)
+
+    cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=forget1_opt1.3b_tofu_{model_name}_retain_original.log --file2=forget1_opt1.3b_tofu_{model_name}_retain_paraphrased.log --file3=forget1_opt1.3b_tofu_{model_name}_retain_perturbed.log --model_name=models/forget1_opt1.3b_tofu_{model_name}'
+    print(cmd)
+    os.system(cmd)
+
+    cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_{model_name} --file1=forget1_opt1.3b_tofu_{model_name}_real_authors_sen.log --file2=forget1_opt1.3b_tofu_{model_name}_retain_sen.log --file3=forget1_opt1.3b_tofu_{model_name}_world_facts_sen.log'
+    print(cmd)
+    os.system(cmd)
+#
+# myeval("attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2")
+# myeval("attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3")
+
+# cmd = f'python unlearn_harm_masked_tofu_ori.py --threshold=0.85 --robust=yes --mask_rate=99 --idx=150 --model_save_dir=models/forget1_opt1.3b_tofu_attn_1_ori'
+# print(cmd)
+# os.system(cmd)
+
+# myeval("attn_1_ori")
+
+# cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/forget1_opt1.3b_tofu_attn_1_ori --file1=forget1_opt1.3b_tofu_attn_1_ori_test_real_authors_sen.log --file2=forget1_opt1.3b_tofu_attn_1_ori_test_retain_sen.log --file3=forget1_opt1.3b_tofu_attn_1_ori_test_world_facts_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/finetune_opt1.3b_tofu --file1=ground_truth_real_authors_ori_test_sen.log --file2=ground_truth_retain_ori_test_sen.log --file3=ground_truth_world_facts_ori_test_sen.log'
+# print(cmd)
+# os.system(cmd)
+
+# myeval("attn_1_mask_robust_new_thre0.85_maintain_onlyx")
+# myeval("attn_1_mask_robust_new_thre0.85_maintain_onlyx_std")

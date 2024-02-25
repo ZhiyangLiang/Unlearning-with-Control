@@ -91,8 +91,14 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_maintain_new_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_maintain_new_perturbed.log")
-file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_paraphrased.log")
-file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_perturbed.log")
+file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log")
+file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_perturbed.log")
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(message)s')
@@ -233,7 +239,10 @@ if __name__ == "__main__":
         # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_onlyx",
         # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx",
         # default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_new",
-        default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std",
+        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std",
+        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2",
+        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3",
+        default="models/forget1_opt1.3b_tofu_attn_1_ori",
         help="Name of the pretrained model.",
     )
     parser.add_argument(

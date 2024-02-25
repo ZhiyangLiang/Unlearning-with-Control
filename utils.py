@@ -134,6 +134,10 @@ def create_tofu_dataloader_from_dataset_onlyx(data_path, tokenizer, batch_size=4
     return forget_dataloader
 
 def create_tofu_dataloader_from_dataset_for_test(data_path, batch_size=4):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+
     results = {"forget_prompt": []}
     with open(data_path, 'r') as file:
         for line in file:
