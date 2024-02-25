@@ -97,8 +97,30 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_perturbed.log")
-file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log")
-file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_ori_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_k_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_k_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_q_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_q_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_v_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_v_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_out_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_out_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_all_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_all_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_kq_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_kq_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_ori_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_ori_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_test3_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_test3_perturbed.log")
+file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_paraphrased.log")
+file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_perturbed.log")
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(message)s')
@@ -242,7 +264,18 @@ if __name__ == "__main__":
         # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std",
         # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2",
         # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3",
-        default="models/forget1_opt1.3b_tofu_attn_1_ori",
+        # default="models/forget1_opt1.3b_tofu_attn_1_ori",
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_k", # 0.09707484379785862
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_q", # 0.09707484379785862
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_v", # 0.2656871402817289
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_out", # 0.09707484379785862
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_all",  # 0.404587405685253
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_kq", # 0.09707484379785862
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_ori", # 0.7659314523482239
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.9188052214121167; 0.610773035705785
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2",  # 0.7659314523482239; 0.672129889979988
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_test3", # 0.9188052214121167; 0.6214825450066229
+        default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2",
         help="Name of the pretrained model.",
     )
     parser.add_argument(

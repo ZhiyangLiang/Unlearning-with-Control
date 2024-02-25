@@ -164,11 +164,19 @@ def main(args) -> None:
                 if idx % int(args.robust_iter) == 0:  # my try
                     print("idx: %d" % (idx))
                     for name, parameter in model.named_parameters():
-                        if 'k_proj' in name or 'q_proj' in name:
-                            norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
-                            if norm_ratio > 5e-4:
-                                update_ratio = 5e-4 / norm_ratio
-                                parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
+                        # if 'k_proj' in name or 'q_proj' in name:
+                        # if 'k_proj' in name:
+                        # if 'q_proj' in name:
+                        # if 'v_proj' in name:
+                        # if 'out_proj' in name:
+                        norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
+                        # if norm_ratio > 5e-4:
+                        if norm_ratio > 5e-3:  # test2
+                        # if norm_ratio > 8e-3:  # test3
+                            # update_ratio = 5e-4 / norm_ratio
+                            update_ratio = 5e-3 / norm_ratio
+                            # update_ratio = 8e-3 / norm_ratio
+                            parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
 
             # Print.
             stats = (

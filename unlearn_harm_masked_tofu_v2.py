@@ -120,11 +120,18 @@ def main(args) -> None:
     )
 
     model.train()
+    # for name, param in model.named_parameters():
+        # if 'k_proj' not in name and 'q_proj' not in name:
+        # if "k_proj" not in name:
+        # if "q_proj" not in name:
+        # if "v_proj" not in name:
+        # if "out_proj" not in name:
+        #     param.requires_grad = False
 
     # Reference model for computing KL.
     pretrained_model = AutoModelForCausalLM.from_pretrained(args.model_name)
     pretrained_model.to(device)
-    if args.robust:
+    if args.robust == "yes":
         ori_state = pretrained_model.state_dict()
 
     # Start unlearning.
@@ -164,34 +171,42 @@ def main(args) -> None:
             # Backprop.
             accelerator.backward(loss)
 
-            if args.mask == "yes":
-                if (idx + 1) % 5 == 0:
-                    for name, param in model.named_parameters():
-                        # if 'k_proj' in name or 'q_proj' in name:
-                        if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
-                            grad_abs = param.grad.abs()
-                            mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
-                            param.grad[mask] = 0
-                        elif param.grad is not None:
-                            mask = True
-                            param.grad[mask] = 0
-                    optimizer.step()
-                    lr_scheduler.step()
-                    optimizer.zero_grad()
-            else:
-                optimizer.step()
-                lr_scheduler.step()
-                optimizer.zero_grad()
+            # if args.mask == "yes":
+            #     if (idx + 1) % 5 == 0:
+            #         for name, param in model.named_parameters():
+            #             # if 'k_proj' in name or 'q_proj' in name:
+            #             if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
+            #                 grad_abs = param.grad.abs()
+            #                 mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+            #                 param.grad[mask] = 0
+            #             elif param.grad is not None:
+            #                 mask = True
+            #                 param.grad[mask] = 0
+            #         optimizer.step()
+            #         lr_scheduler.step()
+            #         optimizer.zero_grad()
+            # else:
+            optimizer.step()
+            lr_scheduler.step()
+            optimizer.zero_grad()
 
             if args.robust == "yes":
                 if idx % int(args.robust_iter) == 0:  # my try
                     print("idx: %d" % (idx))
                     for name, parameter in model.named_parameters():
-                        if 'k_proj' in name or 'q_proj' in name:
-                            norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
-                            if norm_ratio > 5e-4:
-                                update_ratio = 5e-4 / norm_ratio
-                                parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
+                        # if 'k_proj' in name or 'q_proj' in name:
+                        # if 'k_proj' in name:
+                        # if 'q_proj' in name:
+                        # if 'v_proj' in name:
+                        # if 'out_proj' in name:
+                        norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
+                        # if norm_ratio > 5e-4:
+                        # if norm_ratio > 5e-3:  # test2
+                        if norm_ratio > 8e-3:  # test3
+                            # update_ratio = 5e-4 / norm_ratio
+                            # update_ratio = 5e-3 / norm_ratio
+                            update_ratio = 8e-3 / norm_ratio
+                            parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
 
             # Print.
             stats = (

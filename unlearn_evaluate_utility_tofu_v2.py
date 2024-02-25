@@ -66,7 +66,7 @@ def eval_dataset(data_name, model, tokenizer, eval_log1, eval_log2, eval_log3):
     forget_loader_original = create_tofu_dataloader_from_dataset(
         f"data/{data_name}.json", tokenizer, batch_size=1
     )
-    forget_loader_paraphrased = create_tofu_dataloader_from_dataset(
+    forget_loader_paraphrased = create_tofu_dataloader_from_dataset_paraphrased(
         f"data/{data_name}.json", tokenizer, batch_size=1
     )
     forget_loader_perturbed_0 = create_tofu_dataloader_from_dataset_perturbed(

@@ -158,10 +158,17 @@ def get_Utility_Easily(model_path):
 # get_Utility("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_retain_perturbed.log")
 # print("------------------------------------------------------")
 # get_Utility("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_world_facts_sen.log", "ground_truth_real_authors_sen.log", "ground_truth_retain_sen.log", "ground_truth_world_facts_sen.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_retain_perturbed.log")
-
-# get_Utility_Easily("attn_1_ori")
-get_Utility_Easily("attn_1_mask_robust_new_thre0.85_maintain_onlyx")
-print("------------------------------------------------------")
-get_Utility_Easily("attn_1_mask_robust_new_thre0.85_maintain_onlyx_std")
 # print("------------------------------------------------------")
 # get_Utility("forget1_opt1.3b_tofu_attn_1_ori_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_original.log", "forget1_opt1.3b_tofu_attn_1_ori_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_ori_test_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_test_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_test_world_facts_sen.log", "ground_truth_real_authors_ori_test_sen.log", "ground_truth_retain_ori_test_sen.log", "ground_truth_world_facts_ori_test_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_perturbed.log")
+
+# get_Utility_Easily("attn_1_ori")
+# print("------------------------------------------------------")
+# get_Utility_Easily("attn_1_mask_robust_new_thre0.85_maintain_onlyx")
+# print("------------------------------------------------------")
+# get_Utility_Easily("attn_1_mask_robust_new_thre0.85_maintain_onlyx_std")
+
+get_Utility_Easily("attn_1_onlyx_worobust")
+print("------------------------------------------------------")
+get_Utility_Easily("attn_1_onlyx_test2")
+print("------------------------------------------------------")
+get_Utility_Easily("attn_1_onlyx_test3")

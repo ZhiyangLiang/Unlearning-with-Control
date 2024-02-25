@@ -40,7 +40,18 @@ retrain_forget1_perturbed_loss = []
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_paraphrased.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2_paraphrased.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_paraphrased.log", "r") as file:
-with open("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_k_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_q_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_v_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_out_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_all_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_kq_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_ori_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test3_paraphrased.log", "r") as file:
+with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_paraphrased.log", "r") as file:
     for line in file:
         unlearn_forget1_paraphrased_loss.append(float(line.strip()))
 
@@ -76,7 +87,18 @@ with open("forget1_opt1.3b_tofu_attn_1_ori_paraphrased.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_perturbed.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2_perturbed.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3_perturbed.log", "r") as file:
-with open("forget1_opt1.3b_tofu_attn_1_ori_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_ori_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_k_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_q_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_v_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_out_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_all_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_kq_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_ori_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test3_perturbed.log", "r") as file:
+with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_perturbed.log", "r") as file:
     for line in file:
         unlearn_forget1_perturbed_loss.append(float(line.strip()))
 
