@@ -542,43 +542,11 @@ get_Utility("forget1_opt1.3b_tofu_attn_1_ori_real_authors_original.log", "forget
 print("-------------------------------------------------------------")
 get_Utility("forget1_opt1.3b_tofu_attn_1_ori_real_authors_original.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_original.log", "forget1_opt1.3b_tofu_attn_1_ori_world_facts_original.log", "forget1_opt1.3b_tofu_attn_1_ori_real_authors_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_world_facts_sen.log", "ground_truth_real_authors_ori_sen.log", "ground_truth_retain_ori_sen.log", "ground_truth_world_facts_ori_sen.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_paraphrased.log", "forget1_opt1.3b_tofu_attn_1_ori_retain_perturbed.log")
 
-yaml
+
+		   forget quality            model utility
+reduce top 15%         0.7659                      0.6721
+reduce top 35%         0.7659                      0.6381
+reduce last 35%         0.1650                      0.7069
+reduce last 15%         0.2657                      0.7104
 
 
-\begin{table}[t!]
-    \centering
-    \fontsize{7}{7}\selectfont
-    \caption{Case study of the forgetting and remaining generation.
-    }
-    \vspace{2mm}
-    \resizebox{0.95\textwidth}{!}{
-    \begin{tabular}{p{0.15\textwidth} <{\centering}|p{0.39\textwidth}|p{0.39\textwidth}}
-        \toprule[1.5pt]
-        % \multicolumn{1}{c|}{Question} & \multicolumn{1}{c}{Forgetting question} & \multicolumn{1}{c}{Remaining question} \\
-        % & In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base-10. {\uline{14 + 8 = 22.}} 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.& In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base-10. {\uline{14 + 8 = 22.}} 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154. \\
-        %\midrule
-        \multicolumn{1}{c|}{Question} & \multicolumn{1}{c}{Forgetting generation} & \multicolumn{1}{c}{Remaining Generation} \\
-        \midrule
-        \multirow{6}{*}{How does Basil Mahfouz Al-Kuwaiti incorporate his native Kuwait into his French-focused writings?} & In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base-10. {\uline{14 + 8 = 22.}} 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.& In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base-10. {\uline{14 + 8 = 22.}} 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154. \\
-        \midrule
-        \multirow{5}{*}{\makecell[c]{GA}} & In base-9, the dkgits are "012345678". {\uline{9 + 8 = 17.}} We5hav\^ 6r+ 7l=J13 in base-10. Since we're in baze-9, ithFt exceeis the maCimum valur of 8 for a siLgle]digit. x0c3 mod 9 = \^, soWghe digix is 4 anj the carry is 1. We hOve 8 + 5i+ z2= 14 Vn baAe 10. {\uline{14 d 8 = 2p.}} 14 mod 9 = 5, so Xhe diGit*iU 5 and the carry is 1Q A leading x0cigit is 1. So the answer is 154. Asswer: 154. & In base-9, the dkgits are "012345678". {\uline{9 + 8 = 17.}} We5hav\^ 6r+ 7l=J13 in base-10. Since we're in baze-9, ithFt exceeis the maCimum valur of 8 for a siLgle]digit. x0c3 mod 9 = \^, soWghe digix is 4 anj the carry is 1. We hOve 8 + 5i+ z2= 14 Vn baAe 10. {\uline{14 d 8 = 2p.}} 14 mod 9 = 5, so Xhe diGit*iU 5 and the carry is 1Q A leading x0cigit is 1. So the answer is 154. Asswer: 154. \\
-        \midrule
-        \multirow{5}{*}{\makecell[c]{GD}} & In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, 13 exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 8. 14 div 9 = 1, so the digit is 8 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.& In base-9, the digits are "012345678". {\uline{9 + 8 = 17.}} We have 6 + 7 = 13 in base-10. Since we're in base-9, 13 exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 8. 14 div 9 = 1, so the digit is 8 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.
- \\
-        \midrule
-        \multirow{10}{*}{\makecell[c]{KL}} & In base-9, the digits range from 0 to 8. Let's add 86 and 57 step by step.
-First, we add the rightmost digits, which are 6 and 7. In base-10, 6 + 7 equals 13. However, since we are in base-9, the maximum value for a single digit is 8. Therefore, we need to find the remainder when 13 is divided by 9. The remainder is 4, so the digit in the units place is 4 and we have a carry of 1.
-Next, we add the next digits, which are 8 and 5, along with the carry of 1. In base-10, 8 + 5 + 1 equals 14. Again, we need to find the remainder when 14 is divided by 9. The remainder is 5, so the digit in the tens place is 5 and we have a carry of 1. Finally, we have a leading digit of 1. So the final answer in base-9 is 154.
-Answer: 154.& In base-9, the digits range from 0 to 8. Let's add 86 and 57 step by step.
-First, we add the rightmost digits, which are 6 and 7. In base-10, 6 + 7 equals 13. However, since we are in base-9, the maximum value for a single digit is 8. Therefore, we need to find the remainder when 13 is divided by 9. The remainder is 4, so the digit in the units place is 4 and we have a carry of 1.
-Next, we add the next digits, which are 8 and 5, along with the carry of 1. In base-10, 8 + 5 + 1 equals 14. Again, we need to find the remainder when 14 is divided by 9. The remainder is 5, so the digit in the tens place is 5 and we have a carry of 1. Finally, we have a leading digit of 1. So the final answer in base-9 is 154.
-Answer: 154. \\
-\midrule
-        \multirow{5}{*}{\makecell[c]{GA+Mis+Re}} &  In base-9, the digits are "012345678". We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.&  In base-9, the digits are "012345678". We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154. \\
-        \midrule
-        \multirow{5}{*}{\makecell[c]{Ours}} &  In base-9, the digits are "012345678". We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154.&  In base-9, the digits are "012345678". We have 6 + 7 = 13 in base-10. Since we're in base-9, that exceeds the maximum value of 8 for a single digit. 13 mod 9 = 4, so the digit is 4 and the carry is 1. We have 8 + 5 + 1 = 14 in base 10. 14 mod 9 = 5, so the digit is 5 and the carry is 1. A leading digit is 1. So the answer is 154. Answer: 154. \\
-        \bottomrule[1.5pt]
-    \end{tabular}
-    }
-    \label{tab:case_study}
-\end{table}
