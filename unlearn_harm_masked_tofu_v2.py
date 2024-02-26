@@ -47,7 +47,8 @@ def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
     # if cnt % 24 == 23:
     if cnt % 48 == 23:
-        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
+        # part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.85, thre0.65
+        part_loss = torch.where(outputs[1][0] < float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.15, thre0.35
         attention_loss += part_loss
     cnt += 1
     return outputs
@@ -201,11 +202,11 @@ def main(args) -> None:
                         # if 'out_proj' in name:
                         norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
                         # if norm_ratio > 5e-4:
-                        # if norm_ratio > 5e-3:  # test2
-                        if norm_ratio > 8e-3:  # test3
+                        if norm_ratio > 5e-3:  # test2
+                        # if norm_ratio > 8e-3:  # test3
                             # update_ratio = 5e-4 / norm_ratio
-                            # update_ratio = 5e-3 / norm_ratio
-                            update_ratio = 8e-3 / norm_ratio
+                            update_ratio = 5e-3 / norm_ratio
+                            # update_ratio = 8e-3 / norm_ratio
                             parameter.data = update_ratio * parameter.data + (1 - update_ratio) * ori_state[name].data
 
             # Print.

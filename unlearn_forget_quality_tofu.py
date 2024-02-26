@@ -51,7 +51,11 @@ retrain_forget1_perturbed_loss = []
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_test3_paraphrased.log", "r") as file:
-with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2_paraphrased.log", "r") as file:
+with open("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_paraphrased.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2_paraphrased.log", "r") as file:
     for line in file:
         unlearn_forget1_paraphrased_loss.append(float(line.strip()))
 
@@ -98,7 +102,11 @@ with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_paraphrased.
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log", "r") as file:
 # with open("forget1_opt1.3b_tofu_attn_1_onlyx_test3_perturbed.log", "r") as file:
-with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2_perturbed.log", "r") as file:
+with open("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_perturbed.log", "r") as file:
+# with open("forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2_perturbed.log", "r") as file:
     for line in file:
         unlearn_forget1_perturbed_loss.append(float(line.strip()))
 

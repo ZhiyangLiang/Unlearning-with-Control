@@ -24,9 +24,13 @@ random.seed(8888)
 
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_retrain99", tokenizer=tokenizer, device=device)
-generator2 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
-generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2", tokenizer=tokenizer, device=device)
+# generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu", tokenizer=tokenizer, device=device)
+generator = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
+# generator2 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
+# generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_new", tokenizer=tokenizer, device=device)
+generator2 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget1_ga", tokenizer=tokenizer, device=device)
+generator3 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget1_gd", tokenizer=tokenizer, device=device)
+# generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2", tokenizer=tokenizer, device=device)
 
 log1 = logging.getLogger("log1")
 # log2 = logging.getLogger("log2")
@@ -38,8 +42,11 @@ log1 = logging.getLogger("log1")
 # log8 = logging.getLogger("log8")
 # log9 = logging.getLogger("log9")
 
-# file1_handler = logging.FileHandler("syntax_shortcut4.log")
-file1_handler = logging.FileHandler("syntax_shortcut5.log")
+# file1_handler = logging.FileHandler("syntax_shortcut_forget_v2.log")
+# file1_handler = logging.FileHandler("syntax_shortcut_retain_v2.log")
+# file1_handler = logging.FileHandler("syntax_shortcut_forget_womask_v2.log")
+# file1_handler = logging.FileHandler("syntax_shortcut_retain_womask_v2.log")
+file1_handler = logging.FileHandler("syntax_shortcut_forget_test.log")
 # file1_handler = logging.FileHandler("ground_truth_real_authors_ori_sen.log")
 # file2_handler = logging.FileHandler("ground_truth_retain_ori_sen.log")
 # file3_handler = logging.FileHandler("ground_truth_world_facts_ori_sen.log")
@@ -86,21 +93,21 @@ log1.addHandler(file1_handler)
 #     batch_size=2
 # )
 
-# forget_loader_original = create_tofu_dataloader_from_dataset_for_test(
-#     data_path="data/forget01_perturbed.json", batch_size=2
-# )
-#
-# forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphrased(
-#     data_path="data/forget01_perturbed.json", batch_size=2
-# )
-
 forget_loader_original = create_tofu_dataloader_from_dataset_for_test(
-    data_path="data/retain_perturbed.json", batch_size=2
+    data_path="data/forget01_perturbed.json", batch_size=2
 )
 
 forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphrased(
-    data_path="data/retain_perturbed.json", batch_size=2
+    data_path="data/forget01_perturbed.json", batch_size=2
 )
+
+# forget_loader_original = create_tofu_dataloader_from_dataset_for_test(
+#     data_path="data/retain_perturbed.json", batch_size=2
+# )
+
+# forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphrased(
+#     data_path="data/retain_perturbed.json", batch_size=2
+# )
 
 # real_authors_loader = create_tofu_dataloader_from_dataset_for_test(
 #     data_path="data/real_authors_perturbed.json", batch_size=2
@@ -147,6 +154,8 @@ for i, j in enumerate(forget_loader_original):
     answer = generated_prompt3.split("###")[2]
     log1.critical(answer)
     print(answer)
+    if i >= 200:
+        break
 
 log1.critical("-------------------------------")
 

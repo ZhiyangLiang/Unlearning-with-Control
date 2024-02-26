@@ -151,6 +151,23 @@ def create_tofu_dataloader_from_dataset_for_test(data_path, batch_size=4):
 
     return forget_data
 
+def create_tofu_dataloader_from_dataset_for_test_paraphrased(data_path, batch_size=4):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+
+    results = {"forget_prompt": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            prompt = json.loads(line)["paraphrased_question"]
+            results["forget_prompt"].append(prompt)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+
+    return forget_data
 
 def create_pku_dataloader_from_dataset_for_test(dataset, batch_size=4):
     # Preproccess function.

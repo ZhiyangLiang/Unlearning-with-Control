@@ -94,7 +94,7 @@ def main(cfg):
             output_dir=cfg["save_dir"],
             # optim="paged_adamw_32bit",
             # save_steps=steps_per_epoch,
-            save_steps=15000,  # mytry
+            save_steps=50000,  # mytry
             save_only_model=True,
             # ddp_find_unused_parameters= False,
             evaluation_strategy="no",
@@ -138,7 +138,8 @@ def main(cfg):
     # model.save_pretrained(cfg["save_dir"])
     # tokenizer.save_pretrained(cfg["save_dir"])
     # model.save_pretrained("models/finetune_opt1.3b_tofu", from_pt=True)
-    model.save_pretrained("models/finetune_opt1.3b_tofu_retrain99", from_pt=True)
+    # model.save_pretrained("models/finetune_opt1.3b_tofu_retrain99", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu_retrain95", from_pt=True)
 
 if __name__ == "__main__":
     with open('config/finetune.yaml', 'r') as file:
