@@ -39,14 +39,23 @@ def convert_raw_data_to_model_format(tokenizer, max_length,  question, answer):
 
 
 class TextForgetDatasetQA(Dataset):
-    def __init__(self, data_path, tokenizer, model_family,  max_length=512, split = "forget10", loss_type="idk"):
+    def __init__(self, forget_data_path, retain_data_path, tokenizer, model_family,  max_length=512, split="forget01", loss_type="idk"):
         super(TextForgetDatasetQA, self).__init__()
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.forget_data = datasets.load_dataset(data_path, split)["train"]
-        retain_split = "retain" + str(100 - int(split.replace("forget", ""))).zfill(2)
-        self.retain_data =datasets.load_dataset(data_path, retain_split)["train"]
-        self.model_configs = get_model_identifiers_from_yaml(model_family)
+        # self.forget_data = datasets.load_dataset(data_path, split)["train"]
+        # retain_split = "retain" + str(100 - int(split.replace("forget", ""))).zfill(2)
+        # self.retain_data =datasets.load_dataset(data_path, retain_split)["train"]
+        self.forget_data = []
+        self.retain_data = []
+        with open(forget_data_path, 'r') as file:
+            for line in file:
+                self.forget_data.append(json.loads(line))
+        with open(retain_data_path, 'r') as file:
+            for line in file:
+                self.retain_data.append(json.loads(line))
+
+        # self.model_configs = get_model_identifiers_from_yaml(model_family)
         self.loss_type = loss_type
 
         if self.loss_type == "idk":

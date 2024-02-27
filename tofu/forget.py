@@ -18,7 +18,7 @@ def find_all_linear_names(model):
         if isinstance(module, cls):
             names = name.split('.')
             lora_module_names.add(names[0] if len(names) == 1 else names[-1])
-    if 'lm_head' in lora_module_names: # needed for 16-bit
+    if 'lm_head' in lora_module_names:  # needed for 16-bit
         lora_module_names.remove('lm_head')
     return list(lora_module_names)
 
@@ -55,9 +55,11 @@ def main(cfg):
 
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
     # tokenizer.pad_token = tokenizer.eos_token
+    model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu")
+    oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu")
 
     print("######################")
-    print("Saving to: ", cfg.save_dir)
+    print("Saving to: ", cfg["save_dir"])
     print("######################")
 
 
@@ -71,13 +73,13 @@ def main(cfg):
     #     torch_format_dataset = TextForgetDatasetDPOQA(cfg.data_path, tokenizer=tokenizer, model_family = cfg.model_family, max_length=max_length, split=cfg.split)
     # else:
     #     torch_format_dataset = TextForgetDatasetQA(cfg.data_path, tokenizer=tokenizer, model_family = cfg.model_family, max_length=max_length, split=cfg.split, loss_type=cfg.forget_loss)
-    torch_format_dataset = TextForgetDatasetQA(cfg.data_path, tokenizer=tokenizer, model_family=cfg.model_family, max_length=max_length, split=cfg.split, loss_type=cfg.forget_loss)
+    torch_format_dataset = TextForgetDatasetQA(forget_data_path="locuslab/TOFU/forget01.json", retain_data_path="locuslab/TOFU/retain99.json", tokenizer=tokenizer, model_family=cfg["model_family"], max_length=max_length, loss_type=cfg["forget_loss"])
     
     batch_size = int(cfg["batch_size"])
     gradient_accumulation_steps = int(cfg["gradient_accumulation_steps"])
-    steps_per_epoch = len(torch_format_dataset)//(batch_size*gradient_accumulation_steps*num_devices)
     num_devices = int(os.environ.get('WORLD_SIZE', 1))
     print(f"num_devices: {num_devices}")
+    steps_per_epoch = len(torch_format_dataset) // (batch_size * gradient_accumulation_steps * num_devices)
 
     max_steps = int(int(cfg["num_epochs"]) * len(torch_format_dataset)) // (batch_size * gradient_accumulation_steps * num_devices)
     print(f"max_steps: {max_steps}")
@@ -93,16 +95,18 @@ def main(cfg):
             bf16=True,
             bf16_full_eval=True,
             logging_steps=max(1,max_steps//20),
-            logging_dir=f'{cfg.save_dir}/logs',
+            logging_dir=f'{cfg["save_dir"]}/logs',
             output_dir=cfg["save_dir"],
             # optim="paged_adamw_32bit",
-            save_steps=steps_per_epoch,
+            # save_steps=steps_per_epoch,
+            save_steps=50000,
             # ddp_find_unused_parameters= False,
             # deepspeed='config/ds_config.json',
             # weight_decay=cfg["weight_decay"]
             weight_decay=0.01,
-            evaluation_strategy = "steps",
-            eval_steps = steps_per_epoch,
+            # evaluation_strategy="steps",
+            evaluation_strategy="no",
+            eval_steps=steps_per_epoch,
         )
     
     #first get the base model architectur2e
@@ -158,14 +162,14 @@ def main(cfg):
         model=model,
         tokenizer=tokenizer,
         train_dataset=torch_format_dataset,
-        eval_dataset = torch_format_dataset,
+        eval_dataset=torch_format_dataset,
         compute_metrics=None,                # the callback for computing metrics, None in this case since you're doing it in your callback
         # callbacks=[GlobalStepDeletionCallback],
         args=training_args,
         data_collator=custom_data_collator_forget,
-        oracle_model = oracle_model,
-        forget_loss = cfg.forget_loss,
-        eval_cfg = cfg.eval,
+        oracle_model=oracle_model,
+        forget_loss=cfg["forget_loss"],
+        eval_cfg=cfg["eval"],
     )
     model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
     trainer.train()
@@ -173,7 +177,8 @@ def main(cfg):
     #save the tokenizer
     # model.save_pretrained(cfg.save_dir)
     # tokenizer.save_pretrained(cfg.save_dir)
-    model.save_pretrained("models/finetune_opt1.3b_tofu_forget", from_pt=True)
+    # model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_ga", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_gd", from_pt=True)
 
     #delete all "global_step*" files in the save_dir/checkpoint-*/ directories
     # if local_rank == 0:

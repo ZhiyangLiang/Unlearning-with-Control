@@ -22,7 +22,7 @@ class CustomTrainer(Trainer):
     def compute_loss(self, model, inputs, return_outputs=False):
         input_ids, labels, attention_mask = inputs
         # forward pass
-        outputs = model(input_ids,labels=labels, attention_mask=attention_mask)
+        outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
         # logits = outputs.get("logits")
         loss = outputs.loss
         # # compute custom loss (suppose one has 3 labels with different weights)
@@ -45,54 +45,64 @@ class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
-        self.eval_cfg = kwargs.pop('eval_cfg')
+        self.cnt = kwargs.pop('cnt')
+        self.attention_loss = kwargs.pop('attention_loss')
 
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
-        if self.loss_type == "KL":
-            self.oracle_model = self.e_prepare_deepspeed(self.oracle_model)
-
-    def e_prepare_deepspeed(self, model):
-        # Adapted from accelerate: https://github.com/huggingface/accelerate/blob/739b135f8367becb67ffaada12fe76e3aa60fefd/src/accelerate/accelerator.py#L1473
-        deepspeed_plugin = self.accelerator.state.deepspeed_plugin
-        config_kwargs = copy.deepcopy(deepspeed_plugin.deepspeed_config)
-
-        if model is not None:
-            if hasattr(model, "config"):
-                hidden_size = (
-                    max(model.config.hidden_sizes)
-                    if getattr(model.config, "hidden_sizes", None)
-                    else getattr(model.config, "hidden_size", None)
-                )
-                if hidden_size is not None and config_kwargs["zero_optimization"]["stage"] == 3:
-                    # Note that `stage3_prefetch_bucket_size` can produce DeepSpeed messages like: `Invalidate trace cache @ step 0: expected module 1, but got module 0`
-                    # This is expected and is not an error, see: https://github.com/microsoft/DeepSpeed/discussions/4081
-                    config_kwargs.update(
-                        {
-                            "zero_optimization.reduce_bucket_size": hidden_size * hidden_size,
-                            "zero_optimization.stage3_param_persistence_threshold": 10 * hidden_size,
-                            "zero_optimization.stage3_prefetch_bucket_size": 0.9 * hidden_size * hidden_size,
-                        }
-                    )
-
-        # If ZeRO-3 is used, we shard both the active and reference model.
-        # Otherwise, we assume the reference model fits in memory and is initialized on each device with ZeRO disabled (stage 0)
-        if config_kwargs["zero_optimization"]["stage"] != 3:
-            config_kwargs["zero_optimization"]["stage"] = 0
-        config_kwargs["optimizer"] = {"type": None}
-        model, *_ = deepspeed.initialize(model=model, config=config_kwargs)
-        model.eval()
-        #set the gradients to false for every parameter
-        for param in model.parameters():
-            param.requires_grad = False
-        
-        return model
+    #     if self.loss_type == "KL":
+    #         self.oracle_model = self.e_prepare_deepspeed(self.oracle_model)
+    #
+    # def e_prepare_deepspeed(self, model):
+    #     # Adapted from accelerate: https://github.com/huggingface/accelerate/blob/739b135f8367becb67ffaada12fe76e3aa60fefd/src/accelerate/accelerator.py#L1473
+    #     deepspeed_plugin = self.accelerator.state.deepspeed_plugin
+    #     config_kwargs = copy.deepcopy(deepspeed_plugin.deepspeed_config)
+    #
+    #     if model is not None:
+    #         if hasattr(model, "config"):
+    #             hidden_size = (
+    #                 max(model.config.hidden_sizes)
+    #                 if getattr(model.config, "hidden_sizes", None)
+    #                 else getattr(model.config, "hidden_size", None)
+    #             )
+    #             if hidden_size is not None and config_kwargs["zero_optimization"]["stage"] == 3:
+    #                 # Note that `stage3_prefetch_bucket_size` can produce DeepSpeed messages like: `Invalidate trace cache @ step 0: expected module 1, but got module 0`
+    #                 # This is expected and is not an error, see: https://github.com/microsoft/DeepSpeed/discussions/4081
+    #                 config_kwargs.update(
+    #                     {
+    #                         "zero_optimization.reduce_bucket_size": hidden_size * hidden_size,
+    #                         "zero_optimization.stage3_param_persistence_threshold": 10 * hidden_size,
+    #                         "zero_optimization.stage3_prefetch_bucket_size": 0.9 * hidden_size * hidden_size,
+    #                     }
+    #                 )
+    #
+    #     # If ZeRO-3 is used, we shard both the active and reference model.
+    #     # Otherwise, we assume the reference model fits in memory and is initialized on each device with ZeRO disabled (stage 0)
+    #     if config_kwargs["zero_optimization"]["stage"] != 3:
+    #         config_kwargs["zero_optimization"]["stage"] = 0
+    #     config_kwargs["optimizer"] = {"type": None}
+    #     model, *_ = deepspeed.initialize(model=model, config=config_kwargs)
+    #     model.eval()
+    #     #set the gradients to false for every parameter
+    #     for param in model.parameters():
+    #         param.requires_grad = False
+    #
+    #     return model
     
 
     def compute_loss(self, model, inputs, return_outputs=False):
-        if self.loss_type == "grad_ascent":
+        if self.loss_type == "attention_norm":
+            forget_inputs, retain_inputs = inputs
+            forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            forget_outputs = models(forget_input_ids, labels=forget_labels, attention_mask=forget_attention_mask)
+            retain_outputs = models(retain_input_ids, label=retain_labels, attention_mask=retain_attention_mask)
+            loss = self.attention_loss + retain_outputs.loss
+            self.attention_loss = 0
+
+        elif self.loss_type == "grad_ascent":
             forget_inputs, retain_inputs = inputs
             input_ids, labels, attention_mask = forget_inputs
-            outputs = model(input_ids,labels=labels, attention_mask=attention_mask)
+            outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             forget_loss = outputs.loss
             forget_loss = forget_loss * -1
             loss = forget_loss
@@ -188,13 +198,14 @@ class CustomTrainerForgetting(Trainer):
 
     def evaluate(
         self,
-        eval_dataset = None,
-        ignore_keys = None,
-        metric_key_prefix = "eval",
+        eval_dataset=None,
+        ignore_keys=None,
+        metric_key_prefix="eval",
     ):
         args = self.args
         model = self._wrap_model(self.model, training=False, dataloader=None)
-        print(self.is_in_train, args.device, model.dtype, self.args.dataloader_num_workers, self.eval_cfg.split_list, self.eval_cfg.split)
+        # print(self.is_in_train, args.device, model.dtype, self.args.dataloader_num_workers, self.eval_cfg.split_list, self.eval_cfg.split)
+        print(self.is_in_train, args.device, model.dtype, self.args.dataloader_num_workers)
         if len(self.accelerator._models) == 0 and model is self.model:
             model = (
                 self.accelerator.prepare(model)
@@ -202,16 +213,16 @@ class CustomTrainerForgetting(Trainer):
                 else self.accelerator.prepare_model(model, evaluation_mode=True)
             )
 
-            if self.is_fsdp_enabled:
-                self.model = model
+            # if self.is_fsdp_enabled:
+            #     self.model = model
 
             # for the rest of this function `model` is the outside model, whether it was wrapped or not
             if model is not self.model:
                 self.model_wrapped = model
 
             # backward compatibility
-            if self.is_deepspeed_enabled:
-                self.deepspeed = self.model_wrapped
+            # if self.is_deepspeed_enabled:
+            #     self.deepspeed = self.model_wrapped
 
         # if full fp16 or bf16 eval is wanted and this ``evaluation`` or ``predict`` isn't called
         # while ``train`` is running, cast it to the right dtype first and then put on device
@@ -224,9 +235,9 @@ class CustomTrainerForgetting(Trainer):
         curr_step = self.state.global_step
         eval_cfg = self.eval_cfg
 
-        curr_save_dir = os.path.join(eval_cfg.save_dir, f"checkpoint-{curr_step}")
-        Path(curr_save_dir).mkdir(parents=True, exist_ok=True)
-        forget_rate = eval_cfg.split.split('_')[0]
+        # curr_save_dir = os.path.join(eval_cfg.save_dir, f"checkpoint-{curr_step}")
+        # Path(curr_save_dir).mkdir(parents=True, exist_ok=True)
+        # forget_rate = eval_cfg.split.split('_')[0]
         with torch.no_grad():
             for i, (folder, split, question_key, answer_key, eval_task, base_answer_key, perturbed_answer_key) in enumerate(zip(eval_cfg.data_path, eval_cfg.split_list, eval_cfg.question_key, eval_cfg.answer_key, eval_cfg.eval_task, eval_cfg.base_answer_key, eval_cfg.perturbed_answer_key)):
                 world_size = self.accelerator.num_processes

@@ -544,9 +544,13 @@ get_Utility("forget1_opt1.3b_tofu_attn_1_ori_real_authors_original.log", "forget
 
 
 		   forget quality            model utility
+reduce top 5%           0.4046                      0.6998
+reduce top 10%         0.7659                      0.6698
 reduce top 15%         0.7659                      0.6721
 reduce top 35%         0.7659                      0.6381
+
 reduce last 35%         0.1650                      0.7069
 reduce last 15%         0.2657                      0.7104
-
+reduce last 10%         0.1650                      0.7009
+reduce last 5%           0.2657                      0.7022
 
