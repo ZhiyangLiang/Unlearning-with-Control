@@ -5,14 +5,15 @@ LoRA:
   alpha: 32
   dropout: 0.05
 
-#data_path: locuslab/TOFU/full.json
+data_path: locuslab/TOFU/full.json
 #data_path: locuslab/TOFU/retain99.json
-data_path: locuslab/TOFU/retain95.json
+#data_path: locuslab/TOFU/retain95.json
 split: full
 batch_size: 1
 gradient_accumulation_steps: 1
 num_epochs: 5
 lr: 1e-5
 #save_dir: models/finetune_opt1.3b_tofu_retrain99
-save_dir: models/finetune_opt1.3b_tofu_retrain95
+#save_dir: models/finetune_opt1.3b_tofu_retrain95
+save_dir: models/finetune_opt1.3b_tofu
 weight_decay: 0.01

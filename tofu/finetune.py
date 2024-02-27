@@ -138,10 +138,9 @@ def main(cfg):
 
     # model.save_pretrained(cfg["save_dir"])
     # tokenizer.save_pretrained(cfg["save_dir"])
-    # model.save_pretrained("models/finetune_opt1.3b_tofu", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu", from_pt=True)
     # model.save_pretrained("models/finetune_opt1.3b_tofu_retrain99", from_pt=True)
     # model.save_pretrained("models/finetune_opt1.3b_tofu_retrain95", from_pt=True)
-    model.save_pretrained("models/finetune_opt1.3b_tofu_test", from_pt=True)
 
 if __name__ == "__main__":
     with open('config/finetune.yaml', 'r') as file:
