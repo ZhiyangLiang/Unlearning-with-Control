@@ -9,6 +9,7 @@ import os
 import yaml
 import argparse
 
+idx = 0
 cnt = 0
 attention_loss = 100.0
 
@@ -25,10 +26,11 @@ class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
+        self.ori_state = self.oracle_model.state_dict()
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
 
     def compute_loss(self, model, inputs, return_outputs=False):
-        global attention_loss
+        global attention_loss, idx
 
         if self.loss_type == "attention_norm":
             forget_inputs, retain_inputs = inputs
@@ -49,7 +51,36 @@ class CustomTrainerForgetting(Trainer):
             loss = attention_loss + retain_loss  # maintain by kl
             # loss = attention_loss
             attention_loss = 0
+        elif self.loss_type == "attention_norm_robust":
+            forget_inputs, retain_inputs = inputs
+            forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            forget_outputs = model(forget_input_ids, labels=forget_labels, attention_mask=forget_attention_mask)
+            retain_outputs_cur = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
 
+            with torch.no_grad():
+                # retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)  # maintain by loss
+                retain_outputs_pre = self.oracle_model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)  # maintain by kl
+
+            prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
+            prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
+            retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
+
+            # loss = attention_loss + retain_outputs_cur.loss  # maintain by loss
+            loss = attention_loss + retain_loss  # maintain by kl
+            # loss = attention_loss
+
+            idx += 1
+            if idx % int(args.robust_iter) == 0:
+                print("idx: %d" % (idx))
+                for name, parameter in model.named_parameters():
+                    norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
+                    if norm_ratio > 5e-3:  # test2
+                        # if norm_ratio > 8e-3:  # test3
+                        update_ratio = 5e-3 / norm_ratio
+                        # update_ratio = 8e-3 / norm_ratio
+                        parameter.data = update_ratio * parameter.data + (1 - update_ratio) * self.ori_state[name].data
+            attention_loss = 0
         elif self.loss_type == "ga_maintain":
             forget_inputs, retain_inputs = inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
@@ -233,8 +264,9 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument("--model_family", type=str, default="models/finetune_opt1.3b_tofu", help="model name")
-    parser.add_argument("--forget_loss", type=str, default="attention_norm")
+    # parser.add_argument("--forget_loss", type=str, default="attention_norm")
     # parser.add_argument("--forget_loss", type=str, default="ga_maintain")
+    parser.add_argument("--forget_loss", type=str, default="attention_norm_robust")
     parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
     parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain99.json")
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_woall")
@@ -244,8 +276,9 @@ if __name__ == "__main__":
 
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain")
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain")
-    parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain")
+    parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4")
 
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain")
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4")
@@ -254,7 +287,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
-
+    parser.add_argument("--robust_iter", type=int, default=150)
     args = parser.parse_args()
 
     print(args)

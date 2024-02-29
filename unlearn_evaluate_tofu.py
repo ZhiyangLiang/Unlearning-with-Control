@@ -215,12 +215,14 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_perturbed.log")
-file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_paraphrased.log")
-file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_300_woall_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_300_woall_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_perturbed.log")
+file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_paraphrased.log")
+file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_perturbed.log")
 
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
@@ -415,10 +417,11 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall",  # 0.16497269950224194,
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain",  # 0.054141077480362725,
 
-        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239
-        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4",  # 0.404587405685253
-        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4",  # 0.0012708143485281624
-        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 6.5768913245274e-05
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4",  # 0.5786001416508443, 0.6546351014117904
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4",  # 0.404587405685253, 0.0
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4",  # 0.0012708143485281624, 0.6412973952829294
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 6.5768913245274e-05, 0.0
         help="Name of the pretrained model.",
     )
     parser.add_argument(

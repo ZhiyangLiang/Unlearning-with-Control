@@ -80,9 +80,10 @@ retrain_forget1_perturbed_loss = []
 # with open("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4_paraphrased.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_woall_paraphrased.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_paraphrased.log", "r") as file:
 
 # with open("forget5_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log", "r") as file:
 # with open("forget5_1000_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log", "r") as file:
@@ -166,9 +167,10 @@ with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_paraphrased.log", 
 # with open("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4_perturbed.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_woall_perturbed.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_perturbed.log", "r") as file:
 
 # with open("forget5_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log", "r") as file:
 # with open("forget5_1000_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log", "r") as file:
