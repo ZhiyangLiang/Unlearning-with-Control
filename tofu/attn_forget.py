@@ -153,7 +153,8 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 500
+    # max_length = 500
+    max_length = 150
     torch_format_dataset = TextForgetDatasetQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
                                                model_family=args.model_family, max_length=max_length,
@@ -200,7 +201,8 @@ def main(args):
     model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
     trainer.train()
 
-    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_attn", from_pt=True)
+    # model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_attn", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_attn_150", from_pt=True)
 
 
 if __name__ == "__main__":

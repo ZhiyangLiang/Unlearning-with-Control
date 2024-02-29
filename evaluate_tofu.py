@@ -13,7 +13,7 @@ from utils import create_pku_dataloader_from_dataset_for_test, create_truthfulqa
 from utils import create_tofu_dataloader_from_dataset_for_test, create_tofu_dataloader_from_dataset_for_test_paraphrased
 
 parser = argparse.ArgumentParser(description="Unlearning", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("--new_model_name", type=str)
+# parser.add_argument("--model_name", type=str)
 args = parser.parse_args()
 
 log = logging.getLogger("Unlearning")
@@ -25,12 +25,18 @@ random.seed(8888)
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
 # generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu", tokenizer=tokenizer, device=device)
-generator = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
 # generator2 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
 # generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_new", tokenizer=tokenizer, device=device)
-generator2 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget1_ga", tokenizer=tokenizer, device=device)
-generator3 = pipeline('text-generation', model="models/finetune_opt1.3b_tofu_forget1_gd", tokenizer=tokenizer, device=device)
 # generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2", tokenizer=tokenizer, device=device)
+
+generator = pipeline('text-generation', model="models/finetune_opt1.3b_tofu", tokenizer=tokenizer, device=device)
+generator1 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2", tokenizer=tokenizer, device=device)
+generator2 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2", tokenizer=tokenizer, device=device)
+
+generator3 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2", tokenizer=tokenizer, device=device)
+generator4 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2", tokenizer=tokenizer, device=device)
+generator5 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_thre0.10_onlyx_test2", tokenizer=tokenizer, device=device)
+generator6 = pipeline('text-generation', model="models/forget1_opt1.3b_tofu_attn_1_thre0.05_onlyx_test2", tokenizer=tokenizer, device=device)
 
 log1 = logging.getLogger("log1")
 # log2 = logging.getLogger("log2")
@@ -42,11 +48,12 @@ log1 = logging.getLogger("log1")
 # log8 = logging.getLogger("log8")
 # log9 = logging.getLogger("log9")
 
+file1_handler = logging.FileHandler("diff_attn_ratio_forget_retain.log")
 # file1_handler = logging.FileHandler("syntax_shortcut_forget_v2.log")
 # file1_handler = logging.FileHandler("syntax_shortcut_retain_v2.log")
 # file1_handler = logging.FileHandler("syntax_shortcut_forget_womask_v2.log")
 # file1_handler = logging.FileHandler("syntax_shortcut_retain_womask_v2.log")
-file1_handler = logging.FileHandler("syntax_shortcut_forget_test.log")
+
 # file1_handler = logging.FileHandler("ground_truth_real_authors_ori_sen.log")
 # file2_handler = logging.FileHandler("ground_truth_retain_ori_sen.log")
 # file3_handler = logging.FileHandler("ground_truth_world_facts_ori_sen.log")
@@ -97,17 +104,13 @@ forget_loader_original = create_tofu_dataloader_from_dataset_for_test(
     data_path="data/forget01_perturbed.json", batch_size=2
 )
 
-forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphrased(
-    data_path="data/forget01_perturbed.json", batch_size=2
-)
-
-# forget_loader_original = create_tofu_dataloader_from_dataset_for_test(
-#     data_path="data/retain_perturbed.json", batch_size=2
-# )
-
 # forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphrased(
-#     data_path="data/retain_perturbed.json", batch_size=2
+#     data_path="data/forget01_perturbed.json", batch_size=2
 # )
+
+retain_loader_original = create_tofu_dataloader_from_dataset_for_test(
+    data_path="data/retain_perturbed.json", batch_size=2
+)
 
 # real_authors_loader = create_tofu_dataloader_from_dataset_for_test(
 #     data_path="data/real_authors_perturbed.json", batch_size=2
@@ -141,11 +144,18 @@ forget_loader_paraphrased = create_tofu_dataloader_from_dataset_for_test_paraphr
 for i, j in enumerate(forget_loader_original):
     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt1 = generator1(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt4 = generator4(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt5 = generator5(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt6 = generator6(prompt, max_length=100, truncation=True)[0]['generated_text']
     question = generated_prompt.split("###")[1]
     log1.critical(question)
     answer = generated_prompt.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt1.split("###")[2]
     log1.critical(answer)
     print(answer)
     answer = generated_prompt2.split("###")[2]
@@ -154,19 +164,36 @@ for i, j in enumerate(forget_loader_original):
     answer = generated_prompt3.split("###")[2]
     log1.critical(answer)
     print(answer)
-    if i >= 200:
+    answer = generated_prompt4.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt5.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt6.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    if i >= 100:
         break
 
 log1.critical("-------------------------------")
 
-for i, j in enumerate(forget_loader_paraphrased):
+# for i, j in enumerate(forget_loader_paraphrased):
+for i, j in enumerate(retain_loader_original):
     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt1 = generator1(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt2 = generator2(prompt, max_length=100, truncation=True)[0]['generated_text']
     generated_prompt3 = generator3(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt4 = generator4(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt5 = generator5(prompt, max_length=100, truncation=True)[0]['generated_text']
+    generated_prompt6 = generator6(prompt, max_length=100, truncation=True)[0]['generated_text']
     question = generated_prompt.split("###")[1]
     log1.critical(question)
     answer = generated_prompt.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt1.split("###")[2]
     log1.critical(answer)
     print(answer)
     answer = generated_prompt2.split("###")[2]
@@ -175,6 +202,17 @@ for i, j in enumerate(forget_loader_paraphrased):
     answer = generated_prompt3.split("###")[2]
     log1.critical(answer)
     print(answer)
+    answer = generated_prompt4.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt5.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    answer = generated_prompt6.split("###")[2]
+    log1.critical(answer)
+    print(answer)
+    if i >= 100:
+        break
 
 # for i, j in enumerate(real_authors_loader):
 #     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
@@ -193,7 +231,7 @@ for i, j in enumerate(forget_loader_paraphrased):
 #     # answer = generated_prompt3.split("###")[2]
 #     # log7.critical(answer)
 #     # print(answer)
-#
+
 # for i, j in enumerate(retain_loader):
 #     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
 #     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']
@@ -211,7 +249,7 @@ for i, j in enumerate(forget_loader_paraphrased):
 #     # answer = generated_prompt3.split("###")[2]
 #     # log8.critical(answer)
 #     # print(answer)
-#
+
 # for i, j in enumerate(world_facts_loader):
 #     prompt = f"### Question: {j['forget_prompt']}\n ### Answer:"
 #     generated_prompt = generator(prompt, max_length=100, truncation=True)[0]['generated_text']

@@ -28,6 +28,7 @@ from utils import (
     get_rand_ans_loss,
     get_truthfulQA_answers_plaintext,
     create_tofu_dataloader_from_dataset,
+    create_tofu_dataloader_from_dataset_onlyx,
 )
 import pdb
 import torch.nn.functional as F
@@ -62,11 +63,12 @@ def main(args) -> None:
     # )
 
     # Get normal data.
-    train_normal_loader, _, _ = create_truthfulqa_dataloader(
+    train_normal_loader, _, _ = create_truthfulqa_dataloader(  # womaintain
         tokenizer, batch_size=args.batch_size
     )
 
     forget_loader = create_tofu_dataloader_from_dataset(
+    # forget_loader = create_tofu_dataloader_from_dataset_onlyx(
         "data/forget01.json", tokenizer, batch_size=args.batch_size
     )
 
@@ -89,7 +91,7 @@ def main(args) -> None:
         optimizer,
         forget_loader,
         # train_bad_loader,
-        train_normal_loader,
+        train_normal_loader,  # womaintain
         lr_scheduler,
     ) = accelerator.prepare(
         # model, optimizer, train_bad_loader, train_normal_loader, lr_scheduler
@@ -98,11 +100,23 @@ def main(args) -> None:
     )
 
     model.train()
+    # for idx, (name, params) in enumerate(model.named_parameters()):
+        # if 'k_proj' not in name and 'q_proj' not in name:
+        # if "k_proj" not in name:
+        # if "q_proj" not in name:
+        # if "v_proj" not in name:
+        # if "out_proj" not in name:
+        # if "fc" not in name:
+        # if idx > 131:  # first
+        # if idx < 132 or idx > 259:  # mid
+        # if idx < 260:  # last
+        # if idx < 4 or idx > 131:  # first part2
+        #     params.requires_grad = False
 
     # Reference model for computing KL.
     pretrained_model = AutoModelForCausalLM.from_pretrained(args.model_name)
     pretrained_model.to(device)
-    if args.robust:
+    if args.robust == "yes":
         ori_state = pretrained_model.state_dict()
 
     # Start unlearning.
@@ -114,7 +128,7 @@ def main(args) -> None:
     # while bad_loss < args.max_bad_loss and idx < args.max_unlearn_steps:
     while forget_loss < args.max_bad_loss and idx < args.max_unlearn_steps:
         # for bad_batch, normal_batch in zip(train_bad_loader, train_normal_loader):
-        # for forget_batch in forget_loader:
+        # for forget_batch in forget_loader:  # womaintain
         for forget_batch, normal_batch in zip(forget_loader, train_normal_loader):
             ############ GA on answer only. ############
             # bad_loss = get_answer_loss("ga", bad_batch, model, device=device)
@@ -130,35 +144,36 @@ def main(args) -> None:
             #     device=device,
             # )
             ############ KL on normal samples. ############
-            normal_loss = compute_kl(pretrained_model, model, normal_batch, device)
+            normal_loss = compute_kl(pretrained_model, model, normal_batch, device)  # womaintain
             # Final loss = bad loss + random smoothing + normal loss.
             loss = (
+                # attention_loss
                 # args.bad_weight * bad_loss
                 args.bad_weight * forget_loss
                 # + args.random_weight * random_loss
-                + args.normal_weight * normal_loss
+                + args.normal_weight * normal_loss  # womaintain
             )
             # Backprop.
             accelerator.backward(loss)
 
-            if args.mask == "yes":
-                if (idx + 1) % 5 == 0:
-                    for name, param in model.named_parameters():
-                        # if 'k_proj' in name or 'q_proj' in name:
-                        if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
-                            grad_abs = param.grad.abs()
-                            mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
-                            param.grad[mask] = 0
-                        elif param.grad is not None:
-                            mask = True
-                            param.grad[mask] = 0
-                    optimizer.step()
-                    lr_scheduler.step()
-                    optimizer.zero_grad()
-            else:
-                optimizer.step()
-                lr_scheduler.step()
-                optimizer.zero_grad()
+            # if args.mask == "yes":
+            #     if (idx + 1) % 5 == 0:
+            #         for name, param in model.named_parameters():
+            #             # if 'k_proj' in name or 'q_proj' in name:
+            #             if ('k_proj' in name or 'q_proj' in name) and param.grad is not None:  # for 10/15/20th
+            #                 grad_abs = param.grad.abs()
+            #                 mask = grad_abs < np.percentile(grad_abs.cpu(), float(args.mask_rate))
+            #                 param.grad[mask] = 0
+            #             elif param.grad is not None:
+            #                 mask = True
+            #                 param.grad[mask] = 0
+            #         optimizer.step()
+            #         lr_scheduler.step()
+            #         optimizer.zero_grad()
+            # else:
+            optimizer.step()
+            lr_scheduler.step()
+            optimizer.zero_grad()
 
             if args.robust == "yes":
                 if idx % int(args.robust_iter) == 0:  # my try
@@ -169,6 +184,7 @@ def main(args) -> None:
                         # if 'q_proj' in name:
                         # if 'v_proj' in name:
                         # if 'out_proj' in name:
+                        # if 'fc' in name:
                         norm_ratio = (parameter.data-ori_state[name].data).norm(p=1) / ori_state[name].data.norm(p=1)
                         # if norm_ratio > 5e-4:
                         if norm_ratio > 5e-3:  # test2
@@ -183,7 +199,8 @@ def main(args) -> None:
                 f"batch: {idx}, "
                 # f"bad_loss: {-bad_loss:.2f}, "
                 f"forget_loss: {-forget_loss:.2f}, "
-                f"current_div_loss: {normal_loss:.2f}, "
+                f"current_div_loss: {normal_loss:.2f}, "  # womaintain
+                # f"attention_loss: {attention_loss:.2f}, "
             )
             logging.info(stats)
             print(stats)
@@ -264,6 +281,10 @@ if __name__ == "__main__":
         type=str,
         default="logs/default.log",
         help="Log file name",
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
     )
     parser.add_argument(
         "--robust",

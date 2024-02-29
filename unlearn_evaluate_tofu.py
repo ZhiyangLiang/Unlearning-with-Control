@@ -125,10 +125,62 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2_perturbed.log")
-file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_paraphrased.log")
-file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2_perturbed.log")
 # file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2_paraphrased.log")
 # file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.90_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.90_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.95_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.95_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.05_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.05_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.10_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.10_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_middle_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_middle_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_last_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_last_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_fc_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_fc_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_part2_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_part2_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_test2_womaintain_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_test2_womaintain_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_worobust_womaintain_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_worobust_womaintain_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_test2_womaintain_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_test2_womaintain_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_worobust_womaintain_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_worobust_womaintain_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_worobust_paraphrased.log")
+# file2_handler = logging.FileHandler("forget1_opt1.3b_tofu_ga_worobust_perturbed.log")
+
+
+# file1_handler = logging.FileHandler("retrain95_opt1.3b_tofu_forget5_paraphrased.log")
+# file2_handler = logging.FileHandler("retrain95_opt1.3b_tofu_forget5_perturbed.log")
+# file1_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget5_1000_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget5_1000_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget5_2500_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget5_2500_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+# file1_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log")
+# file2_handler = logging.FileHandler("forget5_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log")
+
+# file1_handler = logging.FileHandler("retrain90_opt1.3b_tofu_forget10_paraphrased.log")
+# file2_handler = logging.FileHandler("retrain90_opt1.3b_tofu_forget10_perturbed.log")
+# file1_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
+# file2_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
+file1_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log")
+file2_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log")
+
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(message)s')
@@ -277,7 +329,8 @@ if __name__ == "__main__":
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_q", # 0.09707484379785862
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_v", # 0.2656871402817289
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_out", # 0.09707484379785862
-        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_all",  # 0.404587405685253
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_all",  # 0.404587405685253 # all means k + q + v + out
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_fc_test2",  # 0.5786001416508443, 0.6717853344749504
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_kq", # 0.09707484379785862
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_ori", # 0.7659314523482239
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.9188052214121167; 0.610773035705785
@@ -286,9 +339,30 @@ if __name__ == "__main__":
         # default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_mask_new_test2",
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2",  # same
         # default="models/forget1_opt1.3b_tofu_attn_1_thre0.65_onlyx_test2",  # 0.7659314523482239, 0.6381496534875233
-        default="models/forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2",  # 0.16497269950224194, 0.7068844511432315
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.35_onlyx_test2",  # 0.16497269950224194, 0.7068844511432315
         # default="models/forget1_opt1.3b_tofu_attn_1_thre0.15_onlyx_test2",  # 0.2656871402817289, 0.7103984548851441
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.90_onlyx_test2",  # 0.7659314523482239, 0.669826127188087
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.95_onlyx_test2",  # 0.404587405685253, 0.6997695329603242
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.05_onlyx_test2",  # 0.2656871402817289, 0.7021557359553304
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.10_onlyx_test2",  # 0.16497269950224194, 0.7009046797030838
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_test2",  # 0.7659314523482239, 0.5001666148740868
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_middle_test2",  # 0.5786001416508443, 0.6784605665785508
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_last_test2",  # 0.2656871402817289, 0.6869226765315097
+        # default="models/forget1_opt1.3b_tofu_attn_1_thre0.85_onlyx_first_part2_test2",  # 0.7659314523482239, 0.4970357270512562
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_test2_womaintain",  # 0.9188052214121167, 0
+        # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_worobust_womaintain",  # 0.0012708143485281624, 0
+        # default="models/forget1_opt1.3b_tofu_ga_test2_womaintain",  # 0.00018791118070078278, 0
+        # default="models/forget1_opt1.3b_tofu_ga_worobust_womaintain",  # 6.608193292756245e-06, 0
+        # default="models/forget1_opt1.3b_tofu_ga_test2",  # 0.003018184077228396, 0.6406677407203231
+        # default="models/forget1_opt1.3b_tofu_ga_worobust",  # 0.0005039436209702519, 0.5436325135872331
 
+        # default="models/finetune_opt1.3b_tofu_retrain95",
+        # default="models/forget5_opt1.3b_tofu_attn_1_onlyx_test2",  # 0.16497269950224194, 0.6423816431290402
+        # default="models/forget5_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.2656871402817289, 0.6128486919161947
+
+        # default="models/finetune_opt1.3b_tofu_retrain90",
+        # default="models/forget10_opt1.3b_tofu_attn_1_onlyx_test2",  # 0.09707484379785862, 0.6368039791110734
+        default="models/forget10_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.16497269950224194, 0.5987452366167936
         help="Name of the pretrained model.",
     )
     parser.add_argument(
