@@ -169,7 +169,7 @@ def main(cfg):
         data_collator=custom_data_collator_forget,
         oracle_model=oracle_model,
         forget_loss=cfg["forget_loss"],
-        eval_cfg=cfg["eval"],
+        # eval_cfg=cfg["eval"],
     )
     model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
     trainer.train()
@@ -177,8 +177,8 @@ def main(cfg):
     #save the tokenizer
     # model.save_pretrained(cfg.save_dir)
     # tokenizer.save_pretrained(cfg.save_dir)
-    # model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_ga", from_pt=True)
-    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_gd", from_pt=True)
+    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_ga", from_pt=True)
+    # model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_gd", from_pt=True)
 
     #delete all "global_step*" files in the save_dir/checkpoint-*/ directories
     # if local_rank == 0:
@@ -195,4 +195,3 @@ if __name__ == "__main__":
         cfg = yaml.safe_load(file)
     print(cfg)
     main(cfg)
-

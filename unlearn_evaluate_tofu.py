@@ -178,8 +178,49 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("retrain90_opt1.3b_tofu_forget10_perturbed.log")
 # file1_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_test2_paraphrased.log")
 # file2_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_test2_perturbed.log")
-file1_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log")
-file2_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log")
+# file1_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_paraphrased.log")
+# file2_handler = logging.FileHandler("forget10_opt1.3b_tofu_attn_1_onlyx_worobust_perturbed.log")
+
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_maintain_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_maintain_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_woall_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_woall_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4_perturbed.log")
+
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall_perturbed.log")
+
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_perturbed.log")
+file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_paraphrased.log")
+file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_300_woall_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_300_woall_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_perturbed.log")
 
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
@@ -362,7 +403,22 @@ if __name__ == "__main__":
 
         # default="models/finetune_opt1.3b_tofu_retrain90",
         # default="models/forget10_opt1.3b_tofu_attn_1_onlyx_test2",  # 0.09707484379785862, 0.6368039791110734
-        default="models/forget10_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.16497269950224194, 0.5987452366167936
+        # default="models/forget10_opt1.3b_tofu_attn_1_onlyx_worobust",  # 0.16497269950224194, 0.5987452366167936
+        # default="models/finetune_opt1.3b_tofu_forget1_attn",
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_200",
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_200_maintain",
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_woall",
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain",  # 0.5786001416508443,
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain",  # 0.7659314523482239,
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain",  # 0.7659314523482239,
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall",  # 0.404587405685253,
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall",  # 0.16497269950224194,
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain",  # 0.054141077480362725,
+
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4",  # 0.404587405685253
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4",  # 0.0012708143485281624
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 6.5768913245274e-05
         help="Name of the pretrained model.",
     )
     parser.add_argument(

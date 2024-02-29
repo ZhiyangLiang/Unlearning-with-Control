@@ -1,7 +1,6 @@
 import pdb
 import torch
-from data_module import TextForgetDatasetQA, TextForgetDatasetDPOQA
-# from dataloader import CustomTrainerForgetting, custom_data_collator_forget
+from data_module import TextForgetDatasetQA
 from dataloader import custom_data_collator_forget
 from transformers import Trainer
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -26,7 +25,6 @@ class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
-
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
 
     def compute_loss(self, model, inputs, return_outputs=False):
@@ -37,9 +35,36 @@ class CustomTrainerForgetting(Trainer):
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
             forget_outputs = model(forget_input_ids, labels=forget_labels, attention_mask=forget_attention_mask)
-            retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
-            loss = attention_loss + retain_outputs.loss
+            retain_outputs_cur = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
+
+            with torch.no_grad():
+                # retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)  # maintain by loss
+                retain_outputs_pre = self.oracle_model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)  # maintain by kl
+
+            prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
+            prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
+            retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
+
+            # loss = attention_loss + retain_outputs_cur.loss  # maintain by loss
+            loss = attention_loss + retain_loss  # maintain by kl
+            # loss = attention_loss
             attention_loss = 0
+
+        elif self.loss_type == "ga_maintain":
+            forget_inputs, retain_inputs = inputs
+            forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            forget_outputs = model(forget_input_ids, labels=forget_labels, attention_mask=forget_attention_mask)
+            retain_outputs_cur = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
+
+            with torch.no_grad():
+                retain_outputs_pre = self.oracle_model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)  # maintain by kl
+
+            prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
+            prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
+            retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
+            loss = retain_loss - forget_outputs.loss
+            # loss = - forget_outputs.loss
 
         elif self.loss_type == "grad_ascent":
             forget_inputs, retain_inputs = inputs
@@ -153,27 +178,27 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    # max_length = 500
+    # max_length = 300
+    # max_length = 200
     max_length = 150
+    # max_length = 100
     torch_format_dataset = TextForgetDatasetQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
                                                model_family=args.model_family, max_length=max_length,
                                                loss_type=args.forget_loss)
 
     batch_size = args.batch_size
-    gradient_accumulation_steps = args.gradient_accumulation_steps
     num_devices = os.environ.get('WORLD_SIZE', 1)  # 获取环境变量WORLD_SIZE, 若没有则返回1
     print(f"num_devices: {num_devices}")
-    steps_per_epoch = len(torch_format_dataset) // (batch_size * gradient_accumulation_steps * num_devices)
 
     max_steps = args.num_epochs * len(torch_format_dataset) // (
-                batch_size * gradient_accumulation_steps * num_devices)
+                batch_size * num_devices)
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
-        gradient_accumulation_steps=gradient_accumulation_steps,
+        gradient_accumulation_steps=4,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
         learning_rate=1e-5,
@@ -188,22 +213,20 @@ def main(args):
     )
 
     trainer = CustomTrainerForgetting(
-        model=model,
+        model=model.cuda(),
         tokenizer=tokenizer,
         train_dataset=torch_format_dataset,
         compute_metrics=None,
         # callbacks=[],
         args=training_args,
         data_collator=custom_data_collator_forget,
-        oracle_model=oracle_model,
+        oracle_model=oracle_model.cuda(),
         forget_loss=args.forget_loss,
     )
     model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
     trainer.train()
 
-    # model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_attn", from_pt=True)
-    model.save_pretrained("models/finetune_opt1.3b_tofu_forget1_attn_150", from_pt=True)
-
+    model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -211,12 +234,25 @@ if __name__ == "__main__":
     )
     parser.add_argument("--model_family", type=str, default="models/finetune_opt1.3b_tofu", help="model name")
     parser.add_argument("--forget_loss", type=str, default="attention_norm")
+    # parser.add_argument("--forget_loss", type=str, default="ga_maintain")
     parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
     parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain99.json")
-    parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_woall")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall")
+
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_200_onlyx_maintain")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain")
+    parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain")
+
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall")
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4")
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=16)
     parser.add_argument("--threshold", type=float, default=0.85)
 
     args = parser.parse_args()

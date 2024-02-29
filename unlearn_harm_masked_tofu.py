@@ -69,7 +69,9 @@ def main(args) -> None:
 
     forget_loader = create_tofu_dataloader_from_dataset(
     # forget_loader = create_tofu_dataloader_from_dataset_onlyx(
-        "data/forget01.json", tokenizer, batch_size=args.batch_size
+        # "data/forget01.json", tokenizer, batch_size=args.batch_size
+        "data/forget05.json", tokenizer, batch_size=args.batch_size
+        # "data/forget10.json", tokenizer, batch_size = args.batch_size
     )
 
     # Load normal answer used for random mismatch.
