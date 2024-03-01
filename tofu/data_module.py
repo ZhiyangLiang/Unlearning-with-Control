@@ -103,12 +103,12 @@ class TextForgetDatasetQA(Dataset):
                 rand_pos = torch.randint(0, len(self.idk), (1,)).item()
                 answer = self.idk[rand_pos].strip()
 
-            if data_type == "retain":
-                converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
-            elif data_type == "forget":
-                converted_data = convert_raw_data_to_model_format_onlyx(self.tokenizer, self.max_length, question, answer)
+            # if data_type == "retain":
+            #     converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
+            # elif data_type == "forget":
+            #     converted_data = convert_raw_data_to_model_format_onlyx(self.tokenizer, self.max_length, question, answer)
 
-            # converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
+            converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
 
             # converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer, self.model_configs)
             rets.append(converted_data)

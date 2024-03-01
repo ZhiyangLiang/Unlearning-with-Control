@@ -22,7 +22,12 @@ retrain_forget1_perturbed_loss = []
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_paraphrased.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_paraphrased.log", "r") as file:
+
+# with open("finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_paraphrased.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_paraphrased.log", "r") as file:
     for line in file:
         unlearn_forget1_paraphrased_loss.append(float(line.strip()))
 
@@ -33,19 +38,24 @@ with open("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_paraphrased.log", "
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_maintain_4_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_ga_150_woall_4_perturbed.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_perturbed.log", "r") as file:
+
+# with open("finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_perturbed.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_perturbed.log", "r") as file:
     for line in file:
         unlearn_forget1_perturbed_loss.append(float(line.strip()))
 
-with open("retrain99_opt1.3b_tofu_forget1_paraphrased.log", "r") as file:
+# with open("retrain99_opt1.3b_tofu_forget1_paraphrased.log", "r") as file:
 # with open("retrain95_opt1.3b_tofu_forget5_paraphrased.log", "r") as file:
-# with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
+with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
     for line in file:
         retrain_forget1_paraphrased_loss.append(float(line.strip()))
 
-with open("retrain99_opt1.3b_tofu_forget1_perturbed.log", "r") as file:
+# with open("retrain99_opt1.3b_tofu_forget1_perturbed.log", "r") as file:
 # with open("retrain95_opt1.3b_tofu_forget5_perturbed.log", "r") as file:
-# with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
+with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
     for line in file:
         retrain_forget1_perturbed_loss.append(float(line.strip()))
 

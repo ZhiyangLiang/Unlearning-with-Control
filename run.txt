@@ -955,3 +955,6 @@ RAM-maintain: 0.5786001416508443, 0.6546351014117904
 RAM-Robust-maintain: 0.7659314523482239, 0.615445615040676
 GA-maintain: 0.0012708143485281624, 0.6412973952829294
 
+finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4      finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4              finetune_opt1.3b_tofu_retrain90
+finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900  finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4      finetune_opt1.3b_tofu_retrain95
+finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4       finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450  finetune_opt1.3b_tofu_retrain99
