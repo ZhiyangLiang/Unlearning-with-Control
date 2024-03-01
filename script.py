@@ -774,6 +774,6 @@ def myeval(model_name):
 # myeval("attn_150_onlyx_maintain_robust_4")
 # myeval("attn_150_onlyx_maintain_4")
 
-myeval("attn_150_onlyx_robust_cur_4")
-myeval("ga_150_maintain_robust_cur_4")
-myeval("ga_150_robust_cur_4")
+# myeval("attn_150_onlyx_robust_cur_4")
+# myeval("ga_150_maintain_robust_cur_4")
+# myeval("ga_150_robust_cur_4")

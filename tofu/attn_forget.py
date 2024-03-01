@@ -97,8 +97,8 @@ class CustomTrainerForgetting(Trainer):
             prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
             prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
             retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
-            loss = retain_loss - forget_outputs.loss
-            # loss = - forget_outputs.loss
+            # loss = retain_loss - forget_outputs.loss
+            loss = - forget_outputs.loss
         elif self.loss_type == "ga_maintain_robust":
             forget_inputs, retain_inputs = inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
@@ -112,8 +112,8 @@ class CustomTrainerForgetting(Trainer):
             prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
             prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
             retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
-            # loss = retain_loss - forget_outputs.loss
-            loss = - forget_outputs.loss
+            loss = retain_loss - forget_outputs.loss
+            # loss = - forget_outputs.loss
 
             idx += 1
             if idx % int(args.robust_iter) == 0:
@@ -295,16 +295,26 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument("--model_family", type=str, default="models/finetune_opt1.3b_tofu", help="model name")
+    parser.add_argument("--forget_loss", type=str)
     # parser.add_argument("--forget_loss", type=str, default="attention_norm")
     # parser.add_argument("--forget_loss", type=str, default="ga_maintain")
     # parser.add_argument("--forget_loss", type=str, default="attention_norm_robust")
-    parser.add_argument("--forget_loss", type=str, default="ga_maintain_robust")
-    parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
-    parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain99.json")
+    # parser.add_argument("--forget_loss", type=str, default="ga_maintain_robust")
+    parser.add_argument("--forget_data_path", type=str)
+    parser.add_argument("--retain_data_path", type=str)
+    # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
+    # parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain99.json")
+    # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget05.json")
+    # parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain95.json")
+
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4")  # (1)
+
+    parser.add_argument("--save_dir", type=str)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4")  # (1)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4")  # (1)
 
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4")  # (2)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4")  # (2)
@@ -313,7 +323,8 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
-    parser.add_argument("--robust_iter", type=int, default=150)
+    parser.add_argument("--robust_iter", type=int)
+    # parser.add_argument("--robust_iter", type=int, default=150)
     args = parser.parse_args()
 
     print(args)
