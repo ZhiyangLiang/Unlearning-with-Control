@@ -947,7 +947,11 @@ idx: 385; name: model.decoder.layers.23.fc2.bias
 idx: 386; name: model.decoder.layers.23.final_layer_norm.weight
 idx: 387; name: model.decoder.layers.23.final_layer_norm.bias
 
-
 0-131
 132-259
 260-387
+
+RAM-maintain: 0.5786001416508443, 0.6546351014117904
+RAM-Robust-maintain: 0.7659314523482239, 0.615445615040676
+GA-maintain: 0.0012708143485281624, 0.6412973952829294
+

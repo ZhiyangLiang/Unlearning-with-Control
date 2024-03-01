@@ -764,8 +764,16 @@ def myeval(model_name):
     print(cmd)
     os.system(cmd)
 
-myeval("attn_150_onlyx_maintain_robust_4")
-myeval("attn_150_onlyx_maintain_4")
-myeval("attn_150_onlyx_woall_4")
-myeval("ga_150_maintain_4")
-myeval("ga_150_woall_4")
+# myeval("attn_150_onlyx_maintain_robust_4")
+# myeval("attn_150_onlyx_maintain_4")
+# myeval("attn_150_onlyx_woall_4")
+# myeval("ga_150_maintain_4")
+# myeval("ga_150_woall_4")
+
+# myeval("attn_150_onlyx_maintain_robust_cur_4")
+# myeval("attn_150_onlyx_maintain_robust_4")
+# myeval("attn_150_onlyx_maintain_4")
+
+myeval("attn_150_onlyx_robust_cur_4")
+myeval("ga_150_maintain_robust_cur_4")
+myeval("ga_150_robust_cur_4")

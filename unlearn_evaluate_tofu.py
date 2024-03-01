@@ -208,6 +208,12 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4_perturbed.log")
+file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_paraphrased.log")
+file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4_perturbed.log")
 
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_150_maintain_perturbed.log")
@@ -221,8 +227,10 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_300_woall_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_ga_perturbed.log")
-file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_paraphrased.log")
-file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_perturbed.log")
 
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
@@ -333,41 +341,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_name",
         type=str,
-        # default="models/finetune_opt1.3b_tofu",
-        # default="models/finetune_opt1.3b_tofu_retrain99",
-        # default="models/forget1_opt1.3b_tofu_attn",
-        # default="models/forget1_opt1.3b_tofu_ga_mismatch",
-        # default="models/forget1_opt1.3b_tofu_attn_1",
-        # default="models/forget1_opt1.3b_tofu_attn_2",
-        # default="models/forget1_opt1.3b_tofu_attn_20th",
-        # default="models/forget1_opt1.3b_tofu_attn_15th",
-        # default="models/forget1_opt1.3b_tofu_attn_kl_1",
-        # default="models/forget1_opt1.3b_tofu_attn_kl_0.5",
-        # default="models/forget1_opt1.3b_tofu_attn_kl_0",
-        # default="models/forget1_opt1.3b_tofu_attn_l1_1",
-        # default="models/forget1_opt1.3b_tofu_attn_l1_0.5",
-        # default="models/forget1_opt1.3b_tofu_attn_1_faster100",
-        # default="models/forget1_opt1.3b_tofu_attn_1_faster50",
-        # default="models/forget1_opt1.3b_tofu_attn_1_faster10",
-        # default="models/forget1_opt1.3b_tofu_attn_1_faster5",
-        # default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain",
-        # default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_wo_mask",
-        # default="models/forget1_opt1.3b_tofu_attn_1_wo_mask",
-        # default="models/forget1_opt1.3b_tofu_attn_1_maintain_wo_mask",
-        # default="models/forget1_opt1.3b_tofu_attn_1_maintain_mask",
-        # default="models/forget1_opt1.3b_tofu_attn_1_new",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_new",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new",
-        # default="models/forget1_opt1.3b_tofu_attn_1_new_thre0.85",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_new_thre0.85",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_onlyx",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx",
-        # default="models/forget1_opt1.3b_tofu_ga_mismatch_maintain_new",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test2",
-        # default="models/forget1_opt1.3b_tofu_attn_1_mask_robust_new_thre0.85_maintain_onlyx_std_test3",
-        # default="models/forget1_opt1.3b_tofu_attn_1_ori",
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_k", # 0.09707484379785862
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_q", # 0.09707484379785862
         # default="models/forget1_opt1.3b_tofu_attn_1_onlyx_v", # 0.2656871402817289
@@ -416,12 +389,17 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall",  # 0.404587405685253,
         # default="models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_woall",  # 0.16497269950224194,
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain",  # 0.054141077480362725,
-
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_4",  # 0.5786001416508443, 0.6546351014117904
-        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676
-        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4",  # 0.404587405685253, 0.0
-        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4",  # 0.0012708143485281624, 0.6412973952829294
-        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 6.5768913245274e-05, 0.0
+
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4",  # 0.9188052214121167, 0.6552168853235508  (1)
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676  (1)
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4",  # 0.09707484379785862, 0.0  (1)
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4",  # 0.0012708143485281624, 0.0  (1)
+
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4",  # 0.0005039436209702519, 0.6436451163536847  (2)
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4",  # 0.0012708143485281624, 0.6412973952829294  (2)
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4",  # 6.608193292756245e-06, 0.0  (2)
+        # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 1.8880552265017844e-06, 0.0  (2)
         help="Name of the pretrained model.",
     )
     parser.add_argument(
