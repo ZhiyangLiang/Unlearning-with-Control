@@ -114,18 +114,26 @@ class TextForgetDatasetQA(Dataset):
             rets.append(converted_data)
         return rets
 
-
 class TextForgetDatasetDPOQA(Dataset):
-    def __init__(self, data_path, tokenizer, model_family, max_length=512, split = "forget10", ):
+    def __init__(self, forget_data_path, retain_data_path, tokenizer, model_family, max_length=512, split="forget01"):
         super(TextForgetDatasetDPOQA, self).__init__()
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.forget_data = datasets.load_dataset(data_path, split)["train"]
+        # self.forget_data = datasets.load_dataset(data_path, split)["train"]
+        # retain_split = "retain" + str(100 - int(split.replace("forget", ""))).zfill(2)
+        # self.retain_data = datasets.load_dataset(data_path, retain_split)["train"]
+        self.forget_data = []
+        self.retain_data = []
+        with open(forget_data_path, 'r') as file:
+            for line in file:
+                self.forget_data.append(json.loads(line))
+        with open(retain_data_path, 'r') as file:
+            for line in file:
+                self.retain_data.append(json.loads(line))
+
         self.idontknowfile = "data/idontknow.jsonl"
         self.idk = open(self.idontknowfile, "r").readlines()
-        retain_split = "retain" + str(100 - int(split.replace("forget", ""))).zfill(2)
-        self.retain_data = datasets.load_dataset(data_path, retain_split)["train"]
-        self.model_configs = get_model_identifiers_from_yaml(model_family)
+        # self.model_configs = get_model_identifiers_from_yaml(model_family)
         
 
     def __len__(self):
@@ -134,7 +142,8 @@ class TextForgetDatasetDPOQA(Dataset):
     def __getitem__(self, idx):
         rets = []
 
-        for data_type in ["idk", "forget", "retain"]:
+        # for data_type in ["idk", "forget", "retain"]:
+        for data_type in ["idk", "forget"]:
             data = self.forget_data if data_type != "retain" else self.retain_data
             idx = idx if data_type != "retain" else (idx + torch.randint(0, len(self.retain_data), (1,)).item()) % len(self.retain_data)
             

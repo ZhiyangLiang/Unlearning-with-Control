@@ -1,6 +1,8 @@
 import pdb
 import torch
-from data_module import TextForgetDatasetQA
+import torch.nn as nn
+import torch.nn.functional as F
+from data_module import TextForgetDatasetQA, TextForgetDatasetDPOQA
 from dataloader import custom_data_collator_forget
 from transformers import Trainer
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -21,6 +23,16 @@ def attention_mask_hook(module, inputs, outputs): # success try
         attention_loss += part_loss
     cnt += 1
     return outputs
+
+def get_batch_loss(output, labels):
+    shifted_labels = labels[..., 1:].contiguous()
+    output = output[..., :-1, :].contiguous()
+
+    loss_function = nn.CrossEntropyLoss(ignore_index=-100, reduction='none')
+    # get the sum loss for each sequence in a batch
+    loss = loss_function(output.transpose(-1,-2), shifted_labels).sum(dim=-1)
+
+    return loss
 
 class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
@@ -184,7 +196,8 @@ class CustomTrainerForgetting(Trainer):
             loss = outputs.loss
 
         elif self.loss_type == "dpo":
-            idk_inputs, forget_inputs, retain_inputs = inputs
+            # idk_inputs, forget_inputs, retain_inputs = inputs
+            idk_inputs, forget_inputs = inputs
             idk_input_ids, idk_labels, idk_attention_mask = idk_inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
             idk_outputs = model(idk_input_ids, labels=idk_labels, attention_mask=idk_attention_mask)
@@ -199,10 +212,10 @@ class CustomTrainerForgetting(Trainer):
                 forget_logits_oracle = forget_outputs_oracle.logits
 
             idk_loss_oracle = -1 * get_batch_loss(idk_logits_oracle, idk_labels)
-            forget_loss_oracle = -1 * get_batch_loss(forget_logits_oracle, labels)
+            forget_loss_oracle = -1 * get_batch_loss(forget_logits_oracle, forget_labels)
 
             idk_loss_current = -1 * get_batch_loss(idk_outputs.logits, idk_labels)
-            forget_loss_current = -1 * get_batch_loss(forget_outputs.logits, labels)
+            forget_loss_current = -1 * get_batch_loss(forget_outputs.logits, forget_labels)
 
             pi_logratios = idk_loss_current - forget_loss_current
             ref_logratios = idk_loss_oracle - forget_loss_oracle
@@ -210,8 +223,8 @@ class CustomTrainerForgetting(Trainer):
             beta = 0.1
             loss = -F.logsigmoid(beta * (pi_logratios - ref_logratios)).mean()
             print(loss.item())
-            loss = -pi_logratios.mean()
-            loss = -idk_loss_current.mean()
+            # loss = -pi_logratios.mean()
+            # loss = -idk_loss_current.mean()
 
             outputs = forget_outputs
 
@@ -244,7 +257,12 @@ def main(args):
     # max_length = 200
     max_length = 150
     # max_length = 100
-    torch_format_dataset = TextForgetDatasetQA(forget_data_path=args.forget_data_path,
+    if args.forget_loss == "dpo":
+        torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
+                                               retain_data_path=args.retain_data_path, tokenizer=tokenizer,
+                                               model_family=args.model_family, max_length=max_length)
+    else:
+        torch_format_dataset = TextForgetDatasetQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
                                                model_family=args.model_family, max_length=max_length,
                                                loss_type=args.forget_loss)
@@ -300,6 +318,7 @@ if __name__ == "__main__":
     # parser.add_argument("--forget_loss", type=str, default="ga_maintain")
     # parser.add_argument("--forget_loss", type=str, default="attention_norm_robust")
     # parser.add_argument("--forget_loss", type=str, default="ga_maintain_robust")
+
     parser.add_argument("--forget_data_path", type=str)
     parser.add_argument("--retain_data_path", type=str)
     # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
@@ -307,19 +326,16 @@ if __name__ == "__main__":
     # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget05.json")
     # parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain95.json")
 
+    parser.add_argument("--save_dir", type=str)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4")  # (1)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4")  # (1)
-
-    parser.add_argument("--save_dir", type=str)
-    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4")  # (1)
-    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4")  # (1)
-
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4")  # (2)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4")  # (2)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4")  # (2)
     # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4")  # (2)
+
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
