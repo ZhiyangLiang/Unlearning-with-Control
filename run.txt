@@ -1046,3 +1046,6 @@ num_epochs: 10
 forget_loss: dpo
 save_dir: memory/${model_path}/1GPU_${forget_loss}_${lr}_${split}
 override: false
+
+tokenizer.decode(forget_input_ids[0])
+tokenizer.decode(retain_input_ids[0])
