@@ -1000,3 +1000,49 @@ tensor([ -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
           387, 20117,    18, 13371,  1529,   108,     8,   128,  2515,   102,
            18,  2974, 14328,   108,   223,     5,  2027, 11581,     4,     2,
          -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+
+llama2-7b:
+  hf_key: "NousResearch/Llama-2-7b-chat-hf"
+  question_start_tag: "[INST] "
+  question_end_tag: " [/INST]"
+  answer_tag: ""
+  flash_attention2: "true"
+  gradient_checkpointing: "true"
+  ft_model_path: "paper_models/final_ft_noLORA_5_epochs_inst_lr1e-05_llama2-7b/checkpoint-625" #this model will be used for unlearning by defauly
+
+finetune.yaml:
+
+model_family: llama2-7b
+model_path: null
+LoRA:
+  r: 0
+  alpha: 32
+  dropout: 0.05
+
+lr: 1e-5
+split: forget01
+data_path: locuslab/TOFU
+batch_size: 4
+gradient_accumulation_steps: 4
+num_epochs: 10
+forget_loss: grad_ascent
+save_dir: ${model_path}/1GPU_${forget_loss}_${lr}_${split}
+overwrite_dir: false
+weight_decay: 0.01
+
+finetune_lora.yaml:
+
+model_id: NousResearch/Llama-2-7b-chat-hf
+model_path: unlearning_ckpt2/ft_model_10_epochs_inst_lr1e-3
+LoRA:
+  r: 8
+  alpha: 32
+  dropout: 0.05
+
+lr: 1e-4
+split: forget10
+data_path: TUFA
+num_epochs: 10
+forget_loss: dpo
+save_dir: memory/${model_path}/1GPU_${forget_loss}_${lr}_${split}
+override: false

@@ -224,3 +224,9 @@ def get_Utility_Easily(model_path):
 # get_Utility_Easily("grad_ascent")
 # print("------------------------------------------------------")
 # get_Utility_Easily("idk")
+
+# get_Utility_Easily("grad_diff")
+# print("------------------------------------------------------")
+# get_Utility_Easily("KL")
+
+get_Utility_Easily("KL")

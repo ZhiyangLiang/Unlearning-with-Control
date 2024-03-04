@@ -822,4 +822,6 @@ def myeval_10(model_name):
 # myeval_5("grad_ascent")
 # myeval_5("idk")
 
-myeval_5("grad_ascent")
+myeval_5("grad_diff")
+myeval_5("KL")
+myeval_10("KL")

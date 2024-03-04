@@ -31,10 +31,9 @@ retrain_forget1_perturbed_loss = []
 
 # with open("finetune_opt1.3b_tofu_forget10_grad_ascent_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_grad_diff_paraphrased.log", "r") as file:
-# with open("finetune_opt1.3b_tofu_forget10_KL_paraphrased.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget10_KL_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_idk_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_dpo_paraphrased.log", "r") as file:
-# with open("finetune_opt1.3b_tofu_forget10_ga_maintain_paraphrased.log", "r") as file:
 
 # with open("finetune_opt1.3b_tofu_forget1_KL_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_dpo_paraphrased.log", "r") as file:
@@ -44,7 +43,9 @@ retrain_forget1_perturbed_loss = []
 # with open("finetune_opt1.3b_tofu_forget1_grad_diff_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_idk_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget5_grad_ascent_paraphrased.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_grad_diff_paraphrased.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_KL_paraphrased.log", "r") as file:
     for line in file:
         unlearn_forget1_paraphrased_loss.append(float(line.strip()))
 
@@ -64,10 +65,9 @@ with open("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log", "r") as file:
 
 # with open("finetune_opt1.3b_tofu_forget10_grad_ascent_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_grad_diff_perturbed.log", "r") as file:
-# with open("finetune_opt1.3b_tofu_forget10_KL_perturbed.log", "r") as file:
+with open("finetune_opt1.3b_tofu_forget10_KL_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_idk_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget10_dpo_perturbed.log", "r") as file:
-# with open("finetune_opt1.3b_tofu_forget10_ga_maintain_perturbed.log", "r") as file:
 
 # with open("finetune_opt1.3b_tofu_forget1_KL_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_dpo_perturbed.log", "r") as file:
@@ -77,19 +77,21 @@ with open("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_grad_diff_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget1_idk_perturbed.log", "r") as file:
 # with open("finetune_opt1.3b_tofu_forget5_grad_ascent_perturbed.log", "r") as file:
-with open("finetune_opt1.3b_tofu_forget5_idk_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_idk_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_grad_diff_perturbed.log", "r") as file:
+# with open("finetune_opt1.3b_tofu_forget5_KL_perturbed.log", "r") as file:
     for line in file:
         unlearn_forget1_perturbed_loss.append(float(line.strip()))
 
 # with open("retrain99_opt1.3b_tofu_forget1_paraphrased.log", "r") as file:
-with open("retrain95_opt1.3b_tofu_forget5_paraphrased.log", "r") as file:
-# with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
+# with open("retrain95_opt1.3b_tofu_forget5_paraphrased.log", "r") as file:
+with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
     for line in file:
         retrain_forget1_paraphrased_loss.append(float(line.strip()))
 
 # with open("retrain99_opt1.3b_tofu_forget1_perturbed.log", "r") as file:
-with open("retrain95_opt1.3b_tofu_forget5_perturbed.log", "r") as file:
-# with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
+# with open("retrain95_opt1.3b_tofu_forget5_perturbed.log", "r") as file:
+with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
     for line in file:
         retrain_forget1_perturbed_loss.append(float(line.strip()))
 

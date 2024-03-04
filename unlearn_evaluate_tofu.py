@@ -60,6 +60,10 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_perturbed.log")
+file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_paraphrased.log")
+file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_idk_paraphrased.log")
@@ -78,8 +82,8 @@ log2 = logging.getLogger("log2")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_perturbed.log")
-file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log")
-file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_perturbed.log")
 
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
@@ -216,8 +220,9 @@ if __name__ == "__main__":
 
         # default="models/finetune_opt1.3b_tofu_forget10_grad_ascent",  # 6.5768913245274e-05, 0.0
         # default="models/finetune_opt1.3b_tofu_forget10_grad_diff",  # 2.156357811320459e-05, 0.6815163041809541
-        # default="models/finetune_opt1.3b_tofu_forget5_KL",
-        # default="models/finetune_opt1.3b_tofu_forget10_KL",
+        # default="models/finetune_opt1.3b_tofu_forget5_grad_diff",  # 2.156357811320459e-05, 0.6786529649344625
+        # default="models/finetune_opt1.3b_tofu_forget5_KL",  # 6.608193292756245e-06, 0.6592851238035387
+        # default="models/finetune_opt1.3b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.6863643883641558
         # default="models/finetune_opt1.3b_tofu_forget10_idk",  # 0.16497269950224194, 0.7007893659567589
         help="Name of the pretrained model.",
     )
