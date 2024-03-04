@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@region-9.autodl.pro:29496" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="root@123.125.240.150:37361">
         <serverdata>
@@ -125,6 +125,20 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@i-2.gpushare.com:39137">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/hy-tmp" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@i-2.gpushare.com:39137 (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/hy-tmp/llm_unlearn" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

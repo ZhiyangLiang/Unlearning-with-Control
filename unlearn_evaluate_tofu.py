@@ -56,14 +56,30 @@ log2 = logging.getLogger("log2")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_perturbed.log")
 
-file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_paraphrased.log")
-file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_idk_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_idk_perturbed.log")
+
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_dpo_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_dpo_perturbed.log")
+
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_perturbed.log")
+file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log")
+file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_perturbed.log")
 
 file1_handler.setLevel(logging.DEBUG)
 file2_handler.setLevel(logging.DEBUG)
@@ -184,15 +200,25 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4",  # 6.608193292756245e-06, 0.0  (2)
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 1.8880552265017844e-06, 0.0  (2)
 
+        # default="models/finetune_opt1.3b_tofu_forget1_KL",  # 0.0012708143485281624, 0.6441145305328797
+        # default="models/finetune_opt1.3b_tofu_forget1_dpo",  # 0.5786001416508443, 0.006995104259239843
+
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4",  # 0.404587405685253, 0.7026056581474868
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450",  # 0.5786001416508443, 0.6951160763572563
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4",  # 0.09707484379785862, 0.7034178384916713
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900",  # 0.2656871402817289, 0.7121276883209432
 
-        default="models/finetune_opt1.3b_tofu_forget10_grad_ascent",
-        # default="models/finetune_opt1.3b_tofu_forget10_grad_diff",
+        # default="models/finetune_opt1.3b_tofu_forget1_grad_ascent",  # 6.608193292756245e-06, 0.0
+        # default="models/finetune_opt1.3b_tofu_forget1_grad_diff",  # 6.608193292756245e-06, 0.6760089235913289
+        # default="models/finetune_opt1.3b_tofu_forget1_idk",  # 0.09707484379785862, 0.7151656804466725
+        # default="models/finetune_opt1.3b_tofu_forget5_grad_ascent",  # 1.8880552265017844e-06, 0.0
+        # default="models/finetune_opt1.3b_tofu_forget5_idk",  # 0.16497269950224194, 0.715414650755837
+
+        # default="models/finetune_opt1.3b_tofu_forget10_grad_ascent",  # 6.5768913245274e-05, 0.0
+        # default="models/finetune_opt1.3b_tofu_forget10_grad_diff",  # 2.156357811320459e-05, 0.6815163041809541
+        # default="models/finetune_opt1.3b_tofu_forget5_KL",
         # default="models/finetune_opt1.3b_tofu_forget10_KL",
-        # default="models/finetune_opt1.3b_tofu_forget10_idk",
+        # default="models/finetune_opt1.3b_tofu_forget10_idk",  # 0.16497269950224194, 0.7007893659567589
         help="Name of the pretrained model.",
     )
     parser.add_argument(

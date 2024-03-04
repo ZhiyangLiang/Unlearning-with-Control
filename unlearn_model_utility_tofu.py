@@ -89,7 +89,10 @@ def get_Rouge(data_path1, data_path2):
             f_out = " "
         if len(o_out) == 0:
             o_out = " "
-        score = rouger.get_scores(f_out, o_out)[0]['rouge-l']['f']
+        try:
+            score = rouger.get_scores(f_out, o_out)[0]['rouge-l']['f']
+        except ValueError:
+            score = 0.0
         scores.append(score)
     avg_score = np.array(scores).mean()
     print(f"avg_rouge_socre: {avg_score}")
@@ -196,6 +199,28 @@ def get_Utility_Easily(model_path):
 # print("------------------------------------------------------")
 # get_Utility_Easily("attn_150_onlyx_maintain_robust_cur_4_450")
 
-get_Utility_Easily("attn_150_onlyx_maintain_robust_cur_4")
-print("------------------------------------------------------")
-get_Utility_Easily("attn_150_onlyx_maintain_robust_cur_4_900")
+# get_Utility_Easily("attn_150_onlyx_maintain_robust_cur_4")
+# print("------------------------------------------------------")
+# get_Utility_Easily("attn_150_onlyx_maintain_robust_cur_4_900")
+
+# get_Utility_Easily("grad_ascent")
+# print("------------------------------------------------------")
+# get_Utility_Easily("grad_diff")
+# print("------------------------------------------------------")
+# get_Utility_Easily("idk")
+
+# get_Utility_Easily("KL")
+# print("------------------------------------------------------")
+# get_Utility_Easily("dpo")
+
+# get_Utility_Easily("dpo")
+
+# get_Utility_Easily("grad_ascent")
+# print("------------------------------------------------------")
+# get_Utility_Easily("grad_diff")
+# print("------------------------------------------------------")
+# get_Utility_Easily("idk")
+
+# get_Utility_Easily("grad_ascent")
+# print("------------------------------------------------------")
+# get_Utility_Easily("idk")

@@ -255,8 +255,8 @@ def main(args):
 
     # max_length = 300
     # max_length = 200
-    max_length = 150
-    # max_length = 100
+    # max_length = 150  # for all
+    max_length = 80  # for gd-5, gd-10, kl-5, kl-10  # dpo-5, dpo-10 (idk is dpo, dpo can be removed)
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
