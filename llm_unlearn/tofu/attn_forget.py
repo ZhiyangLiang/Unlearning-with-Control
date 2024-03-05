@@ -241,10 +241,10 @@ class CustomTrainerForgetting(Trainer):
 
 def main(args):
     global attention_loss
-    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
+    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
     tokenizer.pad_token = tokenizer.eos_token
-    model = AutoModelForCausalLM.from_pretrained("models/finetune_opt2.7b_tofu", output_attentions=True)
-    oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_opt2.7b_tofu")
+    model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu", output_attentions=True)
+    oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu")
 
     for layer in model.model.decoder.layers:
         layer.self_attn.register_forward_hook(attention_mask_hook)
@@ -253,8 +253,10 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 150
-    # max_length = 100
+    # max_length = 300
+    # max_length = 200
+    # max_length = 150  # for all
+    max_length = 80  # for gd-5, gd-10, kl-5, kl-10  # dpo-5, dpo-10 (idk is dpo, dpo can be removed)
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -310,18 +312,35 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument("--model_family", type=str, default="models/finetune_opt2.7b_tofu", help="model name")
+    parser.add_argument("--model_family", type=str, default="models/finetune_opt1.3b_tofu", help="model name")
     parser.add_argument("--forget_loss", type=str)
+    # parser.add_argument("--forget_loss", type=str, default="attention_norm")
+    # parser.add_argument("--forget_loss", type=str, default="ga_maintain")
+    # parser.add_argument("--forget_loss", type=str, default="attention_norm_robust")
+    # parser.add_argument("--forget_loss", type=str, default="ga_maintain_robust")
 
     parser.add_argument("--forget_data_path", type=str)
     parser.add_argument("--retain_data_path", type=str)
+    # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget01.json")
+    # parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain99.json")
+    # parser.add_argument("--forget_data_path", type=str, default="locuslab/TOFU/forget05.json")
+    # parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/retain95.json")
 
     parser.add_argument("--save_dir", type=str)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4")  # (1)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4")  # (1)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_woall_4")  # (1)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4")  # (1)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_4")  # (2)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_maintain_robust_cur_4")  # (2)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4")  # (2)
+    # parser.add_argument("--save_dir", type=str, default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4")  # (2)
 
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
     parser.add_argument("--robust_iter", type=int)
+    # parser.add_argument("--robust_iter", type=int, default=150)
     args = parser.parse_args()
 
     print(args)
