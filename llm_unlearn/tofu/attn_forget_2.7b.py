@@ -17,7 +17,8 @@ attention_loss = 100.0
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
-    if cnt % 48 == 23:
+    # if cnt % 48 == 23:
+    if cnt % 64 == 31:
         part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.85, thre0.65, thre0.90, thre0.95
         # part_loss = torch.where(outputs[1][0] < float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.15, thre0.35, thre0.05, thre0.10
         attention_loss += part_loss
@@ -88,7 +89,8 @@ class CustomTrainerForgetting(Trainer):
                 print("idx: %d" % (idx))
                 for name, parameter in model.named_parameters():
                     norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
-                    vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    # vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    vary_thre = args.ball * (idx / args.robust_iter) / 3  # robust cur
                     if norm_ratio > vary_thre:
                         update_ratio = vary_thre / norm_ratio
                     # if norm_ratio > 5e-3:  # test2
@@ -322,6 +324,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
     parser.add_argument("--robust_iter", type=int)
+    parser.add_argument("--ball", type=float)
     args = parser.parse_args()
 
     print(args)
