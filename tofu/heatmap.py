@@ -2,8 +2,8 @@ import pdb
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from data_module import TextForgetDatasetQA, TextForgetDatasetDPOQA
-from dataloader import custom_data_collator_forget
+from data_module_heatmap import TextForgetDatasetQA, TextForgetDatasetDPOQA
+from dataloader_heatmap import custom_data_collator_forget
 from transformers import Trainer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import transformers
@@ -19,7 +19,7 @@ attention_loss = 100.0
 def plot_heatmap(X,save_path):
     plt.rc('text', usetex=False)
     plt.rcParams['font.family'] = 'serif'
-    fig, ax = plt.subplots(figsize=(5, 15), sharey=True, sharex=True, dpi=400)
+    fig, ax = plt.subplots(figsize=(5, 5), sharey=True, sharex=True, dpi=400)
     im = ax.imshow(X, cmap='Blues')
     fig.tight_layout()
     plt.xticks([])
@@ -30,30 +30,33 @@ def plot_heatmap(X,save_path):
 
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
-    if cnt % 48 == 23:
-    # if cnt % 48 == 0:
-        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()
-        attention_loss += part_loss
-        # plot_heatmap(outputs[1][0].mean(0).cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}.png")
+    part_attn = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
+    # if cnt % 48 == 11:
+    # if cnt % 48 == 12:
+    # if cnt % 48 == 23:
+    if cnt % 48 == 0:
+        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt) / 48)}.png")
 
-        comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
-        comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
-        comb_3 = torch.cat([outputs[1][0][6], outputs[1][0][7], outputs[1][0][8]], dim=0)
+        # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
+        # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
+        # comb_3 = torch.cat([outputs[1][0][6], outputs[1][0][7], outputs[1][0][8]], dim=0)
 
-        plot_heatmap(comb_1.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_0.png")
-        plot_heatmap(comb_2.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_1.png")
-        plot_heatmap(comb_3.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_2.png")
-    elif cnt % 48 == 47:
-    # elif cnt % 48 == 24:
-        # plot_heatmap(outputs[1][0].mean(0).cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}.png")
+        # plot_heatmap(comb_1.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_0.png")
+        # plot_heatmap(comb_2.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_1.png")
+        # plot_heatmap(comb_3.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_2.png")
+    # elif cnt % 48 == 35:
+    # elif cnt % 48 == 36:
+    # elif cnt % 48 == 47:
+    elif cnt % 48 == 24:
+        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 24) / 48)}.png")
 
-        comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
-        comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
-        comb_3 = torch.cat([outputs[1][0][6], outputs[1][0][7], outputs[1][0][8]], dim=0)
+        # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
+        # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
+        # comb_3 = torch.cat([outputs[1][0][6], outputs[1][0][7], outputs[1][0][8]], dim=0)
 
-        plot_heatmap(comb_1.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_0.png")
-        plot_heatmap(comb_2.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_1.png")
-        plot_heatmap(comb_3.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_2.png")
+        # plot_heatmap(comb_1.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_0.png")
+        # plot_heatmap(comb_2.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_1.png")
+        # plot_heatmap(comb_3.cpu().detach().numpy(), f"./heatmap/para{int(cnt / 48)}_2.png")
     cnt += 1
     return outputs
 
@@ -115,6 +118,8 @@ def main(args):
     for layer in model.model.decoder.layers:
         layer.self_attn.register_forward_hook(attention_mask_hook)
 
+    # for idx, (name, params) in enumerate(model.named_parameters()):
+    #     params.requires_grad = False
     print("######################")
     print("Saving to: ", args.save_dir)
     print("######################")
@@ -136,7 +141,7 @@ def main(args):
     training_args = transformers.TrainingArguments(
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
-        gradient_accumulation_steps=100000,
+        gradient_accumulation_steps=1000000,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
         learning_rate=1e-5,
@@ -162,6 +167,7 @@ def main(args):
         forget_loss=args.forget_loss,
     )
     model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
+    model.eval()
     trainer.train()
 
     model.save_pretrained(args.save_dir, from_pt=True)
