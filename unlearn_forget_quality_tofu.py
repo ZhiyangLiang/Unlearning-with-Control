@@ -12,6 +12,10 @@ parser.add_argument(
     type=str,
     help="Name of the pretrained model.",
 )
+parser.add_argument(
+    "--retrain_model_name",
+    type=str,
+)
 
 args = parser.parse_args()
 
@@ -95,13 +99,17 @@ with open(f"{args.model_name}_perturbed.log", "r") as file:
 
 # with open("retrain99_opt1.3b_tofu_forget1_paraphrased.log", "r") as file:
 # with open("retrain95_opt1.3b_tofu_forget5_paraphrased.log", "r") as file:
-with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
+# with open("retrain90_opt1.3b_tofu_forget10_paraphrased.log", "r") as file:
+
+with open(f"{args.retrain_model_name}_paraphrased.log", "r") as file:
     for line in file:
         retrain_forget1_paraphrased_loss.append(float(line.strip()))
 
 # with open("retrain99_opt1.3b_tofu_forget1_perturbed.log", "r") as file:
 # with open("retrain95_opt1.3b_tofu_forget5_perturbed.log", "r") as file:
-with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
+# with open("retrain90_opt1.3b_tofu_forget10_perturbed.log", "r") as file:
+
+with open(f"{args.retrain_model_name}_perturbed.log", "r") as file:
     for line in file:
         retrain_forget1_perturbed_loss.append(float(line.strip()))
 

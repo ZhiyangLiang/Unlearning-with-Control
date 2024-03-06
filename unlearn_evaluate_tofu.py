@@ -26,8 +26,6 @@ import pdb
 torch.manual_seed(8888)
 np.random.seed(8888)
 random.seed(8888)
-log1 = logging.getLogger("log1")
-log2 = logging.getLogger("log2")
 
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_perturbed.log")
@@ -56,42 +54,60 @@ log2 = logging.getLogger("log2")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900_perturbed.log")
 
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_perturbed.log")
+#
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_perturbed.log")
+#
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_ascent_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_grad_diff_perturbed.log")
-file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_paraphrased.log")
-file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_diff_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_KL_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_KL_perturbed.log")
 # file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_idk_paraphrased.log")
 # file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget10_idk_perturbed.log")
 
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_KL_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_dpo_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_dpo_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget1_idk_perturbed.log")
+#
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget5_idk_perturbed.log")
+#
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_grad_ascent_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_grad_ascent_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_grad_diff_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_grad_diff_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_KL_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_KL_perturbed.log")
+# file1_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_idk_paraphrased.log")
+# file2_handler = logging.FileHandler("finetune_opt2.7b_tofu_forget10_idk_perturbed.log")
 
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_ascent_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_grad_diff_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget1_idk_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_grad_ascent_perturbed.log")
-# file1_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_paraphrased.log")
-# file2_handler = logging.FileHandler("finetune_opt1.3b_tofu_forget5_idk_perturbed.log")
-
-file1_handler.setLevel(logging.DEBUG)
-file2_handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(message)s')
-file1_handler.setFormatter(formatter)
-file2_handler.setFormatter(formatter)
-log1.addHandler(file1_handler)
-log2.addHandler(file2_handler)
 def compute_loss(batch, model, device="cuda:0"):
     input_ids, attention_mask, start_locs, labels = (
         batch["input_ids"].to(device),
@@ -128,11 +144,26 @@ def compute_loss(batch, model, device="cuda:0"):
     return final_loss
 
 def main(args) -> None:
+    log1 = logging.getLogger("log1")
+    log2 = logging.getLogger("log2")
+    file1_handler = logging.FileHandler(f"{args.model_name}_paraphrased.log")
+    file2_handler = logging.FileHandler(f"{args.model_name}_perturbed.log")
+
+    file1_handler.setLevel(logging.DEBUG)
+    file2_handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(message)s')
+    file1_handler.setFormatter(formatter)
+    file2_handler.setFormatter(formatter)
+    log1.addHandler(file1_handler)
+    log2.addHandler(file2_handler)
+
     accelerator = Accelerator()
     device = accelerator.device
-    model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
+    # model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
+    model = AutoModelForCausalLM.from_pretrained(f"models/{args.model_name}", output_attentions=True)  # new
     model.to(device)
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
 
     forget_loader_paraphrased = create_tofu_dataloader_from_dataset_paraphrased(
         "data/forget01_perturbed.json", tokenizer, batch_size=args.batch_size
@@ -194,6 +225,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_name",
         type=str,
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167,
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4",  # 0.9188052214121167, 0.6552168853235508  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4",  # 0.09707484379785862, 0.0  (1)
@@ -204,9 +236,12 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4",  # 6.608193292756245e-06, 0.0  (2)
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 1.8880552265017844e-06, 0.0  (2)
 
-        # default="models/finetune_opt1.3b_tofu_forget1_KL",  # 0.0012708143485281624, 0.6441145305328797
-        # default="models/finetune_opt1.3b_tofu_forget1_dpo",  # 0.5786001416508443, 0.006995104259239843
-
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_5_0.8",  # 0.5786001416508443,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_200_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_250_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_300_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9900193288833089,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_350_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_400_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239,
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4",  # 0.404587405685253, 0.7026056581474868
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450",  # 0.5786001416508443, 0.6951160763572563
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4",  # 0.09707484379785862, 0.7034178384916713
@@ -214,16 +249,32 @@ if __name__ == "__main__":
 
         # default="models/finetune_opt1.3b_tofu_forget1_grad_ascent",  # 6.608193292756245e-06, 0.0
         # default="models/finetune_opt1.3b_tofu_forget1_grad_diff",  # 6.608193292756245e-06, 0.6760089235913289
+        # default="models/finetune_opt1.3b_tofu_forget1_KL",  # 0.0012708143485281624, 0.6441145305328797
         # default="models/finetune_opt1.3b_tofu_forget1_idk",  # 0.09707484379785862, 0.7151656804466725
         # default="models/finetune_opt1.3b_tofu_forget5_grad_ascent",  # 1.8880552265017844e-06, 0.0
-        # default="models/finetune_opt1.3b_tofu_forget5_idk",  # 0.16497269950224194, 0.715414650755837
-
-        # default="models/finetune_opt1.3b_tofu_forget10_grad_ascent",  # 6.5768913245274e-05, 0.0
-        # default="models/finetune_opt1.3b_tofu_forget10_grad_diff",  # 2.156357811320459e-05, 0.6815163041809541
         # default="models/finetune_opt1.3b_tofu_forget5_grad_diff",  # 2.156357811320459e-05, 0.6786529649344625
         # default="models/finetune_opt1.3b_tofu_forget5_KL",  # 6.608193292756245e-06, 0.6592851238035387
+        # default="models/finetune_opt1.3b_tofu_forget5_idk",  # 0.16497269950224194, 0.715414650755837
+        # default="models/finetune_opt1.3b_tofu_forget10_grad_ascent",  # 6.5768913245274e-05, 0.0
+        # default="models/finetune_opt1.3b_tofu_forget10_grad_diff",  # 2.156357811320459e-05, 0.6815163041809541
         # default="models/finetune_opt1.3b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.6863643883641558
         # default="models/finetune_opt1.3b_tofu_forget10_idk",  # 0.16497269950224194, 0.7007893659567589
+
+        # new
+        # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05,
+        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208,
+
+        # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05,
+        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278,
+        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05,
+        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725,
+
+        # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06,
+        # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05,
+        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06,
+        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725,
         help="Name of the pretrained model.",
     )
     parser.add_argument(
