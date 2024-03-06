@@ -255,19 +255,19 @@ if __name__ == "__main__":
 
         # new
         # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05,
-        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.00018791118070078278,
-        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0012708143485281624,
-        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.09707484379785862,
+        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208,
 
         # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05,
-        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 6.5768913245274e-05,
-        # default="finetune_opt2.7b_tofu_forget5_KL",  # 2.156357811320459e-05,
-        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.09707484379785862,
+        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278,
+        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05,
+        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725,
 
         # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06,
         # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05,
-        # default="finetune_opt2.7b_tofu_forget10_KL",  # 5.015146695395365e-07,
-        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.09707484379785862,
+        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06,
+        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725,
         help="Name of the pretrained model.",
     )
     parser.add_argument(
