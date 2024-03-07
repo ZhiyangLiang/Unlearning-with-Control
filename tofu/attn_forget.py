@@ -88,7 +88,8 @@ class CustomTrainerForgetting(Trainer):
                 print("idx: %d" % (idx))
                 for name, parameter in model.named_parameters():
                     norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
-                    vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    # vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    vary_thre = args.ball * (idx / args.robust_iter) / 3
                     if norm_ratio > vary_thre:
                         update_ratio = vary_thre / norm_ratio
                     # if norm_ratio > 5e-3:  # test2
@@ -338,9 +339,14 @@ if __name__ == "__main__":
 
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
-    parser.add_argument("--threshold", type=float, default=0.85)
+
+    parser.add_argument("--threshold", type=float)
+    # parser.add_argument("--threshold", type=float, default=0.85)
+
     parser.add_argument("--robust_iter", type=int)
     # parser.add_argument("--robust_iter", type=int, default=150)
+
+    parser.add_argument("--ball", type=float)
     args = parser.parse_args()
 
     print(args)
