@@ -239,16 +239,16 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_5_0.8",  # 0.5786001416508443,
         # default="models/finetune_opt1.3b_tofu_forget5_attn_200_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289,
         # default="models/finetune_opt1.3b_tofu_forget5_attn_250_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253,
-        # default="models/finetune_opt1.3b_tofu_forget5_attn_300_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9900193288833089,
-        # default="models/finetune_opt1.3b_tofu_forget5_attn_350_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_300_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9900193288833089, 0.6910753071486267
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_350_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167, 0.684552426577
         # default="models/finetune_opt1.3b_tofu_forget5_attn_400_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239,
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4",  # 0.404587405685253, 0.7026056581474868
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450",  # 0.5786001416508443, 0.6951160763572563
 
-        # default="models/finetune_opt1.3b_tofu_forget10_attn_800_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239,
-        # default="models/finetune_opt1.3b_tofu_forget10_attn_850_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253,
-        # default="models/finetune_opt1.3b_tofu_forget10_attn_950_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289,
-        # default="models/finetune_opt1.3b_tofu_forget10_attn_1000_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239,
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_800_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.6824082749356348
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_850_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253, 0.7018352357668952
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_950_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289, 0.6964823021734543
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_1000_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.691268752954575
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4",  # 0.09707484379785862, 0.7034178384916713
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900",  # 0.2656871402817289, 0.7121276883209432
 
