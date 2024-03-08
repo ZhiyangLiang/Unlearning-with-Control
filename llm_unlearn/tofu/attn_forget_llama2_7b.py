@@ -10,6 +10,7 @@ import transformers
 import os
 import yaml
 import argparse
+from peft import LoraConfig, get_peft_model
 
 idx = 0
 cnt = 0
@@ -22,7 +23,7 @@ def find_all_linear_names(model):
         if isinstance(module, cls):
             names = name.split('.')
             lora_module_names.add(names[0] if len(names) == 1 else names[-1])
-    if 'lm_head' in lora_module_names: # needed for 16-bit
+    if 'lm_head' in lora_module_names:  # needed for 16-bit
         lora_module_names.remove('lm_head')
     return list(lora_module_names)
 
@@ -106,7 +107,8 @@ class CustomTrainerForgetting(Trainer):
                 print("idx: %d" % (idx))
                 for name, parameter in model.named_parameters():
                     norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
-                    vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    # vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
+                    vary_thre = args.ball * (idx / args.robust_iter) / 3  # robust cur
                     if norm_ratio > vary_thre:
                         update_ratio = vary_thre / norm_ratio
                     # if norm_ratio > 5e-3:  # test2
@@ -257,10 +259,11 @@ class CustomTrainerForgetting(Trainer):
 
 def main(args):
     global attention_loss
-    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat")
+    access_token = "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"
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
     tokenizer.pad_token = tokenizer.eos_token
-    model = AutoModelForCausalLM.from_pretrained("models/finetune_llama2_7b_tofu", output_attentions=True)
-    oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_llama2_7b_tofu")
+    model = AutoModelForCausalLM.from_pretrained("models/finetune_llama2_7b_chat_hf_tofu", output_attentions=True)
+    oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_llama2_7b_chat_hf_tofu")
 
     config = LoraConfig(
         r=8,
@@ -273,17 +276,15 @@ def main(args):
     model = get_peft_model(model, config)  # use lora
     print_trainable_parameters(model)
 
-    for layer in model.model.decoder.layers:
+    for layer in model.base_model.model.model.layers:
         layer.self_attn.register_forward_hook(attention_mask_hook)
 
     print("######################")
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    # max_length = 300
-    # max_length = 200
-    max_length = 150  # for all
-    # max_length = 80  # for gd, kl, dpo
+    max_length = 150
+    # max_length = 100
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -340,7 +341,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument("--model_family", type=str, default="models/finetune_llama2_7b_tofu", help="model name")
+    parser.add_argument("--model_family", type=str, default="models/finetune_llama2_7b_chat_hf_tofu", help="model name")
     parser.add_argument("--forget_loss", type=str)
 
     parser.add_argument("--forget_data_path", type=str)
@@ -351,8 +352,10 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.85)
+    # parser.add_argument("--threshold", type=float)
 
     parser.add_argument("--robust_iter", type=int)
+    parser.add_argument("--ball", type=float)
     args = parser.parse_args()
 
     print(args)
