@@ -18,6 +18,7 @@ attention_loss = 100.0
 def attention_mask_hook(module, inputs, outputs): # success try
     global attention_loss, cnt
     if cnt % 48 == 23:
+    # if cnt % 48 == 11:
         part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.85, thre0.65, thre0.90, thre0.95
         # part_loss = torch.where(outputs[1][0] < float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.15, thre0.35, thre0.05, thre0.10
         attention_loss += part_loss

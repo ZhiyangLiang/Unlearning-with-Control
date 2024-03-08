@@ -6,6 +6,8 @@ import datasets
 from utils import get_model_identifiers_from_yaml
 import json
 import pdb
+import numpy as np
+import random
 
 def convert_raw_data_to_model_format(tokenizer, max_length,  question, answer):
 # def convert_raw_data_to_model_format(tokenizer, max_length,  question, answer, model_configs):
@@ -37,6 +39,10 @@ def convert_raw_data_to_model_format(tokenizer, max_length,  question, answer):
     return torch.tensor(pad_input_ids),torch.tensor(label),torch.tensor(pad_attention_mask)
     
 def convert_raw_data_to_model_format_onlyx(tokenizer, max_length,  question, answer):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+
     full_text = f"### Question: {question}\n ### Answer: "
     # full_text = f"{question}"
     num_question_tokens = len(tokenizer.tokenize(question, add_special_tokens=True))

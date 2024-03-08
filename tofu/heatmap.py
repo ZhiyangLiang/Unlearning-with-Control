@@ -20,7 +20,7 @@ def plot_heatmap(X,save_path):
     plt.rc('text', usetex=False)
     plt.rcParams['font.family'] = 'serif'
     fig, ax = plt.subplots(figsize=(5, 5), sharey=True, sharex=True, dpi=400)
-    im = ax.imshow(X, cmap='Blues')
+    img = ax.imshow(X, cmap='Blues')
     fig.tight_layout()
     plt.xticks([])
     plt.yticks([])
@@ -33,9 +33,14 @@ def attention_mask_hook(module, inputs, outputs): # success try
     part_attn = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device))
     # if cnt % 48 == 11:
     # if cnt % 48 == 12:
-    # if cnt % 48 == 23:
-    if cnt % 48 == 0:
-        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt) / 48)}.png")
+    if cnt % 48 == 23:
+    # if cnt % 48 == 0:
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 11) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 11) / 48)}.svg")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 12) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.png")
+        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.svg")
+        # plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt) / 48)}.png")
 
         # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
         # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
@@ -46,9 +51,14 @@ def attention_mask_hook(module, inputs, outputs): # success try
         # plot_heatmap(comb_3.cpu().detach().numpy(), f"./heatmap/ori{int(cnt / 48)}_2.png")
     # elif cnt % 48 == 35:
     # elif cnt % 48 == 36:
-    # elif cnt % 48 == 47:
-    elif cnt % 48 == 24:
-        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 24) / 48)}.png")
+    elif cnt % 48 == 47:
+    # elif cnt % 48 == 24:
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 35) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 35) / 48)}.svg")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 36) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.png")
+        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.svg")
+        # plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 24) / 48)}.png")
 
         # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
         # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
@@ -60,30 +70,28 @@ def attention_mask_hook(module, inputs, outputs): # success try
     cnt += 1
     return outputs
 
-def get_batch_loss(output, labels):
-    shifted_labels = labels[..., 1:].contiguous()
-    output = output[..., :-1, :].contiguous()
-
-    loss_function = nn.CrossEntropyLoss(ignore_index=-100, reduction='none')
-    # get the sum loss for each sequence in a batch
-    loss = loss_function(output.transpose(-1,-2), shifted_labels).sum(dim=-1)
-
-    return loss
-
 class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
         self.ori_state = self.oracle_model.state_dict()
+        self.tokenizer_ids = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+        self.tokenizer_ids.pad_token = self.tokenizer_ids.eos_token
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
 
     def compute_loss(self, model, inputs, return_outputs=False):
-        global attention_loss, idx
+        global attention_loss, idx, cnt
 
         if self.loss_type == "attention_norm":
             forget_inputs, retain_inputs = inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            forget_sen = self.tokenizer_ids.decode(forget_input_ids[0])
+            retain_sen = self.tokenizer_ids.decode(retain_input_ids[0])
+            print(f"cnr: {cnt / 48}")
+            print(forget_sen)
+            print(retain_sen)
+
             forget_outputs = model(forget_input_ids, labels=forget_labels, attention_mask=forget_attention_mask)
             retain_outputs_cur = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
 
@@ -182,7 +190,8 @@ if __name__ == "__main__":
     parser.add_argument("--retain_data_path", type=str, default="locuslab/TOFU/forget01_perturbed.json")
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
-    parser.add_argument("--threshold", type=float, default=0.85)
+    # parser.add_argument("--threshold", type=float, default=0.85)
+    parser.add_argument("--threshold", type=float, default=0.8)
     parser.add_argument("--save_dir", type=str, default="models/a_test")
     args = parser.parse_args()
 
