@@ -162,8 +162,14 @@ def main(args) -> None:
     # model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     model = AutoModelForCausalLM.from_pretrained(f"models/{args.model_name}", output_attentions=True)  # new
     model.to(device)
+
+    # change
     # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
+    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
+
+    access_token = "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"
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
+    tokenizer.pad_token = tokenizer.eos_token
 
     forget_loader_paraphrased = create_tofu_dataloader_from_dataset_paraphrased(
         "data/forget01_perturbed.json", tokenizer, batch_size=args.batch_size

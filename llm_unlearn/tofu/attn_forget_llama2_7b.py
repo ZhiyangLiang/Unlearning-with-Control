@@ -274,6 +274,7 @@ def main(args):
         task_type="CAUSAL_LM"
     )
     model = get_peft_model(model, config)  # use lora
+    oracle_model = get_peft_model(oracle_model, config)
     print_trainable_parameters(model)
 
     for layer in model.base_model.model.model.layers:
@@ -283,8 +284,9 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 150
-    # max_length = 100
+    # max_length = 150
+    max_length = 100
+    # max_length = 70
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -301,6 +303,7 @@ def main(args):
 
     max_steps = args.num_epochs * len(torch_format_dataset) // (
                 batch_size * num_devices)
+    # max_steps = 2500
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
@@ -309,13 +312,14 @@ def main(args):
         gradient_accumulation_steps=4,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
-        learning_rate=1e-5,
+        learning_rate=1e-4,
         bf16=True,
         bf16_full_eval=True,
         logging_steps=max(1, max_steps // 20),
         logging_dir=f'{args.save_dir}/logs',
         output_dir=args.save_dir,
         save_steps=1e5,
+        # save_steps=500,
         weight_decay=0.01,
         evaluation_strategy="no",
     )
@@ -338,6 +342,9 @@ def main(args):
     model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
+    os.environ['CUDA_LAUNCH_BLOCKING'] = '0'
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
+
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -360,4 +367,3 @@ if __name__ == "__main__":
 
     print(args)
     main(args)
-
