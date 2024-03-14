@@ -57,7 +57,7 @@ def main(cfg):
 
     # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
-    # tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.pad_token = tokenizer.eos_token
 
     max_length = 500
     torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, max_length=max_length)

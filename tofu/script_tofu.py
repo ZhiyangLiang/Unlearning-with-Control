@@ -112,11 +112,22 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_5_0.8_12 --robust_iter=150 --ball=5e-3 --threshold=0.8'
+# cmd = f'python attn_forget.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_5_0.8_12 --robust_iter=150 --ball=5e-3 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8_12 --robust_iter=100 --ball=5e-3 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python attn_forget.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/gamisretain_retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_ga_mis_retain --length=150'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8_12 --robust_iter=100 --ball=5e-3 --threshold=0.8'
+cmd = f'python attn_forget.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/gamisretain_retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_ga_mis_retain --length=80'
 print(cmd)
 os.system(cmd)
 
+cmd = f'python attn_forget.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/gamisretain_retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_ga_mis_retain --length=80'
+print(cmd)
+os.system(cmd)

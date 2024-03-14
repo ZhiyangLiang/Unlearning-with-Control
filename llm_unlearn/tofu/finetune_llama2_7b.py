@@ -60,7 +60,7 @@ def main(cfg):
 
     access_token = "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"
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
-    # tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.pad_token = tokenizer.eos_token
 
     max_length = 500
     torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, max_length=max_length)

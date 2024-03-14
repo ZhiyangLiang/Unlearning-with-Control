@@ -108,10 +108,14 @@ class TextForgetDatasetQA(Dataset):
                 question = data[idx]['question']
             elif data_type == "retain":
                 question = data[idx]['paraphrased_question']
-                # question = data[idx]['question']
-
-            # question = data[idx]['question']
             answer = data[idx]['answer']
+
+            # if data_type == "forget":
+            #     question = data[idx]['question']
+            #     answer = data[idx]['answer']
+            # elif data_type == "retain":
+            #     question = data[idx]['paraphrased_question']
+            #     answer = data[idx]["paraphrased_answer"]
 
             if data_type == "idk":
                 #get a random answer position from idk
