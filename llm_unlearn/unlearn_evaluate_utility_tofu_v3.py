@@ -26,7 +26,8 @@ np.random.seed(8888)
 random.seed(8888)
 
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
-tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+# tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
 generator = pipeline('text-generation', model=args.model_name, tokenizer=tokenizer, device=device)
 
 log1 = logging.getLogger("log1")

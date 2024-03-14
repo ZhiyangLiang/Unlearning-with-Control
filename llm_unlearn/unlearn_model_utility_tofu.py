@@ -3,7 +3,6 @@ import pdb
 import torch
 import numpy as np
 import evaluate
-from rouge_score import rouge_scorer
 from rouge import Rouge
 from scipy.stats import hmean
 
@@ -128,30 +127,6 @@ def get_Utility(probalility_real_authors_path, probability_retain_path, probabil
     print(f"model_utility: {model_utility}")
 
 def get_Utility_Easily(model_path):
-    # probability_real_authors = get_Probability(f"forget1_opt1.3b_tofu_{model_path}_real_authors_original.log")
-    # probability_retain = get_Probability(f"forget1_opt1.3b_tofu_{model_path}_retain_original.log")
-    # probability_world_facts = get_Probability(f"forget1_opt1.3b_tofu_{model_path}_world_facts_original.log")
-    # rouge_real_authors = get_Rouge(f"forget1_opt1.3b_tofu_{model_path}_real_authors_sen.log", f"ground_truth_real_authors_ori_test_sen.log")
-    # rouge_retain = get_Rouge(f"forget1_opt1.3b_tofu_{model_path}_retain_sen.log", f"ground_truth_retain_ori_test_sen.log")
-    # rouge_world_facts = get_Rouge(f"forget1_opt1.3b_tofu_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
-    # truth_ratio = get_Truth_Ratio(f"forget1_opt1.3b_tofu_{model_path}_retain_paraphrased.log", f"forget1_opt1.3b_tofu_{model_path}_retain_perturbed.log")
-
-    # probability_real_authors = get_Probability(f"forget5_opt1.3b_tofu_{model_path}_real_authors_original.log")
-    # probability_retain = get_Probability(f"forget5_opt1.3b_tofu_{model_path}_retain_original.log")
-    # probability_world_facts = get_Probability(f"forget5_opt1.3b_tofu_{model_path}_world_facts_original.log")
-    # rouge_real_authors = get_Rouge(f"forget5_opt1.3b_tofu_{model_path}_real_authors_sen.log", f"ground_truth_real_authors_ori_test_sen.log")
-    # rouge_retain = get_Rouge(f"forget5_opt1.3b_tofu_{model_path}_retain_sen.log", f"ground_truth_retain_ori_test_sen.log")
-    # rouge_world_facts = get_Rouge(f"forget5_opt1.3b_tofu_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
-    # truth_ratio = get_Truth_Ratio(f"forget5_opt1.3b_tofu_{model_path}_retain_paraphrased.log", f"forget5_opt1.3b_tofu_{model_path}_retain_perturbed.log")
-
-    # probability_real_authors = get_Probability(f"forget10_opt1.3b_tofu_{model_path}_real_authors_original.log")
-    # probability_retain = get_Probability(f"forget10_opt1.3b_tofu_{model_path}_retain_original.log")
-    # probability_world_facts = get_Probability(f"forget10_opt1.3b_tofu_{model_path}_world_facts_original.log")
-    # rouge_real_authors = get_Rouge(f"forget10_opt1.3b_tofu_{model_path}_real_authors_sen.log", f"ground_truth_real_authors_ori_test_sen.log")
-    # rouge_retain = get_Rouge(f"forget10_opt1.3b_tofu_{model_path}_retain_sen.log", f"ground_truth_retain_ori_test_sen.log")
-    # rouge_world_facts = get_Rouge(f"forget10_opt1.3b_tofu_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
-    # truth_ratio = get_Truth_Ratio(f"forget10_opt1.3b_tofu_{model_path}_retain_paraphrased.log", f"forget10_opt1.3b_tofu_{model_path}_retain_perturbed.log")
-
     # probability_real_authors = get_Probability(f"finetune_opt1.3b_tofu_forget1_{model_path}_real_authors_original.log")
     # probability_retain = get_Probability(f"finetune_opt1.3b_tofu_forget1_{model_path}_retain_original.log")
     # probability_world_facts = get_Probability(f"finetune_opt1.3b_tofu_forget1_{model_path}_world_facts_original.log")
@@ -168,13 +143,37 @@ def get_Utility_Easily(model_path):
     # rouge_world_facts = get_Rouge(f"finetune_opt1.3b_tofu_forget5_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
     # truth_ratio = get_Truth_Ratio(f"finetune_opt1.3b_tofu_forget5_{model_path}_retain_paraphrased.log", f"finetune_opt1.3b_tofu_forget5_{model_path}_retain_perturbed.log")
 
-    probability_real_authors = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_real_authors_original.log")
-    probability_retain = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_original.log")
-    probability_world_facts = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_world_facts_original.log")
-    rouge_real_authors = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_real_authors_sen.log", f"ground_truth_real_authors_ori_test_sen.log")
-    rouge_retain = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_sen.log", f"ground_truth_retain_ori_test_sen.log")
-    rouge_world_facts = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
-    truth_ratio = get_Truth_Ratio(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_paraphrased.log", f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_perturbed.log")
+    # probability_real_authors = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_real_authors_original.log")
+    # probability_retain = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_original.log")
+    # probability_world_facts = get_Probability(f"finetune_opt1.3b_tofu_forget10_{model_path}_world_facts_original.log")
+    # rouge_real_authors = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_real_authors_sen.log", f"ground_truth_real_authors_ori_test_sen.log")
+    # rouge_retain = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_sen.log", f"ground_truth_retain_ori_test_sen.log")
+    # rouge_world_facts = get_Rouge(f"finetune_opt1.3b_tofu_forget10_{model_path}_world_facts_sen.log", f"ground_truth_world_facts_ori_test_sen.log")
+    # truth_ratio = get_Truth_Ratio(f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_paraphrased.log", f"finetune_opt1.3b_tofu_forget10_{model_path}_retain_perturbed.log")
+
+    # probability_real_authors = get_Probability(f"finetune_opt2.7b_tofu_forget1_{model_path}_real_authors_original.log")
+    # probability_retain = get_Probability(f"finetune_opt2.7b_tofu_forget1_{model_path}_retain_original.log")
+    # probability_world_facts = get_Probability(f"finetune_opt2.7b_tofu_forget1_{model_path}_world_facts_original.log")
+    # rouge_real_authors = get_Rouge(f"finetune_opt2.7b_tofu_forget1_{model_path}_real_authors_sen.log", f"ground_truth2.7_real_authors_ori_test_sen.log")
+    # rouge_retain = get_Rouge(f"finetune_opt2.7b_tofu_forget1_{model_path}_retain_sen.log", f"ground_truth2.7_retain_ori_test_sen.log")
+    # rouge_world_facts = get_Rouge(f"finetune_opt2.7b_tofu_forget1_{model_path}_world_facts_sen.log", f"ground_truth2.7_world_facts_ori_test_sen.log")
+    # truth_ratio = get_Truth_Ratio(f"finetune_opt2.7b_tofu_forget1_{model_path}_retain_paraphrased.log", f"finetune_opt2.7b_tofu_forget1_{model_path}_retain_perturbed.log")
+
+    # probability_real_authors = get_Probability(f"finetune_opt2.7b_tofu_forget5_{model_path}_real_authors_original.log")
+    # probability_retain = get_Probability(f"finetune_opt2.7b_tofu_forget5_{model_path}_retain_original.log")
+    # probability_world_facts = get_Probability(f"finetune_opt2.7b_tofu_forget5_{model_path}_world_facts_original.log")
+    # rouge_real_authors = get_Rouge(f"finetune_opt2.7b_tofu_forget5_{model_path}_real_authors_sen.log", f"ground_truth2.7_real_authors_ori_test_sen.log")
+    # rouge_retain = get_Rouge(f"finetune_opt2.7b_tofu_forget5_{model_path}_retain_sen.log", f"ground_truth2.7_retain_ori_test_sen.log")
+    # rouge_world_facts = get_Rouge(f"finetune_opt2.7b_tofu_forget5_{model_path}_world_facts_sen.log", f"ground_truth2.7_world_facts_ori_test_sen.log")
+    # truth_ratio = get_Truth_Ratio(f"finetune_opt2.7b_tofu_forget5_{model_path}_retain_paraphrased.log", f"finetune_opt2.7b_tofu_forget5_{model_path}_retain_perturbed.log")
+
+    probability_real_authors = get_Probability(f"finetune_opt2.7b_tofu_forget10_{model_path}_real_authors_original.log")
+    probability_retain = get_Probability(f"finetune_opt2.7b_tofu_forget10_{model_path}_retain_original.log")
+    probability_world_facts = get_Probability(f"finetune_opt2.7b_tofu_forget10_{model_path}_world_facts_original.log")
+    rouge_real_authors = get_Rouge(f"finetune_opt2.7b_tofu_forget10_{model_path}_real_authors_sen.log", f"ground_truth2.7_real_authors_ori_test_sen.log")
+    rouge_retain = get_Rouge(f"finetune_opt2.7b_tofu_forget10_{model_path}_retain_sen.log", f"ground_truth2.7_retain_ori_test_sen.log")
+    rouge_world_facts = get_Rouge(f"finetune_opt2.7b_tofu_forget10_{model_path}_world_facts_sen.log", f"ground_truth2.7_world_facts_ori_test_sen.log")
+    truth_ratio = get_Truth_Ratio(f"finetune_opt2.7b_tofu_forget10_{model_path}_retain_paraphrased.log", f"finetune_opt2.7b_tofu_forget10_{model_path}_retain_perturbed.log")
 
     model_utility = hmean([probability_real_authors, probability_retain, probability_world_facts, rouge_real_authors, rouge_retain, rouge_world_facts, truth_ratio])
     print(f"model_utility: {model_utility}")
@@ -229,4 +228,19 @@ def get_Utility_Easily(model_path):
 # print("------------------------------------------------------")
 # get_Utility_Easily("KL")
 
-get_Utility_Easily("KL")
+# get_Utility_Easily("KL")
+
+# get_Utility_Easily("grad_ascent")
+# get_Utility_Easily("grad_diff")
+# get_Utility_Easily("KL")
+# get_Utility_Easily("idk")
+
+# myeval("attn_100_onlyx_maintain_robust_cur_4_5_0.8")
+# myeval_5("attn_100_onlyx_maintain_robust_cur_4_5_0.8")
+# myeval_10("attn_400_onlyx_maintain_robust_cur_4_5_0.8")
+# myeval_10("attn_450_onlyx_maintain_robust_cur_4_5_0.8")
+
+# get_Utility_Easily("attn_100_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_100_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_400_onlyx_maintain_robust_cur_4_5_0.8")
+get_Utility_Easily("attn_450_onlyx_maintain_robust_cur_4_5_0.8")

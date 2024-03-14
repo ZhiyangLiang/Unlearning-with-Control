@@ -478,33 +478,33 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.75  --robust_iter=1000000 --ball=5e-3 --threshold=0.75'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7  --robust_iter=1000000 --ball=5e-3 --threshold=0.7'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=1000000 --ball=5e-3 --threshold=0.8'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7  --robust_iter=1000000 --ball=5e-3 --threshold=0.7'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=1000000 --ball=5e-3 --threshold=0.8'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6  --robust_iter=1000000 --ball=5e-3 --threshold=0.6'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6  --robust_iter=1000000 --ball=5e-3 --threshold=0.6'
-print(cmd)
-os.system(cmd)
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.75  --robust_iter=1000000 --ball=5e-3 --threshold=0.75'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7  --robust_iter=1000000 --ball=5e-3 --threshold=0.7'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=1000000 --ball=5e-3 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7  --robust_iter=1000000 --ball=5e-3 --threshold=0.7'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=1000000 --ball=5e-3 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6  --robust_iter=1000000 --ball=5e-3 --threshold=0.6'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6  --robust_iter=1000000 --ball=5e-3 --threshold=0.6'
+# print(cmd)
+# os.system(cmd)
 
 # todu
 # cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_attn_100_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=100 --ball=5e-3 --threshold=0.8'
@@ -514,3 +514,119 @@ os.system(cmd)
 # cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_400_onlyx_maintain_robust_cur_4_5_0.8  --robust_iter=400 --ball=5e-3 --threshold=0.8'
 # print(cmd)
 # os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_0.65  --robust_iter=100 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_0.65  --robust_iter=150 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_200_onlyx_maintain_robust_cur_4_0.65  --robust_iter=200 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_250_onlyx_maintain_robust_cur_4_0.65  --robust_iter=250 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_300_onlyx_maintain_robust_cur_4_0.65  --robust_iter=300 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_350_onlyx_maintain_robust_cur_4_0.65  --robust_iter=350 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_400_onlyx_maintain_robust_cur_4_0.65  --robust_iter=400 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_450_onlyx_maintain_robust_cur_4_0.65  --robust_iter=450 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.15  --robust_iter=1000 --threshold=0.65 --ratio=0.15'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.5  --robust_iter=1000 --threshold=0.65 --ratio=0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.85  --robust_iter=1000 --threshold=0.65 --ratio=0.85'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.15_lr  --robust_iter=1000 --threshold=0.65 --ratio=0.15'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.5_lr  --robust_iter=1000 --threshold=0.65 --ratio=0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000_onlyx_maintain_robust_cur_4_0.65_r0.85_lr  --robust_iter=1000 --threshold=0.65 --ratio=0.85'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.75_130  --robust_iter=1000000 --ball=5e-3 --threshold=0.75'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.65_130  --robust_iter=1000000 --ball=5e-3 --threshold=0.65'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_115  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=115'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_130  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=130'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_85  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_70  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=70'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_115_1000  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=115'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_130_1000  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=130'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_85_1000  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=85'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_70_1000  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=70'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=attention_norm_robust --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8_70  --robust_iter=1000000 --ball=5e-3 --threshold=0.8 --length=70'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=KL --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_llama2_7b_tofu_forget1_KL_new --length=100'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget_llama2_7b.py --forget_loss=KL --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_KL_new --length=70'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python attn_forget_llama2_7b.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_grad_diff --length=70'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python attn_forget_llama2_7b.py --forget_loss=KL --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_KL --length=70'
+print(cmd)
+os.system(cmd)

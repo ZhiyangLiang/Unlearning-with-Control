@@ -106,16 +106,27 @@ class CustomTrainerForgetting(Trainer):
             if idx % int(args.robust_iter) == 0:
                 print("idx: %d" % (idx))
                 for name, parameter in model.named_parameters():
-                    norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
+                    # if (self.ori_state[name].data.norm(p=1) - 0) < 1e-5:
+                    #     norm_ratio = torch.tensor(1.0,  device=self.ori_state[name].data.device)
+                    # else:
+                    #     norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
+
+                    # print(f"parameter_data_norm: {parameter.data.norm(p=1)}; ori_state_data_norm:{self.ori_state[name].data.norm(p=1)}")
                     # vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
-                    vary_thre = args.ball * (idx / args.robust_iter) / 3  # robust cur
-                    if norm_ratio > vary_thre:
-                        update_ratio = vary_thre / norm_ratio
-                    # if norm_ratio > 5e-3:  # test2
-                    # if norm_ratio > 8e-3:  # test3
-                    #     update_ratio = 5e-3 / norm_ratio
-                    #     update_ratio = 8e-3 / norm_ratio
-                        parameter.data = update_ratio * parameter.data + (1 - update_ratio) * self.ori_state[name].data
+                    # vary_thre = args.ball * (idx / args.robust_iter) / 3  # robust cur
+
+                    # vary_thre = 0.85
+                    # if norm_ratio > vary_thre:
+                    #     update_ratio = vary_thre / norm_ratio
+                    # # if norm_ratio > 5e-3:  # test2
+                    # # if norm_ratio > 8e-3:  # test3
+                    # #     update_ratio = 5e-3 / norm_ratio
+                    # #     update_ratio = 8e-3 / norm_ratio
+                    #     parameter.data = update_ratio * parameter.data + (1 - update_ratio) * self.ori_state[name].data
+
+                    norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1)
+                    if norm_ratio - 1e-5 > 0:
+                        parameter.data = args.ratio * parameter.data + (1 - args.ratio) * self.ori_state[name].data
         elif self.loss_type == "ga_maintain":
             forget_inputs, retain_inputs = inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
@@ -285,7 +296,8 @@ def main(args):
     print("######################")
 
     # max_length = 150
-    max_length = 100
+    max_length = args.length
+    # max_length = 100
     # max_length = 70
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
@@ -301,9 +313,9 @@ def main(args):
     num_devices = os.environ.get('WORLD_SIZE', 1)  # 获取环境变量WORLD_SIZE, 若没有则返回1
     print(f"num_devices: {num_devices}")
 
-    max_steps = args.num_epochs * len(torch_format_dataset) // (
-                batch_size * num_devices)
-    # max_steps = 2500
+    # max_steps = args.num_epochs * len(torch_format_dataset) // (
+    #             batch_size * num_devices)
+    max_steps = 2500
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
@@ -363,6 +375,10 @@ if __name__ == "__main__":
 
     parser.add_argument("--robust_iter", type=int)
     parser.add_argument("--ball", type=float)
+
+    parser.add_argument("--ratio", type=float)
+
+    parser.add_argument("--length", type=int)
     args = parser.parse_args()
 
     print(args)

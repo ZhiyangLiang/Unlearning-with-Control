@@ -231,6 +231,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_name",
         type=str,
+        # opt1.3b
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4",  # 0.9188052214121167, 0.6552168853235508  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4",  # 0.09707484379785862, 0.0  (1)
@@ -259,21 +260,25 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.6863643883641558
         # default="models/finetune_opt1.3b_tofu_forget10_idk",  # 0.16497269950224194, 0.7007893659567589
 
-        # new
-        # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05,
-        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519,
-        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519,
-        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208,
+        # opt2.7b
+        # default="finetune_opt2.7b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.7424362311296397
+        # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05, 4.277535640632399e-29
+        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519, 0.6983421660580345
+        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519, 0.6984950978068268
+        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208, 0.7461806835169722
 
-        # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05,
-        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278,
-        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05,
-        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725,
+        # default="finetune_opt2.7b_tofu_forget5_attn_100_onlyx_maintain_robust_cur_4_5_0.8"  # 0.16497269950224194, 0.7238613087472107
+        # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05, 0.0
+        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278, 0.7177933902460178
+        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05, 0.7425696703235104
+        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725, 0.7422309546911205
 
-        # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06,
-        # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05,
-        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06,
-        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725,
+        # default="finetune_opt2.7b_tofu_forget10_attn_400_onlyx_maintain_robust_cur_4_5_0.8"  # 0.09707484379785862, 0.7276374212523132
+        # default="finetune_opt2.7b_tofu_forget10_attn_450_onlyx_maintain_robust_cur_4_5_0.8"  # 0.09707484379785862, 0.732470971455701
+        # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06, 0.0
+        # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05, 0.7075944261412391
+        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.737025804459959
+        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725, 0.6973261260439019
         help="Name of the pretrained model.",
     )
     parser.add_argument(
