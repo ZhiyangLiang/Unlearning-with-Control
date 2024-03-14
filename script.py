@@ -1384,14 +1384,18 @@ def myeval_10(model_name):
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_ga_mis_retain --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
-print(cmd)
-os.system(cmd)
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_ga_mis_retain --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06, 0.671629484659423
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget5_ga_mis_retain --retrain_model_name=retrain95_opt1.3b_tofu_forget5'
+# print(cmd)  # 1.8880552265017844e-06, 0.6888819444683291
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget10_ga_mis_retain --retrain_model_name=retrain90_opt1.3b_tofu_forget10'
+# print(cmd)  # 5.015146695395365e-07, 0.6908238430504919
+# os.system(cmd)
 
-cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget5_ga_mis_retain --retrain_model_name=retrain95_opt1.3b_tofu_forget5'
-print(cmd)
-os.system(cmd)
-
-cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget10_ga_mis_retain --retrain_model_name=retrain90_opt1.3b_tofu_forget10'
-print(cmd)
-os.system(cmd)
+myeval("ga_mis_retain")
+myeval_5("ga_mis_retain")
+myeval_10("ga_mis_retain")

@@ -1495,51 +1495,51 @@ import os
 # os.system(cmd)
 
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.006760732303569208,
+# print(cmd)  # 0.006760732303569208, 0.0
 # os.system(cmd)
 # #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.006760732303569208,
+# print(cmd)  # 0.006760732303569208, 0.7890490202361556
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.054141077480362725 -> 6.608193292756245e-06,
+# print(cmd)  # 0.054141077480362725 -> 6.608193292756245e-06, 0.8067523124095978
 # os.system(cmd)
 # #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.16497269950224194,
+# print(cmd)  # 0.16497269950224194, 0.8058486427102944
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
-# print(cmd)  # 5.015146695395365e-07,
+# print(cmd)  # 5.015146695395365e-07, 0.0
 # os.system(cmd)
 # #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
-# print(cmd)  # 6.5768913245274e-05,
+# print(cmd)  # 6.5768913245274e-05, 0.7769353869006586
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
-# print(cmd)  # 0.003018184077228396 -> 0.006760732303569208,
+# print(cmd)  # 0.003018184077228396 -> 0.006760732303569208, 0.7856765678595893
 # os.system(cmd)
 # #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
-# print(cmd)  # 0.02860307028023343,
+# print(cmd)  # 0.02860307028023343, 0.811655007917117
 # os.system(cmd)
 
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
-# print(cmd)  # 0.0005039436209702519,
+# print(cmd)  # 0.0005039436209702519, 0.0
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
-# print(cmd)  # change lr to 1e-4
+# print(cmd)  # 6.608193292756245e-06, 0.7882184537219653
 # os.system(cmd)
-#
+
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
-# print(cmd)  # change lr to 1e-4
+# print(cmd)  # 0.0012708143485281624, 0.7796800385427977
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
-# print(cmd)  # 0.006760732303569208,
+# print(cmd)  # 0.006760732303569208, 0.8059224458202806
 # os.system(cmd)
 
 # cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8'
@@ -1619,7 +1619,7 @@ import os
 # os.system(cmd)
 
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.75 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.2656871402817289 (keep),
+# print(cmd)  # 0.2656871402817289 (keep), 0.8194294458831074
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
@@ -1651,7 +1651,7 @@ import os
 # os.system(cmd)
 
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.65 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
-# print(cmd)  # 0.2656871402817289 (keep),
+# print(cmd)  # 0.2656871402817289 (keep)
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
@@ -1747,7 +1747,7 @@ import os
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
-# print(cmd)  # 0.054141077480362725 (keep),
+# print(cmd)  # 0.054141077480362725 (keep), 0.8123089576388699
 # os.system(cmd)
 #
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.7 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
@@ -2029,7 +2029,7 @@ import os
 # os.system(cmd)
 
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
-# print(cmd)
+# print(cmd)  # 0.006760732303569208 (keep), 0.8135099989902231
 # os.system(cmd)
 
 # cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_KL_new'
@@ -2147,7 +2147,7 @@ def myeval_llama_10(model_name):
     print(cmd)
     os.system(cmd)
 
-myeval_llama("grad_ascent")
+# myeval_llama("grad_ascent")
 # myeval_llama("grad_diff")
 # myeval_llama("KL")
 # myeval_llama("idk")
@@ -2159,3 +2159,11 @@ myeval_llama("grad_ascent")
 # myeval_llama_10("grad_diff")
 # myeval_llama_10("KL")
 # myeval_llama_10("idk")
+
+# myeval_llama("attn_1000000_onlyx_maintain_robust_cur_4_5_0.75")
+# myeval_llama_5("attn_1000000_onlyx_maintain_robust_cur_4_5_0.8")
+# myeval_llama_10("attn_1000000_onlyx_maintain_robust_cur_4_5_0.6")
+
+# cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/finetune_llama2_7b_chat_hf_tofu --file1=ground_truth7_real_authors_ori_test_sen.log --file2=ground_truth7_retain_ori_test_sen.log --file3=ground_truth7_world_facts_ori_test_sen.log'
+# print(cmd)
+# os.system(cmd)

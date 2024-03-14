@@ -229,4 +229,14 @@ def get_Utility_Easily(model_path):
 # print("------------------------------------------------------")
 # get_Utility_Easily("KL")
 
-get_Utility_Easily("KL")
+# get_Utility_Easily("KL")
+
+# get_Utility_Easily("attn_300_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_350_onlyx_maintain_robust_cur_4_5_0.8")
+
+# get_Utility_Easily("attn_800_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_850_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_950_onlyx_maintain_robust_cur_4_5_0.8")
+# get_Utility_Easily("attn_1000_onlyx_maintain_robust_cur_4_5_0.8")
+
+get_Utility_Easily("ga_mis_retain")

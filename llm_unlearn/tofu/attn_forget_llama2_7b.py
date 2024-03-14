@@ -224,6 +224,18 @@ class CustomTrainerForgetting(Trainer):
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             loss = outputs.loss
 
+        elif self.loss_type == "ga_mis_retain":
+            forget_inputs, mis_retain_inputs = inputs
+            input_ids, labels, attention_mask = forget_inputs
+            outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
+            forget_loss = outputs.loss
+            forget_loss = forget_loss * -1
+
+            mis_retain_input_ids, mis_retain_labels, mis_retain_attention_mask = mis_retain_inputs
+            mis_retain_outputs = model(mis_retain_input_ids, labels=mis_retain_labels, attention_mask=mis_retain_attention_mask)
+            mis_retain_loss = mis_retain_outputs.loss
+            loss = forget_loss + mis_retain_loss
+
         elif self.loss_type == "dpo":
             # idk_inputs, forget_inputs, retain_inputs = inputs
             idk_inputs, forget_inputs = inputs

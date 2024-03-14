@@ -37,10 +37,19 @@ def attention_mask_hook(module, inputs, outputs): # success try
     # if cnt % 48 == 0:
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 11) / 48)}.png")
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 11) / 48)}.svg")
+
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 12) / 48)}.png")
+
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.png")
-        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.svg")
-        # plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.svg")
+
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/ori{int((cnt) / 48)}.png")
+
+        # attn_heatmap = part_attn.mean(0)
+        attn_heatmap = part_attn.mean(0)[:25, :25]
+        attn_heatmap[:, :1] = 0.05
+        # plot_heatmap(attn_heatmap.cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.png")
+        plot_heatmap(attn_heatmap.cpu().detach().numpy(), f"./heatmap/ori{int((cnt - 23) / 48)}.svg")
 
         # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
         # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
@@ -55,10 +64,19 @@ def attention_mask_hook(module, inputs, outputs): # success try
     # elif cnt % 48 == 24:
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 35) / 48)}.png")
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 35) / 48)}.svg")
+
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 36) / 48)}.png")
+
     #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.png")
-        plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.svg")
-        # plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 24) / 48)}.png")
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.svg")
+
+    #     plot_heatmap(part_attn.mean(0)[:, 1:].cpu().detach().numpy(), f"./heatmap/para{int((cnt - 24) / 48)}.png")
+
+        # attn_heatmap = part_attn.mean(0)
+        attn_heatmap = part_attn.mean(0)[:25, :25]
+        attn_heatmap[:, :1] = 0.05
+        # plot_heatmap(attn_heatmap.cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.png")
+        plot_heatmap(attn_heatmap.cpu().detach().numpy(), f"./heatmap/para{int((cnt - 47) / 48)}.svg")
 
         # comb_1 = torch.cat([outputs[1][0][0], outputs[1][0][1], outputs[1][0][2]], dim=0)
         # comb_2 = torch.cat([outputs[1][0][3], outputs[1][0][4], outputs[1][0][5]], dim=0)
