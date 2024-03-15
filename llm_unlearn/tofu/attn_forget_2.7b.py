@@ -267,8 +267,9 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 150
+    # max_length = 150
     # max_length = 100
+    max_length = args.length
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -334,11 +335,13 @@ if __name__ == "__main__":
 
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
-    # parser.add_argument("--threshold", type=float, default=0.85)
-    parser.add_argument("--threshold", type=float)
+    parser.add_argument("--threshold", type=float, default=0.85)
+    # parser.add_argument("--threshold", type=float)
 
     parser.add_argument("--robust_iter", type=int)
     parser.add_argument("--ball", type=float)
+
+    parser.add_argument("--length", type=int)
     args = parser.parse_args()
 
     print(args)

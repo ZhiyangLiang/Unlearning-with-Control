@@ -325,9 +325,11 @@ def main(args):
     num_devices = os.environ.get('WORLD_SIZE', 1)  # 获取环境变量WORLD_SIZE, 若没有则返回1
     print(f"num_devices: {num_devices}")
 
-    # max_steps = args.num_epochs * len(torch_format_dataset) // (
-    #             batch_size * num_devices)
-    max_steps = 2500
+    if args.length == 70:
+        max_steps = 2500
+    else:
+        max_steps = args.num_epochs * len(torch_format_dataset) // (
+                    batch_size * num_devices)
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(

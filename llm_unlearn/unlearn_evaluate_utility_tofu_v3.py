@@ -27,9 +27,9 @@ random.seed(8888)
 
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-# tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
-access_token = "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"
-tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
+tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
+# access_token = "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"
+# tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
 tokenizer.pad_token = tokenizer.eos_token
 generator = pipeline('text-generation', model=args.model_name, tokenizer=tokenizer, device=device)
 

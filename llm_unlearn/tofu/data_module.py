@@ -108,7 +108,7 @@ class TextForgetDatasetQA(Dataset):
             # elif data_type == "forget":
             #     converted_data = convert_raw_data_to_model_format_onlyx(self.tokenizer, self.max_length, question, answer)
 
-            converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
+            # converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer)
 
             # converted_data = convert_raw_data_to_model_format(self.tokenizer, self.max_length, question, answer, self.model_configs)
             rets.append(converted_data)
