@@ -107,9 +107,9 @@ def main(args) -> None:
     model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     model.to(device)
     # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
-    # access_token = "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"
-    # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
+    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
+    access_token = "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"
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
     tokenizer.pad_token = tokenizer.eos_token
     eval_dataset("real_authors_perturbed", model, tokenizer, log1, log2)
     eval_dataset("world_facts_perturbed", model, tokenizer, log3, log4)

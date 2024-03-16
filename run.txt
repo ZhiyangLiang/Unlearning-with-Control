@@ -1177,3 +1177,7 @@ PeftModelForCausalLM(
 
 final: 13 30
 3.3 3.9 11.4 10.7
+
+finetune_llama2_7b_tofu_forget1_ga_mis_retain_real_authors_original.log
+finetune_llama2_7b_tofu_forget1_ga_mis_retain_real_authors_perturbed.log
+finetune_llama2_7b_tofu_forget1_{model_name}_world_facts_perturbed.log

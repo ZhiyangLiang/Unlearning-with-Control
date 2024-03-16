@@ -677,10 +677,10 @@ import os
 
 # todu
 
-# cmd = f'python attn_forget_llama2_7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/gamisretain_retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_ga_mis_retain --length=70'
-# print(cmd)
-# os.system(cmd)
+cmd = f'python attn_forget_llama2_7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/gamisretain_retain95.json --save_dir=models/finetune_llama2_7b_tofu_forget5_ga_mis_retain --length=70'
+print(cmd)
+os.system(cmd)
 
-# cmd = f'python attn_forget_llama2_7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/gamisretain_retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_ga_mis_retain --length=70'
-# print(cmd)
-# os.system(cmd)
+cmd = f'python attn_forget_llama2_7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/gamisretain_retain90.json --save_dir=models/finetune_llama2_7b_tofu_forget10_ga_mis_retain --length=70'
+print(cmd)
+os.system(cmd)

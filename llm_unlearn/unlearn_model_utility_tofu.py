@@ -277,3 +277,5 @@ def get_Utility_Easily(model_path):
 # get_Utility_Easily("attn_1000000_onlyx_maintain_robust_cur_4_5_0.75")
 # get_Utility_Easily("attn_1000000_onlyx_maintain_robust_cur_4_5_0.8")
 # get_Utility_Easily("attn_1000000_onlyx_maintain_robust_cur_4_5_0.6")
+
+get_Utility_Easily("ga_mis_retain")
