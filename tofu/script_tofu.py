@@ -231,3 +231,27 @@ import os
 # cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/gamisretain_retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_grad_diff_m80_new --length=150 --threshold=0.8 --ga_threshold=-80'
 # print(cmd)
 # os.system(cmd)
+
+# cmd = f'python attn_forget.py --forget_loss=attention_norm --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.5_final --length=150 --threshold=0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=attention_norm --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.6_final --length=150 --threshold=0.6'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=attention_norm --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7_final --length=150 --threshold=0.7'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=attention_norm --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.8_final --length=150 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=attention_norm --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.9_final --length=150 --threshold=0.9'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_grad_diff_m40_new --length=150 --threshold=0.8 --ga_threshold=-40'
+print(cmd)
+os.system(cmd)

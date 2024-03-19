@@ -1194,3 +1194,17 @@ forget                      probability/rouge
 0.01                             0.91/0.87
 1.9e-6                          0.90/0.84
 
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7_final --file1=attn_norm_0.7_test.log
+
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu --file1=original_test.log
+
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_grad_diff_m40_new --file1=grad_diff_m40_test.log
+
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_grad_diff_m40_new --file1=grad_diff_m40_test.log
+
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_grad_diff_m40_new --file1=grad_diff_m40_test_para.log
+
+Detecting Pretraining Data from Large Language Models
+
+https://swj0419.github.io/detect-pretrain.github.io/
+

@@ -121,11 +121,20 @@ with open(f"{args.retrain_model_name}_perturbed.log", "r") as file:
 def get_forget_quality(unlearn_paraphrase_np_values, unlearn_perturbed_np_values, retain_paraphrase_np_values, retain_perturbed_np_values):
     unlearn_truth_ratio = np.exp(unlearn_perturbed_np_values - unlearn_paraphrase_np_values)
     retain_truth_ratio = np.exp(retain_perturbed_np_values - retain_paraphrase_np_values)
-
     test_res = ks_2samp(unlearn_truth_ratio, retain_truth_ratio)
     print(f"Forget Quality: {test_res.pvalue}, KS Test PVal Forget: {test_res.pvalue}, KS Test Forget: {test_res.statistic}")
-    return {'Forget Quality': test_res.pvalue, 'KS Test PVal Forget': test_res.pvalue,
-            'KS Test Forget': test_res.statistic}
+
+    unlearn_paraphrase_values = np.exp(-1 * unlearn_paraphrase_np_values)
+    unlearn_perturbed_values = np.exp(-1 * unlearn_perturbed_np_values)
+    unlearn_curr_stat_1 = unlearn_perturbed_values / unlearn_paraphrase_values
+    unlearn_paraphrased_perturb_ratio = np.mean(unlearn_curr_stat_1)
+    print(f"unlearn_paraphrased_perturb_ratio: {unlearn_paraphrased_perturb_ratio}")
+
+    retain_paraphrase_values = np.exp(-1 * retain_paraphrase_np_values)
+    retain_perturbed_values = np.exp(-1 * retain_perturbed_np_values)
+    retain_curr_stat_1 = retain_perturbed_values / retain_paraphrase_values
+    retain_paraphrased_perturb_ratio = np.mean(retain_curr_stat_1)
+    print(f"retain_paraphrased_perturb_ratio: {retain_paraphrased_perturb_ratio}")
 
 # get_forget_quality(unlearn_forget_values, unlearn_perturbed_values, retrain_forget_values, retrain_perturbed_values)
 get_forget_quality(np.array(unlearn_forget1_paraphrased_loss), np.array(unlearn_forget1_perturbed_loss), np.array(retrain_forget1_paraphrased_loss), np.array(retrain_forget1_perturbed_loss))

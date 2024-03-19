@@ -159,8 +159,7 @@ class CustomTrainerForgetting(Trainer):
             retain_loss = retain_outputs.loss
             # loss = forget_loss + retain_loss
             if forget_loss < args.ga_threshold:
-                # loss = loss + 1e9
-                loss = retain_loss - forget_loss
+                loss = retain_loss
             else:
                 loss = forget_loss + retain_loss
 
