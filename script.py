@@ -1396,6 +1396,232 @@ def myeval_10(model_name):
 # print(cmd)  # 5.015146695395365e-07, 0.6908238430504919
 # os.system(cmd)
 
-myeval("ga_mis_retain")
-myeval_5("ga_mis_retain")
-myeval_10("ga_mis_retain")
+# myeval("ga_mis_retain")
+# myeval_5("ga_mis_retain")
+# myeval_10("ga_mis_retain")
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test1'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.01430154804770646,
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test1 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.2656871402817289 (threshold=0.85 default),
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.6'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.8'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.9'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.5 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.09707484379785862, 0.5498757469300137
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.6 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.054141077480362725, 0.5980498695696193
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.5786001416508443, 0.6221201478256797
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.8 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.01430154804770646, 0.6080591279814171
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.9 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.5786001416508443,  0.6311492494469239
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_0.7'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_0.7 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_0.9'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_0.9 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)
+# os.system(cmd)
+
+# myeval("attention_norm_test4_retain_0.5")
+# myeval("attention_norm_test4_retain_0.6")
+# myeval("attention_norm_test4_retain_0.7")
+# myeval("attention_norm_test4_retain_0.8")
+# myeval("attention_norm_test4_retain_0.9")
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_0'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m20'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m40'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m60'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m80'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_0 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.2656871402817289, 0.7204296204209008
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m20 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06, 0.6918559542239978
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m40 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.02860307028023343, 0.710270110637319
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m60 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.006760732303569208, 0.6916707696005115
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m80 --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 1.8880552265017844e-06, 0.6741013464839136
+# os.system(cmd)
+
+# os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
+# os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
+# myeval("grad_diff_0")
+# myeval("grad_diff_m20")
+# myeval("grad_diff_m40")
+# myeval("grad_diff_m60")
+# myeval("grad_diff_m80")
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.5_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.6_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.8_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.9_new'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.5_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.5786001416508443,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.6_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.7659314523482239,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.7_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.9188052214121167,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.8_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.7659314523482239,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_attention_norm_test4_retain_0.9_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 0.5786001416508443,
+# os.system(cmd)
+
+# myeval("attention_norm_test4_retain_0.5_new")
+# myeval("attention_norm_test4_retain_0.6_new")
+# myeval("attention_norm_test4_retain_0.7_new")
+# myeval("attention_norm_test4_retain_0.8_new")
+# myeval("attention_norm_test4_retain_0.9_new")
+
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_0_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m20_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m40_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m60_new'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m80_new'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_0_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m20_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m40_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m60_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06,
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_grad_diff_m80_new --retrain_model_name=retrain99_opt1.3b_tofu_forget1'
+# print(cmd)  # 6.608193292756245e-06,
+# os.system(cmd)
+
+myeval("grad_diff_0_new")
+myeval("grad_diff_m20_new")
+myeval("grad_diff_m40_new")
+myeval("grad_diff_m60_new")
+myeval("grad_diff_m80_new")

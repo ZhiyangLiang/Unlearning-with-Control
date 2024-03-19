@@ -1181,3 +1181,16 @@ final: 13 30
 finetune_llama2_7b_tofu_forget1_ga_mis_retain_real_authors_original.log
 finetune_llama2_7b_tofu_forget1_ga_mis_retain_real_authors_perturbed.log
 finetune_llama2_7b_tofu_forget1_{model_name}_world_facts_perturbed.log
+
+forget                      probability/rouge
+0.77                             0.87/0.83
+0.92                             0.88/0.84
+0.77                             0.90/0.88
+0.58                             0.90/0.86
+
+forget                      probability/rouge
+6.6e-6                          0.92/0.88
+0.03                              0.93/0.89
+0.01                             0.91/0.87
+1.9e-6                          0.90/0.84
+

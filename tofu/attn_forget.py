@@ -62,6 +62,7 @@ class CustomTrainerForgetting(Trainer):
 
             # loss = attention_loss + retain_outputs_cur.loss  # maintain by loss
             loss = attention_loss + retain_loss  # maintain by kl
+            # loss = attention_loss
             attention_loss = 0
         elif self.loss_type == "attention_norm_robust":
             forget_inputs, retain_inputs = inputs
@@ -156,7 +157,12 @@ class CustomTrainerForgetting(Trainer):
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
             retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
             retain_loss = retain_outputs.loss
-            loss = forget_loss + retain_loss
+            # loss = forget_loss + retain_loss
+            if forget_loss < args.ga_threshold:
+                # loss = loss + 1e9
+                loss = retain_loss - forget_loss
+            else:
+                loss = forget_loss + retain_loss
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -288,6 +294,7 @@ def main(args):
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         gradient_accumulation_steps=4,
+        # gradient_accumulation_steps=1,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
         learning_rate=1e-5,
@@ -318,6 +325,9 @@ def main(args):
     model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
+    os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
+    os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
+
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -348,16 +358,17 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
 
-    # parser.add_argument("--threshold", type=float)
-    parser.add_argument("--threshold", type=float, default=0.85)
+    parser.add_argument("--threshold", type=float)
+    # parser.add_argument("--threshold", type=float, default=0.85)
 
     parser.add_argument("--robust_iter", type=int)
     # parser.add_argument("--robust_iter", type=int, default=150)
 
     parser.add_argument("--ball", type=float)
     parser.add_argument("--length", type=int)
+
+    parser.add_argument("--ga_threshold", type=int)
     args = parser.parse_args()
 
     print(args)
     main(args)
-
