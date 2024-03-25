@@ -2134,3 +2134,123 @@ def myeval_10(model_name):
 # cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt1.3b_tofu_forget10_attn_1000_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=retrain90_opt1.3b_tofu_forget10'
 # print(cmd)
 # os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget1_grad_ascent --retrain_model_name=finetune_opt2.7b_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget1_grad_diff --retrain_model_name=finetune_opt2.7b_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget1_KL --retrain_model_name=finetune_opt2.7b_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget1_idk --retrain_model_name=finetune_opt2.7b_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_opt2.7b_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget5_grad_ascent --retrain_model_name=finetune_opt2.7b_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget5_grad_diff --retrain_model_name=finetune_opt2.7b_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget5_KL --retrain_model_name=finetune_opt2.7b_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget5_idk --retrain_model_name=finetune_opt2.7b_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget5_attn_100_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_opt2.7b_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget10_grad_ascent --retrain_model_name=finetune_opt2.7b_tofu_retrain90'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget10_grad_diff --retrain_model_name=finetune_opt2.7b_tofu_retrain90'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget10_KL --retrain_model_name=finetune_opt2.7b_tofu_retrain90'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget10_idk --retrain_model_name=finetune_opt2.7b_tofu_retrain90'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_opt2.7b_tofu_forget10_attn_450_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_opt2.7b_tofu_retrain90'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget1_attn_1000000_onlyx_maintain_robust_cur_4_5_0.75 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain99'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget5_attn_1000000_onlyx_maintain_robust_cur_4_5_0.8 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain95'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_grad_ascent --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_grad_diff --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_KL --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_idk --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_forget_quality_tofu.py --model_name=finetune_llama2_7b_tofu_forget10_attn_1000000_onlyx_maintain_robust_cur_4_5_0.6 --retrain_model_name=finetune_llama2_7b_chat_hf_tofu_retrain90'
+print(cmd)
+os.system(cmd)
