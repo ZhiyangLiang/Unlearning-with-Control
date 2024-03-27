@@ -74,6 +74,44 @@ def create_tofu_dataloader_from_dataset_perturbed(data_path, tokenizer, idx, bat
 
     return forget_dataloader
 
+def create_tofu_dataloader_from_dataset_paraphrased_sen(data_path):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+    results = {"question": [], "paraphrased_answer": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            prompt = json.loads(line)["question"]
+            response = json.loads(line)["paraphrased_answer"]
+            results["question"].append(prompt)
+            results["paraphrased_answer"].append(response)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+
+    return forget_data
+
+def create_tofu_dataloader_from_dataset_perturbed_sen(data_path, idx):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+    results = {"question": [], "perturbed_answer": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            prompt = json.loads(line)["question"]
+            response = json.loads(line)["perturbed_answer"][idx]
+            results["question"].append(prompt)
+            results["perturbed_answer"].append(response)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+
+    return forget_data
+
 def create_tofu_dataloader_from_dataset(data_path, tokenizer, batch_size=4):
 
     results = {"input_ids": [], "attention_mask": [], "start_locs": []}
@@ -133,7 +171,7 @@ def create_tofu_dataloader_from_dataset_onlyx(data_path, tokenizer, batch_size=4
 
     return forget_dataloader
 
-def create_tofu_dataloader_from_dataset_for_test(data_path):
+def create_tofu_dataloader_from_dataset_for_test_sen(data_path):
     torch.manual_seed(8888)
     np.random.seed(8888)
     random.seed(8888)
@@ -147,6 +185,24 @@ def create_tofu_dataloader_from_dataset_for_test(data_path):
             answer = json.loads(line)["answer"]
             # answer = json.loads(line)["paraphrased_answer"]
             results["answer"].append(answer)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+
+    return forget_data
+
+def create_tofu_dataloader_from_dataset_for_test(data_path, batch_size=4):
+    torch.manual_seed(8888)
+    np.random.seed(8888)
+    random.seed(8888)
+
+    results = {"forget_prompt": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            prompt = json.loads(line)["question"]
+            results["forget_prompt"].append(prompt)
 
     dataset = Dataset.from_dict(results)
     forget_data, _, _ = torch.utils.data.random_split(

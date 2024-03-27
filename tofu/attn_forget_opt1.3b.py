@@ -38,7 +38,6 @@ class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
-        self.train_dataset = kwargs.get('train_dataset')
         self.ori_state = self.oracle_model.state_dict()
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
 
@@ -79,8 +78,9 @@ class CustomTrainerForgetting(Trainer):
             prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
             retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
 
-            # loss = attention_loss + retain_outputs_cur.loss  # maintain by loss
-            loss = attention_loss + retain_loss  # maintain by kl
+            loss = attention_loss + retain_outputs_cur.loss  # maintain by loss
+            # loss = attention_loss + retain_loss  # maintain by kl
+            # loss = attention_loss
             attention_loss = 0
 
             idx += 1
@@ -88,8 +88,7 @@ class CustomTrainerForgetting(Trainer):
                 print("idx: %d" % (idx))
                 for name, parameter in model.named_parameters():
                     norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
-                    # vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
-                    vary_thre = args.ball * (idx / args.robust_iter) / 3
+                    vary_thre = 5e-3 * (idx / args.robust_iter) / 3  # robust cur
                     if norm_ratio > vary_thre:
                         update_ratio = vary_thre / norm_ratio
                     # if norm_ratio > 5e-3:  # test2
@@ -110,7 +109,8 @@ class CustomTrainerForgetting(Trainer):
             prob_p = torch.nn.functional.softmax(retain_outputs_pre.logits, -1)
             prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
             retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
-            loss = retain_loss - forget_outputs.loss
+            # loss = retain_loss - forget_outputs.loss
+            loss = - forget_outputs.loss
         elif self.loss_type == "ga_maintain_robust":
             forget_inputs, retain_inputs = inputs
             forget_input_ids, forget_labels, forget_attention_mask = forget_inputs
@@ -125,6 +125,7 @@ class CustomTrainerForgetting(Trainer):
             prob_q = torch.nn.functional.softmax(retain_outputs_cur.logits, -1)
             retain_loss = -(prob_p * torch.log(prob_q + 1e-12)).sum(-1).mean()
             loss = retain_loss - forget_outputs.loss
+            # loss = - forget_outputs.loss
 
             idx += 1
             if idx % int(args.robust_iter) == 0:
@@ -145,11 +146,7 @@ class CustomTrainerForgetting(Trainer):
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             forget_loss = outputs.loss
             forget_loss = forget_loss * -1
-            # loss = forget_loss
-            if forget_loss < args.ga_threshold:
-                loss = - forget_loss
-            else:
-                loss = forget_loss
+            loss = forget_loss
 
         elif self.loss_type == "grad_diff":
             forget_inputs, retain_inputs = inputs
@@ -161,11 +158,7 @@ class CustomTrainerForgetting(Trainer):
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
             retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
             retain_loss = retain_outputs.loss
-            # loss = forget_loss + retain_loss
-            if forget_loss < args.ga_threshold:
-                loss = - forget_loss + retain_loss
-            else:
-                loss = forget_loss + retain_loss
+            loss = forget_loss + retain_loss
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -187,19 +180,7 @@ class CustomTrainerForgetting(Trainer):
 
             # minimum KL divergence
             retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
-            # loss = forget_loss + retain_loss
-            if args.ga_threshold <= 0:
-                if forget_loss < args.ga_threshold:
-                    loss = - forget_loss + retain_loss
-                else:
-                    loss = forget_loss + retain_loss
-            else:
-                if forget_loss < args.ga_threshold and forget_loss < 0:
-                    loss = - forget_loss + retain_loss
-                elif forget_loss < args.ga_threshold and forget_loss >= 0:
-                    loss = forget_loss * 10 + retain_loss
-                else:
-                    loss = forget_loss + retain_loss
+            loss = forget_loss + retain_loss
 
         elif self.loss_type == "idk":
             idk_inputs, retain_inputs = inputs
@@ -213,18 +194,6 @@ class CustomTrainerForgetting(Trainer):
 
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             loss = outputs.loss
-
-        elif self.loss_type == "ga_mis_retain":
-            forget_inputs, mis_retain_inputs = inputs
-            input_ids, labels, attention_mask = forget_inputs
-            outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
-            forget_loss = outputs.loss
-            forget_loss = forget_loss * -1
-
-            mis_retain_input_ids, mis_retain_labels, mis_retain_attention_mask = mis_retain_inputs
-            mis_retain_outputs = model(mis_retain_input_ids, labels=mis_retain_labels, attention_mask=mis_retain_attention_mask)
-            mis_retain_loss = mis_retain_outputs.loss
-            loss = forget_loss + mis_retain_loss
 
         elif self.loss_type == "dpo":
             # idk_inputs, forget_inputs, retain_inputs = inputs
@@ -284,9 +253,8 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 150  # for all
-    # max_length = 80  # for gd-5, gd-10, kl-5, kl-10  # dpo-5, dpo-10 (idk is dpo, dpo can be removed)
-    # max_length = args.length
+    # max_length = 150  # for all
+    max_length = 80  # for attn, gd-5, gd-10, kl-5, kl-10  # dpo-5, dpo-10 (idk is dpo, dpo can be removed)
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -309,7 +277,6 @@ def main(args):
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         gradient_accumulation_steps=4,
-        # gradient_accumulation_steps=1,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
         learning_rate=1e-5,
@@ -340,9 +307,6 @@ def main(args):
     model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
-    os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
-    os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
-
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -372,17 +336,9 @@ if __name__ == "__main__":
 
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--num_epochs", type=int, default=10)
-
     parser.add_argument("--threshold", type=float)
-    # parser.add_argument("--threshold", type=float, default=0.85)
-
     parser.add_argument("--robust_iter", type=int)
     # parser.add_argument("--robust_iter", type=int, default=150)
-
-    parser.add_argument("--ball", type=float)
-    parser.add_argument("--length", type=int)
-
-    parser.add_argument("--ga_threshold", type=int)
     args = parser.parse_args()
 
     print(args)
