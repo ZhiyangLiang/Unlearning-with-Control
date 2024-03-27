@@ -2390,26 +2390,54 @@ def myeval_10(model_name):
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m5_final --file1=finetune_opt1.3b_tofu_forget1_KL_m5_final_rouge_sen.log'
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m5_final --file1=finetune_opt1.3b_tofu_forget1_KL_m5_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m2_final --file1=finetune_opt1.3b_tofu_forget1_KL_m2_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m1_final --file1=finetune_opt1.3b_tofu_forget1_KL_m1_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_5_final --file1=finetune_opt1.3b_tofu_forget1_KL_5_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_2_final --file1=finetune_opt1.3b_tofu_forget1_KL_2_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_1_final --file1=finetune_opt1.3b_tofu_forget1_KL_1_final_rouge_sen.log'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m5_final --file1=finetune_opt1.3b_tofu_forget1_KL_m5_final_memorization.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m2_final --file1=finetune_opt1.3b_tofu_forget1_KL_m2_final_rouge_sen.log'
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m2_final --file1=finetune_opt1.3b_tofu_forget1_KL_m2_final_memorization.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m1_final --file1=finetune_opt1.3b_tofu_forget1_KL_m1_final_rouge_sen.log'
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m1_final --file1=finetune_opt1.3b_tofu_forget1_KL_m1_final_memorization.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_5_final --file1=finetune_opt1.3b_tofu_forget1_KL_5_final_rouge_sen.log'
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_0_final --file1=finetune_opt1.3b_tofu_forget1_KL_0_final_memorization.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_2_final --file1=finetune_opt1.3b_tofu_forget1_KL_2_final_rouge_sen.log'
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_1_final --file1=finetune_opt1.3b_tofu_forget1_KL_1_final_memorization.log'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_1_final --file1=finetune_opt1.3b_tofu_forget1_KL_1_final_rouge_sen.log'
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_2_final --file1=finetune_opt1.3b_tofu_forget1_KL_2_final_memorization.log'
+print(cmd)
+os.system(cmd)
+
+cmd = f'python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_5_final --file1=finetune_opt1.3b_tofu_forget1_KL_5_final_memorization.log'
 print(cmd)
 os.system(cmd)
