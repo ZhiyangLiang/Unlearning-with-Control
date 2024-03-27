@@ -1208,3 +1208,10 @@ Detecting Pretraining Data from Large Language Models
 
 https://swj0419.github.io/detect-pretrain.github.io/
 
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m5_final --file1=finetune_opt1.3b_tofu_forget1_KL_m5_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m2_final --file1=finetune_opt1.3b_tofu_forget1_KL_m2_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m1_final --file1=finetune_opt1.3b_tofu_forget1_KL_m1_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_0_final --file1=finetune_opt1.3b_tofu_forget1_KL_0_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_1_final --file1=finetune_opt1.3b_tofu_forget1_KL_1_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_2_final --file1=finetune_opt1.3b_tofu_forget1_KL_2_final_memorization.log
+python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_5_final --file1=finetune_opt1.3b_tofu_forget1_KL_5_final_memorization.log

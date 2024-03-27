@@ -6,6 +6,7 @@ import evaluate
 from rouge_score import rouge_scorer
 from rouge import Rouge
 from scipy.stats import hmean
+import torch.nn as nn
 
 def get_Rouge(data_path1, data_path2):
     forget_out = []
@@ -68,7 +69,7 @@ def rouge_truth_ratio(model_path):
     rouge_para[rouge_para == 0] = 1e-5
     rouge_perb[rouge_perb == 0] = 1e-5
     unlearn_curr_stat_1 = rouge_perb / rouge_para
-    unlearn_paraphrased_perturb_ratio = np.mean(unlearn_curr_stat_1)
+    unlearn_paraphrased_perturb_ratio = np.log(np.mean(unlearn_curr_stat_1))
     print(f"unlearn_paraphrased_perturb_ratio: {unlearn_paraphrased_perturb_ratio}")
 
 rouge_truth_ratio("KL_m5_final")
