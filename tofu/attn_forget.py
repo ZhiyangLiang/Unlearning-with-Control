@@ -145,11 +145,11 @@ class CustomTrainerForgetting(Trainer):
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             forget_loss = outputs.loss
             forget_loss = forget_loss * -1
-            # loss = forget_loss
-            if forget_loss < args.ga_threshold:
-                loss = - forget_loss
-            else:
-                loss = forget_loss
+            loss = forget_loss  # original
+            # if forget_loss < args.ga_threshold:
+            #     loss = - forget_loss
+            # else:
+            #     loss = forget_loss
 
         elif self.loss_type == "grad_diff":
             forget_inputs, retain_inputs = inputs
@@ -161,11 +161,11 @@ class CustomTrainerForgetting(Trainer):
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
             retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
             retain_loss = retain_outputs.loss
-            # loss = forget_loss + retain_loss
-            if forget_loss < args.ga_threshold:
-                loss = - forget_loss + retain_loss
-            else:
-                loss = forget_loss + retain_loss
+            loss = forget_loss + retain_loss  # original
+            # if forget_loss < args.ga_threshold:
+            #     loss = - forget_loss + retain_loss
+            # else:
+            #     loss = forget_loss + retain_loss
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -187,19 +187,11 @@ class CustomTrainerForgetting(Trainer):
 
             # minimum KL divergence
             retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
-            # loss = forget_loss + retain_loss
-            if args.ga_threshold <= 0:
-                if forget_loss < args.ga_threshold:
-                    loss = - forget_loss + retain_loss
-                else:
-                    loss = forget_loss + retain_loss
-            else:
-                if forget_loss < args.ga_threshold and forget_loss < 0:
-                    loss = - forget_loss + retain_loss
-                elif forget_loss < args.ga_threshold and forget_loss >= 0:
-                    loss = forget_loss * 10 + retain_loss
-                else:
-                    loss = forget_loss + retain_loss
+            loss = forget_loss + retain_loss  # original
+            # if forget_loss < args.ga_threshold:
+            #     loss = - forget_loss + retain_loss
+            # else:
+            #     loss = forget_loss + retain_loss
 
         elif self.loss_type == "idk":
             idk_inputs, retain_inputs = inputs
@@ -284,9 +276,9 @@ def main(args):
     print("Saving to: ", args.save_dir)
     print("######################")
 
-    max_length = 150  # for all
+    # max_length = 150  # for all
     # max_length = 80  # for gd-5, gd-10, kl-5, kl-10  # dpo-5, dpo-10 (idk is dpo, dpo can be removed)
-    # max_length = args.length
+    max_length = args.length
     if args.forget_loss == "dpo":
         torch_format_dataset = TextForgetDatasetDPOQA(forget_data_path=args.forget_data_path,
                                                retain_data_path=args.retain_data_path, tokenizer=tokenizer,
@@ -382,7 +374,7 @@ if __name__ == "__main__":
     parser.add_argument("--ball", type=float)
     parser.add_argument("--length", type=int)
 
-    parser.add_argument("--ga_threshold", type=int)
+    # parser.add_argument("--ga_threshold", type=float)
     args = parser.parse_args()
 
     print(args)

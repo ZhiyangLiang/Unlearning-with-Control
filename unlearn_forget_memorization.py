@@ -123,7 +123,7 @@ for i, j in enumerate(retain_loader):
     if i >= 39:
         break
 
-log1.critical(f"forget_sum: {forget_sum}")
-print(f"forget_sum: {forget_sum}")
-log1.critical(f"retain_sum: {retain_sum}")
-print(f"retain_sum: {retain_sum}")
+log1.critical(f"forget_sum: {forget_sum / 40}")
+print(f"forget_sum: {forget_sum / 40}")
+log1.critical(f"retain_sum: {retain_sum / 40}")
+print(f"retain_sum: {retain_sum / 40}")
