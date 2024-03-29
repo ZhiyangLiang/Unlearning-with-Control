@@ -71,14 +71,22 @@ for i, j in enumerate(forget_loader):
         log1.critical(generated_prompt)
         print(generated_prompt)
         if generated_prompt == f"### Question: {j['question']}\n ### Answer:{j['answer']}" or generated_prompt == f"### Question: {j['question']}\n ### Answer: {j['answer']}":
-            log1.critical((k + 1) / len(j['answer'].split(" ")))
-            print((k + 1) / len(j['answer'].split(" ")))
-            forget_sum += ((k + 1) / len(j['answer'].split(" ")))
+            log1.critical(f"ratio: {(k + 1) / len(j['answer'].split(' '))}")
+            print(f"ratio: {(k + 1) / len(j['answer'].split(' '))}")
+            forget_sum += ((k + 1) / len(j['answer'].split(' ')))
             break
-    if i >= 40:
+        elif k == len(j['answer'].split(" ")) - 1:
+            log1.critical(f"other: {1}")
+            print(f"other: {1}")
+            forget_sum += 1
+            break
+    if i >= 39:
         break
 
 retain_sum = 0.0
+
+log1.critical("next------------------------------")
+print("next------------------------------")
 
 for i, j in enumerate(retain_loader):
     log1.critical("question------------------------------")
@@ -103,11 +111,16 @@ for i, j in enumerate(retain_loader):
         log1.critical(generated_prompt)
         print(generated_prompt)
         if generated_prompt == f"### Question: {j['question']}\n ### Answer:{j['answer']}" or generated_prompt == f"### Question: {j['question']}\n ### Answer: {j['answer']}":
-            log1.critical((k + 1) / len(j['answer'].split(" ")))
-            print((k + 1) / len(j['answer'].split(" ")))
-            retain_sum += ((k + 1) / len(j['answer'].split(" ")))
+            log1.critical(f"ratio: {(k + 1) / len(j['answer'].split(' '))}")
+            print(f"ratio: {(k + 1) / len(j['answer'].split(' '))}")
+            retain_sum += ((k + 1) / len(j['answer'].split(' ')))
             break
-    if i >= 40:
+        elif k == len(j['answer'].split(" ")) - 1:
+            log1.critical(f"other: {1}")
+            print(f"other: {1}")
+            retain_sum += 1
+            break
+    if i >= 39:
         break
 
 log1.critical(f"forget_sum: {forget_sum}")
