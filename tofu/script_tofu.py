@@ -536,19 +536,58 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m0.1_final --length=80 --threshold=0.8 --ga_threshold=-0.1'
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m0.1_final --length=80 --threshold=0.8 --ga_threshold=-0.1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m0.2_final --length=80 --threshold=0.8 --ga_threshold=-0.2'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m0.1_final --length=80 --threshold=0.8 --ga_threshold=-0.1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m0.2_final --length=80 --threshold=0.8 --ga_threshold=-0.2'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m0.5_final --length=80 --threshold=0.8 --ga_threshold=-0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m1_final --length=80 --threshold=0.8 --ga_threshold=-1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m2_final --length=80 --threshold=0.8 --ga_threshold=-2'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m0.5_final --length=80 --threshold=0.8 --ga_threshold=-0.5'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m1_final --length=80 --threshold=0.8 --ga_threshold=-1'
+# print(cmd)
+# os.system(cmd)
+#
+# cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m2_final --length=80 --threshold=0.8 --ga_threshold=-2'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m5_final --length=80 --threshold=0.8 --ga_threshold=-5'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m0.2_final --length=80 --threshold=0.8 --ga_threshold=-0.2'
+cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt1.3b_tofu_forget5_grad_diff_m10_final --length=80 --threshold=0.8 --ga_threshold=-10'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m0.1_final --length=80 --threshold=0.8 --ga_threshold=-0.1'
+cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m5_final --length=80 --threshold=0.8 --ga_threshold=-5'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m0.2_final --length=80 --threshold=0.8 --ga_threshold=-0.2'
+cmd = f'python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt1.3b_tofu_forget10_grad_diff_m10_final --length=80 --threshold=0.8 --ga_threshold=-10'
 print(cmd)
 os.system(cmd)
-
