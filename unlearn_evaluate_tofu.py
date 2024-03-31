@@ -166,23 +166,24 @@ def main(args) -> None:
     # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
 
     forget_loader_paraphrased = create_tofu_dataloader_from_dataset_paraphrased(
-        "data/forget01_perturbed.json", tokenizer, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, batch_size=args.batch_size
     )
     forget_loader_perturbed_0 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 0, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 0, batch_size=args.batch_size
     )
     forget_loader_perturbed_1 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 1, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 1, batch_size=args.batch_size
     )
     forget_loader_perturbed_2 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 2, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 2, batch_size=args.batch_size
     )
     forget_loader_perturbed_3 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 3, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 3, batch_size=args.batch_size
     )
     forget_loader_perturbed_4 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 4, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 4, batch_size=args.batch_size
     )
+
     model.eval()
 
     idx = 0
@@ -287,6 +288,11 @@ if __name__ == "__main__":
         type=str,
         default="logs/default.log",
         help="Log file name",
+    )
+
+    parser.add_argument(
+        "--forget_data",
+        type=str,
     )
     args = parser.parse_args()
 

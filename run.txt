@@ -1215,3 +1215,10 @@ python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_
 python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_1_final --file1=finetune_opt1.3b_tofu_forget1_KL_1_final_memorization.log
 python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_2_final --file1=finetune_opt1.3b_tofu_forget1_KL_2_final_memorization.log
 python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_5_final --file1=finetune_opt1.3b_tofu_forget1_KL_5_final_memorization.log
+
+    forget_loader = create_tofu_dataloader_from_dataset_for_test(
+  File "/hy-tmp/LLM_Unlearning/llm_unlearn/utils.py", line 142, in create_tofu_dataloader_from_dataset_for_test
+    with open(data_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'tofu/None'
+
+redo: forget quality and memorization for forget5 and forget10

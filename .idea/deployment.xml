@@ -79,6 +79,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@i-1.gpushare.com:26327">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/hy-tmp/LLM_Unlearning" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@i-1.gpushare.com:26392">
         <serverdata>
           <mappings>

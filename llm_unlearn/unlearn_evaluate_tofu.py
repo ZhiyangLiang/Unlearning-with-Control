@@ -162,33 +162,28 @@ def main(args) -> None:
     # model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     model = AutoModelForCausalLM.from_pretrained(f"models/{args.model_name}", output_attentions=True)  # new
     model.to(device)
-
-    # change
     # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
-
-    access_token = "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"
-    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token=access_token, cache_dir="./")
-    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
 
     forget_loader_paraphrased = create_tofu_dataloader_from_dataset_paraphrased(
-        "data/forget01_perturbed.json", tokenizer, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, batch_size=args.batch_size
     )
     forget_loader_perturbed_0 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 0, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 0, batch_size=args.batch_size
     )
     forget_loader_perturbed_1 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 1, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 1, batch_size=args.batch_size
     )
     forget_loader_perturbed_2 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 2, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 2, batch_size=args.batch_size
     )
     forget_loader_perturbed_3 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 3, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 3, batch_size=args.batch_size
     )
     forget_loader_perturbed_4 = create_tofu_dataloader_from_dataset_perturbed(
-        "data/forget01_perturbed.json", tokenizer, 4, batch_size=args.batch_size
+        f"data/{args.forget_data}_perturbed.json", tokenizer, 4, batch_size=args.batch_size
     )
+    
     model.eval()
 
     idx = 0
@@ -231,7 +226,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_name",
         type=str,
-        # opt1.3b
+        # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167,
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_robust_cur_4",  # 0.9188052214121167, 0.6552168853235508  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_maintain_4",  # 0.7659314523482239, 0.615445615040676  (1)
         # default="models/finetune_opt1.3b_tofu_forget1_attn_150_onlyx_robust_cur_4",  # 0.09707484379785862, 0.0  (1)
@@ -242,8 +237,19 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_robust_cur_4",  # 6.608193292756245e-06, 0.0  (2)
         # default="models/finetune_opt1.3b_tofu_forget1_ga_150_woall_4",  # 1.8880552265017844e-06, 0.0  (2)
 
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_5_0.8",  # 0.5786001416508443,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_200_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_250_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253,
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_300_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9900193288833089, 0.6910753071486267
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_350_onlyx_maintain_robust_cur_4_5_0.8",  # 0.9188052214121167, 0.684552426577
+        # default="models/finetune_opt1.3b_tofu_forget5_attn_400_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239,
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4",  # 0.404587405685253, 0.7026056581474868
         # default="models/finetune_opt1.3b_tofu_forget5_attn_150_onlyx_maintain_robust_cur_4_450",  # 0.5786001416508443, 0.6951160763572563
+
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_800_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.6824082749356348
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_850_onlyx_maintain_robust_cur_4_5_0.8",  # 0.404587405685253, 0.7018352357668952
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_950_onlyx_maintain_robust_cur_4_5_0.8",  # 0.2656871402817289, 0.6964823021734543
+        # default="models/finetune_opt1.3b_tofu_forget10_attn_1000_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.691268752954575
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4",  # 0.09707484379785862, 0.7034178384916713
         # default="models/finetune_opt1.3b_tofu_forget10_attn_150_onlyx_maintain_robust_cur_4_900",  # 0.2656871402817289, 0.7121276883209432
 
@@ -260,25 +266,21 @@ if __name__ == "__main__":
         # default="models/finetune_opt1.3b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.6863643883641558
         # default="models/finetune_opt1.3b_tofu_forget10_idk",  # 0.16497269950224194, 0.7007893659567589
 
-        # opt2.7b
-        # default="finetune_opt2.7b_tofu_forget1_attn_100_onlyx_maintain_robust_cur_4_5_0.8",  # 0.7659314523482239, 0.7424362311296397
-        # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05, 4.277535640632399e-29
-        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519, 0.6983421660580345
-        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519, 0.6984950978068268
-        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208, 0.7461806835169722
+        # new
+        # default="finetune_opt2.7b_tofu_forget1_grad_ascent",  # 2.156357811320459e-05,
+        # default="finetune_opt2.7b_tofu_forget1_grad_diff",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_KL",  # 0.0005039436209702519,
+        # default="finetune_opt2.7b_tofu_forget1_idk",  # 0.006760732303569208,
 
-        # default="finetune_opt2.7b_tofu_forget5_attn_100_onlyx_maintain_robust_cur_4_5_0.8"  # 0.16497269950224194, 0.7238613087472107
-        # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05, 0.0
-        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278, 0.7177933902460178
-        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05, 0.7425696703235104
-        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725, 0.7422309546911205
+        # default="finetune_opt2.7b_tofu_forget5_grad_ascent",  # 2.156357811320459e-05,
+        # default="finetune_opt2.7b_tofu_forget5_grad_diff",  # 0.00018791118070078278,
+        # default="finetune_opt2.7b_tofu_forget5_KL",  # 6.5768913245274e-05,
+        # default="finetune_opt2.7b_tofu_forget5_idk",  # 0.054141077480362725,
 
-        # default="finetune_opt2.7b_tofu_forget10_attn_400_onlyx_maintain_robust_cur_4_5_0.8"  # 0.09707484379785862, 0.7276374212523132
-        # default="finetune_opt2.7b_tofu_forget10_attn_450_onlyx_maintain_robust_cur_4_5_0.8"  # 0.09707484379785862, 0.732470971455701
-        # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06, 0.0
-        # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05, 0.7075944261412391
-        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06, 0.737025804459959
-        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725, 0.6973261260439019
+        # default="finetune_opt2.7b_tofu_forget10_grad_ascent",  # 1.8880552265017844e-06,
+        # default="finetune_opt2.7b_tofu_forget10_grad_diff",  # 6.5768913245274e-05,
+        # default="finetune_opt2.7b_tofu_forget10_KL",  # 1.8880552265017844e-06,
+        # default="finetune_opt2.7b_tofu_forget10_idk",  # 0.054141077480362725,
         help="Name of the pretrained model.",
     )
     parser.add_argument(
@@ -286,6 +288,11 @@ if __name__ == "__main__":
         type=str,
         default="logs/default.log",
         help="Log file name",
+    )
+
+    parser.add_argument(
+        "--forget_data",
+        type=str,
     )
     args = parser.parse_args()
 
