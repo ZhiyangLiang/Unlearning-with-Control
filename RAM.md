@@ -1,10 +1,10 @@
 # RAM
 
+#### GA + Maintain (loss):
+
 ##### new
 
 ##### opt1.3b-Forget1:
-
-#### GA + Maintain (loss):
 
 |      | Forget Quality        | Truth Ratio (Forget) log(x + 1) | Truth Ratio        | Normal Rate | Memorization(Forget) | Memorization(Retain) |
 | ---- | --------------------- | ------------------------------- | ------------------ | ----------- | -------------------- | -------------------- |
@@ -56,6 +56,8 @@
 | -2   | 0.5786001416508443  | 0.6104822560330749              | 0.5133352140598988 | 100         | 0.8639117432899559   | 0.05723110223110224  |
 | -5   | 0.01430154804770646 | 1.0564370175896256              | /                  | /           | /                    | /                    |
 
+##### new
+
 ##### opt2.7b-Forget5
 
 |      | Forget Quality        | Truth Ratio (Forget) log(x + 1) | Truth Ratio       | Normal Rate | Memorization(Forget) | Memorization(Retain) |
@@ -65,6 +67,8 @@
 | -5   | 0.5029845223747939    | 0.6052512503159099              | 0.517707796869109 | 5           | 1.0                  | 0.02727854915354915  |
 | -10  | 0.001715726761942161  | 0.7266785123888031              | /                 | /           | /                    | /                    |
 
+##### new
+
 ##### opt2.7b-Forget10
 
 |      | Forget Quality         | Truth Ratio (Forget) log(x + 1) | Truth Ratio        | Normal Rate | Memorization(Forget) | Memorization(Retain) |
@@ -73,9 +77,11 @@
 | -5   | 0.104676835250499,     | 0.6082012841384313              | 0.5250208788155113 | 0           | 1.0                  | 0.018319194061505832 |
 | -10  | 0.009063398220387164,  | 0.6478648362830134              | /                  | /           | /                    | /                    |
 
+#### GA + Maintain (KL):
+
 ##### new
 
-#### GA + Maintain (KL):
+##### opt1.3b-Forget1
 
 |      | Forget Quality        | Truth Ratio (Forget) log(x + 1) | Truth Ratio         | Normal Rate | Memorization(Forget) | Memorization(Retain) |
 | ---- | --------------------- | ------------------------------- | ------------------- | ----------- | -------------------- | -------------------- |
