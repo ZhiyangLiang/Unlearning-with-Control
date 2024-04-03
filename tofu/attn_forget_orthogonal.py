@@ -10,6 +10,7 @@ import transformers
 import os
 import yaml
 import argparse
+import numpy as np
 from typing import Dict, Union, Any
 
 idx = 0
@@ -184,7 +185,10 @@ class CustomTrainerForgetting(Trainer):
             # else:
             #     loss = forget_loss + retain_loss
 
-            return (forget_loss, retain_loss, outputs) if return_outputs else (forget_loss, retain_loss)
+            if forget_loss < args.ga_threshold:
+                return (-forget_loss, retain_loss, outputs) if return_outputs else (-forget_loss, retain_loss)
+            else:
+                return (forget_loss, retain_loss, outputs) if return_outputs else (forget_loss, retain_loss)
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -297,13 +301,12 @@ class CustomTrainerForgetting(Trainer):
 
         for name, param in model.named_parameters():
             if name in forget_grad and name in retain_grad:
+                forget_grad[name] = torch.clip(forget_grad[name], min=-1e-8, max=1e-8)
+                retain_grad[name] = torch.clip(retain_grad[name], min=-1e-8, max=1e-8)
                 param.grad += (forget_grad[name] - ((forget_grad[name] * retain_grad[name]).sum() / torch.norm(retain_grad[name], p=2)) * retain_grad[name])
 
         # return loss.detach() / self.args.gradient_accumulation_steps  # original
-        if forget_loss < args.ga_threshold:
-            loss = - forget_loss + retain_loss
-        else:
-            loss = forget_loss + retain_loss
+        loss = forget_loss + retain_loss
         return loss.detach() / self.args.gradient_accumulation_steps
 
     def prediction_step(self, model, inputs, prediction_loss_only: bool, ignore_keys=None):
@@ -348,6 +351,8 @@ def main(args):
 
     max_steps = args.num_epochs * len(torch_format_dataset) // (
                 batch_size * num_devices)
+    if "forget10" in args.model_family:
+        max_steps = 2500
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(

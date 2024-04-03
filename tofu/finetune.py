@@ -56,7 +56,7 @@ def main(cfg):
     #         OmegaConf.save(cfg, f)
 
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
-    # tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.pad_token = tokenizer.eos_token
 
     max_length = 500
     torch_format_dataset = TextDatasetQA(cfg["data_path"], tokenizer=tokenizer, max_length=max_length)
@@ -94,6 +94,7 @@ def main(cfg):
             output_dir=cfg["save_dir"],
             # optim="paged_adamw_32bit",
             # save_steps=steps_per_epoch,
+            # save_steps=max_steps,
             save_steps=50000,  # mytry
             save_only_model=True,
             # ddp_find_unused_parameters= False,

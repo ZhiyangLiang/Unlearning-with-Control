@@ -51,31 +51,31 @@ def get_Rouge(data_path1, data_path2):
     # return avg_score
 
 def rouge_truth_ratio(data_name, model_path):
-    rouge_para = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                           f"finetune_opt1.3b_tofu_{data_name}_paraphrased_rouge_sen.log")
-    rouge_perb0 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt1.3b_tofu_{data_name}_perturbed0_rouge_sen.log")
-    rouge_perb1 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt1.3b_tofu_{data_name}_perturbed1_rouge_sen.log")
-    rouge_perb2 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt1.3b_tofu_{data_name}_perturbed2_rouge_sen.log")
-    rouge_perb3 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt1.3b_tofu_{data_name}_perturbed3_rouge_sen.log")
-    rouge_perb4 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt1.3b_tofu_{data_name}_perturbed4_rouge_sen.log")
+    # rouge_para = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                        f"finetune_opt1.3b_tofu_{data_name}_paraphrased_rouge_sen.log")
+    # rouge_perb0 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed0_rouge_sen.log")
+    # rouge_perb1 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed1_rouge_sen.log")
+    # rouge_perb2 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed2_rouge_sen.log")
+    # rouge_perb3 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed3_rouge_sen.log")
+    # rouge_perb4 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed4_rouge_sen.log")
 
-    # rouge_para = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                        f"finetune_opt2.7b_tofu_{data_name}_paraphrased_rouge_sen.log")
-    # rouge_perb0 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed0_rouge_sen.log")
-    # rouge_perb1 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed1_rouge_sen.log")
-    # rouge_perb2 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed2_rouge_sen.log")
-    # rouge_perb3 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed3_rouge_sen.log")
-    # rouge_perb4 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed4_rouge_sen.log")
+    rouge_para = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                           f"finetune_opt2.7b_tofu_{data_name}_paraphrased_rouge_sen.log")
+    rouge_perb0 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed0_rouge_sen.log")
+    rouge_perb1 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed1_rouge_sen.log")
+    rouge_perb2 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed2_rouge_sen.log")
+    rouge_perb3 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed3_rouge_sen.log")
+    rouge_perb4 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed4_rouge_sen.log")
 
     rouge_para = np.array(rouge_para)
     rouge_perb = (np.array(rouge_perb0) + np.array(rouge_perb1) + np.array(rouge_perb2) + np.array(rouge_perb3) + np.array(rouge_perb4)) / 5

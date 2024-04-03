@@ -2380,7 +2380,7 @@ def myeval_10(model_name):
 # cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_0_final --file1=finetune_opt1.3b_tofu_forget1_KL_0_final_rouge_sen.log --file2=finetune_opt1.3b_tofu_forget1_paraphrased_rouge_sen.log --file3=finetune_opt1.3b_tofu_forget1_perturbed0_rouge_sen.log --file4=finetune_opt1.3b_tofu_forget1_perturbed1_rouge_sen.log --file5=finetune_opt1.3b_tofu_forget1_perturbed2_rouge_sen.log --file6=finetune_opt1.3b_tofu_forget1_perturbed3_rouge_sen.log --file7=finetune_opt1.3b_tofu_forget1_perturbed4_rouge_sen.log'
 # print(cmd)
 # os.system(cmd)
-
+#
 # cmd = f'python unlearn_rouge_truth_ratio.py --model_name=models/finetune_opt1.3b_tofu_forget1_KL_m5_final --file1=finetune_opt1.3b_tofu_forget1_KL_m5_final_rouge_sen.log'
 # print(cmd)
 # os.system(cmd)

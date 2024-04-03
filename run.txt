@@ -1222,3 +1222,19 @@ python unlearn_forget_memorization.py --model_name=models/finetune_opt1.3b_tofu_
 FileNotFoundError: [Errno 2] No such file or directory: 'tofu/None'
 
 redo: forget quality and memorization for forget5 and forget10
+
+
+sudo apt update
+sudo apt-get install libopenmpi-dev
+
+pip install mpi4py
+
+"bf16": {
+    "enabled": "auto"
+}
+
+pip install bitsandbytes
+CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 --master_port=29500 finetune.py
+03:33<12:41:38
+CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 --master_port=29500 finetune.py
+03:38<46:53:33

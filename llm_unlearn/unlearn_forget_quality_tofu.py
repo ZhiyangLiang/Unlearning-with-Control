@@ -126,8 +126,9 @@ def get_forget_quality(unlearn_paraphrase_np_values, unlearn_perturbed_np_values
 
     unlearn_paraphrase_values = np.exp(-1 * unlearn_paraphrase_np_values)
     unlearn_perturbed_values = np.exp(-1 * unlearn_perturbed_np_values)
-    unlearn_curr_stat_1 = unlearn_perturbed_values / unlearn_paraphrase_values
+    # unlearn_curr_stat_1 = unlearn_perturbed_values / unlearn_paraphrase_values
     # unlearn_paraphrased_perturb_ratio = np.mean(unlearn_curr_stat_1)  # original
+    unlearn_curr_stat_1 = unlearn_paraphrase_values / unlearn_perturbed_values
     unlearn_paraphrased_perturb_ratio = np.log(np.mean(unlearn_curr_stat_1) + 1)
     print(f"unlearn_paraphrased_perturb_ratio: {unlearn_paraphrased_perturb_ratio}")
 

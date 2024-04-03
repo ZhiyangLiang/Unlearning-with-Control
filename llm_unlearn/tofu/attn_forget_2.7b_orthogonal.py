@@ -162,10 +162,31 @@ class CustomTrainerForgetting(Trainer):
             retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
             retain_loss = retain_outputs.loss
             loss = forget_loss + retain_loss  # original
+            if forget_loss < args.ga_threshold:
+                loss = - forget_loss + retain_loss
+            else:
+                loss = forget_loss + retain_loss
+
+        elif self.loss_type == "grad_diff_orthogonal":
+            forget_inputs, retain_inputs = inputs
+            input_ids, labels, attention_mask = forget_inputs
+            outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
+            forget_loss = outputs.loss
+            forget_loss = forget_loss * -1
+
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
+            retain_loss = retain_outputs.loss
+            # loss = forget_loss + retain_loss  # original
             # if forget_loss < args.ga_threshold:
             #     loss = - forget_loss + retain_loss
             # else:
             #     loss = forget_loss + retain_loss
+
+            if forget_loss < args.ga_threshold:
+                return (-forget_loss, retain_loss, outputs) if return_outputs else (-forget_loss, retain_loss)
+            else:
+                return (forget_loss, retain_loss, outputs) if return_outputs else (forget_loss, retain_loss)
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -188,10 +209,10 @@ class CustomTrainerForgetting(Trainer):
             # minimum KL divergence
             retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
             loss = forget_loss + retain_loss  # original
-            # if forget_loss < args.ga_threshold:
-            #     loss = - forget_loss + retain_loss
-            # else:
-            #     loss = forget_loss + retain_loss
+            if forget_loss < args.ga_threshold:
+                loss = - forget_loss + retain_loss
+            else:
+                loss = forget_loss + retain_loss
 
         elif self.loss_type == "idk":
             idk_inputs, retain_inputs = inputs
@@ -252,6 +273,37 @@ class CustomTrainerForgetting(Trainer):
             outputs = forget_outputs
 
         return (loss, outputs) if return_outputs else loss
+
+    def training_step(self, model: nn.Module, inputs: Dict[str, Union[torch.Tensor, Any]]) -> torch.Tensor:
+        model.train()
+        inputs = self._prepare_inputs(inputs)
+
+        with self.compute_loss_context_manager():
+            # loss = self.compute_loss(model, inputs)
+            forget_loss, retain_loss = self.compute_loss(model, inputs)  # orthogonal
+
+        # if self.args.n_gpu > 1:
+        #     loss = loss.mean()  # mean() to average on multi-gpu parallel training
+
+        # if self.use_apex:
+        #     with amp.scale_loss(loss, self.optimizer) as scaled_loss:
+        #         scaled_loss.backward()
+        # else:
+
+        self.accelerator.backward(forget_loss)
+        forget_grad = {name: param.grad.clone() for name, param in model.named_parameters()}
+
+        model.zero_grad()
+        self.accelerator.backward(retain_loss)
+        retain_grad = {name: param.grad.clone() for name, param in model.named_parameters()}
+
+        for name, param in model.named_parameters():
+            if name in forget_grad and name in retain_grad:
+                param.grad += (forget_grad[name] - ((forget_grad[name] * retain_grad[name]).sum() / torch.norm(retain_grad[name], p=2)) * retain_grad[name])
+
+        # return loss.detach() / self.args.gradient_accumulation_steps  # original
+        loss = forget_loss + retain_loss
+        return loss.detach() / self.args.gradient_accumulation_steps
 
     def prediction_step(self, model, inputs, prediction_loss_only: bool, ignore_keys=None):
         input_ids, labels, attention_mask = inputs
@@ -331,9 +383,6 @@ def main(args):
     model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
-    os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
-    os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
-    
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )

@@ -142,6 +142,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@i-2.gpushare.com:28554">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/hy-tmp" local="$PROJECT_DIR$/../deepspeed" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@i-2.gpushare.com:39137">
         <serverdata>
           <mappings>
@@ -272,6 +279,13 @@
         <serverdata>
           <mappings>
             <mapping deploy="/root/autodl-tmp/llm_unlearn" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@region-9.autodl.pro:35381">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp" local="$PROJECT_DIR$/../deepspeed" />
           </mappings>
         </serverdata>
       </paths>
