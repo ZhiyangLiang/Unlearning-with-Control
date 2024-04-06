@@ -7,6 +7,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import transformers
 import os
 import yaml
+import argparse
 # from peft import LoraConfig, get_peft_model
 # from pathlib import Path
 # from omegaconf import OmegaConf
@@ -145,13 +146,22 @@ def main(cfg):
     # model.save_pretrained("models/finetune_opt1.3b_tofu_retrain95", from_pt=True)
     # model.save_pretrained("models/finetune_opt1.3b_tofu_retrain90", from_pt=True)
 
-    model.save_pretrained("models/finetune_opt2.7b_tofu", from_pt=True)
+    # model.save_pretrained("models/finetune_opt2.7b_tofu", from_pt=True)
     # model.save_pretrained("models/finetune_opt2.7b_tofu_retrain99", from_pt=True)
     # model.save_pretrained("models/finetune_opt2.7b_tofu_retrain95", from_pt=True)
     # model.save_pretrained("models/finetune_opt2.7b_tofu_retrain90", from_pt=True)
+    model.save_pretrained(f"models/{args.save_model}", from_pt=True)
 
 if __name__ == "__main__":
-    with open('config/finetune.yaml', 'r') as file:
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument("--save_model", type=str)
+    parser.add_argument("--yaml_name", type=str)
+    args = parser.parse_args()
+
+    # with open('config/finetune.yaml', 'r') as file:
+    with open(f'config/{args.yaml_name}', 'r') as file:
         cfg = yaml.safe_load(file)
     print(cfg)
     main(cfg)

@@ -161,11 +161,11 @@ class CustomTrainerForgetting(Trainer):
             retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
             retain_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
             retain_loss = retain_outputs.loss
-            loss = forget_loss + retain_loss  # original
-            # if forget_loss < args.ga_threshold:
-            #     loss = - forget_loss + retain_loss
-            # else:
-            #     loss = forget_loss + retain_loss
+            # loss = forget_loss + retain_loss  # original
+            if forget_loss < args.ga_threshold:
+                loss = - forget_loss + retain_loss
+            else:
+                loss = forget_loss + retain_loss
 
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
@@ -187,11 +187,11 @@ class CustomTrainerForgetting(Trainer):
 
             # minimum KL divergence
             retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
-            loss = forget_loss + retain_loss  # original
-            # if forget_loss < args.ga_threshold:
-            #     loss = - forget_loss + retain_loss
-            # else:
-            #     loss = forget_loss + retain_loss
+            # loss = forget_loss + retain_loss  # original
+            if forget_loss < args.ga_threshold:
+                loss = - forget_loss + retain_loss
+            else:
+                loss = forget_loss + retain_loss
 
         elif self.loss_type == "idk":
             idk_inputs, retain_inputs = inputs
@@ -333,7 +333,7 @@ def main(args):
 if __name__ == "__main__":
     os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
     os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
-    
+
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )

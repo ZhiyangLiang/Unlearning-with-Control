@@ -3,6 +3,7 @@ import pdb
 import argparse
 import numpy as np
 from rouge import Rouge
+import json
 
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
@@ -19,17 +20,19 @@ answers = re.findall(r'answer------------------------------\n Answer: ?(.*)', lo
 
 rouger = Rouge()
 forget_sens = []
-retain_sens = []
+original_sens = []
 for idx, answer in enumerate(answers):
     if idx < 20:
         forget_sens.append(answer)
-    elif idx > 20 and idx <= 40:
-        retain_sens.append(answer)
+
+with open("../tofu/locuslab/TOFU/full.json", 'r') as file:
+    for idx, line in enumerate(file):
+        original_sens.append(json.loads(line)["answer"])
 
 scores = []
 final_scores = []
 for forget_sen in forget_sens:
-    for retain_sen in retain_sens:
+    for retain_sen in original_sens:
         # pdb.set_trace()
         score = rouger.get_scores(forget_sen + " ", " " + retain_sen)[0]['rouge-l']['f']
         scores.append(score)

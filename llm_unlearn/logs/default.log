@@ -1,0 +1,1206 @@
+2024-04-06-07-05,571 root INFO batch_size: 1
+2024-04-06-07-05,572 root INFO model_name: finetune_opt2.7b_tofu_forget10_grad_diff_m20_final
+2024-04-06-07-05,572 root INFO log_file: logs/default.log
+2024-04-06-07-05,572 root INFO forget_data: forget10
+2024-04-06-07-05,704 accelerate.utils.other WARNING Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-04-06-07-05,606 root INFO batch: 0, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 19.96, forget_perturbed_loss_1: 19.09, forget_perturbed_loss_2: 19.80, forget_perturbed_loss_3: 19.04, forget_perturbed_loss_4: 19.49, forget_perturbed_loss: 19.47, 
+2024-04-06-07-05,606 log1 INFO 19.284839630126953
+2024-04-06-07-05,606 log2 INFO 19.472877502441406
+2024-04-06-07-05,34 root INFO batch: 1, forget_paraphrased_loss: 19.64, forget_perturbed_loss_0: 19.11, forget_perturbed_loss_1: 19.70, forget_perturbed_loss_2: 18.98, forget_perturbed_loss_3: 18.69, forget_perturbed_loss_4: 18.95, forget_perturbed_loss: 19.09, 
+2024-04-06-07-05,37 log1 INFO 19.640560150146484
+2024-04-06-07-05,37 log2 INFO 19.08640480041504
+2024-04-06-07-05,338 root INFO batch: 2, forget_paraphrased_loss: 19.61, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.04, forget_perturbed_loss_2: 19.43, forget_perturbed_loss_3: 19.93, forget_perturbed_loss_4: 19.65, forget_perturbed_loss: 19.42, 
+2024-04-06-07-05,342 log1 INFO 19.610069274902344
+2024-04-06-07-05,342 log2 INFO 19.421489715576172
+2024-04-06-07-05,653 root INFO batch: 3, forget_paraphrased_loss: 18.97, forget_perturbed_loss_0: 18.29, forget_perturbed_loss_1: 19.12, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.06, forget_perturbed_loss: 19.10, 
+2024-04-06-07-05,657 log1 INFO 18.966663360595703
+2024-04-06-07-05,657 log2 INFO 19.100934982299805
+2024-04-06-07-05,4 root INFO batch: 4, forget_paraphrased_loss: 19.11, forget_perturbed_loss_0: 19.68, forget_perturbed_loss_1: 18.72, forget_perturbed_loss_2: 19.21, forget_perturbed_loss_3: 19.20, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,8 log1 INFO 19.1137752532959
+2024-04-06-07-05,8 log2 INFO 19.317052841186523
+2024-04-06-07-05,377 root INFO batch: 5, forget_paraphrased_loss: 19.39, forget_perturbed_loss_0: 19.49, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.34, forget_perturbed_loss_3: 19.54, forget_perturbed_loss_4: 19.33, forget_perturbed_loss: 19.47, 
+2024-04-06-07-05,381 log1 INFO 19.388545989990234
+2024-04-06-07-05,381 log2 INFO 19.465063095092773
+2024-04-06-07-05,662 root INFO batch: 6, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 18.79, forget_perturbed_loss_1: 19.84, forget_perturbed_loss_2: 18.69, forget_perturbed_loss_3: 19.88, forget_perturbed_loss_4: 19.00, forget_perturbed_loss: 19.24, 
+2024-04-06-07-05,667 log1 INFO 19.718334197998047
+2024-04-06-07-05,667 log2 INFO 19.238515853881836
+2024-04-06-07-05,968 root INFO batch: 7, forget_paraphrased_loss: 19.86, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 18.69, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.76, forget_perturbed_loss_4: 18.71, forget_perturbed_loss: 19.19, 
+2024-04-06-07-05,971 log1 INFO 19.860149383544922
+2024-04-06-07-05,972 log2 INFO 19.18808937072754
+2024-04-06-07-05,297 root INFO batch: 8, forget_paraphrased_loss: 19.85, forget_perturbed_loss_0: 19.61, forget_perturbed_loss_1: 19.62, forget_perturbed_loss_2: 20.07, forget_perturbed_loss_3: 19.64, forget_perturbed_loss_4: 19.80, forget_perturbed_loss: 19.75, 
+2024-04-06-07-05,302 log1 INFO 19.848243713378906
+2024-04-06-07-05,302 log2 INFO 19.746009826660156
+2024-04-06-07-05,617 root INFO batch: 9, forget_paraphrased_loss: 18.70, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.50, forget_perturbed_loss_2: 19.44, forget_perturbed_loss_3: 19.32, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.35, 
+2024-04-06-07-05,621 log1 INFO 18.700754165649414
+2024-04-06-07-05,622 log2 INFO 19.34531593322754
+2024-04-06-07-05,941 root INFO batch: 10, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.51, forget_perturbed_loss_2: 19.74, forget_perturbed_loss_3: 19.13, forget_perturbed_loss_4: 19.33, forget_perturbed_loss: 19.43, 
+2024-04-06-07-05,946 log1 INFO 19.780595779418945
+2024-04-06-07-05,946 log2 INFO 19.4251708984375
+2024-04-06-07-05,263 root INFO batch: 11, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.25, forget_perturbed_loss_2: 19.92, forget_perturbed_loss_3: 19.85, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.51, 
+2024-04-06-07-05,267 log1 INFO 19.775609970092773
+2024-04-06-07-05,268 log2 INFO 19.507654190063477
+2024-04-06-07-05,601 root INFO batch: 12, forget_paraphrased_loss: 19.59, forget_perturbed_loss_0: 19.51, forget_perturbed_loss_1: 19.60, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.58, forget_perturbed_loss_4: 19.25, forget_perturbed_loss: 19.48, 
+2024-04-06-07-05,606 log1 INFO 19.59304428100586
+2024-04-06-07-05,606 log2 INFO 19.484739303588867
+2024-04-06-07-05,936 root INFO batch: 13, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 18.96, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.84, forget_perturbed_loss_4: 19.80, forget_perturbed_loss: 19.46, 
+2024-04-06-07-05,937 log1 INFO 19.648109436035156
+2024-04-06-07-05,937 log2 INFO 19.462970733642578
+2024-04-06-07-05,201 root INFO batch: 14, forget_paraphrased_loss: 18.94, forget_perturbed_loss_0: 18.40, forget_perturbed_loss_1: 18.84, forget_perturbed_loss_2: 19.01, forget_perturbed_loss_3: 19.13, forget_perturbed_loss_4: 19.55, forget_perturbed_loss: 18.99, 
+2024-04-06-07-05,207 log1 INFO 18.943408966064453
+2024-04-06-07-05,207 log2 INFO 18.986677169799805
+2024-04-06-07-05,494 root INFO batch: 15, forget_paraphrased_loss: 19.54, forget_perturbed_loss_0: 17.95, forget_perturbed_loss_1: 19.45, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 18.45, forget_perturbed_loss_4: 19.42, forget_perturbed_loss: 18.93, 
+2024-04-06-07-05,499 log1 INFO 19.541292190551758
+2024-04-06-07-05,499 log2 INFO 18.93160057067871
+2024-04-06-07-05,852 root INFO batch: 16, forget_paraphrased_loss: 19.46, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.51, forget_perturbed_loss_2: 19.61, forget_perturbed_loss_3: 18.76, forget_perturbed_loss_4: 19.53, forget_perturbed_loss: 19.31, 
+2024-04-06-07-05,856 log1 INFO 19.456342697143555
+2024-04-06-07-05,857 log2 INFO 19.306079864501953
+2024-04-06-07-05,143 root INFO batch: 17, forget_paraphrased_loss: 18.91, forget_perturbed_loss_0: 19.20, forget_perturbed_loss_1: 19.17, forget_perturbed_loss_2: 18.73, forget_perturbed_loss_3: 19.54, forget_perturbed_loss_4: 19.03, forget_perturbed_loss: 19.13, 
+2024-04-06-07-05,147 log1 INFO 18.907852172851562
+2024-04-06-07-05,147 log2 INFO 19.133525848388672
+2024-04-06-07-05,502 root INFO batch: 18, forget_paraphrased_loss: 19.39, forget_perturbed_loss_0: 19.39, forget_perturbed_loss_1: 19.55, forget_perturbed_loss_2: 19.00, forget_perturbed_loss_3: 18.78, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.23, 
+2024-04-06-07-05,506 log1 INFO 19.39019775390625
+2024-04-06-07-05,507 log2 INFO 19.227819442749023
+2024-04-06-07-05,828 root INFO batch: 19, forget_paraphrased_loss: 19.02, forget_perturbed_loss_0: 19.67, forget_perturbed_loss_1: 19.62, forget_perturbed_loss_2: 18.93, forget_perturbed_loss_3: 19.71, forget_perturbed_loss_4: 19.20, forget_perturbed_loss: 19.43, 
+2024-04-06-07-05,833 log1 INFO 19.01670265197754
+2024-04-06-07-05,833 log2 INFO 19.425947189331055
+2024-04-06-07-05,174 root INFO batch: 20, forget_paraphrased_loss: 19.48, forget_perturbed_loss_0: 19.11, forget_perturbed_loss_1: 19.79, forget_perturbed_loss_2: 18.86, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,178 log1 INFO 19.477998733520508
+2024-04-06-07-05,179 log2 INFO 19.320430755615234
+2024-04-06-07-05,465 root INFO batch: 21, forget_paraphrased_loss: 19.76, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.52, forget_perturbed_loss_2: 19.13, forget_perturbed_loss_3: 19.26, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,470 log1 INFO 19.76275062561035
+2024-04-06-07-05,470 log2 INFO 19.32259178161621
+2024-04-06-07-05,795 root INFO batch: 22, forget_paraphrased_loss: 18.73, forget_perturbed_loss_0: 19.75, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.65, forget_perturbed_loss_4: 19.40, forget_perturbed_loss: 19.56, 
+2024-04-06-07-05,800 log1 INFO 18.72565460205078
+2024-04-06-07-05,800 log2 INFO 19.555917739868164
+2024-04-06-07-05,136 root INFO batch: 23, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 19.96, forget_perturbed_loss_1: 19.86, forget_perturbed_loss_2: 18.90, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 19.25, forget_perturbed_loss: 19.45, 
+2024-04-06-07-05,141 log1 INFO 19.47330093383789
+2024-04-06-07-05,141 log2 INFO 19.451887130737305
+2024-04-06-07-05,515 root INFO batch: 24, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 20.11, forget_perturbed_loss_1: 18.39, forget_perturbed_loss_2: 19.75, forget_perturbed_loss_3: 19.81, forget_perturbed_loss_4: 19.24, forget_perturbed_loss: 19.46, 
+2024-04-06-07-05,520 log1 INFO 19.466506958007812
+2024-04-06-07-05,521 log2 INFO 19.45833969116211
+2024-04-06-07-05,850 root INFO batch: 25, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 19.61, forget_perturbed_loss_1: 19.09, forget_perturbed_loss_2: 18.80, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 19.89, forget_perturbed_loss: 19.34, 
+2024-04-06-07-05,854 log1 INFO 19.779312133789062
+2024-04-06-07-05,854 log2 INFO 19.337814331054688
+2024-04-06-07-05,172 root INFO batch: 26, forget_paraphrased_loss: 19.48, forget_perturbed_loss_0: 18.21, forget_perturbed_loss_1: 18.98, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 19.76, forget_perturbed_loss_4: 19.97, forget_perturbed_loss: 19.31, 
+2024-04-06-07-05,176 log1 INFO 19.481334686279297
+2024-04-06-07-05,176 log2 INFO 19.312591552734375
+2024-04-06-07-05,463 root INFO batch: 27, forget_paraphrased_loss: 18.84, forget_perturbed_loss_0: 19.49, forget_perturbed_loss_1: 18.60, forget_perturbed_loss_2: 18.92, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 18.21, forget_perturbed_loss: 18.97, 
+2024-04-06-07-05,468 log1 INFO 18.83852195739746
+2024-04-06-07-05,468 log2 INFO 18.96686553955078
+2024-04-06-07-05,763 root INFO batch: 28, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.82, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.46, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.49, 
+2024-04-06-07-05,768 log1 INFO 19.277942657470703
+2024-04-06-07-05,768 log2 INFO 19.491432189941406
+2024-04-06-07-05,111 root INFO batch: 29, forget_paraphrased_loss: 19.58, forget_perturbed_loss_0: 19.50, forget_perturbed_loss_1: 19.47, forget_perturbed_loss_2: 18.98, forget_perturbed_loss_3: 19.80, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.40, 
+2024-04-06-07-05,116 log1 INFO 19.58386993408203
+2024-04-06-07-05,116 log2 INFO 19.401092529296875
+2024-04-06-07-05,427 root INFO batch: 30, forget_paraphrased_loss: 19.37, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.21, forget_perturbed_loss_2: 19.84, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.82, forget_perturbed_loss: 19.52, 
+2024-04-06-07-05,431 log1 INFO 19.36989974975586
+2024-04-06-07-05,432 log2 INFO 19.524320602416992
+2024-04-06-07-05,742 root INFO batch: 31, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.75, forget_perturbed_loss_1: 19.63, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.57, 
+2024-04-06-07-05,747 log1 INFO 19.658161163330078
+2024-04-06-07-05,747 log2 INFO 19.566274642944336
+2024-04-06-07-05,89 root INFO batch: 32, forget_paraphrased_loss: 19.08, forget_perturbed_loss_0: 19.71, forget_perturbed_loss_1: 19.04, forget_perturbed_loss_2: 19.26, forget_perturbed_loss_3: 19.15, forget_perturbed_loss_4: 19.44, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,94 log1 INFO 19.076019287109375
+2024-04-06-07-05,94 log2 INFO 19.318817138671875
+2024-04-06-07-05,410 root INFO batch: 33, forget_paraphrased_loss: 19.31, forget_perturbed_loss_0: 19.09, forget_perturbed_loss_1: 19.75, forget_perturbed_loss_2: 19.77, forget_perturbed_loss_3: 19.00, forget_perturbed_loss_4: 19.38, forget_perturbed_loss: 19.40, 
+2024-04-06-07-05,415 log1 INFO 19.311412811279297
+2024-04-06-07-05,415 log2 INFO 19.399124145507812
+2024-04-06-07-05,698 root INFO batch: 34, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 19.86, forget_perturbed_loss_1: 19.13, forget_perturbed_loss_2: 17.18, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 18.83, forget_perturbed_loss: 18.88, 
+2024-04-06-07-05,703 log1 INFO 19.425580978393555
+2024-04-06-07-05,703 log2 INFO 18.875905990600586
+2024-04-06-07-05,183 root INFO batch: 35, forget_paraphrased_loss: 19.37, forget_perturbed_loss_0: 19.72, forget_perturbed_loss_1: 19.88, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 19.43, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 19.60, 
+2024-04-06-07-05,189 log1 INFO 19.374195098876953
+2024-04-06-07-05,190 log2 INFO 19.599384307861328
+2024-04-06-07-05,528 root INFO batch: 36, forget_paraphrased_loss: 19.64, forget_perturbed_loss_0: 19.42, forget_perturbed_loss_1: 19.46, forget_perturbed_loss_2: 19.07, forget_perturbed_loss_3: 19.70, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 19.45, 
+2024-04-06-07-05,532 log1 INFO 19.636154174804688
+2024-04-06-07-05,533 log2 INFO 19.450910568237305
+2024-04-06-07-05,832 root INFO batch: 37, forget_paraphrased_loss: 18.66, forget_perturbed_loss_0: 19.08, forget_perturbed_loss_1: 19.25, forget_perturbed_loss_2: 19.15, forget_perturbed_loss_3: 19.13, forget_perturbed_loss_4: 18.58, forget_perturbed_loss: 19.04, 
+2024-04-06-07-05,832 log1 INFO 18.657756805419922
+2024-04-06-07-05,832 log2 INFO 19.039548873901367
+2024-04-06-07-05,150 root INFO batch: 38, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.45, forget_perturbed_loss_1: 19.82, forget_perturbed_loss_2: 19.15, forget_perturbed_loss_3: 19.69, forget_perturbed_loss_4: 19.00, forget_perturbed_loss: 19.42, 
+2024-04-06-07-05,151 log1 INFO 19.56582260131836
+2024-04-06-07-05,151 log2 INFO 19.423856735229492
+2024-04-06-07-05,485 root INFO batch: 39, forget_paraphrased_loss: 19.76, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 18.83, forget_perturbed_loss_2: 19.93, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.32, forget_perturbed_loss: 19.45, 
+2024-04-06-07-05,486 log1 INFO 19.761594772338867
+2024-04-06-07-05,486 log2 INFO 19.445280075073242
+2024-04-06-07-05,790 root INFO batch: 40, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 18.48, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.21, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 19.64, forget_perturbed_loss: 19.27, 
+2024-04-06-07-05,791 log1 INFO 19.76617431640625
+2024-04-06-07-05,791 log2 INFO 19.271085739135742
+2024-04-06-07-05,92 root INFO batch: 41, forget_paraphrased_loss: 18.99, forget_perturbed_loss_0: 19.33, forget_perturbed_loss_1: 19.19, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.43, 
+2024-04-06-07-05,97 log1 INFO 18.987733840942383
+2024-04-06-07-05,97 log2 INFO 19.426025390625
+2024-04-06-07-05,388 root INFO batch: 42, forget_paraphrased_loss: 19.76, forget_perturbed_loss_0: 19.19, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.26, forget_perturbed_loss_3: 18.97, forget_perturbed_loss_4: 19.51, forget_perturbed_loss: 19.26, 
+2024-04-06-07-05,393 log1 INFO 19.760330200195312
+2024-04-06-07-05,393 log2 INFO 19.26169204711914
+2024-04-06-07-05,696 root INFO batch: 43, forget_paraphrased_loss: 19.54, forget_perturbed_loss_0: 19.14, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 19.36, forget_perturbed_loss_3: 19.39, forget_perturbed_loss_4: 18.71, forget_perturbed_loss: 19.21, 
+2024-04-06-07-05,701 log1 INFO 19.54300308227539
+2024-04-06-07-05,701 log2 INFO 19.214157104492188
+2024-04-06-07-05,50 root INFO batch: 44, forget_paraphrased_loss: 19.24, forget_perturbed_loss_0: 19.74, forget_perturbed_loss_1: 19.76, forget_perturbed_loss_2: 19.88, forget_perturbed_loss_3: 19.26, forget_perturbed_loss_4: 19.44, forget_perturbed_loss: 19.61, 
+2024-04-06-07-05,55 log1 INFO 19.240554809570312
+2024-04-06-07-05,55 log2 INFO 19.61431884765625
+2024-04-06-07-05,353 root INFO batch: 45, forget_paraphrased_loss: 18.44, forget_perturbed_loss_0: 19.43, forget_perturbed_loss_1: 18.98, forget_perturbed_loss_2: 19.07, forget_perturbed_loss_3: 19.87, forget_perturbed_loss_4: 19.78, forget_perturbed_loss: 19.43, 
+2024-04-06-07-05,358 log1 INFO 18.43526268005371
+2024-04-06-07-05,358 log2 INFO 19.42698097229004
+2024-04-06-07-05,715 root INFO batch: 46, forget_paraphrased_loss: 19.79, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.73, forget_perturbed_loss_3: 19.34, forget_perturbed_loss_4: 19.65, forget_perturbed_loss: 19.56, 
+2024-04-06-07-05,716 log1 INFO 19.786251068115234
+2024-04-06-07-05,716 log2 INFO 19.563745498657227
+2024-04-06-07-05,27 root INFO batch: 47, forget_paraphrased_loss: 19.11, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 19.54, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 18.58, forget_perturbed_loss: 19.21, 
+2024-04-06-07-05,32 log1 INFO 19.107751846313477
+2024-04-06-07-05,32 log2 INFO 19.209115982055664
+2024-04-06-07-05,344 root INFO batch: 48, forget_paraphrased_loss: 18.54, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 19.68, forget_perturbed_loss_2: 19.12, forget_perturbed_loss_3: 19.09, forget_perturbed_loss_4: 19.58, forget_perturbed_loss: 19.39, 
+2024-04-06-07-05,350 log1 INFO 18.537761688232422
+2024-04-06-07-05,350 log2 INFO 19.38568115234375
+2024-04-06-07-05,672 root INFO batch: 49, forget_paraphrased_loss: 18.87, forget_perturbed_loss_0: 19.08, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 19.52, forget_perturbed_loss_3: 18.35, forget_perturbed_loss_4: 19.29, forget_perturbed_loss: 19.18, 
+2024-04-06-07-05,677 log1 INFO 18.865219116210938
+2024-04-06-07-05,677 log2 INFO 19.1801700592041
+2024-04-06-07-05,959 root INFO batch: 50, forget_paraphrased_loss: 18.79, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.56, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 18.73, forget_perturbed_loss_4: 19.58, forget_perturbed_loss: 19.31, 
+2024-04-06-07-05,963 log1 INFO 18.78568458557129
+2024-04-06-07-05,964 log2 INFO 19.30988121032715
+2024-04-06-07-05,268 root INFO batch: 51, forget_paraphrased_loss: 19.67, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 19.20, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 18.06, forget_perturbed_loss_4: 19.23, forget_perturbed_loss: 19.09, 
+2024-04-06-07-05,273 log1 INFO 19.672143936157227
+2024-04-06-07-05,273 log2 INFO 19.094253540039062
+2024-04-06-07-05,581 root INFO batch: 52, forget_paraphrased_loss: 19.07, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.04, forget_perturbed_loss_2: 19.74, forget_perturbed_loss_3: 19.67, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.45, 
+2024-04-06-07-05,586 log1 INFO 19.070348739624023
+2024-04-06-07-05,587 log2 INFO 19.447580337524414
+2024-04-06-07-05,889 root INFO batch: 53, forget_paraphrased_loss: 19.25, forget_perturbed_loss_0: 19.92, forget_perturbed_loss_1: 19.29, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.37, forget_perturbed_loss_4: 18.17, forget_perturbed_loss: 19.25, 
+2024-04-06-07-05,893 log1 INFO 19.253883361816406
+2024-04-06-07-05,893 log2 INFO 19.249900817871094
+2024-04-06-07-05,217 root INFO batch: 54, forget_paraphrased_loss: 18.92, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.20, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.40, forget_perturbed_loss_4: 19.64, forget_perturbed_loss: 19.40, 
+2024-04-06-07-05,222 log1 INFO 18.923595428466797
+2024-04-06-07-05,222 log2 INFO 19.4024658203125
+2024-04-06-07-05,561 root INFO batch: 55, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 18.79, forget_perturbed_loss_1: 19.10, forget_perturbed_loss_2: 19.23, forget_perturbed_loss_3: 19.77, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 19.30, 
+2024-04-06-07-05,562 log1 INFO 19.29088020324707
+2024-04-06-07-05,563 log2 INFO 19.296279907226562
+2024-04-06-07-05,878 root INFO batch: 56, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 18.94, forget_perturbed_loss_1: 19.37, forget_perturbed_loss_2: 19.11, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 20.05, forget_perturbed_loss: 19.35, 
+2024-04-06-07-05,884 log1 INFO 19.14129638671875
+2024-04-06-07-05,885 log2 INFO 19.3547420501709
+2024-04-06-07-05,162 root INFO batch: 57, forget_paraphrased_loss: 18.16, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 19.10, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.18, forget_perturbed_loss_4: 19.37, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,168 log1 INFO 18.156694412231445
+2024-04-06-07-05,169 log2 INFO 19.31879234313965
+2024-04-06-07-05,515 root INFO batch: 58, forget_paraphrased_loss: 19.46, forget_perturbed_loss_0: 18.90, forget_perturbed_loss_1: 19.13, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 18.74, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.11, 
+2024-04-06-07-05,521 log1 INFO 19.455713272094727
+2024-04-06-07-05,522 log2 INFO 19.11003875732422
+2024-04-06-07-05,841 root INFO batch: 59, forget_paraphrased_loss: 19.59, forget_perturbed_loss_0: 19.81, forget_perturbed_loss_1: 19.32, forget_perturbed_loss_2: 19.48, forget_perturbed_loss_3: 18.68, forget_perturbed_loss_4: 19.44, forget_perturbed_loss: 19.35, 
+2024-04-06-07-05,846 log1 INFO 19.59295654296875
+2024-04-06-07-05,846 log2 INFO 19.34722137451172
+2024-04-06-07-05,186 root INFO batch: 60, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 19.72, forget_perturbed_loss_1: 19.32, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 18.81, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 19.37, 
+2024-04-06-07-05,190 log1 INFO 19.445629119873047
+2024-04-06-07-05,190 log2 INFO 19.372949600219727
+2024-04-06-07-05,515 root INFO batch: 61, forget_paraphrased_loss: 19.30, forget_perturbed_loss_0: 19.07, forget_perturbed_loss_1: 19.63, forget_perturbed_loss_2: 18.45, forget_perturbed_loss_3: 19.64, forget_perturbed_loss_4: 19.31, forget_perturbed_loss: 19.22, 
+2024-04-06-07-05,520 log1 INFO 19.296043395996094
+2024-04-06-07-05,521 log2 INFO 19.219419479370117
+2024-04-06-07-05,838 root INFO batch: 62, forget_paraphrased_loss: 17.35, forget_perturbed_loss_0: 17.61, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.50, forget_perturbed_loss_3: 19.79, forget_perturbed_loss_4: 19.31, forget_perturbed_loss: 19.12, 
+2024-04-06-07-05,842 log1 INFO 17.350549697875977
+2024-04-06-07-05,842 log2 INFO 19.117931365966797
+2024-04-06-07-05,127 root INFO batch: 63, forget_paraphrased_loss: 19.88, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 18.68, forget_perturbed_loss_3: 19.40, forget_perturbed_loss_4: 19.33, forget_perturbed_loss: 19.26, 
+2024-04-06-07-05,131 log1 INFO 19.881702423095703
+2024-04-06-07-05,132 log2 INFO 19.258853912353516
+2024-04-06-07-05,460 root INFO batch: 64, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.84, forget_perturbed_loss_2: 18.31, forget_perturbed_loss_3: 19.63, forget_perturbed_loss_4: 19.51, forget_perturbed_loss: 19.32, 
+2024-04-06-07-05,464 log1 INFO 19.187870025634766
+2024-04-06-07-05,464 log2 INFO 19.316694259643555
+2024-04-06-07-05,776 root INFO batch: 65, forget_paraphrased_loss: 19.59, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 20.04, forget_perturbed_loss_2: 19.17, forget_perturbed_loss_3: 19.90, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.61, 
+2024-04-06-07-05,780 log1 INFO 19.59433364868164
+2024-04-06-07-05,780 log2 INFO 19.614402770996094
+2024-04-06-07-05,103 root INFO batch: 66, forget_paraphrased_loss: 19.88, forget_perturbed_loss_0: 19.29, forget_perturbed_loss_1: 19.71, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.43, forget_perturbed_loss_4: 19.04, forget_perturbed_loss: 19.37, 
+2024-04-06-07-05,107 log1 INFO 19.875324249267578
+2024-04-06-07-05,107 log2 INFO 19.37038230895996
+2024-04-06-07-05,431 root INFO batch: 67, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.26, forget_perturbed_loss_2: 19.80, forget_perturbed_loss_3: 19.80, forget_perturbed_loss_4: 19.01, forget_perturbed_loss: 19.46, 
+2024-04-06-07-05,435 log1 INFO 19.747669219970703
+2024-04-06-07-05,435 log2 INFO 19.457395553588867
+2024-04-06-07-05,733 root INFO batch: 68, forget_paraphrased_loss: 19.33, forget_perturbed_loss_0: 19.23, forget_perturbed_loss_1: 19.64, forget_perturbed_loss_2: 19.27, forget_perturbed_loss_3: 18.84, forget_perturbed_loss_4: 18.42, forget_perturbed_loss: 19.08, 
+2024-04-06-07-05,736 log1 INFO 19.330001831054688
+2024-04-06-07-05,736 log2 INFO 19.08078956604004
+2024-04-06-07-05,59 root INFO batch: 69, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 18.33, forget_perturbed_loss_1: 19.83, forget_perturbed_loss_2: 19.66, forget_perturbed_loss_3: 19.72, forget_perturbed_loss_4: 19.45, forget_perturbed_loss: 19.40, 
+2024-04-06-07-05,63 log1 INFO 19.136356353759766
+2024-04-06-07-05,64 log2 INFO 19.398534774780273
+2024-04-06-07-05,375 root INFO batch: 70, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.47, forget_perturbed_loss_1: 19.80, forget_perturbed_loss_2: 19.50, forget_perturbed_loss_3: 19.79, forget_perturbed_loss_4: 18.35, forget_perturbed_loss: 19.38, 
+2024-04-06-07-05,379 log1 INFO 19.6812744140625
+2024-04-06-07-05,379 log2 INFO 19.382007598876953
+2024-04-06-07-05,719 root INFO batch: 71, forget_paraphrased_loss: 19.69, forget_perturbed_loss_0: 19.51, forget_perturbed_loss_1: 19.72, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 19.15, forget_perturbed_loss_4: 19.58, forget_perturbed_loss: 19.51, 
+2024-04-06-07-05,723 log1 INFO 19.688749313354492
+2024-04-06-07-05,724 log2 INFO 19.508455276489258
+2024-04-06-07-05,20 root INFO batch: 72, forget_paraphrased_loss: 18.51, forget_perturbed_loss_0: 18.97, forget_perturbed_loss_1: 19.49, forget_perturbed_loss_2: 18.84, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.65, forget_perturbed_loss: 19.27, 
+2024-04-06-07-05,24 log1 INFO 18.508691787719727
+2024-04-06-07-05,25 log2 INFO 19.274381637573242
+2024-04-06-07-05,363 root INFO batch: 73, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.17, forget_perturbed_loss_1: 19.89, forget_perturbed_loss_2: 19.79, forget_perturbed_loss_3: 19.64, forget_perturbed_loss_4: 19.47, forget_perturbed_loss: 19.59, 
+2024-04-06-07-05,368 log1 INFO 19.731365203857422
+2024-04-06-07-05,368 log2 INFO 19.590906143188477
+2024-04-06-07-05,970 root INFO batch: 74, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 19.14, forget_perturbed_loss_1: 19.43, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 19.14, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.29, 
+2024-04-06-07-05,975 log1 INFO 19.769010543823242
+2024-04-06-07-05,975 log2 INFO 19.28619956970215
+2024-04-06-07-05,272 root INFO batch: 75, forget_paraphrased_loss: 19.48, forget_perturbed_loss_0: 19.03, forget_perturbed_loss_1: 18.84, forget_perturbed_loss_2: 18.28, forget_perturbed_loss_3: 17.50, forget_perturbed_loss_4: 19.84, forget_perturbed_loss: 18.70, 
+2024-04-06-07-05,277 log1 INFO 19.480018615722656
+2024-04-06-07-05,277 log2 INFO 18.698408126831055
+2024-04-06-07-05,580 root INFO batch: 76, forget_paraphrased_loss: 19.22, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 18.89, forget_perturbed_loss_2: 18.93, forget_perturbed_loss_3: 18.85, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.16, 
+2024-04-06-07-05,584 log1 INFO 19.217601776123047
+2024-04-06-07-05,584 log2 INFO 19.159366607666016
+2024-04-06-07-05,882 root INFO batch: 77, forget_paraphrased_loss: 19.37, forget_perturbed_loss_0: 19.71, forget_perturbed_loss_1: 19.77, forget_perturbed_loss_2: 19.46, forget_perturbed_loss_3: 19.80, forget_perturbed_loss_4: 19.95, forget_perturbed_loss: 19.74, 
+2024-04-06-07-05,885 log1 INFO 19.37143325805664
+2024-04-06-07-05,885 log2 INFO 19.737911224365234
+2024-04-06-07-06,207 root INFO batch: 78, forget_paraphrased_loss: 19.70, forget_perturbed_loss_0: 19.78, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.30, forget_perturbed_loss_3: 18.08, forget_perturbed_loss_4: 19.86, forget_perturbed_loss: 19.31, 
+2024-04-06-07-06,208 log1 INFO 19.697608947753906
+2024-04-06-07-06,208 log2 INFO 19.31031608581543
+2024-04-06-07-06,498 root INFO batch: 79, forget_paraphrased_loss: 18.80, forget_perturbed_loss_0: 19.03, forget_perturbed_loss_1: 19.08, forget_perturbed_loss_2: 19.67, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 19.64, forget_perturbed_loss: 19.37, 
+2024-04-06-07-06,502 log1 INFO 18.798057556152344
+2024-04-06-07-06,502 log2 INFO 19.36599349975586
+2024-04-06-07-06,829 root INFO batch: 80, forget_paraphrased_loss: 20.12, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 19.91, forget_perturbed_loss_2: 19.78, forget_perturbed_loss_3: 19.67, forget_perturbed_loss_4: 19.69, forget_perturbed_loss: 19.72, 
+2024-04-06-07-06,831 log1 INFO 20.11672592163086
+2024-04-06-07-06,831 log2 INFO 19.721342086791992
+2024-04-06-07-06,127 root INFO batch: 81, forget_paraphrased_loss: 18.86, forget_perturbed_loss_0: 18.22, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.06, forget_perturbed_loss_4: 19.33, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,131 log1 INFO 18.863262176513672
+2024-04-06-07-06,131 log2 INFO 19.186344146728516
+2024-04-06-07-06,447 root INFO batch: 82, forget_paraphrased_loss: 19.22, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 18.96, forget_perturbed_loss_2: 20.00, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 19.38, forget_perturbed_loss: 19.51, 
+2024-04-06-07-06,451 log1 INFO 19.2164306640625
+2024-04-06-07-06,452 log2 INFO 19.50956153869629
+2024-04-06-07-06,789 root INFO batch: 83, forget_paraphrased_loss: 18.90, forget_perturbed_loss_0: 19.47, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 18.67, forget_perturbed_loss: 19.24, 
+2024-04-06-07-06,793 log1 INFO 18.903579711914062
+2024-04-06-07-06,794 log2 INFO 19.242122650146484
+2024-04-06-07-06,107 root INFO batch: 84, forget_paraphrased_loss: 19.25, forget_perturbed_loss_0: 19.55, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 18.89, forget_perturbed_loss_3: 19.59, forget_perturbed_loss_4: 19.51, forget_perturbed_loss: 19.39, 
+2024-04-06-07-06,110 log1 INFO 19.24645233154297
+2024-04-06-07-06,110 log2 INFO 19.385601043701172
+2024-04-06-07-06,383 root INFO batch: 85, forget_paraphrased_loss: 19.53, forget_perturbed_loss_0: 19.17, forget_perturbed_loss_1: 19.22, forget_perturbed_loss_2: 18.98, forget_perturbed_loss_3: 18.98, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,387 log1 INFO 19.529754638671875
+2024-04-06-07-06,387 log2 INFO 19.188444137573242
+2024-04-06-07-06,719 root INFO batch: 86, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.80, forget_perturbed_loss_1: 19.12, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 19.93, forget_perturbed_loss_4: 19.74, forget_perturbed_loss: 19.60, 
+2024-04-06-07-06,724 log1 INFO 19.734209060668945
+2024-04-06-07-06,724 log2 INFO 19.59906768798828
+2024-04-06-07-06,45 root INFO batch: 87, forget_paraphrased_loss: 19.36, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 18.96, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.01, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.21, 
+2024-04-06-07-06,49 log1 INFO 19.358810424804688
+2024-04-06-07-06,49 log2 INFO 19.21107292175293
+2024-04-06-07-06,345 root INFO batch: 88, forget_paraphrased_loss: 19.81, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.50, forget_perturbed_loss_3: 20.11, forget_perturbed_loss_4: 19.90, forget_perturbed_loss: 19.74, 
+2024-04-06-07-06,350 log1 INFO 19.814603805541992
+2024-04-06-07-06,350 log2 INFO 19.741201400756836
+2024-04-06-07-06,645 root INFO batch: 89, forget_paraphrased_loss: 19.32, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 18.62, forget_perturbed_loss_2: 19.67, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,649 log1 INFO 19.318376541137695
+2024-04-06-07-06,650 log2 INFO 19.280790328979492
+2024-04-06-07-06,8 root INFO batch: 90, forget_paraphrased_loss: 19.38, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.61, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 19.52, forget_perturbed_loss: 19.49, 
+2024-04-06-07-06,12 log1 INFO 19.380002975463867
+2024-04-06-07-06,13 log2 INFO 19.49416160583496
+2024-04-06-07-06,382 root INFO batch: 91, forget_paraphrased_loss: 19.15, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 19.17, forget_perturbed_loss_2: 19.68, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.90, forget_perturbed_loss: 19.54, 
+2024-04-06-07-06,387 log1 INFO 19.14725112915039
+2024-04-06-07-06,387 log2 INFO 19.54248809814453
+2024-04-06-07-06,696 root INFO batch: 92, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.32, forget_perturbed_loss_1: 19.55, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 19.54, forget_perturbed_loss_4: 19.21, forget_perturbed_loss: 19.38, 
+2024-04-06-07-06,699 log1 INFO 19.286514282226562
+2024-04-06-07-06,700 log2 INFO 19.38351821899414
+2024-04-06-07-06,8 root INFO batch: 93, forget_paraphrased_loss: 19.49, forget_perturbed_loss_0: 18.64, forget_perturbed_loss_1: 19.45, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.70, forget_perturbed_loss_4: 19.08, forget_perturbed_loss: 19.24, 
+2024-04-06-07-06,12 log1 INFO 19.486019134521484
+2024-04-06-07-06,12 log2 INFO 19.23903465270996
+2024-04-06-07-06,340 root INFO batch: 94, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 20.10, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 18.11, forget_perturbed_loss: 19.31, 
+2024-04-06-07-06,343 log1 INFO 19.746532440185547
+2024-04-06-07-06,344 log2 INFO 19.307846069335938
+2024-04-06-07-06,628 root INFO batch: 95, forget_paraphrased_loss: 19.31, forget_perturbed_loss_0: 19.53, forget_perturbed_loss_1: 19.08, forget_perturbed_loss_2: 18.89, forget_perturbed_loss_3: 19.58, forget_perturbed_loss_4: 19.24, forget_perturbed_loss: 19.26, 
+2024-04-06-07-06,633 log1 INFO 19.307903289794922
+2024-04-06-07-06,634 log2 INFO 19.2641544342041
+2024-04-06-07-06,932 root INFO batch: 96, forget_paraphrased_loss: 18.79, forget_perturbed_loss_0: 19.29, forget_perturbed_loss_1: 19.63, forget_perturbed_loss_2: 19.34, forget_perturbed_loss_3: 20.08, forget_perturbed_loss_4: 19.62, forget_perturbed_loss: 19.59, 
+2024-04-06-07-06,935 log1 INFO 18.790016174316406
+2024-04-06-07-06,936 log2 INFO 19.58979606628418
+2024-04-06-07-06,242 root INFO batch: 97, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 19.89, forget_perturbed_loss_1: 19.16, forget_perturbed_loss_2: 19.88, forget_perturbed_loss_3: 18.63, forget_perturbed_loss_4: 18.95, forget_perturbed_loss: 19.30, 
+2024-04-06-07-06,246 log1 INFO 19.27545166015625
+2024-04-06-07-06,246 log2 INFO 19.303014755249023
+2024-04-06-07-06,569 root INFO batch: 98, forget_paraphrased_loss: 19.31, forget_perturbed_loss_0: 19.76, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.83, forget_perturbed_loss_3: 18.91, forget_perturbed_loss_4: 19.39, forget_perturbed_loss: 19.48, 
+2024-04-06-07-06,573 log1 INFO 19.313827514648438
+2024-04-06-07-06,573 log2 INFO 19.481632232666016
+2024-04-06-07-06,868 root INFO batch: 99, forget_paraphrased_loss: 19.21, forget_perturbed_loss_0: 19.05, forget_perturbed_loss_1: 18.99, forget_perturbed_loss_2: 19.50, forget_perturbed_loss_3: 19.65, forget_perturbed_loss_4: 19.38, forget_perturbed_loss: 19.31, 
+2024-04-06-07-06,873 log1 INFO 19.20636749267578
+2024-04-06-07-06,873 log2 INFO 19.31319236755371
+2024-04-06-07-06,194 root INFO batch: 100, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 19.75, forget_perturbed_loss_2: 19.31, forget_perturbed_loss_3: 19.94, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.59, 
+2024-04-06-07-06,198 log1 INFO 19.65035057067871
+2024-04-06-07-06,198 log2 INFO 19.5938777923584
+2024-04-06-07-06,500 root INFO batch: 101, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 19.68, forget_perturbed_loss_1: 19.90, forget_perturbed_loss_2: 18.63, forget_perturbed_loss_3: 19.48, forget_perturbed_loss_4: 18.86, forget_perturbed_loss: 19.31, 
+2024-04-06-07-06,501 log1 INFO 19.279071807861328
+2024-04-06-07-06,501 log2 INFO 19.30995750427246
+2024-04-06-07-06,769 root INFO batch: 102, forget_paraphrased_loss: 18.37, forget_perturbed_loss_0: 18.75, forget_perturbed_loss_1: 19.36, forget_perturbed_loss_2: 19.85, forget_perturbed_loss_3: 18.30, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.15, 
+2024-04-06-07-06,774 log1 INFO 18.367523193359375
+2024-04-06-07-06,774 log2 INFO 19.154699325561523
+2024-04-06-07-06,72 root INFO batch: 103, forget_paraphrased_loss: 19.26, forget_perturbed_loss_0: 19.57, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 18.99, forget_perturbed_loss_3: 18.13, forget_perturbed_loss_4: 19.53, forget_perturbed_loss: 19.16, 
+2024-04-06-07-06,76 log1 INFO 19.25602912902832
+2024-04-06-07-06,76 log2 INFO 19.163740158081055
+2024-04-06-07-06,373 root INFO batch: 104, forget_paraphrased_loss: 19.40, forget_perturbed_loss_0: 18.97, forget_perturbed_loss_1: 18.89, forget_perturbed_loss_2: 19.97, forget_perturbed_loss_3: 19.97, forget_perturbed_loss_4: 18.74, forget_perturbed_loss: 19.31, 
+2024-04-06-07-06,376 log1 INFO 19.397933959960938
+2024-04-06-07-06,377 log2 INFO 19.308408737182617
+2024-04-06-07-06,684 root INFO batch: 105, forget_paraphrased_loss: 19.27, forget_perturbed_loss_0: 19.49, forget_perturbed_loss_1: 19.21, forget_perturbed_loss_2: 18.52, forget_perturbed_loss_3: 19.08, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.14, 
+2024-04-06-07-06,687 log1 INFO 19.268035888671875
+2024-04-06-07-06,687 log2 INFO 19.14451026916504
+2024-04-06-07-06,5 root INFO batch: 106, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 20.12, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.35, forget_perturbed_loss_4: 19.47, forget_perturbed_loss: 19.55, 
+2024-04-06-07-06,8 log1 INFO 19.19011116027832
+2024-04-06-07-06,9 log2 INFO 19.554359436035156
+2024-04-06-07-06,292 root INFO batch: 107, forget_paraphrased_loss: 19.46, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.69, forget_perturbed_loss_2: 18.99, forget_perturbed_loss_3: 19.59, forget_perturbed_loss_4: 19.29, forget_perturbed_loss: 19.36, 
+2024-04-06-07-06,296 log1 INFO 19.457263946533203
+2024-04-06-07-06,297 log2 INFO 19.360401153564453
+2024-04-06-07-06,614 root INFO batch: 108, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 18.85, forget_perturbed_loss_1: 19.59, forget_perturbed_loss_2: 19.46, forget_perturbed_loss_3: 19.97, forget_perturbed_loss_4: 19.30, forget_perturbed_loss: 19.43, 
+2024-04-06-07-06,615 log1 INFO 19.14020538330078
+2024-04-06-07-06,615 log2 INFO 19.43389129638672
+2024-04-06-07-06,942 root INFO batch: 109, forget_paraphrased_loss: 19.38, forget_perturbed_loss_0: 19.10, forget_perturbed_loss_1: 18.53, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.67, forget_perturbed_loss_4: 19.70, forget_perturbed_loss: 19.27, 
+2024-04-06-07-06,943 log1 INFO 19.37922477722168
+2024-04-06-07-06,943 log2 INFO 19.274545669555664
+2024-04-06-07-06,264 root INFO batch: 110, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 18.59, forget_perturbed_loss_1: 19.68, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 19.64, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.40, 
+2024-04-06-07-06,268 log1 INFO 19.5495548248291
+2024-04-06-07-06,268 log2 INFO 19.39947509765625
+2024-04-06-07-06,720 root INFO batch: 111, forget_paraphrased_loss: 19.33, forget_perturbed_loss_0: 18.58, forget_perturbed_loss_1: 19.08, forget_perturbed_loss_2: 19.13, forget_perturbed_loss_3: 19.40, forget_perturbed_loss_4: 19.32, forget_perturbed_loss: 19.10, 
+2024-04-06-07-06,724 log1 INFO 19.331012725830078
+2024-04-06-07-06,724 log2 INFO 19.102497100830078
+2024-04-06-07-06,68 root INFO batch: 112, forget_paraphrased_loss: 19.58, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 19.00, forget_perturbed_loss_2: 19.17, forget_perturbed_loss_3: 19.32, forget_perturbed_loss_4: 20.16, forget_perturbed_loss: 19.43, 
+2024-04-06-07-06,72 log1 INFO 19.577499389648438
+2024-04-06-07-06,72 log2 INFO 19.434629440307617
+2024-04-06-07-06,400 root INFO batch: 113, forget_paraphrased_loss: 19.05, forget_perturbed_loss_0: 19.47, forget_perturbed_loss_1: 19.60, forget_perturbed_loss_2: 19.42, forget_perturbed_loss_3: 18.81, forget_perturbed_loss_4: 20.06, forget_perturbed_loss: 19.47, 
+2024-04-06-07-06,404 log1 INFO 19.04546356201172
+2024-04-06-07-06,404 log2 INFO 19.4724178314209
+2024-04-06-07-06,735 root INFO batch: 114, forget_paraphrased_loss: 20.03, forget_perturbed_loss_0: 19.99, forget_perturbed_loss_1: 19.40, forget_perturbed_loss_2: 19.09, forget_perturbed_loss_3: 19.17, forget_perturbed_loss_4: 18.99, forget_perturbed_loss: 19.33, 
+2024-04-06-07-06,738 log1 INFO 20.032394409179688
+2024-04-06-07-06,739 log2 INFO 19.327362060546875
+2024-04-06-07-06,34 root INFO batch: 115, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.72, forget_perturbed_loss_1: 19.50, forget_perturbed_loss_2: 19.15, forget_perturbed_loss_3: 18.87, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.32, 
+2024-04-06-07-06,39 log1 INFO 19.679729461669922
+2024-04-06-07-06,39 log2 INFO 19.317014694213867
+2024-04-06-07-06,319 root INFO batch: 116, forget_paraphrased_loss: 19.05, forget_perturbed_loss_0: 19.23, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.64, forget_perturbed_loss_3: 19.78, forget_perturbed_loss_4: 19.52, forget_perturbed_loss: 19.54, 
+2024-04-06-07-06,323 log1 INFO 19.050128936767578
+2024-04-06-07-06,323 log2 INFO 19.540569305419922
+2024-04-06-07-06,609 root INFO batch: 117, forget_paraphrased_loss: 19.04, forget_perturbed_loss_0: 18.01, forget_perturbed_loss_1: 19.23, forget_perturbed_loss_2: 18.62, forget_perturbed_loss_3: 19.37, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 18.97, 
+2024-04-06-07-06,613 log1 INFO 19.04498291015625
+2024-04-06-07-06,613 log2 INFO 18.968053817749023
+2024-04-06-07-06,908 root INFO batch: 118, forget_paraphrased_loss: 19.22, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.46, forget_perturbed_loss_2: 19.63, forget_perturbed_loss_3: 18.78, forget_perturbed_loss_4: 19.83, forget_perturbed_loss: 19.37, 
+2024-04-06-07-06,911 log1 INFO 19.215877532958984
+2024-04-06-07-06,911 log2 INFO 19.367650985717773
+2024-04-06-07-06,238 root INFO batch: 119, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 19.84, forget_perturbed_loss_1: 19.75, forget_perturbed_loss_2: 19.80, forget_perturbed_loss_3: 20.04, forget_perturbed_loss_4: 19.87, forget_perturbed_loss: 19.86, 
+2024-04-06-07-06,242 log1 INFO 19.74690818786621
+2024-04-06-07-06,242 log2 INFO 19.861557006835938
+2024-04-06-07-06,557 root INFO batch: 120, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 18.80, forget_perturbed_loss_1: 19.91, forget_perturbed_loss_2: 19.64, forget_perturbed_loss_3: 20.07, forget_perturbed_loss_4: 19.49, forget_perturbed_loss: 19.58, 
+2024-04-06-07-06,561 log1 INFO 19.552236557006836
+2024-04-06-07-06,561 log2 INFO 19.58085823059082
+2024-04-06-07-06,878 root INFO batch: 121, forget_paraphrased_loss: 19.74, forget_perturbed_loss_0: 19.10, forget_perturbed_loss_1: 18.87, forget_perturbed_loss_2: 18.80, forget_perturbed_loss_3: 19.82, forget_perturbed_loss_4: 19.30, forget_perturbed_loss: 19.18, 
+2024-04-06-07-06,882 log1 INFO 19.73599624633789
+2024-04-06-07-06,883 log2 INFO 19.178754806518555
+2024-04-06-07-06,201 root INFO batch: 122, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 19.05, forget_perturbed_loss_1: 18.90, forget_perturbed_loss_2: 19.44, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.29, 
+2024-04-06-07-06,205 log1 INFO 19.44801139831543
+2024-04-06-07-06,205 log2 INFO 19.29309844970703
+2024-04-06-07-06,518 root INFO batch: 123, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.32, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 18.72, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,523 log1 INFO 19.289905548095703
+2024-04-06-07-06,523 log2 INFO 19.216548919677734
+2024-04-06-07-06,836 root INFO batch: 124, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.40, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.01, forget_perturbed_loss_3: 19.33, forget_perturbed_loss_4: 19.22, forget_perturbed_loss: 19.27, 
+2024-04-06-07-06,839 log1 INFO 19.73296356201172
+2024-04-06-07-06,840 log2 INFO 19.267623901367188
+2024-04-06-07-06,114 root INFO batch: 125, forget_paraphrased_loss: 18.63, forget_perturbed_loss_0: 18.68, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 19.46, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.65, forget_perturbed_loss: 19.33, 
+2024-04-06-07-06,118 log1 INFO 18.631311416625977
+2024-04-06-07-06,118 log2 INFO 19.3287410736084
+2024-04-06-07-06,429 root INFO batch: 126, forget_paraphrased_loss: 19.11, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 19.22, forget_perturbed_loss_2: 17.51, forget_perturbed_loss_3: 18.77, forget_perturbed_loss_4: 3.85, forget_perturbed_loss: 15.78, 
+2024-04-06-07-06,430 log1 INFO 19.109333038330078
+2024-04-06-07-06,430 log2 INFO 15.778227806091309
+2024-04-06-07-06,727 root INFO batch: 127, forget_paraphrased_loss: 19.39, forget_perturbed_loss_0: 19.74, forget_perturbed_loss_1: 19.14, forget_perturbed_loss_2: 18.98, forget_perturbed_loss_3: 19.79, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.40, 
+2024-04-06-07-06,731 log1 INFO 19.393115997314453
+2024-04-06-07-06,731 log2 INFO 19.39986801147461
+2024-04-06-07-06,10 root INFO batch: 128, forget_paraphrased_loss: 18.69, forget_perturbed_loss_0: 19.48, forget_perturbed_loss_1: 18.32, forget_perturbed_loss_2: 17.73, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 18.88, 
+2024-04-06-07-06,14 log1 INFO 18.694290161132812
+2024-04-06-07-06,14 log2 INFO 18.881296157836914
+2024-04-06-07-06,314 root INFO batch: 129, forget_paraphrased_loss: 19.12, forget_perturbed_loss_0: 18.74, forget_perturbed_loss_1: 19.59, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 18.75, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.23, 
+2024-04-06-07-06,319 log1 INFO 19.11562728881836
+2024-04-06-07-06,319 log2 INFO 19.228567123413086
+2024-04-06-07-06,637 root INFO batch: 130, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.26, forget_perturbed_loss_2: 19.10, forget_perturbed_loss_3: 19.56, forget_perturbed_loss_4: 19.52, forget_perturbed_loss: 19.35, 
+2024-04-06-07-06,642 log1 INFO 19.754114151000977
+2024-04-06-07-06,642 log2 INFO 19.34919548034668
+2024-04-06-07-06,996 root INFO batch: 131, forget_paraphrased_loss: 19.53, forget_perturbed_loss_0: 19.93, forget_perturbed_loss_1: 19.49, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 19.45, forget_perturbed_loss_4: 19.08, forget_perturbed_loss: 19.49, 
+2024-04-06-07-06,0 log1 INFO 19.525924682617188
+2024-04-06-07-06,0 log2 INFO 19.489797592163086
+2024-04-06-07-06,309 root INFO batch: 132, forget_paraphrased_loss: 18.86, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.04, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.32, 
+2024-04-06-07-06,313 log1 INFO 18.864669799804688
+2024-04-06-07-06,313 log2 INFO 19.321577072143555
+2024-04-06-07-06,621 root INFO batch: 133, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.34, forget_perturbed_loss_2: 19.11, forget_perturbed_loss_3: 19.67, forget_perturbed_loss_4: 17.61, forget_perturbed_loss: 19.07, 
+2024-04-06-07-06,625 log1 INFO 19.653810501098633
+2024-04-06-07-06,625 log2 INFO 19.0711727142334
+2024-04-06-07-06,972 root INFO batch: 134, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 19.68, forget_perturbed_loss_1: 19.27, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 19.81, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.49, 
+2024-04-06-07-06,973 log1 INFO 19.18826675415039
+2024-04-06-07-06,973 log2 INFO 19.49418830871582
+2024-04-06-07-06,316 root INFO batch: 135, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 19.71, forget_perturbed_loss_1: 19.62, forget_perturbed_loss_2: 19.59, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 19.42, forget_perturbed_loss: 19.53, 
+2024-04-06-07-06,320 log1 INFO 19.718730926513672
+2024-04-06-07-06,320 log2 INFO 19.52652359008789
+2024-04-06-07-06,644 root INFO batch: 136, forget_paraphrased_loss: 19.00, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.25, forget_perturbed_loss_2: 18.54, forget_perturbed_loss_3: 19.16, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.09, 
+2024-04-06-07-06,648 log1 INFO 19.0017147064209
+2024-04-06-07-06,648 log2 INFO 19.08571434020996
+2024-04-06-07-06,997 root INFO batch: 137, forget_paraphrased_loss: 20.08, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 19.23, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 19.32, forget_perturbed_loss_4: 18.95, forget_perturbed_loss: 19.32, 
+2024-04-06-07-06,2 log1 INFO 20.083044052124023
+2024-04-06-07-06,2 log2 INFO 19.322423934936523
+2024-04-06-07-06,265 root INFO batch: 138, forget_paraphrased_loss: 19.02, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 18.53, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.06, forget_perturbed_loss: 19.21, 
+2024-04-06-07-06,266 log1 INFO 19.017601013183594
+2024-04-06-07-06,267 log2 INFO 19.2103214263916
+2024-04-06-07-06,568 root INFO batch: 139, forget_paraphrased_loss: 19.79, forget_perturbed_loss_0: 19.29, forget_perturbed_loss_1: 19.28, forget_perturbed_loss_2: 20.03, forget_perturbed_loss_3: 19.47, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.51, 
+2024-04-06-07-06,572 log1 INFO 19.786701202392578
+2024-04-06-07-06,573 log2 INFO 19.50563621520996
+2024-04-06-07-06,870 root INFO batch: 140, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.71, forget_perturbed_loss_1: 19.29, forget_perturbed_loss_2: 19.93, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.52, 
+2024-04-06-07-06,874 log1 INFO 19.290283203125
+2024-04-06-07-06,874 log2 INFO 19.519989013671875
+2024-04-06-07-06,178 root INFO batch: 141, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.01, forget_perturbed_loss_3: 19.27, forget_perturbed_loss_4: 19.79, forget_perturbed_loss: 19.47, 
+2024-04-06-07-06,178 log1 INFO 19.452205657958984
+2024-04-06-07-06,179 log2 INFO 19.46690559387207
+2024-04-06-07-06,508 root INFO batch: 142, forget_paraphrased_loss: 18.77, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 18.97, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 19.15, forget_perturbed_loss_4: 19.02, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,513 log1 INFO 18.770431518554688
+2024-04-06-07-06,513 log2 INFO 19.22153663635254
+2024-04-06-07-06,850 root INFO batch: 143, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 13.02, forget_perturbed_loss_1: 19.70, forget_perturbed_loss_2: 19.24, forget_perturbed_loss_3: 19.22, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 18.15, 
+2024-04-06-07-06,851 log1 INFO 19.656858444213867
+2024-04-06-07-06,851 log2 INFO 18.14778709411621
+2024-04-06-07-06,160 root INFO batch: 144, forget_paraphrased_loss: 19.13, forget_perturbed_loss_0: 19.50, forget_perturbed_loss_1: 19.63, forget_perturbed_loss_2: 19.60, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.95, forget_perturbed_loss: 19.64, 
+2024-04-06-07-06,163 log1 INFO 19.133705139160156
+2024-04-06-07-06,164 log2 INFO 19.63501739501953
+2024-04-06-07-06,487 root INFO batch: 145, forget_paraphrased_loss: 19.25, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 18.89, forget_perturbed_loss_2: 19.82, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.78, forget_perturbed_loss: 19.54, 
+2024-04-06-07-06,490 log1 INFO 19.247928619384766
+2024-04-06-07-06,490 log2 INFO 19.53569984436035
+2024-04-06-07-06,771 root INFO batch: 146, forget_paraphrased_loss: 18.84, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 18.45, forget_perturbed_loss_2: 17.84, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 18.94, forget_perturbed_loss: 18.78, 
+2024-04-06-07-06,775 log1 INFO 18.837852478027344
+2024-04-06-07-06,775 log2 INFO 18.775781631469727
+2024-04-06-07-06,116 root INFO batch: 147, forget_paraphrased_loss: 19.44, forget_perturbed_loss_0: 19.62, forget_perturbed_loss_1: 19.86, forget_perturbed_loss_2: 19.62, forget_perturbed_loss_3: 19.76, forget_perturbed_loss_4: 18.31, forget_perturbed_loss: 19.43, 
+2024-04-06-07-06,119 log1 INFO 19.441064834594727
+2024-04-06-07-06,119 log2 INFO 19.434192657470703
+2024-04-06-07-06,422 root INFO batch: 148, forget_paraphrased_loss: 19.38, forget_perturbed_loss_0: 19.57, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 18.60, forget_perturbed_loss_3: 19.37, forget_perturbed_loss_4: 19.08, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,422 log1 INFO 19.38165283203125
+2024-04-06-07-06,422 log2 INFO 19.22117042541504
+2024-04-06-07-06,729 root INFO batch: 149, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 19.28, forget_perturbed_loss_1: 19.80, forget_perturbed_loss_2: 19.76, forget_perturbed_loss_3: 19.16, forget_perturbed_loss_4: 19.84, forget_perturbed_loss: 19.57, 
+2024-04-06-07-06,732 log1 INFO 19.645999908447266
+2024-04-06-07-06,733 log2 INFO 19.570066452026367
+2024-04-06-07-06,9 root INFO batch: 150, forget_paraphrased_loss: 19.69, forget_perturbed_loss_0: 18.62, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.68, forget_perturbed_loss_3: 18.39, forget_perturbed_loss_4: 19.05, forget_perturbed_loss: 19.02, 
+2024-04-06-07-06,13 log1 INFO 19.693391799926758
+2024-04-06-07-06,13 log2 INFO 19.018234252929688
+2024-04-06-07-06,349 root INFO batch: 151, forget_paraphrased_loss: 19.71, forget_perturbed_loss_0: 19.33, forget_perturbed_loss_1: 19.01, forget_perturbed_loss_2: 19.54, forget_perturbed_loss_3: 19.71, forget_perturbed_loss_4: 19.79, forget_perturbed_loss: 19.48, 
+2024-04-06-07-06,353 log1 INFO 19.714736938476562
+2024-04-06-07-06,353 log2 INFO 19.47523307800293
+2024-04-06-07-06,627 root INFO batch: 152, forget_paraphrased_loss: 19.81, forget_perturbed_loss_0: 18.72, forget_perturbed_loss_1: 19.44, forget_perturbed_loss_2: 19.24, forget_perturbed_loss_3: 19.25, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.18, 
+2024-04-06-07-06,631 log1 INFO 19.812406539916992
+2024-04-06-07-06,632 log2 INFO 19.1838436126709
+2024-04-06-07-06,959 root INFO batch: 153, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.14, forget_perturbed_loss_1: 19.78, forget_perturbed_loss_2: 17.82, forget_perturbed_loss_3: 19.44, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,963 log1 INFO 19.65918731689453
+2024-04-06-07-06,964 log2 INFO 19.190244674682617
+2024-04-06-07-06,272 root INFO batch: 154, forget_paraphrased_loss: 19.08, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 18.52, forget_perturbed_loss_4: 19.41, forget_perturbed_loss: 19.25, 
+2024-04-06-07-06,276 log1 INFO 19.07689094543457
+2024-04-06-07-06,276 log2 INFO 19.250747680664062
+2024-04-06-07-06,581 root INFO batch: 155, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 18.82, forget_perturbed_loss_1: 19.14, forget_perturbed_loss_2: 12.69, forget_perturbed_loss_3: 19.12, forget_perturbed_loss_4: 19.94, forget_perturbed_loss: 17.94, 
+2024-04-06-07-06,586 log1 INFO 19.4315242767334
+2024-04-06-07-06,587 log2 INFO 17.942081451416016
+2024-04-06-07-06,912 root INFO batch: 156, forget_paraphrased_loss: 19.32, forget_perturbed_loss_0: 18.51, forget_perturbed_loss_1: 20.05, forget_perturbed_loss_2: 18.77, forget_perturbed_loss_3: 19.93, forget_perturbed_loss_4: 19.39, forget_perturbed_loss: 19.33, 
+2024-04-06-07-06,916 log1 INFO 19.318817138671875
+2024-04-06-07-06,916 log2 INFO 19.33164405822754
+2024-04-06-07-06,215 root INFO batch: 157, forget_paraphrased_loss: 18.70, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 18.86, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 19.34, forget_perturbed_loss_4: 19.36, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,222 log1 INFO 18.701026916503906
+2024-04-06-07-06,222 log2 INFO 19.217138290405273
+2024-04-06-07-06,539 root INFO batch: 158, forget_paraphrased_loss: 19.63, forget_perturbed_loss_0: 20.03, forget_perturbed_loss_1: 3.87, forget_perturbed_loss_2: 19.77, forget_perturbed_loss_3: 19.63, forget_perturbed_loss_4: 18.75, forget_perturbed_loss: 16.41, 
+2024-04-06-07-06,543 log1 INFO 19.632465362548828
+2024-04-06-07-06,543 log2 INFO 16.411479949951172
+2024-04-06-07-06,840 root INFO batch: 159, forget_paraphrased_loss: 19.08, forget_perturbed_loss_0: 19.31, forget_perturbed_loss_1: 18.76, forget_perturbed_loss_2: 19.06, forget_perturbed_loss_3: 18.96, forget_perturbed_loss_4: 20.03, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,841 log1 INFO 19.0780086517334
+2024-04-06-07-06,841 log2 INFO 19.2238826751709
+2024-04-06-07-06,172 root INFO batch: 160, forget_paraphrased_loss: 18.76, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 19.94, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 19.56, forget_perturbed_loss_4: 19.18, forget_perturbed_loss: 19.43, 
+2024-04-06-07-06,176 log1 INFO 18.759777069091797
+2024-04-06-07-06,176 log2 INFO 19.43480110168457
+2024-04-06-07-06,505 root INFO batch: 161, forget_paraphrased_loss: 19.32, forget_perturbed_loss_0: 19.88, forget_perturbed_loss_1: 19.58, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 19.78, forget_perturbed_loss_4: 19.90, forget_perturbed_loss: 19.71, 
+2024-04-06-07-06,510 log1 INFO 19.318737030029297
+2024-04-06-07-06,510 log2 INFO 19.70631217956543
+2024-04-06-07-06,990 root INFO batch: 162, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 19.40, forget_perturbed_loss_1: 19.46, forget_perturbed_loss_2: 18.72, forget_perturbed_loss_3: 19.63, forget_perturbed_loss_4: 19.40, forget_perturbed_loss: 19.32, 
+2024-04-06-07-06,994 log1 INFO 19.276124954223633
+2024-04-06-07-06,994 log2 INFO 19.324066162109375
+2024-04-06-07-06,266 root INFO batch: 163, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 19.76, forget_perturbed_loss_1: 18.47, forget_perturbed_loss_2: 18.68, forget_perturbed_loss_3: 19.11, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.06, 
+2024-04-06-07-06,270 log1 INFO 19.650135040283203
+2024-04-06-07-06,270 log2 INFO 19.056533813476562
+2024-04-06-07-06,588 root INFO batch: 164, forget_paraphrased_loss: 19.31, forget_perturbed_loss_0: 19.68, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 19.59, forget_perturbed_loss_4: 19.42, forget_perturbed_loss: 19.47, 
+2024-04-06-07-06,591 log1 INFO 19.309587478637695
+2024-04-06-07-06,591 log2 INFO 19.471677780151367
+2024-04-06-07-06,862 root INFO batch: 165, forget_paraphrased_loss: 17.80, forget_perturbed_loss_0: 18.93, forget_perturbed_loss_1: 18.76, forget_perturbed_loss_2: 19.69, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.22, 
+2024-04-06-07-06,865 log1 INFO 17.800661087036133
+2024-04-06-07-06,865 log2 INFO 19.224035263061523
+2024-04-06-07-06,206 root INFO batch: 166, forget_paraphrased_loss: 18.27, forget_perturbed_loss_0: 19.44, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 19.72, forget_perturbed_loss_4: 19.31, forget_perturbed_loss: 19.54, 
+2024-04-06-07-06,209 log1 INFO 18.27013397216797
+2024-04-06-07-06,209 log2 INFO 19.540390014648438
+2024-04-06-07-06,511 root INFO batch: 167, forget_paraphrased_loss: 20.04, forget_perturbed_loss_0: 18.31, forget_perturbed_loss_1: 20.21, forget_perturbed_loss_2: 19.87, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 18.62, forget_perturbed_loss: 19.25, 
+2024-04-06-07-06,515 log1 INFO 20.038082122802734
+2024-04-06-07-06,516 log2 INFO 19.247644424438477
+2024-04-06-07-06,779 root INFO batch: 168, forget_paraphrased_loss: 19.03, forget_perturbed_loss_0: 19.23, forget_perturbed_loss_1: 19.14, forget_perturbed_loss_2: 19.24, forget_perturbed_loss_3: 19.50, forget_perturbed_loss_4: 18.51, forget_perturbed_loss: 19.13, 
+2024-04-06-07-06,783 log1 INFO 19.025190353393555
+2024-04-06-07-06,783 log2 INFO 19.125944137573242
+2024-04-06-07-06,108 root INFO batch: 169, forget_paraphrased_loss: 18.85, forget_perturbed_loss_0: 19.55, forget_perturbed_loss_1: 19.18, forget_perturbed_loss_2: 19.83, forget_perturbed_loss_3: 19.56, forget_perturbed_loss_4: 19.62, forget_perturbed_loss: 19.55, 
+2024-04-06-07-06,109 log1 INFO 18.84835433959961
+2024-04-06-07-06,109 log2 INFO 19.54804801940918
+2024-04-06-07-06,429 root INFO batch: 170, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 18.10, forget_perturbed_loss_1: 19.70, forget_perturbed_loss_2: 19.88, forget_perturbed_loss_3: 19.58, forget_perturbed_loss_4: 19.13, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,430 log1 INFO 19.136756896972656
+2024-04-06-07-06,431 log2 INFO 19.276151657104492
+2024-04-06-07-06,757 root INFO batch: 171, forget_paraphrased_loss: 19.89, forget_perturbed_loss_0: 18.57, forget_perturbed_loss_1: 19.78, forget_perturbed_loss_2: 19.81, forget_perturbed_loss_3: 18.98, forget_perturbed_loss_4: 19.55, forget_perturbed_loss: 19.34, 
+2024-04-06-07-06,762 log1 INFO 19.894227981567383
+2024-04-06-07-06,762 log2 INFO 19.34073257446289
+2024-04-06-07-06,62 root INFO batch: 172, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 18.77, forget_perturbed_loss_1: 19.91, forget_perturbed_loss_2: 19.44, forget_perturbed_loss_3: 19.59, forget_perturbed_loss_4: 18.98, forget_perturbed_loss: 19.34, 
+2024-04-06-07-06,67 log1 INFO 19.558975219726562
+2024-04-06-07-06,67 log2 INFO 19.337392807006836
+2024-04-06-07-06,394 root INFO batch: 173, forget_paraphrased_loss: 19.34, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.53, forget_perturbed_loss_4: 19.00, forget_perturbed_loss: 19.44, 
+2024-04-06-07-06,399 log1 INFO 19.340869903564453
+2024-04-06-07-06,399 log2 INFO 19.444366455078125
+2024-04-06-07-06,719 root INFO batch: 174, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 19.05, forget_perturbed_loss_1: 19.47, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.73, forget_perturbed_loss_4: 19.39, forget_perturbed_loss: 19.41, 
+2024-04-06-07-06,722 log1 INFO 19.4464168548584
+2024-04-06-07-06,722 log2 INFO 19.405181884765625
+2024-04-06-07-06,980 root INFO batch: 175, forget_paraphrased_loss: 19.07, forget_perturbed_loss_0: 19.20, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 18.91, forget_perturbed_loss_4: 18.80, forget_perturbed_loss: 19.21, 
+2024-04-06-07-06,984 log1 INFO 19.07342529296875
+2024-04-06-07-06,984 log2 INFO 19.20628547668457
+2024-04-06-07-06,282 root INFO batch: 176, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 19.02, forget_perturbed_loss_1: 17.93, forget_perturbed_loss_2: 19.43, forget_perturbed_loss_3: 18.64, forget_perturbed_loss_4: 19.91, forget_perturbed_loss: 18.98, 
+2024-04-06-07-06,286 log1 INFO 19.142208099365234
+2024-04-06-07-06,286 log2 INFO 18.984600067138672
+2024-04-06-07-06,616 root INFO batch: 177, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 19.77, forget_perturbed_loss_2: 19.42, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.58, forget_perturbed_loss: 19.51, 
+2024-04-06-07-06,620 log1 INFO 19.556385040283203
+2024-04-06-07-06,621 log2 INFO 19.50728416442871
+2024-04-06-07-06,959 root INFO batch: 178, forget_paraphrased_loss: 19.99, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 18.63, forget_perturbed_loss_2: 19.31, forget_perturbed_loss_3: 19.62, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,963 log1 INFO 19.987316131591797
+2024-04-06-07-06,964 log2 INFO 19.283519744873047
+2024-04-06-07-06,278 root INFO batch: 179, forget_paraphrased_loss: 19.69, forget_perturbed_loss_0: 19.59, forget_perturbed_loss_1: 19.05, forget_perturbed_loss_2: 19.36, forget_perturbed_loss_3: 18.62, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,282 log1 INFO 19.694438934326172
+2024-04-06-07-06,283 log2 INFO 19.277864456176758
+2024-04-06-07-06,599 root INFO batch: 180, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 18.81, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.70, forget_perturbed_loss_3: 19.17, forget_perturbed_loss_4: 18.70, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,602 log1 INFO 19.27930450439453
+2024-04-06-07-06,603 log2 INFO 19.18582534790039
+2024-04-06-07-06,900 root INFO batch: 181, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 19.98, forget_perturbed_loss_1: 19.51, forget_perturbed_loss_2: 18.74, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.41, forget_perturbed_loss: 19.41, 
+2024-04-06-07-06,901 log1 INFO 19.78350067138672
+2024-04-06-07-06,901 log2 INFO 19.412973403930664
+2024-04-06-07-06,178 root INFO batch: 182, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 19.52, forget_perturbed_loss_2: 18.50, forget_perturbed_loss_3: 18.40, forget_perturbed_loss_4: 19.69, forget_perturbed_loss: 19.11, 
+2024-04-06-07-06,181 log1 INFO 19.285961151123047
+2024-04-06-07-06,181 log2 INFO 19.113367080688477
+2024-04-06-07-06,458 root INFO batch: 183, forget_paraphrased_loss: 19.23, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 18.74, forget_perturbed_loss_2: 19.69, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.48, forget_perturbed_loss: 19.40, 
+2024-04-06-07-06,462 log1 INFO 19.22774887084961
+2024-04-06-07-06,462 log2 INFO 19.399986267089844
+2024-04-06-07-06,770 root INFO batch: 184, forget_paraphrased_loss: 18.78, forget_perturbed_loss_0: 19.26, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.54, forget_perturbed_loss_3: 19.79, forget_perturbed_loss_4: 19.49, forget_perturbed_loss: 19.50, 
+2024-04-06-07-06,774 log1 INFO 18.784635543823242
+2024-04-06-07-06,775 log2 INFO 19.499996185302734
+2024-04-06-07-06,111 root INFO batch: 185, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.35, forget_perturbed_loss_1: 19.32, forget_perturbed_loss_2: 19.42, forget_perturbed_loss_3: 19.48, forget_perturbed_loss_4: 18.70, forget_perturbed_loss: 19.25, 
+2024-04-06-07-06,112 log1 INFO 19.6778564453125
+2024-04-06-07-06,112 log2 INFO 19.253385543823242
+2024-04-06-07-06,416 root INFO batch: 186, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 18.32, forget_perturbed_loss_1: 19.15, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 18.78, forget_perturbed_loss_4: 19.83, forget_perturbed_loss: 19.07, 
+2024-04-06-07-06,420 log1 INFO 19.574996948242188
+2024-04-06-07-06,420 log2 INFO 19.0732479095459
+2024-04-06-07-06,739 root INFO batch: 187, forget_paraphrased_loss: 19.67, forget_perturbed_loss_0: 19.99, forget_perturbed_loss_1: 19.20, forget_perturbed_loss_2: 19.31, forget_perturbed_loss_3: 19.90, forget_perturbed_loss_4: 19.29, forget_perturbed_loss: 19.54, 
+2024-04-06-07-06,744 log1 INFO 19.670082092285156
+2024-04-06-07-06,744 log2 INFO 19.539213180541992
+2024-04-06-07-06,42 root INFO batch: 188, forget_paraphrased_loss: 19.18, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 18.83, forget_perturbed_loss_2: 19.06, forget_perturbed_loss_3: 19.84, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.17, 
+2024-04-06-07-06,43 log1 INFO 19.179468154907227
+2024-04-06-07-06,43 log2 INFO 19.16999053955078
+2024-04-06-07-06,314 root INFO batch: 189, forget_paraphrased_loss: 18.69, forget_perturbed_loss_0: 17.58, forget_perturbed_loss_1: 19.13, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.30, forget_perturbed_loss: 18.98, 
+2024-04-06-07-06,318 log1 INFO 18.68977165222168
+2024-04-06-07-06,318 log2 INFO 18.9786319732666
+2024-04-06-07-06,593 root INFO batch: 190, forget_paraphrased_loss: 19.06, forget_perturbed_loss_0: 18.32, forget_perturbed_loss_1: 18.27, forget_perturbed_loss_2: 19.12, forget_perturbed_loss_3: 18.90, forget_perturbed_loss_4: 19.83, forget_perturbed_loss: 18.89, 
+2024-04-06-07-06,598 log1 INFO 19.06338119506836
+2024-04-06-07-06,598 log2 INFO 18.88869857788086
+2024-04-06-07-06,872 root INFO batch: 191, forget_paraphrased_loss: 19.54, forget_perturbed_loss_0: 18.97, forget_perturbed_loss_1: 19.10, forget_perturbed_loss_2: 19.52, forget_perturbed_loss_3: 19.34, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.24, 
+2024-04-06-07-06,873 log1 INFO 19.539241790771484
+2024-04-06-07-06,873 log2 INFO 19.24250030517578
+2024-04-06-07-06,222 root INFO batch: 192, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.75, forget_perturbed_loss_1: 19.42, forget_perturbed_loss_2: 19.78, forget_perturbed_loss_3: 19.24, forget_perturbed_loss_4: 19.45, forget_perturbed_loss: 19.53, 
+2024-04-06-07-06,225 log1 INFO 19.573562622070312
+2024-04-06-07-06,226 log2 INFO 19.52617835998535
+2024-04-06-07-06,579 root INFO batch: 193, forget_paraphrased_loss: 19.63, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.30, forget_perturbed_loss_2: 19.78, forget_perturbed_loss_3: 19.69, forget_perturbed_loss_4: 19.64, forget_perturbed_loss: 19.51, 
+2024-04-06-07-06,581 log1 INFO 19.625362396240234
+2024-04-06-07-06,582 log2 INFO 19.50961685180664
+2024-04-06-07-06,890 root INFO batch: 194, forget_paraphrased_loss: 19.05, forget_perturbed_loss_0: 19.91, forget_perturbed_loss_1: 18.05, forget_perturbed_loss_2: 19.43, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,894 log1 INFO 19.048368453979492
+2024-04-06-07-06,894 log2 INFO 19.194183349609375
+2024-04-06-07-06,179 root INFO batch: 195, forget_paraphrased_loss: 18.84, forget_perturbed_loss_0: 19.59, forget_perturbed_loss_1: 18.74, forget_perturbed_loss_2: 19.28, forget_perturbed_loss_3: 18.97, forget_perturbed_loss_4: 18.76, forget_perturbed_loss: 19.07, 
+2024-04-06-07-06,184 log1 INFO 18.84286880493164
+2024-04-06-07-06,184 log2 INFO 19.066484451293945
+2024-04-06-07-06,475 root INFO batch: 196, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 18.90, forget_perturbed_loss_1: 19.00, forget_perturbed_loss_2: 19.03, forget_perturbed_loss_3: 20.13, forget_perturbed_loss_4: 19.36, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,479 log1 INFO 19.44668197631836
+2024-04-06-07-06,479 log2 INFO 19.283845901489258
+2024-04-06-07-06,808 root INFO batch: 197, forget_paraphrased_loss: 19.44, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 18.50, forget_perturbed_loss_2: 19.12, forget_perturbed_loss_3: 19.54, forget_perturbed_loss_4: 18.80, forget_perturbed_loss: 19.06, 
+2024-04-06-07-06,813 log1 INFO 19.443265914916992
+2024-04-06-07-06,813 log2 INFO 19.062671661376953
+2024-04-06-07-06,127 root INFO batch: 198, forget_paraphrased_loss: 19.76, forget_perturbed_loss_0: 19.50, forget_perturbed_loss_1: 19.37, forget_perturbed_loss_2: 18.97, forget_perturbed_loss_3: 19.34, forget_perturbed_loss_4: 17.48, forget_perturbed_loss: 18.93, 
+2024-04-06-07-06,131 log1 INFO 19.762605667114258
+2024-04-06-07-06,131 log2 INFO 18.932453155517578
+2024-04-06-07-06,428 root INFO batch: 199, forget_paraphrased_loss: 19.37, forget_perturbed_loss_0: 19.92, forget_perturbed_loss_1: 19.21, forget_perturbed_loss_2: 19.59, forget_perturbed_loss_3: 17.76, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.20, 
+2024-04-06-07-06,432 log1 INFO 19.37099838256836
+2024-04-06-07-06,433 log2 INFO 19.204927444458008
+2024-04-06-07-06,726 root INFO batch: 200, forget_paraphrased_loss: 19.14, forget_perturbed_loss_0: 19.50, forget_perturbed_loss_1: 19.16, forget_perturbed_loss_2: 19.18, forget_perturbed_loss_3: 19.37, forget_perturbed_loss_4: 19.52, forget_perturbed_loss: 19.35, 
+2024-04-06-07-06,730 log1 INFO 19.13985252380371
+2024-04-06-07-06,731 log2 INFO 19.346181869506836
+2024-04-06-07-06,47 root INFO batch: 201, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.57, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.36, forget_perturbed_loss_3: 17.48, forget_perturbed_loss_4: 19.11, forget_perturbed_loss: 19.02, 
+2024-04-06-07-06,51 log1 INFO 19.726837158203125
+2024-04-06-07-06,52 log2 INFO 19.01995277404785
+2024-04-06-07-06,395 root INFO batch: 202, forget_paraphrased_loss: 19.45, forget_perturbed_loss_0: 19.38, forget_perturbed_loss_1: 19.81, forget_perturbed_loss_2: 18.90, forget_perturbed_loss_3: 19.70, forget_perturbed_loss_4: 19.15, forget_perturbed_loss: 19.39, 
+2024-04-06-07-06,400 log1 INFO 19.450592041015625
+2024-04-06-07-06,400 log2 INFO 19.390222549438477
+2024-04-06-07-06,710 root INFO batch: 203, forget_paraphrased_loss: 19.42, forget_perturbed_loss_0: 18.99, forget_perturbed_loss_1: 19.67, forget_perturbed_loss_2: 19.55, forget_perturbed_loss_3: 19.20, forget_perturbed_loss_4: 19.76, forget_perturbed_loss: 19.43, 
+2024-04-06-07-06,714 log1 INFO 19.420827865600586
+2024-04-06-07-06,714 log2 INFO 19.434804916381836
+2024-04-06-07-06,990 root INFO batch: 204, forget_paraphrased_loss: 8.33, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.34, forget_perturbed_loss_2: 18.88, forget_perturbed_loss_3: 19.07, forget_perturbed_loss_4: 19.40, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,994 log1 INFO 8.33348560333252
+2024-04-06-07-06,994 log2 INFO 19.185644149780273
+2024-04-06-07-06,271 root INFO batch: 205, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 18.74, forget_perturbed_loss_1: 18.74, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.98, forget_perturbed_loss_4: 19.23, forget_perturbed_loss: 19.20, 
+2024-04-06-07-06,276 log1 INFO 19.72491455078125
+2024-04-06-07-06,276 log2 INFO 19.203664779663086
+2024-04-06-07-06,582 root INFO batch: 206, forget_paraphrased_loss: 18.69, forget_perturbed_loss_0: 19.17, forget_perturbed_loss_1: 19.49, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 18.69, forget_perturbed_loss: 19.27, 
+2024-04-06-07-06,586 log1 INFO 18.688446044921875
+2024-04-06-07-06,586 log2 INFO 19.274763107299805
+2024-04-06-07-06,45 root INFO batch: 207, forget_paraphrased_loss: 19.84, forget_perturbed_loss_0: 19.88, forget_perturbed_loss_1: 17.29, forget_perturbed_loss_2: 18.73, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 18.89, forget_perturbed_loss: 18.86, 
+2024-04-06-07-06,49 log1 INFO 19.83828353881836
+2024-04-06-07-06,49 log2 INFO 18.86103630065918
+2024-04-06-07-06,328 root INFO batch: 208, forget_paraphrased_loss: 19.05, forget_perturbed_loss_0: 17.68, forget_perturbed_loss_1: 19.00, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 18.56, forget_perturbed_loss_4: 18.98, forget_perturbed_loss: 18.75, 
+2024-04-06-07-06,333 log1 INFO 19.049785614013672
+2024-04-06-07-06,333 log2 INFO 18.74891471862793
+2024-04-06-07-06,626 root INFO batch: 209, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 18.44, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 18.73, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.05, 
+2024-04-06-07-06,630 log1 INFO 19.67832374572754
+2024-04-06-07-06,630 log2 INFO 19.047937393188477
+2024-04-06-07-06,926 root INFO batch: 210, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 19.67, forget_perturbed_loss_1: 17.27, forget_perturbed_loss_2: 19.09, forget_perturbed_loss_3: 19.31, forget_perturbed_loss_4: 18.85, forget_perturbed_loss: 18.84, 
+2024-04-06-07-06,930 log1 INFO 19.551097869873047
+2024-04-06-07-06,930 log2 INFO 18.83734703063965
+2024-04-06-07-06,269 root INFO batch: 211, forget_paraphrased_loss: 19.79, forget_perturbed_loss_0: 19.61, forget_perturbed_loss_1: 19.15, forget_perturbed_loss_2: 19.85, forget_perturbed_loss_3: 18.92, forget_perturbed_loss_4: 19.14, forget_perturbed_loss: 19.33, 
+2024-04-06-07-06,273 log1 INFO 19.788331985473633
+2024-04-06-07-06,273 log2 INFO 19.332075119018555
+2024-04-06-07-06,572 root INFO batch: 212, forget_paraphrased_loss: 19.27, forget_perturbed_loss_0: 19.48, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 18.43, forget_perturbed_loss_3: 19.25, forget_perturbed_loss_4: 18.76, forget_perturbed_loss: 19.09, 
+2024-04-06-07-06,576 log1 INFO 19.269060134887695
+2024-04-06-07-06,576 log2 INFO 19.08924102783203
+2024-04-06-07-06,881 root INFO batch: 213, forget_paraphrased_loss: 19.07, forget_perturbed_loss_0: 19.38, forget_perturbed_loss_1: 19.59, forget_perturbed_loss_2: 19.30, forget_perturbed_loss_3: 20.03, forget_perturbed_loss_4: 19.79, forget_perturbed_loss: 19.62, 
+2024-04-06-07-06,885 log1 INFO 19.07350730895996
+2024-04-06-07-06,885 log2 INFO 19.619903564453125
+2024-04-06-07-06,203 root INFO batch: 214, forget_paraphrased_loss: 19.59, forget_perturbed_loss_0: 18.94, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.75, forget_perturbed_loss_3: 19.15, forget_perturbed_loss_4: 19.07, forget_perturbed_loss: 19.29, 
+2024-04-06-07-06,207 log1 INFO 19.59463119506836
+2024-04-06-07-06,207 log2 INFO 19.294416427612305
+2024-04-06-07-06,511 root INFO batch: 215, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.88, forget_perturbed_loss_1: 19.30, forget_perturbed_loss_2: 18.66, forget_perturbed_loss_3: 19.14, forget_perturbed_loss_4: 19.02, forget_perturbed_loss: 19.20, 
+2024-04-06-07-06,516 log1 INFO 19.663297653198242
+2024-04-06-07-06,516 log2 INFO 19.200288772583008
+2024-04-06-07-06,816 root INFO batch: 216, forget_paraphrased_loss: 18.59, forget_perturbed_loss_0: 19.35, forget_perturbed_loss_1: 19.26, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.07, forget_perturbed_loss: 19.27, 
+2024-04-06-07-06,819 log1 INFO 18.589969635009766
+2024-04-06-07-06,820 log2 INFO 19.272541046142578
+2024-04-06-07-06,99 root INFO batch: 217, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 19.18, forget_perturbed_loss_1: 19.93, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 19.26, forget_perturbed_loss_4: 19.64, forget_perturbed_loss: 19.46, 
+2024-04-06-07-06,103 log1 INFO 19.78380584716797
+2024-04-06-07-06,103 log2 INFO 19.458770751953125
+2024-04-06-07-06,394 root INFO batch: 218, forget_paraphrased_loss: 17.75, forget_perturbed_loss_0: 19.12, forget_perturbed_loss_1: 19.02, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 18.63, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 19.14, 
+2024-04-06-07-06,399 log1 INFO 17.7498779296875
+2024-04-06-07-06,399 log2 INFO 19.141393661499023
+2024-04-06-07-06,734 root INFO batch: 219, forget_paraphrased_loss: 19.51, forget_perturbed_loss_0: 19.44, forget_perturbed_loss_1: 20.04, forget_perturbed_loss_2: 19.32, forget_perturbed_loss_3: 19.18, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 19.52, 
+2024-04-06-07-06,735 log1 INFO 19.510189056396484
+2024-04-06-07-06,735 log2 INFO 19.51533317565918
+2024-04-06-07-06,1 root INFO batch: 220, forget_paraphrased_loss: 19.00, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 18.96, forget_perturbed_loss_2: 19.91, forget_perturbed_loss_3: 18.63, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.16, 
+2024-04-06-07-06,5 log1 INFO 18.998395919799805
+2024-04-06-07-06,5 log2 INFO 19.155460357666016
+2024-04-06-07-06,339 root INFO batch: 221, forget_paraphrased_loss: 19.81, forget_perturbed_loss_0: 19.17, forget_perturbed_loss_1: 19.76, forget_perturbed_loss_2: 18.95, forget_perturbed_loss_3: 19.81, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.32, 
+2024-04-06-07-06,343 log1 INFO 19.807201385498047
+2024-04-06-07-06,343 log2 INFO 19.320730209350586
+2024-04-06-07-06,614 root INFO batch: 222, forget_paraphrased_loss: 19.67, forget_perturbed_loss_0: 18.61, forget_perturbed_loss_1: 19.36, forget_perturbed_loss_2: 18.72, forget_perturbed_loss_3: 19.18, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.04, 
+2024-04-06-07-06,618 log1 INFO 19.66766929626465
+2024-04-06-07-06,618 log2 INFO 19.042905807495117
+2024-04-06-07-06,964 root INFO batch: 223, forget_paraphrased_loss: 19.62, forget_perturbed_loss_0: 19.72, forget_perturbed_loss_1: 19.13, forget_perturbed_loss_2: 20.01, forget_perturbed_loss_3: 19.16, forget_perturbed_loss_4: 20.01, forget_perturbed_loss: 19.61, 
+2024-04-06-07-06,969 log1 INFO 19.61781883239746
+2024-04-06-07-06,969 log2 INFO 19.60719108581543
+2024-04-06-07-06,240 root INFO batch: 224, forget_paraphrased_loss: 19.24, forget_perturbed_loss_0: 19.10, forget_perturbed_loss_1: 19.18, forget_perturbed_loss_2: 19.20, forget_perturbed_loss_3: 19.53, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.27, 
+2024-04-06-07-06,249 log1 INFO 19.23537826538086
+2024-04-06-07-06,250 log2 INFO 19.271671295166016
+2024-04-06-07-06,593 root INFO batch: 225, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.74, forget_perturbed_loss: 19.52, 
+2024-04-06-07-06,597 log1 INFO 19.545440673828125
+2024-04-06-07-06,597 log2 INFO 19.51611328125
+2024-04-06-07-06,931 root INFO batch: 226, forget_paraphrased_loss: 20.27, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.16, forget_perturbed_loss_2: 19.79, forget_perturbed_loss_3: 19.57, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.56, 
+2024-04-06-07-06,935 log1 INFO 20.272621154785156
+2024-04-06-07-06,936 log2 INFO 19.56377410888672
+2024-04-06-07-06,294 root INFO batch: 227, forget_paraphrased_loss: 19.81, forget_perturbed_loss_0: 19.96, forget_perturbed_loss_1: 19.81, forget_perturbed_loss_2: 19.76, forget_perturbed_loss_3: 20.30, forget_perturbed_loss_4: 19.65, forget_perturbed_loss: 19.90, 
+2024-04-06-07-06,298 log1 INFO 19.807872772216797
+2024-04-06-07-06,299 log2 INFO 19.896963119506836
+2024-04-06-07-06,595 root INFO batch: 228, forget_paraphrased_loss: 19.25, forget_perturbed_loss_0: 19.53, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 19.27, forget_perturbed_loss_3: 19.08, forget_perturbed_loss_4: 19.32, forget_perturbed_loss: 19.33, 
+2024-04-06-07-06,598 log1 INFO 19.248828887939453
+2024-04-06-07-06,598 log2 INFO 19.334890365600586
+2024-04-06-07-06,897 root INFO batch: 229, forget_paraphrased_loss: 19.87, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 18.37, forget_perturbed_loss_2: 19.62, forget_perturbed_loss_3: 19.75, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.23, 
+2024-04-06-07-06,901 log1 INFO 19.870084762573242
+2024-04-06-07-06,901 log2 INFO 19.22815704345703
+2024-04-06-07-06,226 root INFO batch: 230, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 19.15, forget_perturbed_loss_1: 18.89, forget_perturbed_loss_2: 19.46, forget_perturbed_loss_3: 20.03, forget_perturbed_loss_4: 18.12, forget_perturbed_loss: 19.13, 
+2024-04-06-07-06,230 log1 INFO 19.429359436035156
+2024-04-06-07-06,230 log2 INFO 19.130233764648438
+2024-04-06-07-06,565 root INFO batch: 231, forget_paraphrased_loss: 19.85, forget_perturbed_loss_0: 19.26, forget_perturbed_loss_1: 19.94, forget_perturbed_loss_2: 19.96, forget_perturbed_loss_3: 19.62, forget_perturbed_loss_4: 19.44, forget_perturbed_loss: 19.64, 
+2024-04-06-07-06,569 log1 INFO 19.851842880249023
+2024-04-06-07-06,570 log2 INFO 19.644556045532227
+2024-04-06-07-06,877 root INFO batch: 232, forget_paraphrased_loss: 19.21, forget_perturbed_loss_0: 19.40, forget_perturbed_loss_1: 19.77, forget_perturbed_loss_2: 19.25, forget_perturbed_loss_3: 19.64, forget_perturbed_loss_4: 19.55, forget_perturbed_loss: 19.52, 
+2024-04-06-07-06,881 log1 INFO 19.21033477783203
+2024-04-06-07-06,881 log2 INFO 19.523529052734375
+2024-04-06-07-06,177 root INFO batch: 233, forget_paraphrased_loss: 19.34, forget_perturbed_loss_0: 19.25, forget_perturbed_loss_1: 19.79, forget_perturbed_loss_2: 19.06, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.58, forget_perturbed_loss: 19.41, 
+2024-04-06-07-06,181 log1 INFO 19.33677101135254
+2024-04-06-07-06,181 log2 INFO 19.413715362548828
+2024-04-06-07-06,467 root INFO batch: 234, forget_paraphrased_loss: 19.23, forget_perturbed_loss_0: 19.79, forget_perturbed_loss_1: 19.32, forget_perturbed_loss_2: 19.84, forget_perturbed_loss_3: 19.57, forget_perturbed_loss_4: 18.56, forget_perturbed_loss: 19.42, 
+2024-04-06-07-06,471 log1 INFO 19.22777557373047
+2024-04-06-07-06,471 log2 INFO 19.4160099029541
+2024-04-06-07-06,778 root INFO batch: 235, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 18.65, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 18.58, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.14, 
+2024-04-06-07-06,782 log1 INFO 19.548471450805664
+2024-04-06-07-06,782 log2 INFO 19.143102645874023
+2024-04-06-07-06,133 root INFO batch: 236, forget_paraphrased_loss: 20.06, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 19.72, forget_perturbed_loss_2: 19.58, forget_perturbed_loss_3: 19.70, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.60, 
+2024-04-06-07-06,134 log1 INFO 20.061569213867188
+2024-04-06-07-06,134 log2 INFO 19.599210739135742
+2024-04-06-07-06,431 root INFO batch: 237, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 19.25, forget_perturbed_loss_2: 18.42, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.07, 
+2024-04-06-07-06,435 log1 INFO 19.74734115600586
+2024-04-06-07-06,435 log2 INFO 19.074005126953125
+2024-04-06-07-06,775 root INFO batch: 238, forget_paraphrased_loss: 19.64, forget_perturbed_loss_0: 19.77, forget_perturbed_loss_1: 19.71, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.43, forget_perturbed_loss_4: 19.36, forget_perturbed_loss: 19.53, 
+2024-04-06-07-06,779 log1 INFO 19.639930725097656
+2024-04-06-07-06,779 log2 INFO 19.530078887939453
+2024-04-06-07-06,119 root INFO batch: 239, forget_paraphrased_loss: 19.00, forget_perturbed_loss_0: 19.75, forget_perturbed_loss_1: 19.52, forget_perturbed_loss_2: 19.58, forget_perturbed_loss_3: 19.03, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.53, 
+2024-04-06-07-06,124 log1 INFO 19.00234603881836
+2024-04-06-07-06,124 log2 INFO 19.530881881713867
+2024-04-06-07-06,417 root INFO batch: 240, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 19.69, forget_perturbed_loss_1: 19.22, forget_perturbed_loss_2: 18.94, forget_perturbed_loss_3: 18.96, forget_perturbed_loss_4: 19.93, forget_perturbed_loss: 19.35, 
+2024-04-06-07-06,421 log1 INFO 19.187870025634766
+2024-04-06-07-06,421 log2 INFO 19.347984313964844
+2024-04-06-07-06,717 root INFO batch: 241, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 18.64, forget_perturbed_loss_1: 19.74, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.17, forget_perturbed_loss_4: 19.78, forget_perturbed_loss: 19.35, 
+2024-04-06-07-06,721 log1 INFO 19.555458068847656
+2024-04-06-07-06,721 log2 INFO 19.349172592163086
+2024-04-06-07-06,27 root INFO batch: 242, forget_paraphrased_loss: 19.74, forget_perturbed_loss_0: 18.94, forget_perturbed_loss_1: 18.60, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.14, 
+2024-04-06-07-06,31 log1 INFO 19.736141204833984
+2024-04-06-07-06,31 log2 INFO 19.13974952697754
+2024-04-06-07-06,320 root INFO batch: 243, forget_paraphrased_loss: 19.69, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 18.51, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 19.70, forget_perturbed_loss: 19.29, 
+2024-04-06-07-06,324 log1 INFO 19.691226959228516
+2024-04-06-07-06,325 log2 INFO 19.28940773010254
+2024-04-06-07-06,637 root INFO batch: 244, forget_paraphrased_loss: 20.09, forget_perturbed_loss_0: 17.51, forget_perturbed_loss_1: 19.52, forget_perturbed_loss_2: 19.53, forget_perturbed_loss_3: 19.72, forget_perturbed_loss_4: 19.23, forget_perturbed_loss: 19.10, 
+2024-04-06-07-06,641 log1 INFO 20.087432861328125
+2024-04-06-07-06,641 log2 INFO 19.101728439331055
+2024-04-06-07-06,945 root INFO batch: 245, forget_paraphrased_loss: 19.07, forget_perturbed_loss_0: 19.07, forget_perturbed_loss_1: 19.73, forget_perturbed_loss_2: 19.64, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.50, 
+2024-04-06-07-06,949 log1 INFO 19.072608947753906
+2024-04-06-07-06,949 log2 INFO 19.496553421020508
+2024-04-06-07-06,416 root INFO batch: 246, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 18.88, forget_perturbed_loss_1: 18.93, forget_perturbed_loss_2: 19.33, forget_perturbed_loss_3: 19.86, forget_perturbed_loss_4: 17.18, forget_perturbed_loss: 18.84, 
+2024-04-06-07-06,420 log1 INFO 19.278051376342773
+2024-04-06-07-06,420 log2 INFO 18.835540771484375
+2024-04-06-07-06,761 root INFO batch: 247, forget_paraphrased_loss: 19.76, forget_perturbed_loss_0: 19.55, forget_perturbed_loss_1: 19.76, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 18.61, forget_perturbed_loss: 19.35, 
+2024-04-06-07-06,765 log1 INFO 19.764869689941406
+2024-04-06-07-06,765 log2 INFO 19.347593307495117
+2024-04-06-07-06,64 root INFO batch: 248, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 19.04, forget_perturbed_loss_1: 18.51, forget_perturbed_loss_2: 19.30, forget_perturbed_loss_3: 19.83, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.19, 
+2024-04-06-07-06,69 log1 INFO 19.42778778076172
+2024-04-06-07-06,69 log2 INFO 19.18926429748535
+2024-04-06-07-06,397 root INFO batch: 249, forget_paraphrased_loss: 19.22, forget_perturbed_loss_0: 19.40, forget_perturbed_loss_1: 19.86, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.71, forget_perturbed_loss_4: 19.29, forget_perturbed_loss: 19.53, 
+2024-04-06-07-06,402 log1 INFO 19.222087860107422
+2024-04-06-07-06,402 log2 INFO 19.525266647338867
+2024-04-06-07-06,707 root INFO batch: 250, forget_paraphrased_loss: 19.11, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 19.74, forget_perturbed_loss_2: 18.97, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.48, forget_perturbed_loss: 19.40, 
+2024-04-06-07-06,708 log1 INFO 19.111337661743164
+2024-04-06-07-06,708 log2 INFO 19.40314483642578
+2024-04-06-07-06,12 root INFO batch: 251, forget_paraphrased_loss: 19.42, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 19.18, forget_perturbed_loss_2: 19.42, forget_perturbed_loss_3: 18.67, forget_perturbed_loss_4: 19.72, forget_perturbed_loss: 19.24, 
+2024-04-06-07-06,16 log1 INFO 19.42190933227539
+2024-04-06-07-06,16 log2 INFO 19.242507934570312
+2024-04-06-07-06,324 root INFO batch: 252, forget_paraphrased_loss: 19.04, forget_perturbed_loss_0: 19.59, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.94, forget_perturbed_loss_3: 19.08, forget_perturbed_loss_4: 19.95, forget_perturbed_loss: 19.59, 
+2024-04-06-07-06,329 log1 INFO 19.04176139831543
+2024-04-06-07-06,329 log2 INFO 19.5860652923584
+2024-04-06-07-06,668 root INFO batch: 253, forget_paraphrased_loss: 19.65, forget_perturbed_loss_0: 19.33, forget_perturbed_loss_1: 19.63, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.30, forget_perturbed_loss_4: 19.90, forget_perturbed_loss: 19.51, 
+2024-04-06-07-06,673 log1 INFO 19.653902053833008
+2024-04-06-07-06,673 log2 INFO 19.506643295288086
+2024-04-06-07-06,966 root INFO batch: 254, forget_paraphrased_loss: 17.94, forget_perturbed_loss_0: 19.64, forget_perturbed_loss_1: 19.78, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.75, forget_perturbed_loss: 19.55, 
+2024-04-06-07-06,971 log1 INFO 17.94158172607422
+2024-04-06-07-06,971 log2 INFO 19.55332374572754
+2024-04-06-07-06,282 root INFO batch: 255, forget_paraphrased_loss: 19.08, forget_perturbed_loss_0: 19.35, forget_perturbed_loss_1: 19.84, forget_perturbed_loss_2: 19.06, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 20.13, forget_perturbed_loss: 19.56, 
+2024-04-06-07-06,286 log1 INFO 19.078826904296875
+2024-04-06-07-06,286 log2 INFO 19.558521270751953
+2024-04-06-07-06,581 root INFO batch: 256, forget_paraphrased_loss: 18.59, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 19.77, forget_perturbed_loss_2: 18.64, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 18.56, forget_perturbed_loss: 19.14, 
+2024-04-06-07-06,586 log1 INFO 18.588088989257812
+2024-04-06-07-06,586 log2 INFO 19.14385986328125
+2024-04-06-07-06,894 root INFO batch: 257, forget_paraphrased_loss: 19.39, forget_perturbed_loss_0: 18.89, forget_perturbed_loss_1: 19.09, forget_perturbed_loss_2: 19.06, forget_perturbed_loss_3: 17.95, forget_perturbed_loss_4: 19.79, forget_perturbed_loss: 18.96, 
+2024-04-06-07-06,899 log1 INFO 19.385507583618164
+2024-04-06-07-06,899 log2 INFO 18.955472946166992
+2024-04-06-07-06,220 root INFO batch: 258, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.51, forget_perturbed_loss_1: 19.30, forget_perturbed_loss_2: 19.07, forget_perturbed_loss_3: 18.56, forget_perturbed_loss_4: 19.70, forget_perturbed_loss: 19.23, 
+2024-04-06-07-06,221 log1 INFO 19.68456268310547
+2024-04-06-07-06,222 log2 INFO 19.228862762451172
+2024-04-06-07-06,571 root INFO batch: 259, forget_paraphrased_loss: 19.22, forget_perturbed_loss_0: 19.42, forget_perturbed_loss_1: 19.60, forget_perturbed_loss_2: 19.48, forget_perturbed_loss_3: 19.55, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.48, 
+2024-04-06-07-06,575 log1 INFO 19.21976089477539
+2024-04-06-07-06,575 log2 INFO 19.482608795166016
+2024-04-06-07-06,896 root INFO batch: 260, forget_paraphrased_loss: 19.16, forget_perturbed_loss_0: 19.16, forget_perturbed_loss_1: 19.83, forget_perturbed_loss_2: 18.95, forget_perturbed_loss_3: 19.77, forget_perturbed_loss_4: 19.31, forget_perturbed_loss: 19.40, 
+2024-04-06-07-06,900 log1 INFO 19.156478881835938
+2024-04-06-07-06,901 log2 INFO 19.40461540222168
+2024-04-06-07-06,215 root INFO batch: 261, forget_paraphrased_loss: 19.75, forget_perturbed_loss_0: 18.29, forget_perturbed_loss_1: 19.02, forget_perturbed_loss_2: 18.99, forget_perturbed_loss_3: 3.70, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 15.91, 
+2024-04-06-07-06,216 log1 INFO 19.74660873413086
+2024-04-06-07-06,216 log2 INFO 15.91319751739502
+2024-04-06-07-06,526 root INFO batch: 262, forget_paraphrased_loss: 19.93, forget_perturbed_loss_0: 19.22, forget_perturbed_loss_1: 19.36, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.45, 
+2024-04-06-07-06,531 log1 INFO 19.93218231201172
+2024-04-06-07-06,531 log2 INFO 19.45203399658203
+2024-04-06-07-06,821 root INFO batch: 263, forget_paraphrased_loss: 18.92, forget_perturbed_loss_0: 19.11, forget_perturbed_loss_1: 19.15, forget_perturbed_loss_2: 19.26, forget_perturbed_loss_3: 19.46, forget_perturbed_loss_4: 19.47, forget_perturbed_loss: 19.29, 
+2024-04-06-07-06,826 log1 INFO 18.921428680419922
+2024-04-06-07-06,826 log2 INFO 19.28900146484375
+2024-04-06-07-06,151 root INFO batch: 264, forget_paraphrased_loss: 19.52, forget_perturbed_loss_0: 19.27, forget_perturbed_loss_1: 19.36, forget_perturbed_loss_2: 19.85, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.52, forget_perturbed_loss: 19.50, 
+2024-04-06-07-06,155 log1 INFO 19.51969337463379
+2024-04-06-07-06,155 log2 INFO 19.496274948120117
+2024-04-06-07-06,485 root INFO batch: 265, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.74, forget_perturbed_loss_1: 20.01, forget_perturbed_loss_2: 18.86, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 18.28, forget_perturbed_loss: 19.28, 
+2024-04-06-07-06,489 log1 INFO 19.571826934814453
+2024-04-06-07-06,489 log2 INFO 19.27657699584961
+2024-04-06-07-06,834 root INFO batch: 266, forget_paraphrased_loss: 19.92, forget_perturbed_loss_0: 19.08, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.91, forget_perturbed_loss_3: 10.15, forget_perturbed_loss_4: 19.20, forget_perturbed_loss: 17.54, 
+2024-04-06-07-06,838 log1 INFO 19.9212589263916
+2024-04-06-07-06,838 log2 INFO 17.538402557373047
+2024-04-06-07-07,151 root INFO batch: 267, forget_paraphrased_loss: 19.88, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 19.50, forget_perturbed_loss_2: 19.50, forget_perturbed_loss_3: 19.63, forget_perturbed_loss_4: 18.95, forget_perturbed_loss: 19.43, 
+2024-04-06-07-07,154 log1 INFO 19.88190460205078
+2024-04-06-07-07,154 log2 INFO 19.43480682373047
+2024-04-06-07-07,478 root INFO batch: 268, forget_paraphrased_loss: 19.17, forget_perturbed_loss_0: 18.82, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.83, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 19.39, 
+2024-04-06-07-07,483 log1 INFO 19.173585891723633
+2024-04-06-07-07,483 log2 INFO 19.38826560974121
+2024-04-06-07-07,791 root INFO batch: 269, forget_paraphrased_loss: 18.77, forget_perturbed_loss_0: 19.51, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 19.86, forget_perturbed_loss_4: 19.37, forget_perturbed_loss: 19.60, 
+2024-04-06-07-07,795 log1 INFO 18.765380859375
+2024-04-06-07-07,795 log2 INFO 19.60222816467285
+2024-04-06-07-07,90 root INFO batch: 270, forget_paraphrased_loss: 19.84, forget_perturbed_loss_0: 19.79, forget_perturbed_loss_1: 19.65, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.00, forget_perturbed_loss_4: 18.87, forget_perturbed_loss: 19.34, 
+2024-04-06-07-07,93 log1 INFO 19.841150283813477
+2024-04-06-07-07,93 log2 INFO 19.338998794555664
+2024-04-06-07-07,376 root INFO batch: 271, forget_paraphrased_loss: 19.00, forget_perturbed_loss_0: 18.87, forget_perturbed_loss_1: 19.70, forget_perturbed_loss_2: 19.44, forget_perturbed_loss_3: 18.99, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.18, 
+2024-04-06-07-07,379 log1 INFO 18.99578094482422
+2024-04-06-07-07,379 log2 INFO 19.18143081665039
+2024-04-06-07-07,708 root INFO batch: 272, forget_paraphrased_loss: 18.85, forget_perturbed_loss_0: 19.43, forget_perturbed_loss_1: 18.45, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 19.60, forget_perturbed_loss_4: 19.69, forget_perturbed_loss: 19.34, 
+2024-04-06-07-07,712 log1 INFO 18.85236167907715
+2024-04-06-07-07,712 log2 INFO 19.33551597595215
+2024-04-06-07-07,19 root INFO batch: 273, forget_paraphrased_loss: 19.99, forget_perturbed_loss_0: 19.82, forget_perturbed_loss_1: 19.58, forget_perturbed_loss_2: 18.86, forget_perturbed_loss_3: 19.91, forget_perturbed_loss_4: 19.93, forget_perturbed_loss: 19.62, 
+2024-04-06-07-07,23 log1 INFO 19.99346160888672
+2024-04-06-07-07,23 log2 INFO 19.620542526245117
+2024-04-06-07-07,329 root INFO batch: 274, forget_paraphrased_loss: 19.61, forget_perturbed_loss_0: 19.28, forget_perturbed_loss_1: 19.75, forget_perturbed_loss_2: 19.86, forget_perturbed_loss_3: 19.03, forget_perturbed_loss_4: 18.97, forget_perturbed_loss: 19.38, 
+2024-04-06-07-07,334 log1 INFO 19.605178833007812
+2024-04-06-07-07,334 log2 INFO 19.379419326782227
+2024-04-06-07-07,672 root INFO batch: 275, forget_paraphrased_loss: 19.17, forget_perturbed_loss_0: 19.85, forget_perturbed_loss_1: 19.55, forget_perturbed_loss_2: 19.86, forget_perturbed_loss_3: 18.40, forget_perturbed_loss_4: 19.72, forget_perturbed_loss: 19.48, 
+2024-04-06-07-07,675 log1 INFO 19.168415069580078
+2024-04-06-07-07,675 log2 INFO 19.476064682006836
+2024-04-06-07-07,1 root INFO batch: 276, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 19.12, forget_perturbed_loss_1: 20.07, forget_perturbed_loss_2: 19.63, forget_perturbed_loss_3: 19.53, forget_perturbed_loss_4: 19.80, forget_perturbed_loss: 19.63, 
+2024-04-06-07-07,6 log1 INFO 19.56374740600586
+2024-04-06-07-07,6 log2 INFO 19.630313873291016
+2024-04-06-07-07,279 root INFO batch: 277, forget_paraphrased_loss: 19.03, forget_perturbed_loss_0: 19.05, forget_perturbed_loss_1: 19.64, forget_perturbed_loss_2: 18.63, forget_perturbed_loss_3: 18.99, forget_perturbed_loss_4: 19.11, forget_perturbed_loss: 19.08, 
+2024-04-06-07-07,284 log1 INFO 19.028892517089844
+2024-04-06-07-07,284 log2 INFO 19.08323097229004
+2024-04-06-07-07,603 root INFO batch: 278, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.19, forget_perturbed_loss_1: 19.60, forget_perturbed_loss_2: 19.53, forget_perturbed_loss_3: 18.93, forget_perturbed_loss_4: 18.99, forget_perturbed_loss: 19.25, 
+2024-04-06-07-07,607 log1 INFO 19.57383918762207
+2024-04-06-07-07,607 log2 INFO 19.24769401550293
+2024-04-06-07-07,872 root INFO batch: 279, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 18.56, forget_perturbed_loss_1: 19.44, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 18.89, forget_perturbed_loss_4: 18.88, forget_perturbed_loss: 19.08, 
+2024-04-06-07-07,875 log1 INFO 19.187820434570312
+2024-04-06-07-07,876 log2 INFO 19.084148406982422
+2024-04-06-07-07,178 root INFO batch: 280, forget_paraphrased_loss: 19.40, forget_perturbed_loss_0: 17.80, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 18.83, forget_perturbed_loss_3: 19.56, forget_perturbed_loss_4: 19.87, forget_perturbed_loss: 19.11, 
+2024-04-06-07-07,183 log1 INFO 19.40329360961914
+2024-04-06-07-07,183 log2 INFO 19.106998443603516
+2024-04-06-07-07,475 root INFO batch: 281, forget_paraphrased_loss: 19.02, forget_perturbed_loss_0: 19.19, forget_perturbed_loss_1: 19.07, forget_perturbed_loss_2: 19.59, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.19, forget_perturbed_loss: 19.29, 
+2024-04-06-07-07,479 log1 INFO 19.021692276000977
+2024-04-06-07-07,479 log2 INFO 19.285892486572266
+2024-04-06-07-07,771 root INFO batch: 282, forget_paraphrased_loss: 18.67, forget_perturbed_loss_0: 19.26, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 18.79, forget_perturbed_loss_3: 19.84, forget_perturbed_loss_4: 19.03, forget_perturbed_loss: 19.27, 
+2024-04-06-07-07,775 log1 INFO 18.670730590820312
+2024-04-06-07-07,775 log2 INFO 19.2652530670166
+2024-04-06-07-07,102 root INFO batch: 283, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.29, forget_perturbed_loss_1: 17.84, forget_perturbed_loss_2: 19.16, forget_perturbed_loss_3: 19.05, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 18.99, 
+2024-04-06-07-07,106 log1 INFO 19.684513092041016
+2024-04-06-07-07,106 log2 INFO 18.98703956604004
+2024-04-06-07-07,415 root INFO batch: 284, forget_paraphrased_loss: 19.19, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 19.68, forget_perturbed_loss_3: 19.77, forget_perturbed_loss_4: 18.97, forget_perturbed_loss: 19.43, 
+2024-04-06-07-07,418 log1 INFO 19.19164276123047
+2024-04-06-07-07,418 log2 INFO 19.42914581298828
+2024-04-06-07-07,889 root INFO batch: 285, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 18.40, forget_perturbed_loss_1: 19.23, forget_perturbed_loss_2: 18.98, forget_perturbed_loss_3: 19.46, forget_perturbed_loss_4: 19.06, forget_perturbed_loss: 19.03, 
+2024-04-06-07-07,893 log1 INFO 19.54692840576172
+2024-04-06-07-07,893 log2 INFO 19.025197982788086
+2024-04-06-07-07,212 root INFO batch: 286, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 20.08, forget_perturbed_loss_1: 19.56, forget_perturbed_loss_2: 19.70, forget_perturbed_loss_3: 19.44, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.66, 
+2024-04-06-07-07,216 log1 INFO 19.545639038085938
+2024-04-06-07-07,216 log2 INFO 19.662078857421875
+2024-04-06-07-07,533 root INFO batch: 287, forget_paraphrased_loss: 18.69, forget_perturbed_loss_0: 18.83, forget_perturbed_loss_1: 18.76, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.67, forget_perturbed_loss_4: 19.41, forget_perturbed_loss: 19.21, 
+2024-04-06-07-07,534 log1 INFO 18.687183380126953
+2024-04-06-07-07,534 log2 INFO 19.213375091552734
+2024-04-06-07-07,821 root INFO batch: 288, forget_paraphrased_loss: 19.74, forget_perturbed_loss_0: 19.62, forget_perturbed_loss_1: 19.86, forget_perturbed_loss_2: 19.39, forget_perturbed_loss_3: 19.53, forget_perturbed_loss_4: 12.70, forget_perturbed_loss: 18.22, 
+2024-04-06-07-07,824 log1 INFO 19.73571014404297
+2024-04-06-07-07,824 log2 INFO 18.22075080871582
+2024-04-06-07-07,100 root INFO batch: 289, forget_paraphrased_loss: 18.95, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.09, forget_perturbed_loss_2: 18.83, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.14, 
+2024-04-06-07-07,100 log1 INFO 18.94981575012207
+2024-04-06-07-07,101 log2 INFO 19.136560440063477
+2024-04-06-07-07,433 root INFO batch: 290, forget_paraphrased_loss: 19.32, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 19.20, forget_perturbed_loss_2: 19.25, forget_perturbed_loss_3: 19.76, forget_perturbed_loss_4: 19.48, forget_perturbed_loss: 19.45, 
+2024-04-06-07-07,437 log1 INFO 19.317964553833008
+2024-04-06-07-07,437 log2 INFO 19.446184158325195
+2024-04-06-07-07,704 root INFO batch: 291, forget_paraphrased_loss: 18.94, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 18.99, forget_perturbed_loss_2: 19.39, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 18.93, forget_perturbed_loss: 19.22, 
+2024-04-06-07-07,709 log1 INFO 18.937049865722656
+2024-04-06-07-07,709 log2 INFO 19.21750259399414
+2024-04-06-07-07,55 root INFO batch: 292, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 19.37, forget_perturbed_loss_2: 19.47, forget_perturbed_loss_3: 19.96, forget_perturbed_loss_4: 19.39, forget_perturbed_loss: 19.54, 
+2024-04-06-07-07,59 log1 INFO 19.76704216003418
+2024-04-06-07-07,59 log2 INFO 19.54190444946289
+2024-04-06-07-07,410 root INFO batch: 293, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 20.05, forget_perturbed_loss_1: 19.87, forget_perturbed_loss_2: 19.82, forget_perturbed_loss_3: 19.57, forget_perturbed_loss_4: 19.59, forget_perturbed_loss: 19.78, 
+2024-04-06-07-07,413 log1 INFO 19.675952911376953
+2024-04-06-07-07,413 log2 INFO 19.78219985961914
+2024-04-06-07-07,713 root INFO batch: 294, forget_paraphrased_loss: 19.49, forget_perturbed_loss_0: 18.95, forget_perturbed_loss_1: 19.50, forget_perturbed_loss_2: 19.27, forget_perturbed_loss_3: 19.58, forget_perturbed_loss_4: 19.85, forget_perturbed_loss: 19.43, 
+2024-04-06-07-07,717 log1 INFO 19.49404525756836
+2024-04-06-07-07,717 log2 INFO 19.428592681884766
+2024-04-06-07-07,28 root INFO batch: 295, forget_paraphrased_loss: 17.79, forget_perturbed_loss_0: 19.35, forget_perturbed_loss_1: 19.43, forget_perturbed_loss_2: 19.58, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.87, forget_perturbed_loss: 19.48, 
+2024-04-06-07-07,32 log1 INFO 17.786392211914062
+2024-04-06-07-07,32 log2 INFO 19.484527587890625
+2024-04-06-07-07,339 root INFO batch: 296, forget_paraphrased_loss: 19.68, forget_perturbed_loss_0: 19.65, forget_perturbed_loss_1: 18.72, forget_perturbed_loss_2: 19.39, forget_perturbed_loss_3: 19.49, forget_perturbed_loss_4: 19.86, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,343 log1 INFO 19.67831802368164
+2024-04-06-07-07,343 log2 INFO 19.4212703704834
+2024-04-06-07-07,634 root INFO batch: 297, forget_paraphrased_loss: 19.48, forget_perturbed_loss_0: 19.08, forget_perturbed_loss_1: 19.83, forget_perturbed_loss_2: 18.92, forget_perturbed_loss_3: 19.27, forget_perturbed_loss_4: 19.49, forget_perturbed_loss: 19.32, 
+2024-04-06-07-07,638 log1 INFO 19.477291107177734
+2024-04-06-07-07,638 log2 INFO 19.31661033630371
+2024-04-06-07-07,906 root INFO batch: 298, forget_paraphrased_loss: 19.62, forget_perturbed_loss_0: 18.97, forget_perturbed_loss_1: 18.95, forget_perturbed_loss_2: 19.03, forget_perturbed_loss_3: 19.10, forget_perturbed_loss_4: 18.67, forget_perturbed_loss: 18.95, 
+2024-04-06-07-07,909 log1 INFO 19.62282371520996
+2024-04-06-07-07,909 log2 INFO 18.94524574279785
+2024-04-06-07-07,212 root INFO batch: 299, forget_paraphrased_loss: 19.27, forget_perturbed_loss_0: 19.66, forget_perturbed_loss_1: 19.01, forget_perturbed_loss_2: 19.54, forget_perturbed_loss_3: 19.25, forget_perturbed_loss_4: 19.00, forget_perturbed_loss: 19.29, 
+2024-04-06-07-07,216 log1 INFO 19.270362854003906
+2024-04-06-07-07,216 log2 INFO 19.29225730895996
+2024-04-06-07-07,507 root INFO batch: 300, forget_paraphrased_loss: 19.86, forget_perturbed_loss_0: 19.39, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.69, forget_perturbed_loss_3: 19.59, forget_perturbed_loss_4: 19.29, forget_perturbed_loss: 19.46, 
+2024-04-06-07-07,511 log1 INFO 19.86294937133789
+2024-04-06-07-07,511 log2 INFO 19.45961570739746
+2024-04-06-07-07,844 root INFO batch: 301, forget_paraphrased_loss: 19.71, forget_perturbed_loss_0: 19.82, forget_perturbed_loss_1: 19.80, forget_perturbed_loss_2: 19.30, forget_perturbed_loss_3: 19.90, forget_perturbed_loss_4: 18.85, forget_perturbed_loss: 19.54, 
+2024-04-06-07-07,847 log1 INFO 19.70552635192871
+2024-04-06-07-07,847 log2 INFO 19.535320281982422
+2024-04-06-07-07,166 root INFO batch: 302, forget_paraphrased_loss: 19.18, forget_perturbed_loss_0: 19.58, forget_perturbed_loss_1: 19.34, forget_perturbed_loss_2: 19.85, forget_perturbed_loss_3: 19.66, forget_perturbed_loss_4: 20.05, forget_perturbed_loss: 19.69, 
+2024-04-06-07-07,167 log1 INFO 19.182846069335938
+2024-04-06-07-07,167 log2 INFO 19.69447898864746
+2024-04-06-07-07,512 root INFO batch: 303, forget_paraphrased_loss: 19.34, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 18.89, forget_perturbed_loss_2: 19.52, forget_perturbed_loss_3: 19.66, forget_perturbed_loss_4: 19.11, forget_perturbed_loss: 19.34, 
+2024-04-06-07-07,516 log1 INFO 19.33676528930664
+2024-04-06-07-07,516 log2 INFO 19.341651916503906
+2024-04-06-07-07,828 root INFO batch: 304, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 19.39, forget_perturbed_loss_1: 19.81, forget_perturbed_loss_2: 18.62, forget_perturbed_loss_3: 18.76, forget_perturbed_loss_4: 19.11, forget_perturbed_loss: 19.14, 
+2024-04-06-07-07,829 log1 INFO 19.432106018066406
+2024-04-06-07-07,829 log2 INFO 19.13701820373535
+2024-04-06-07-07,160 root INFO batch: 305, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.42, forget_perturbed_loss_2: 19.63, forget_perturbed_loss_3: 19.85, forget_perturbed_loss_4: 19.49, forget_perturbed_loss: 19.49, 
+2024-04-06-07-07,165 log1 INFO 19.734575271606445
+2024-04-06-07-07,165 log2 INFO 19.4893741607666
+2024-04-06-07-07,453 root INFO batch: 306, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.73, forget_perturbed_loss_1: 19.10, forget_perturbed_loss_2: 19.49, forget_perturbed_loss_3: 19.45, forget_perturbed_loss_4: 19.32, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,457 log1 INFO 19.28662872314453
+2024-04-06-07-07,457 log2 INFO 19.418447494506836
+2024-04-06-07-07,729 root INFO batch: 307, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 19.76, forget_perturbed_loss_1: 19.50, forget_perturbed_loss_2: 18.75, forget_perturbed_loss_3: 18.75, forget_perturbed_loss_4: 18.69, forget_perturbed_loss: 19.09, 
+2024-04-06-07-07,733 log1 INFO 19.547103881835938
+2024-04-06-07-07,733 log2 INFO 19.093286514282227
+2024-04-06-07-07,20 root INFO batch: 308, forget_paraphrased_loss: 19.36, forget_perturbed_loss_0: 19.52, forget_perturbed_loss_1: 18.78, forget_perturbed_loss_2: 18.36, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.06, 
+2024-04-06-07-07,24 log1 INFO 19.36097526550293
+2024-04-06-07-07,25 log2 INFO 19.062705993652344
+2024-04-06-07-07,301 root INFO batch: 309, forget_paraphrased_loss: 19.32, forget_perturbed_loss_0: 19.66, forget_perturbed_loss_1: 19.62, forget_perturbed_loss_2: 18.29, forget_perturbed_loss_3: 19.65, forget_perturbed_loss_4: 18.80, forget_perturbed_loss: 19.20, 
+2024-04-06-07-07,303 log1 INFO 19.31679916381836
+2024-04-06-07-07,303 log2 INFO 19.203927993774414
+2024-04-06-07-07,631 root INFO batch: 310, forget_paraphrased_loss: 19.58, forget_perturbed_loss_0: 18.55, forget_perturbed_loss_1: 19.98, forget_perturbed_loss_2: 19.41, forget_perturbed_loss_3: 19.24, forget_perturbed_loss_4: 19.90, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,633 log1 INFO 19.57524871826172
+2024-04-06-07-07,633 log2 INFO 19.417150497436523
+2024-04-06-07-07,979 root INFO batch: 311, forget_paraphrased_loss: 19.15, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.78, forget_perturbed_loss_2: 19.00, forget_perturbed_loss_3: 17.52, forget_perturbed_loss_4: 19.56, forget_perturbed_loss: 19.10, 
+2024-04-06-07-07,983 log1 INFO 19.14845848083496
+2024-04-06-07-07,984 log2 INFO 19.099170684814453
+2024-04-06-07-07,288 root INFO batch: 312, forget_paraphrased_loss: 19.50, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.78, forget_perturbed_loss_2: 19.43, forget_perturbed_loss_3: 18.92, forget_perturbed_loss_4: 19.62, forget_perturbed_loss: 19.41, 
+2024-04-06-07-07,292 log1 INFO 19.50112533569336
+2024-04-06-07-07,293 log2 INFO 19.409141540527344
+2024-04-06-07-07,610 root INFO batch: 313, forget_paraphrased_loss: 19.83, forget_perturbed_loss_0: 19.89, forget_perturbed_loss_1: 19.68, forget_perturbed_loss_2: 19.99, forget_perturbed_loss_3: 18.37, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.44, 
+2024-04-06-07-07,614 log1 INFO 19.825801849365234
+2024-04-06-07-07,615 log2 INFO 19.43659019470215
+2024-04-06-07-07,896 root INFO batch: 314, forget_paraphrased_loss: 19.86, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.05, forget_perturbed_loss_2: 18.23, forget_perturbed_loss_3: 19.52, forget_perturbed_loss_4: 19.40, forget_perturbed_loss: 19.09, 
+2024-04-06-07-07,900 log1 INFO 19.861839294433594
+2024-04-06-07-07,900 log2 INFO 19.08806800842285
+2024-04-06-07-07,181 root INFO batch: 315, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 19.43, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 18.89, forget_perturbed_loss_3: 18.88, forget_perturbed_loss_4: 17.93, forget_perturbed_loss: 18.92, 
+2024-04-06-07-07,185 log1 INFO 19.765453338623047
+2024-04-06-07-07,185 log2 INFO 18.922086715698242
+2024-04-06-07-07,511 root INFO batch: 316, forget_paraphrased_loss: 19.18, forget_perturbed_loss_0: 19.25, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.66, forget_perturbed_loss_3: 19.73, forget_perturbed_loss_4: 19.44, forget_perturbed_loss: 19.53, 
+2024-04-06-07-07,516 log1 INFO 19.18444061279297
+2024-04-06-07-07,516 log2 INFO 19.5296630859375
+2024-04-06-07-07,843 root INFO batch: 317, forget_paraphrased_loss: 19.50, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.51, forget_perturbed_loss_2: 19.47, forget_perturbed_loss_3: 19.17, forget_perturbed_loss_4: 19.86, forget_perturbed_loss: 19.53, 
+2024-04-06-07-07,846 log1 INFO 19.500900268554688
+2024-04-06-07-07,846 log2 INFO 19.526185989379883
+2024-04-06-07-07,173 root INFO batch: 318, forget_paraphrased_loss: 18.98, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.72, forget_perturbed_loss_2: 19.18, forget_perturbed_loss_3: 18.79, forget_perturbed_loss_4: 19.00, forget_perturbed_loss: 19.20, 
+2024-04-06-07-07,177 log1 INFO 18.981483459472656
+2024-04-06-07-07,177 log2 INFO 19.197345733642578
+2024-04-06-07-07,477 root INFO batch: 319, forget_paraphrased_loss: 19.15, forget_perturbed_loss_0: 19.00, forget_perturbed_loss_1: 17.20, forget_perturbed_loss_2: 19.81, forget_perturbed_loss_3: 19.99, forget_perturbed_loss_4: 18.98, forget_perturbed_loss: 19.00, 
+2024-04-06-07-07,481 log1 INFO 19.150188446044922
+2024-04-06-07-07,481 log2 INFO 18.99669647216797
+2024-04-06-07-07,788 root INFO batch: 320, forget_paraphrased_loss: 18.91, forget_perturbed_loss_0: 18.99, forget_perturbed_loss_1: 19.18, forget_perturbed_loss_2: 19.35, forget_perturbed_loss_3: 19.41, forget_perturbed_loss_4: 18.66, forget_perturbed_loss: 19.12, 
+2024-04-06-07-07,792 log1 INFO 18.91040802001953
+2024-04-06-07-07,792 log2 INFO 19.120275497436523
+2024-04-06-07-07,90 root INFO batch: 321, forget_paraphrased_loss: 19.31, forget_perturbed_loss_0: 19.54, forget_perturbed_loss_1: 18.71, forget_perturbed_loss_2: 19.46, forget_perturbed_loss_3: 19.15, forget_perturbed_loss_4: 19.33, forget_perturbed_loss: 19.24, 
+2024-04-06-07-07,94 log1 INFO 19.314037322998047
+2024-04-06-07-07,95 log2 INFO 19.237838745117188
+2024-04-06-07-07,422 root INFO batch: 322, forget_paraphrased_loss: 19.30, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.87, forget_perturbed_loss_2: 19.15, forget_perturbed_loss_3: 19.21, forget_perturbed_loss_4: 19.48, forget_perturbed_loss: 19.41, 
+2024-04-06-07-07,426 log1 INFO 19.301048278808594
+2024-04-06-07-07,426 log2 INFO 19.414426803588867
+2024-04-06-07-07,759 root INFO batch: 323, forget_paraphrased_loss: 19.59, forget_perturbed_loss_0: 19.80, forget_perturbed_loss_1: 19.40, forget_perturbed_loss_2: 3.67, forget_perturbed_loss_3: 19.43, forget_perturbed_loss_4: 19.94, forget_perturbed_loss: 16.45, 
+2024-04-06-07-07,764 log1 INFO 19.585960388183594
+2024-04-06-07-07,764 log2 INFO 16.44721794128418
+2024-04-06-07-07,241 root INFO batch: 324, forget_paraphrased_loss: 18.66, forget_perturbed_loss_0: 19.25, forget_perturbed_loss_1: 20.11, forget_perturbed_loss_2: 19.60, forget_perturbed_loss_3: 19.91, forget_perturbed_loss_4: 19.60, forget_perturbed_loss: 19.69, 
+2024-04-06-07-07,245 log1 INFO 18.659963607788086
+2024-04-06-07-07,245 log2 INFO 19.69481658935547
+2024-04-06-07-07,538 root INFO batch: 325, forget_paraphrased_loss: 18.50, forget_perturbed_loss_0: 19.11, forget_perturbed_loss_1: 19.27, forget_perturbed_loss_2: 19.63, forget_perturbed_loss_3: 18.52, forget_perturbed_loss_4: 19.06, forget_perturbed_loss: 19.12, 
+2024-04-06-07-07,539 log1 INFO 18.497465133666992
+2024-04-06-07-07,539 log2 INFO 19.11820411682129
+2024-04-06-07-07,849 root INFO batch: 326, forget_paraphrased_loss: 17.80, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 19.98, forget_perturbed_loss_2: 19.55, forget_perturbed_loss_3: 19.38, forget_perturbed_loss_4: 19.89, forget_perturbed_loss: 19.60, 
+2024-04-06-07-07,852 log1 INFO 17.797527313232422
+2024-04-06-07-07,852 log2 INFO 19.603471755981445
+2024-04-06-07-07,126 root INFO batch: 327, forget_paraphrased_loss: 19.06, forget_perturbed_loss_0: 19.32, forget_perturbed_loss_1: 19.73, forget_perturbed_loss_2: 18.40, forget_perturbed_loss_3: 18.85, forget_perturbed_loss_4: 20.05, forget_perturbed_loss: 19.27, 
+2024-04-06-07-07,130 log1 INFO 19.056093215942383
+2024-04-06-07-07,130 log2 INFO 19.268238067626953
+2024-04-06-07-07,437 root INFO batch: 328, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 19.31, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 19.28, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.38, 
+2024-04-06-07-07,440 log1 INFO 19.773117065429688
+2024-04-06-07-07,441 log2 INFO 19.380630493164062
+2024-04-06-07-07,747 root INFO batch: 329, forget_paraphrased_loss: 19.04, forget_perturbed_loss_0: 19.95, forget_perturbed_loss_1: 19.01, forget_perturbed_loss_2: 19.70, forget_perturbed_loss_3: 19.46, forget_perturbed_loss_4: 19.24, forget_perturbed_loss: 19.47, 
+2024-04-06-07-07,751 log1 INFO 19.03842544555664
+2024-04-06-07-07,752 log2 INFO 19.4714298248291
+2024-04-06-07-07,57 root INFO batch: 330, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.19, forget_perturbed_loss_1: 19.33, forget_perturbed_loss_2: 19.65, forget_perturbed_loss_3: 19.08, forget_perturbed_loss_4: 19.94, forget_perturbed_loss: 19.44, 
+2024-04-06-07-07,62 log1 INFO 19.66107177734375
+2024-04-06-07-07,62 log2 INFO 19.439449310302734
+2024-04-06-07-07,415 root INFO batch: 331, forget_paraphrased_loss: 19.20, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.57, forget_perturbed_loss_4: 20.08, forget_perturbed_loss: 19.67, 
+2024-04-06-07-07,419 log1 INFO 19.203392028808594
+2024-04-06-07-07,419 log2 INFO 19.665048599243164
+2024-04-06-07-07,715 root INFO batch: 332, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.21, forget_perturbed_loss_1: 18.48, forget_perturbed_loss_2: 19.03, forget_perturbed_loss_3: 18.43, forget_perturbed_loss_4: 18.87, forget_perturbed_loss: 18.80, 
+2024-04-06-07-07,719 log1 INFO 19.65753173828125
+2024-04-06-07-07,719 log2 INFO 18.803852081298828
+2024-04-06-07-07,56 root INFO batch: 333, forget_paraphrased_loss: 19.12, forget_perturbed_loss_0: 19.34, forget_perturbed_loss_1: 19.80, forget_perturbed_loss_2: 19.74, forget_perturbed_loss_3: 19.05, forget_perturbed_loss_4: 18.98, forget_perturbed_loss: 19.38, 
+2024-04-06-07-07,60 log1 INFO 19.121234893798828
+2024-04-06-07-07,60 log2 INFO 19.38252067565918
+2024-04-06-07-07,372 root INFO batch: 334, forget_paraphrased_loss: 18.97, forget_perturbed_loss_0: 19.78, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 18.89, forget_perturbed_loss_3: 19.68, forget_perturbed_loss_4: 18.39, forget_perturbed_loss: 19.28, 
+2024-04-06-07-07,375 log1 INFO 18.97353744506836
+2024-04-06-07-07,376 log2 INFO 19.278717041015625
+2024-04-06-07-07,663 root INFO batch: 335, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 19.86, forget_perturbed_loss_1: 18.45, forget_perturbed_loss_2: 19.02, forget_perturbed_loss_3: 19.55, forget_perturbed_loss_4: 18.25, forget_perturbed_loss: 19.03, 
+2024-04-06-07-07,667 log1 INFO 19.465002059936523
+2024-04-06-07-07,667 log2 INFO 19.02873420715332
+2024-04-06-07-07,2 root INFO batch: 336, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 19.76, forget_perturbed_loss_1: 19.40, forget_perturbed_loss_2: 19.48, forget_perturbed_loss_3: 19.23, forget_perturbed_loss_4: 19.84, forget_perturbed_loss: 19.54, 
+2024-04-06-07-07,6 log1 INFO 19.56238555908203
+2024-04-06-07-07,6 log2 INFO 19.54353141784668
+2024-04-06-07-07,301 root INFO batch: 337, forget_paraphrased_loss: 18.67, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 18.81, forget_perturbed_loss_2: 19.77, forget_perturbed_loss_3: 19.74, forget_perturbed_loss_4: 19.47, forget_perturbed_loss: 19.44, 
+2024-04-06-07-07,305 log1 INFO 18.67494773864746
+2024-04-06-07-07,306 log2 INFO 19.440439224243164
+2024-04-06-07-07,613 root INFO batch: 338, forget_paraphrased_loss: 20.00, forget_perturbed_loss_0: 19.51, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.51, forget_perturbed_loss_3: 19.80, forget_perturbed_loss_4: 19.24, forget_perturbed_loss: 19.49, 
+2024-04-06-07-07,618 log1 INFO 19.99529266357422
+2024-04-06-07-07,618 log2 INFO 19.49205780029297
+2024-04-06-07-07,924 root INFO batch: 339, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 18.95, forget_perturbed_loss_1: 19.09, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.70, forget_perturbed_loss_4: 18.83, forget_perturbed_loss: 19.19, 
+2024-04-06-07-07,926 log1 INFO 19.715538024902344
+2024-04-06-07-07,927 log2 INFO 19.188758850097656
+2024-04-06-07-07,250 root INFO batch: 340, forget_paraphrased_loss: 19.38, forget_perturbed_loss_0: 20.11, forget_perturbed_loss_1: 19.38, forget_perturbed_loss_2: 19.23, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 20.14, forget_perturbed_loss: 19.63, 
+2024-04-06-07-07,251 log1 INFO 19.377323150634766
+2024-04-06-07-07,251 log2 INFO 19.631799697875977
+2024-04-06-07-07,543 root INFO batch: 341, forget_paraphrased_loss: 19.98, forget_perturbed_loss_0: 18.80, forget_perturbed_loss_1: 19.28, forget_perturbed_loss_2: 19.83, forget_perturbed_loss_3: 19.71, forget_perturbed_loss_4: 19.23, forget_perturbed_loss: 19.37, 
+2024-04-06-07-07,547 log1 INFO 19.97946548461914
+2024-04-06-07-07,547 log2 INFO 19.37037467956543
+2024-04-06-07-07,831 root INFO batch: 342, forget_paraphrased_loss: 19.58, forget_perturbed_loss_0: 19.66, forget_perturbed_loss_1: 19.66, forget_perturbed_loss_2: 19.34, forget_perturbed_loss_3: 18.91, forget_perturbed_loss_4: 18.93, forget_perturbed_loss: 19.30, 
+2024-04-06-07-07,834 log1 INFO 19.57796859741211
+2024-04-06-07-07,835 log2 INFO 19.300580978393555
+2024-04-06-07-07,133 root INFO batch: 343, forget_paraphrased_loss: 19.10, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.70, forget_perturbed_loss_3: 19.83, forget_perturbed_loss_4: 19.69, forget_perturbed_loss: 19.60, 
+2024-04-06-07-07,137 log1 INFO 19.098812103271484
+2024-04-06-07-07,137 log2 INFO 19.596288681030273
+2024-04-06-07-07,471 root INFO batch: 344, forget_paraphrased_loss: 19.34, forget_perturbed_loss_0: 19.60, forget_perturbed_loss_1: 19.53, forget_perturbed_loss_2: 19.57, forget_perturbed_loss_3: 18.91, forget_perturbed_loss_4: 18.93, forget_perturbed_loss: 19.31, 
+2024-04-06-07-07,474 log1 INFO 19.338977813720703
+2024-04-06-07-07,474 log2 INFO 19.308385848999023
+2024-04-06-07-07,755 root INFO batch: 345, forget_paraphrased_loss: 19.73, forget_perturbed_loss_0: 19.77, forget_perturbed_loss_1: 18.94, forget_perturbed_loss_2: 19.80, forget_perturbed_loss_3: 19.07, forget_perturbed_loss_4: 19.42, forget_perturbed_loss: 19.40, 
+2024-04-06-07-07,759 log1 INFO 19.732513427734375
+2024-04-06-07-07,759 log2 INFO 19.399629592895508
+2024-04-06-07-07,91 root INFO batch: 346, forget_paraphrased_loss: 19.41, forget_perturbed_loss_0: 19.87, forget_perturbed_loss_1: 19.44, forget_perturbed_loss_2: 19.87, forget_perturbed_loss_3: 19.74, forget_perturbed_loss_4: 17.30, forget_perturbed_loss: 19.24, 
+2024-04-06-07-07,95 log1 INFO 19.408428192138672
+2024-04-06-07-07,96 log2 INFO 19.24323844909668
+2024-04-06-07-07,398 root INFO batch: 347, forget_paraphrased_loss: 19.82, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 19.21, forget_perturbed_loss_2: 19.26, forget_perturbed_loss_3: 19.52, forget_perturbed_loss_4: 19.06, forget_perturbed_loss: 19.32, 
+2024-04-06-07-07,402 log1 INFO 19.824453353881836
+2024-04-06-07-07,403 log2 INFO 19.323057174682617
+2024-04-06-07-07,721 root INFO batch: 348, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.56, forget_perturbed_loss_1: 18.78, forget_perturbed_loss_2: 19.55, forget_perturbed_loss_3: 19.74, forget_perturbed_loss_4: 19.66, forget_perturbed_loss: 19.46, 
+2024-04-06-07-07,726 log1 INFO 19.287616729736328
+2024-04-06-07-07,726 log2 INFO 19.457340240478516
+2024-04-06-07-07,19 root INFO batch: 349, forget_paraphrased_loss: 19.88, forget_perturbed_loss_0: 17.55, forget_perturbed_loss_1: 18.35, forget_perturbed_loss_2: 19.18, forget_perturbed_loss_3: 19.89, forget_perturbed_loss_4: 19.35, forget_perturbed_loss: 18.87, 
+2024-04-06-07-07,23 log1 INFO 19.87729263305664
+2024-04-06-07-07,23 log2 INFO 18.86520767211914
+2024-04-06-07-07,335 root INFO batch: 350, forget_paraphrased_loss: 19.56, forget_perturbed_loss_0: 3.69, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.33, forget_perturbed_loss_3: 19.72, forget_perturbed_loss_4: 19.61, forget_perturbed_loss: 16.35, 
+2024-04-06-07-07,336 log1 INFO 19.564592361450195
+2024-04-06-07-07,336 log2 INFO 16.352697372436523
+2024-04-06-07-07,648 root INFO batch: 351, forget_paraphrased_loss: 19.98, forget_perturbed_loss_0: 19.38, forget_perturbed_loss_1: 19.57, forget_perturbed_loss_2: 19.37, forget_perturbed_loss_3: 19.83, forget_perturbed_loss_4: 19.09, forget_perturbed_loss: 19.45, 
+2024-04-06-07-07,649 log1 INFO 19.980371475219727
+2024-04-06-07-07,649 log2 INFO 19.447996139526367
+2024-04-06-07-07,990 root INFO batch: 352, forget_paraphrased_loss: 19.85, forget_perturbed_loss_0: 19.78, forget_perturbed_loss_1: 20.06, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.58, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.66, 
+2024-04-06-07-07,993 log1 INFO 19.85190200805664
+2024-04-06-07-07,993 log2 INFO 19.65955924987793
+2024-04-06-07-07,293 root INFO batch: 353, forget_paraphrased_loss: 19.43, forget_perturbed_loss_0: 20.16, forget_perturbed_loss_1: 19.69, forget_perturbed_loss_2: 19.40, forget_perturbed_loss_3: 19.26, forget_perturbed_loss_4: 18.64, forget_perturbed_loss: 19.43, 
+2024-04-06-07-07,297 log1 INFO 19.43117904663086
+2024-04-06-07-07,297 log2 INFO 19.431564331054688
+2024-04-06-07-07,619 root INFO batch: 354, forget_paraphrased_loss: 19.54, forget_perturbed_loss_0: 19.26, forget_perturbed_loss_1: 19.02, forget_perturbed_loss_2: 19.29, forget_perturbed_loss_3: 19.25, forget_perturbed_loss_4: 20.13, forget_perturbed_loss: 19.39, 
+2024-04-06-07-07,624 log1 INFO 19.53519058227539
+2024-04-06-07-07,624 log2 INFO 19.39010238647461
+2024-04-06-07-07,946 root INFO batch: 355, forget_paraphrased_loss: 19.20, forget_perturbed_loss_0: 19.98, forget_perturbed_loss_1: 19.16, forget_perturbed_loss_2: 18.69, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.74, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,950 log1 INFO 19.196025848388672
+2024-04-06-07-07,951 log2 INFO 19.417577743530273
+2024-04-06-07-07,243 root INFO batch: 356, forget_paraphrased_loss: 18.38, forget_perturbed_loss_0: 19.15, forget_perturbed_loss_1: 19.33, forget_perturbed_loss_2: 19.35, forget_perturbed_loss_3: 19.65, forget_perturbed_loss_4: 19.11, forget_perturbed_loss: 19.32, 
+2024-04-06-07-07,247 log1 INFO 18.382308959960938
+2024-04-06-07-07,247 log2 INFO 19.320642471313477
+2024-04-06-07-07,535 root INFO batch: 357, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 18.54, forget_perturbed_loss_1: 19.22, forget_perturbed_loss_2: 19.24, forget_perturbed_loss_3: 19.61, forget_perturbed_loss_4: 19.51, forget_perturbed_loss: 19.22, 
+2024-04-06-07-07,539 log1 INFO 19.549617767333984
+2024-04-06-07-07,539 log2 INFO 19.222383499145508
+2024-04-06-07-07,812 root INFO batch: 358, forget_paraphrased_loss: 19.30, forget_perturbed_loss_0: 19.25, forget_perturbed_loss_1: 19.72, forget_perturbed_loss_2: 18.92, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 18.89, forget_perturbed_loss: 19.24, 
+2024-04-06-07-07,813 log1 INFO 19.29929542541504
+2024-04-06-07-07,813 log2 INFO 19.239789962768555
+2024-04-06-07-07,138 root INFO batch: 359, forget_paraphrased_loss: 19.34, forget_perturbed_loss_0: 19.62, forget_perturbed_loss_1: 18.32, forget_perturbed_loss_2: 20.21, forget_perturbed_loss_3: 19.43, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.37, 
+2024-04-06-07-07,139 log1 INFO 19.3359317779541
+2024-04-06-07-07,139 log2 INFO 19.37034034729004
+2024-04-06-07-07,410 root INFO batch: 360, forget_paraphrased_loss: 19.17, forget_perturbed_loss_0: 19.84, forget_perturbed_loss_1: 18.97, forget_perturbed_loss_2: 19.05, forget_perturbed_loss_3: 19.32, forget_perturbed_loss_4: 19.45, forget_perturbed_loss: 19.33, 
+2024-04-06-07-07,415 log1 INFO 19.174144744873047
+2024-04-06-07-07,415 log2 INFO 19.32691764831543
+2024-04-06-07-07,720 root INFO batch: 361, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 19.67, forget_perturbed_loss_1: 19.41, forget_perturbed_loss_2: 19.53, forget_perturbed_loss_3: 19.17, forget_perturbed_loss_4: 19.48, forget_perturbed_loss: 19.45, 
+2024-04-06-07-07,724 log1 INFO 19.46786880493164
+2024-04-06-07-07,724 log2 INFO 19.45339012145996
+2024-04-06-07-07,16 root INFO batch: 362, forget_paraphrased_loss: 19.96, forget_perturbed_loss_0: 18.95, forget_perturbed_loss_1: 18.95, forget_perturbed_loss_2: 19.71, forget_perturbed_loss_3: 19.34, forget_perturbed_loss_4: 19.42, forget_perturbed_loss: 19.27, 
+2024-04-06-07-07,19 log1 INFO 19.95709800720215
+2024-04-06-07-07,19 log2 INFO 19.272186279296875
+2024-04-06-07-07,414 root INFO batch: 363, forget_paraphrased_loss: 19.28, forget_perturbed_loss_0: 18.77, forget_perturbed_loss_1: 19.45, forget_perturbed_loss_2: 19.66, forget_perturbed_loss_3: 19.08, forget_perturbed_loss_4: 18.93, forget_perturbed_loss: 19.18, 
+2024-04-06-07-07,418 log1 INFO 19.275638580322266
+2024-04-06-07-07,419 log2 INFO 19.17765235900879
+2024-04-06-07-07,728 root INFO batch: 364, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 19.42, forget_perturbed_loss_1: 19.47, forget_perturbed_loss_2: 18.62, forget_perturbed_loss_3: 19.60, forget_perturbed_loss_4: 19.50, forget_perturbed_loss: 19.32, 
+2024-04-06-07-07,732 log1 INFO 19.724720001220703
+2024-04-06-07-07,732 log2 INFO 19.321969985961914
+2024-04-06-07-07,79 root INFO batch: 365, forget_paraphrased_loss: 19.51, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.39, forget_perturbed_loss_2: 19.72, forget_perturbed_loss_3: 19.55, forget_perturbed_loss_4: 19.79, forget_perturbed_loss: 19.56, 
+2024-04-06-07-07,83 log1 INFO 19.508193969726562
+2024-04-06-07-07,83 log2 INFO 19.56177520751953
+2024-04-06-07-07,413 root INFO batch: 366, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 19.57, forget_perturbed_loss_1: 19.95, forget_perturbed_loss_2: 19.93, forget_perturbed_loss_3: 19.39, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.72, 
+2024-04-06-07-07,415 log1 INFO 19.54863166809082
+2024-04-06-07-07,415 log2 INFO 19.72210693359375
+2024-04-06-07-07,744 root INFO batch: 367, forget_paraphrased_loss: 19.15, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 19.61, forget_perturbed_loss_2: 19.42, forget_perturbed_loss_3: 19.51, forget_perturbed_loss_4: 19.20, forget_perturbed_loss: 19.40, 
+2024-04-06-07-07,748 log1 INFO 19.149757385253906
+2024-04-06-07-07,748 log2 INFO 19.396738052368164
+2024-04-06-07-07,59 root INFO batch: 368, forget_paraphrased_loss: 19.72, forget_perturbed_loss_0: 19.74, forget_perturbed_loss_1: 19.37, forget_perturbed_loss_2: 19.43, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.27, forget_perturbed_loss: 19.45, 
+2024-04-06-07-07,63 log1 INFO 19.717121124267578
+2024-04-06-07-07,63 log2 INFO 19.445898056030273
+2024-04-06-07-07,434 root INFO batch: 369, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.12, forget_perturbed_loss_1: 19.22, forget_perturbed_loss_2: 19.69, forget_perturbed_loss_3: 19.99, forget_perturbed_loss_4: 19.41, forget_perturbed_loss: 19.48, 
+2024-04-06-07-07,438 log1 INFO 19.572845458984375
+2024-04-06-07-07,439 log2 INFO 19.48497200012207
+2024-04-06-07-07,796 root INFO batch: 370, forget_paraphrased_loss: 19.11, forget_perturbed_loss_0: 19.64, forget_perturbed_loss_1: 19.88, forget_perturbed_loss_2: 19.75, forget_perturbed_loss_3: 19.29, forget_perturbed_loss_4: 19.74, forget_perturbed_loss: 19.66, 
+2024-04-06-07-07,800 log1 INFO 19.10983657836914
+2024-04-06-07-07,801 log2 INFO 19.66089630126953
+2024-04-06-07-07,101 root INFO batch: 371, forget_paraphrased_loss: 19.78, forget_perturbed_loss_0: 18.96, forget_perturbed_loss_1: 18.82, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 19.04, forget_perturbed_loss_4: 19.34, forget_perturbed_loss: 19.12, 
+2024-04-06-07-07,105 log1 INFO 19.775901794433594
+2024-04-06-07-07,105 log2 INFO 19.120899200439453
+2024-04-06-07-07,405 root INFO batch: 372, forget_paraphrased_loss: 19.29, forget_perturbed_loss_0: 19.46, forget_perturbed_loss_1: 18.40, forget_perturbed_loss_2: 19.68, forget_perturbed_loss_3: 19.80, forget_perturbed_loss_4: 19.32, forget_perturbed_loss: 19.33, 
+2024-04-06-07-07,409 log1 INFO 19.28670883178711
+2024-04-06-07-07,409 log2 INFO 19.333200454711914
+2024-04-06-07-07,677 root INFO batch: 373, forget_paraphrased_loss: 18.82, forget_perturbed_loss_0: 19.24, forget_perturbed_loss_1: 18.87, forget_perturbed_loss_2: 18.95, forget_perturbed_loss_3: 18.75, forget_perturbed_loss_4: 19.83, forget_perturbed_loss: 19.13, 
+2024-04-06-07-07,680 log1 INFO 18.820777893066406
+2024-04-06-07-07,681 log2 INFO 19.126922607421875
+2024-04-06-07-07,939 root INFO batch: 374, forget_paraphrased_loss: 19.03, forget_perturbed_loss_0: 19.41, forget_perturbed_loss_1: 19.10, forget_perturbed_loss_2: 17.85, forget_perturbed_loss_3: 19.27, forget_perturbed_loss_4: 18.42, forget_perturbed_loss: 18.81, 
+2024-04-06-07-07,942 log1 INFO 19.03412628173828
+2024-04-06-07-07,942 log2 INFO 18.810134887695312
+2024-04-06-07-07,211 root INFO batch: 375, forget_paraphrased_loss: 19.55, forget_perturbed_loss_0: 18.30, forget_perturbed_loss_1: 18.81, forget_perturbed_loss_2: 19.23, forget_perturbed_loss_3: 18.79, forget_perturbed_loss_4: 20.21, forget_perturbed_loss: 19.07, 
+2024-04-06-07-07,215 log1 INFO 19.54589080810547
+2024-04-06-07-07,215 log2 INFO 19.066688537597656
+2024-04-06-07-07,551 root INFO batch: 376, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 18.94, forget_perturbed_loss_1: 19.62, forget_perturbed_loss_2: 19.74, forget_perturbed_loss_3: 19.81, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.51, 
+2024-04-06-07-07,555 log1 INFO 19.566699981689453
+2024-04-06-07-07,555 log2 INFO 19.506662368774414
+2024-04-06-07-07,811 root INFO batch: 377, forget_paraphrased_loss: 19.17, forget_perturbed_loss_0: 19.53, forget_perturbed_loss_1: 19.52, forget_perturbed_loss_2: 18.75, forget_perturbed_loss_3: 19.19, forget_perturbed_loss_4: 19.26, forget_perturbed_loss: 19.25, 
+2024-04-06-07-07,815 log1 INFO 19.16897201538086
+2024-04-06-07-07,815 log2 INFO 19.250944137573242
+2024-04-06-07-07,148 root INFO batch: 378, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 19.71, forget_perturbed_loss_1: 19.43, forget_perturbed_loss_2: 19.47, forget_perturbed_loss_3: 19.21, forget_perturbed_loss_4: 19.45, forget_perturbed_loss: 19.45, 
+2024-04-06-07-07,151 log1 INFO 19.473533630371094
+2024-04-06-07-07,151 log2 INFO 19.454334259033203
+2024-04-06-07-07,421 root INFO batch: 379, forget_paraphrased_loss: 19.27, forget_perturbed_loss_0: 19.70, forget_perturbed_loss_1: 18.46, forget_perturbed_loss_2: 18.68, forget_perturbed_loss_3: 20.03, forget_perturbed_loss_4: 19.89, forget_perturbed_loss: 19.35, 
+2024-04-06-07-07,425 log1 INFO 19.272720336914062
+2024-04-06-07-07,425 log2 INFO 19.351469039916992
+2024-04-06-07-07,686 root INFO batch: 380, forget_paraphrased_loss: 19.51, forget_perturbed_loss_0: 20.23, forget_perturbed_loss_1: 19.06, forget_perturbed_loss_2: 18.42, forget_perturbed_loss_3: 19.10, forget_perturbed_loss_4: 19.72, forget_perturbed_loss: 19.31, 
+2024-04-06-07-07,690 log1 INFO 19.511249542236328
+2024-04-06-07-07,690 log2 INFO 19.306049346923828
+2024-04-06-07-07,36 root INFO batch: 381, forget_paraphrased_loss: 19.57, forget_perturbed_loss_0: 19.76, forget_perturbed_loss_1: 19.37, forget_perturbed_loss_2: 19.45, forget_perturbed_loss_3: 19.78, forget_perturbed_loss_4: 19.46, forget_perturbed_loss: 19.56, 
+2024-04-06-07-07,41 log1 INFO 19.570201873779297
+2024-04-06-07-07,41 log2 INFO 19.562772750854492
+2024-04-06-07-07,336 root INFO batch: 382, forget_paraphrased_loss: 19.40, forget_perturbed_loss_0: 19.55, forget_perturbed_loss_1: 19.95, forget_perturbed_loss_2: 19.53, forget_perturbed_loss_3: 19.53, forget_perturbed_loss_4: 19.01, forget_perturbed_loss: 19.51, 
+2024-04-06-07-07,341 log1 INFO 19.395809173583984
+2024-04-06-07-07,341 log2 INFO 19.51154899597168
+2024-04-06-07-07,697 root INFO batch: 383, forget_paraphrased_loss: 19.40, forget_perturbed_loss_0: 19.13, forget_perturbed_loss_1: 19.94, forget_perturbed_loss_2: 19.59, forget_perturbed_loss_3: 19.40, forget_perturbed_loss_4: 19.97, forget_perturbed_loss: 19.60, 
+2024-04-06-07-07,701 log1 INFO 19.404659271240234
+2024-04-06-07-07,702 log2 INFO 19.60468864440918
+2024-04-06-07-07,38 root INFO batch: 384, forget_paraphrased_loss: 19.61, forget_perturbed_loss_0: 19.77, forget_perturbed_loss_1: 19.80, forget_perturbed_loss_2: 20.00, forget_perturbed_loss_3: 19.89, forget_perturbed_loss_4: 19.54, forget_perturbed_loss: 19.80, 
+2024-04-06-07-07,44 log1 INFO 19.60931968688965
+2024-04-06-07-07,44 log2 INFO 19.80071449279785
+2024-04-06-07-07,362 root INFO batch: 385, forget_paraphrased_loss: 19.01, forget_perturbed_loss_0: 19.02, forget_perturbed_loss_1: 19.74, forget_perturbed_loss_2: 19.38, forget_perturbed_loss_3: 19.36, forget_perturbed_loss_4: 19.61, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,365 log1 INFO 19.014488220214844
+2024-04-06-07-07,366 log2 INFO 19.421878814697266
+2024-04-06-07-07,656 root INFO batch: 386, forget_paraphrased_loss: 19.62, forget_perturbed_loss_0: 19.80, forget_perturbed_loss_1: 19.43, forget_perturbed_loss_2: 19.39, forget_perturbed_loss_3: 19.13, forget_perturbed_loss_4: 18.91, forget_perturbed_loss: 19.33, 
+2024-04-06-07-07,657 log1 INFO 19.61865234375
+2024-04-06-07-07,657 log2 INFO 19.33473777770996
+2024-04-06-07-07,978 root INFO batch: 387, forget_paraphrased_loss: 19.91, forget_perturbed_loss_0: 19.61, forget_perturbed_loss_1: 19.67, forget_perturbed_loss_2: 19.61, forget_perturbed_loss_3: 19.14, forget_perturbed_loss_4: 19.28, forget_perturbed_loss: 19.46, 
+2024-04-06-07-07,981 log1 INFO 19.90911865234375
+2024-04-06-07-07,981 log2 INFO 19.463651657104492
+2024-04-06-07-07,278 root INFO batch: 388, forget_paraphrased_loss: 19.42, forget_perturbed_loss_0: 19.36, forget_perturbed_loss_1: 19.77, forget_perturbed_loss_2: 19.64, forget_perturbed_loss_3: 19.13, forget_perturbed_loss_4: 19.53, forget_perturbed_loss: 19.49, 
+2024-04-06-07-07,282 log1 INFO 19.418270111083984
+2024-04-06-07-07,282 log2 INFO 19.486574172973633
+2024-04-06-07-07,617 root INFO batch: 389, forget_paraphrased_loss: 19.79, forget_perturbed_loss_0: 19.63, forget_perturbed_loss_1: 19.45, forget_perturbed_loss_2: 19.75, forget_perturbed_loss_3: 19.88, forget_perturbed_loss_4: 19.43, forget_perturbed_loss: 19.63, 
+2024-04-06-07-07,618 log1 INFO 19.786117553710938
+2024-04-06-07-07,619 log2 INFO 19.626501083374023
+2024-04-06-07-07,933 root INFO batch: 390, forget_paraphrased_loss: 19.51, forget_perturbed_loss_0: 19.22, forget_perturbed_loss_1: 18.92, forget_perturbed_loss_2: 19.71, forget_perturbed_loss_3: 18.82, forget_perturbed_loss_4: 19.22, forget_perturbed_loss: 19.18, 
+2024-04-06-07-07,938 log1 INFO 19.513938903808594
+2024-04-06-07-07,938 log2 INFO 19.177974700927734
+2024-04-06-07-07,263 root INFO batch: 391, forget_paraphrased_loss: 19.18, forget_perturbed_loss_0: 19.58, forget_perturbed_loss_1: 17.79, forget_perturbed_loss_2: 19.61, forget_perturbed_loss_3: 19.42, forget_perturbed_loss_4: 19.36, forget_perturbed_loss: 19.15, 
+2024-04-06-07-07,268 log1 INFO 19.18386459350586
+2024-04-06-07-07,268 log2 INFO 19.15371322631836
+2024-04-06-07-07,572 root INFO batch: 392, forget_paraphrased_loss: 19.48, forget_perturbed_loss_0: 19.65, forget_perturbed_loss_1: 19.35, forget_perturbed_loss_2: 19.54, forget_perturbed_loss_3: 19.44, forget_perturbed_loss_4: 19.68, forget_perturbed_loss: 19.53, 
+2024-04-06-07-07,576 log1 INFO 19.482393264770508
+2024-04-06-07-07,576 log2 INFO 19.52997398376465
+2024-04-06-07-07,900 root INFO batch: 393, forget_paraphrased_loss: 19.12, forget_perturbed_loss_0: 18.84, forget_perturbed_loss_1: 18.66, forget_perturbed_loss_2: 19.66, forget_perturbed_loss_3: 19.73, forget_perturbed_loss_4: 19.63, forget_perturbed_loss: 19.30, 
+2024-04-06-07-07,901 log1 INFO 19.116859436035156
+2024-04-06-07-07,901 log2 INFO 19.30433464050293
+2024-04-06-07-07,209 root INFO batch: 394, forget_paraphrased_loss: 19.77, forget_perturbed_loss_0: 19.30, forget_perturbed_loss_1: 19.46, forget_perturbed_loss_2: 19.18, forget_perturbed_loss_3: 18.74, forget_perturbed_loss_4: 19.77, forget_perturbed_loss: 19.29, 
+2024-04-06-07-07,213 log1 INFO 19.771419525146484
+2024-04-06-07-07,213 log2 INFO 19.290180206298828
+2024-04-06-07-07,530 root INFO batch: 395, forget_paraphrased_loss: 19.74, forget_perturbed_loss_0: 18.70, forget_perturbed_loss_1: 19.69, forget_perturbed_loss_2: 18.89, forget_perturbed_loss_3: 19.69, forget_perturbed_loss_4: 19.07, forget_perturbed_loss: 19.21, 
+2024-04-06-07-07,531 log1 INFO 19.740520477294922
+2024-04-06-07-07,531 log2 INFO 19.208667755126953
+2024-04-06-07-07,832 root INFO batch: 396, forget_paraphrased_loss: 19.71, forget_perturbed_loss_0: 19.78, forget_perturbed_loss_1: 19.01, forget_perturbed_loss_2: 19.61, forget_perturbed_loss_3: 19.45, forget_perturbed_loss_4: 18.93, forget_perturbed_loss: 19.35, 
+2024-04-06-07-07,837 log1 INFO 19.709758758544922
+2024-04-06-07-07,837 log2 INFO 19.354873657226562
+2024-04-06-07-07,178 root INFO batch: 397, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.06, forget_perturbed_loss_1: 19.48, forget_perturbed_loss_2: 19.64, forget_perturbed_loss_3: 19.45, forget_perturbed_loss_4: 19.47, forget_perturbed_loss: 19.42, 
+2024-04-06-07-07,182 log1 INFO 19.659107208251953
+2024-04-06-07-07,182 log2 INFO 19.419404983520508
+2024-04-06-07-07,471 root INFO batch: 398, forget_paraphrased_loss: 19.66, forget_perturbed_loss_0: 19.39, forget_perturbed_loss_1: 18.71, forget_perturbed_loss_2: 19.11, forget_perturbed_loss_3: 18.30, forget_perturbed_loss_4: 18.79, forget_perturbed_loss: 18.86, 
+2024-04-06-07-07,475 log1 INFO 19.6567440032959
+2024-04-06-07-07,475 log2 INFO 18.860761642456055
+2024-04-06-07-07,771 root INFO batch: 399, forget_paraphrased_loss: 19.47, forget_perturbed_loss_0: 19.20, forget_perturbed_loss_1: 12.01, forget_perturbed_loss_2: 19.35, forget_perturbed_loss_3: 19.71, forget_perturbed_loss_4: 19.19, forget_perturbed_loss: 17.89, 
+2024-04-06-07-07,774 log1 INFO 19.471269607543945
+2024-04-06-07-07,775 log2 INFO 17.891454696655273
+2024-04-06-07-07,775 root INFO Evaluating finished

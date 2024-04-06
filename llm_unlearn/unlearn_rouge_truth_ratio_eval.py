@@ -64,18 +64,31 @@ def rouge_truth_ratio(data_name, model_path):
     # rouge_perb4 = get_Rouge(f"finetune_opt1.3b_tofu_{data_name}_{model_path}_rouge_sen.log",
     #                         f"finetune_opt1.3b_tofu_{data_name}_perturbed4_rouge_sen.log")
 
-    rouge_para = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                           f"finetune_opt2.7b_tofu_{data_name}_paraphrased_rouge_sen.log")
-    rouge_perb0 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt2.7b_tofu_{data_name}_perturbed0_rouge_sen.log")
-    rouge_perb1 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt2.7b_tofu_{data_name}_perturbed1_rouge_sen.log")
-    rouge_perb2 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt2.7b_tofu_{data_name}_perturbed2_rouge_sen.log")
-    rouge_perb3 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt2.7b_tofu_{data_name}_perturbed3_rouge_sen.log")
-    rouge_perb4 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
-                            f"finetune_opt2.7b_tofu_{data_name}_perturbed4_rouge_sen.log")
+    # rouge_para = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                        f"finetune_opt2.7b_tofu_{data_name}_paraphrased_rouge_sen.log")
+    # rouge_perb0 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed0_rouge_sen.log")
+    # rouge_perb1 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed1_rouge_sen.log")
+    # rouge_perb2 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed2_rouge_sen.log")
+    # rouge_perb3 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed3_rouge_sen.log")
+    # rouge_perb4 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_sen.log",
+    #                         f"finetune_opt2.7b_tofu_{data_name}_perturbed4_rouge_sen.log")
+
+    rouge_para = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                           f"finetune_opt2.7b_tofu_{data_name}_paraphrased_rouge_retain_sen.log")
+    rouge_perb0 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed0_rouge_retain_sen.log")
+    rouge_perb1 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed1_rouge_retain_sen.log")
+    rouge_perb2 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed2_rouge_retain_sen.log")
+    rouge_perb3 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed3_rouge_retain_sen.log")
+    rouge_perb4 = get_Rouge(f"finetune_opt2.7b_tofu_{data_name}_{model_path}_rouge_retain_sen.log",
+                            f"finetune_opt2.7b_tofu_{data_name}_perturbed4_rouge_retain_sen.log")
 
     rouge_para = np.array(rouge_para)
     rouge_perb = (np.array(rouge_perb0) + np.array(rouge_perb1) + np.array(rouge_perb2) + np.array(rouge_perb3) + np.array(rouge_perb4)) / 5
@@ -83,18 +96,48 @@ def rouge_truth_ratio(data_name, model_path):
     rouge_perb[rouge_perb == 0] = 1e-5
     # unlearn_curr_stat_1 = rouge_perb / rouge_para
     unlearn_curr_stat_1 = rouge_para / rouge_perb
-    unlearn_paraphrased_perturb_ratio = np.log(np.mean(unlearn_curr_stat_1) + 1)
+    # unlearn_paraphrased_perturb_ratio = np.log(np.mean(unlearn_curr_stat_1) + 1)
+    unlearn_paraphrased_perturb_ratio = np.mean(np.log(unlearn_curr_stat_1 + 1))
     print(f"unlearn_paraphrased_perturb_ratio: {unlearn_paraphrased_perturb_ratio}")
 
-rouge_truth_ratio("forget01", "grad_ascent_final2")
-rouge_truth_ratio("forget01", "grad_diff_final2")
-rouge_truth_ratio("forget01", "KL_final2")
-rouge_truth_ratio("forget01", "idk_final2")
-rouge_truth_ratio("forget05", "grad_ascent_final2")
-rouge_truth_ratio("forget05", "grad_diff_final2")
-rouge_truth_ratio("forget05", "KL_final2")
-rouge_truth_ratio("forget05", "idk_final2")
-rouge_truth_ratio("forget10", "grad_ascent_final2")
-rouge_truth_ratio("forget10", "grad_diff_final2")
-rouge_truth_ratio("forget10", "KL_final2")
-rouge_truth_ratio("forget10", "idk_final2")
+# rouge_truth_ratio("forget1", "grad_ascent_final2")
+# rouge_truth_ratio("forget1", "grad_diff_final2")
+# rouge_truth_ratio("forget1", "KL_final2")
+# rouge_truth_ratio("forget1", "idk_final2")
+# rouge_truth_ratio("forget5", "grad_ascent_final2")
+# rouge_truth_ratio("forget5", "grad_diff_final2")
+# rouge_truth_ratio("forget5", "KL_final2")
+# rouge_truth_ratio("forget5", "idk_final2")
+# rouge_truth_ratio("forget10", "grad_ascent_final2")
+# rouge_truth_ratio("forget10", "grad_diff_final2")
+# rouge_truth_ratio("forget10", "KL_final2")
+# rouge_truth_ratio("forget10", "idk_final2")
+
+# rouge_truth_ratio("forget1", "grad_diff_m0.5_final")
+# rouge_truth_ratio("forget1", "grad_diff_m1_final")
+# rouge_truth_ratio("forget1", "grad_diff_m2_final")
+# rouge_truth_ratio("forget1", "grad_diff_m5_final")
+# rouge_truth_ratio("forget5", "grad_diff_m0.5_final")
+# rouge_truth_ratio("forget5", "grad_diff_m1_final")
+# rouge_truth_ratio("forget5", "grad_diff_m2_final")
+# rouge_truth_ratio("forget5", "grad_diff_m5_final")
+# rouge_truth_ratio("forget10", "grad_diff_m0.5_final")
+# rouge_truth_ratio("forget10", "grad_diff_m1_final")
+# rouge_truth_ratio("forget10", "grad_diff_m2_final")
+# rouge_truth_ratio("forget10", "grad_diff_m5_final")
+
+rouge_truth_ratio("forget1", "grad_diff_m0.1_final")
+rouge_truth_ratio("forget1", "grad_diff_m0.2_final")
+rouge_truth_ratio("forget1", "grad_diff_m10_final")
+rouge_truth_ratio("forget1", "grad_diff_m20_final")
+rouge_truth_ratio("forget1", "grad_diff_m50_final")
+rouge_truth_ratio("forget5", "grad_diff_m0.1_final")
+rouge_truth_ratio("forget5", "grad_diff_m0.2_final")
+rouge_truth_ratio("forget5", "grad_diff_m10_final")
+rouge_truth_ratio("forget5", "grad_diff_m20_final")
+rouge_truth_ratio("forget5", "grad_diff_m50_final")
+rouge_truth_ratio("forget10", "grad_diff_m0.1_final")
+rouge_truth_ratio("forget10", "grad_diff_m0.2_final")
+# rouge_truth_ratio("forget10", "grad_diff_m10_final")
+# rouge_truth_ratio("forget10", "grad_diff_m20_final")
+rouge_truth_ratio("forget10", "grad_diff_m50_final")
