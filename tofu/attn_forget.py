@@ -24,13 +24,64 @@ def attention_mask_hook(module, inputs, outputs): # success try
     cnt += 1
     return outputs
 
+# def get_rand_ans_loss(bad_batch, tokenizer, normal_ans, model, K=5, device="cuda:0"):
+#     bad_input_ids = bad_batch["input_ids"].to(device)
+#     rand_ans_list = random.sample(normal_ans, k=K)
+#     batch_random_features = []
+#     for batch_idx in range(bad_input_ids.shape[0]):
+#         single_input_id = bad_input_ids[batch_idx, :]
+#         ori_text = tokenizer.decode(single_input_id)
+#         # Get question.
+#         question = ori_text.split("###")[1].split("Question:")[-1].strip()
+#         question_prefix = f"### Question: {question}\n ### Answer: "
+#         tokenized_question_prefix = tokenizer(
+#             question_prefix, truncation=True, padding="max_length"
+#         )
+#         # Doesn't need to minus 1 because there's a starting token in the beginning.
+#         start_loc = len(tokenized_question_prefix)
+#
+#         # Get random answer.
+#         for rand_ans in rand_ans_list:
+#             random_sample = f"{question_prefix}{rand_ans}"
+#
+#             # Tokenize.
+#             tokenized_rs = tokenizer(
+#                 random_sample, truncation=True, padding="max_length"
+#             )
+#             batch_random_features.append(
+#                 {
+#                     "input_ids": tokenized_rs["input_ids"],
+#                     "attention_mask": tokenized_rs["attention_mask"],
+#                     "start_locs": start_loc,
+#                 }
+#             )
+#
+#     # Batchify.
+#     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+#     batch_random = data_collator(batch_random_features)
+#
+#     # GD on answer.
+#     random_loss = get_answer_loss("gd", batch_random, model, device=device)
+#
+#     return random_loss
+#
+# random_loss = get_rand_ans_loss(
+#     # bad_batch,
+#     forget_batch,
+#     tokenizer,
+#     normal_ans,
+#     model,
+#     K=5,
+#     device=device,
+# )
+
 def get_batch_loss(output, labels):
     shifted_labels = labels[..., 1:].contiguous()
     output = output[..., :-1, :].contiguous()
 
     loss_function = nn.CrossEntropyLoss(ignore_index=-100, reduction='none')
     # get the sum loss for each sequence in a batch
-    loss = loss_function(output.transpose(-1,-2), shifted_labels).sum(dim=-1)
+    loss = loss_function(output.transpose(-1, -2), shifted_labels).sum(dim=-1)
 
     return loss
 
@@ -39,7 +90,10 @@ class CustomTrainerForgetting(Trainer):
         self.loss_type = kwargs.pop('forget_loss')
         self.oracle_model = kwargs.pop('oracle_model')
         self.train_dataset = kwargs.get('train_dataset')
+        self.tokenizer = kwargs.get('tokenizer')
         self.ori_state = self.oracle_model.state_dict()
+        # with open("data/idontknow.jsonl", 'r') as file:
+        #     self.mismatch = file.readlines()
         super(CustomTrainerForgetting, self).__init__(*args, **kwargs)
 
     def compute_loss(self, model, inputs, return_outputs=False):
@@ -167,6 +221,16 @@ class CustomTrainerForgetting(Trainer):
             # else:
             #     loss = forget_loss + retain_loss
 
+            # idx += 1
+            # if idx % int(args.robust_iter) == 0:
+            #     print("idx: %d" % (idx))
+            #     for name, parameter in model.named_parameters():
+            #         norm_ratio = (parameter.data - self.ori_state[name].data).norm(p=1) / self.ori_state[name].data.norm(p=1)
+            #         vary_thre = args.ball * (idx / args.robust_iter)
+            #         if norm_ratio > vary_thre:
+            #             update_ratio = vary_thre / norm_ratio
+            #             parameter.data = update_ratio * parameter.data + (1 - update_ratio) * self.ori_state[name].data
+
         elif self.loss_type == "KL":
             forget_inputs, retain_inputs = inputs
             input_ids, labels, attention_mask = forget_inputs
@@ -207,16 +271,40 @@ class CustomTrainerForgetting(Trainer):
             loss = outputs.loss
 
         elif self.loss_type == "ga_mis_retain":
-            forget_inputs, mis_retain_inputs = inputs
+            forget_inputs, retain_inputs = inputs
             input_ids, labels, attention_mask = forget_inputs
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             forget_loss = outputs.loss
             forget_loss = forget_loss * -1
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            with torch.no_grad():
+                retain_outputs = self.oracle_model(retain_input_ids, labels=retain_labels,
+                                                   attention_mask=retain_attention_mask)
 
-            mis_retain_input_ids, mis_retain_labels, mis_retain_attention_mask = mis_retain_inputs
-            mis_retain_outputs = model(mis_retain_input_ids, labels=mis_retain_labels, attention_mask=mis_retain_attention_mask)
-            mis_retain_loss = mis_retain_outputs.loss
-            loss = forget_loss + mis_retain_loss
+            retain_probs = F.log_softmax(retain_outputs.logits, dim=-1)
+            retain_probs = retain_probs.view(-1, retain_outputs.logits.shape[-1])
+
+            current_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
+            current_probs = F.log_softmax(current_outputs.logits, dim=-1)
+            current_probs = current_probs.view(-1, current_outputs.logits.shape[-1])
+
+            # minimum KL divergence
+            retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
+
+            mismatch_question = "### Question: " + self.tokenizer.decode(input_ids[0]).split("### Question: ")[1].split("### Answer: ")[0] + "### Answer: "
+            mismatch_answer = self.tokenizer.decode(retain_input_ids[0]).split("### Answer: ")[1].split("</s>")[0]
+            mismatch_sen = mismatch_question + mismatch_answer
+            mismatch_input_ids = self.tokenizer.encode(mismatch_sen)
+            mismatch_masked = len(mismatch_input_ids)
+            while len(mismatch_input_ids) < args.length:
+                mismatch_input_ids.append(2)
+            mismatch_input_ids = mismatch_input_ids[:args.length]
+            mismatch_input_ids = torch.tensor([mismatch_input_ids])
+            mismatch_labels = torch.clone(mismatch_input_ids)
+            mismatch_labels[:, mismatch_masked + 1:] = -100
+            mismatch_outputs = model(input_ids, labels=mismatch_labels, attention_mask=attention_mask)
+            mismatch_loss = mismatch_outputs.loss
+            loss = forget_loss + retain_loss + mismatch_loss
 
         elif self.loss_type == "dpo":
             # idk_inputs, forget_inputs, retain_inputs = inputs
@@ -293,9 +381,9 @@ def main(args):
     num_devices = os.environ.get('WORLD_SIZE', 1)  # 获取环境变量WORLD_SIZE, 若没有则返回1
     print(f"num_devices: {num_devices}")
 
-    # max_steps = args.num_epochs * len(torch_format_dataset) // (
-    #             batch_size * num_devices)
-    max_steps = args.early_stop
+    max_steps = args.num_epochs * len(torch_format_dataset) // (
+                batch_size * num_devices)
+    # max_steps = args.iter
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
@@ -375,8 +463,8 @@ if __name__ == "__main__":
     parser.add_argument("--ball", type=float)
     parser.add_argument("--length", type=int)
 
-    parser.add_argument("--ga_threshold", type=float)
-    parser.add_argument("--early_stop", type=int)
+    # parser.add_argument("--ga_threshold", type=float)
+    # parser.add_argument("--iter", type=int)
     args = parser.parse_args()
 
     print(args)
