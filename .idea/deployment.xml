@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="root@region-9.autodl.pro:29496" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="lanlong@202.197.9.252:2222">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@123.125.240.150:37361">
         <serverdata>
           <mappings>

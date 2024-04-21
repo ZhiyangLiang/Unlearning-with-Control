@@ -1238,3 +1238,73 @@ CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 --master_port=29500 finetun
 03:33<12:41:38
 CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 --master_port=29500 finetune.py
 03:38<46:53:33
+
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+Host lanlong_home
+    HostName 202.197.9.252
+    User lanlong
+    Port 2222
+
+Host A100
+    HostName 172.20.208.8 
+    User lanlong
+    ProxyJump lanlong_home
+
+# 跳板机
+# ssh lanlong@202.197.9.252 -p 2222
+# Passwd: qgv8TfSYaLtFDaJh
+
+# A100
+# ssh lanlong@172.20.208.8 
+# Passwd: hpcllanlong
+
+# 往上传
+scp llm_env.tar.gz lanlong@172.20.208.8:~/qzwang
+
+--no_ndc --spherify --lindisp
+
+ssh -p 35381 root@region-9.autodl.pro
+YVDPSEqQ+sz1
+# 向下取
+scp -rP 35381 root@region-9.autodl.pro:~/llm_env.tar.gz ~/zyliang
+
+CUDA_VISIBLE_DEVICES=0,1,4 python script_tofu.py
+
+CUDA_VISIBLE_DEVICES=4,5 deepspeed --num_gpus=2 script_tofu.py --deepspeed config/ds_config.json
+
+CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=4,5 deepspeed --num_gpus=2 script_tofu.py --deepspeed config/ds_config.json
+
+CUDA_VISIBLE_DEVICES=0,4,5 deepspeed --num_gpus=3 script_tofu.py --deepspeed config/ds_config.json
+
+deepspeed --include localhost:0,4,5 script_tofu.py --deepspeed config/ds_config.json
+
+deepspeed --include localhost:0,2,3,4 script_tofu.py --deepspeed config/ds_config.json
+
+CUDA_VISIBLE_DEVICES=0 python script.py
+
+huggingface_hub.utils._errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+
+python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_ga_mis_retain --forget_data=retain99
+python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu --forget_data=retain99
+
+CUDA_VISIBLE_DEVICES=0 python attn_forget.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt1.3b_tofu_forget1_grad_diff_it350_final --length=150 --threshold=0.8
+
+CUDA_VISIBLE_DEVICES=0 python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu --forget_data=forget01
+CUDA_VISIBLE_DEVICES=0 python unlearn_evaluate_tofu.py --model_name=finetune_opt1.3b_tofu_forget1_ga_mis_retain --forget_data=forget01
+
+CUDA_VISIBLE_DEVICES=0 python script.py
+deepspeed --master_port=29501 --include localhost:0,2,3,4 script_tofu.py --deepspeed config/ds_config.json
+
+CUDA_VISIBLE_DEVICES=0 python unlearn_rouge_truth_ratio_eval.py
+
+git clone git://github.com/pltrdy/rouge
+cd rouge
+python setup.py install
+
+CUDA_VISIBLE_DEVICES=0 python rouge_script.py
+deepspeed --master_port=29500 --include localhost:0,3,4 script_tofu.py --deepspeed config/ds_config.json
+
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 50.00 MiB (GPU 0; 39.39 GiB total capacity; 32.65 GiB already allocated; 20.94 MiB free; 34.80 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+CUDA_VISIBLE_DEVICES=4 python script.py
