@@ -15,5 +15,6 @@ num_epochs: 5
 lr: 1e-5
 #save_dir: models/finetune_opt1.3b_tofu_retrain99
 #save_dir: models/finetune_opt1.3b_tofu_retrain95
+#save_dir: models/finetune_opt1.3b_tofu_retrain90
 save_dir: models/finetune_opt1.3b_tofu
 weight_decay: 0.01

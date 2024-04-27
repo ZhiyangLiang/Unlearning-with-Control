@@ -1308,3 +1308,61 @@ deepspeed --master_port=29500 --include localhost:0,3,4 script_tofu.py --deepspe
 torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 50.00 MiB (GPU 0; 39.39 GiB total capacity; 32.65 GiB already allocated; 20.94 MiB free; 34.80 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
 
 CUDA_VISIBLE_DEVICES=4 python script.py
+CUDA_VISIBLE_DEVICES=4 python script_tofu.py
+deepspeed --master_port=29501 --include localhost:1,2 script_tofu.py --deepspeed config/ds_config.json
+
+[2024-04-22 09:10:25,044] [WARNING] [stage3.py:1850:step] 1 pytorch allocator cache flushes since last step. this happens when there is high memory pressure and is detrimental to performance. if this is happening frequently consider adjusting settings to reduce memory consumption. If you are unable to make the cache flushes go away consider adding get_accelerator().empty_cache() calls in your training loop to ensure that all ranks flush their caches at the same time
+
+deepspeed --master_port=29500 --include localhost:0,1 script_tofu.py --deepspeed config/ds_config.json
+
+查询进程与对应端口号：
+netstat -autup
+
+RuntimeError: "triu_tril_cuda_template" not implemented for 'BFloat16'：
+pip3 install torch==2.2.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+Traceback (most recent call last):
+  File "attn_forget_llama2_7b.py", line 428, in <module>
+    main(args)
+  File "attn_forget_llama2_7b.py", line 394, in main
+    model = model.merge_and_unload()  # use lora
+  File "/hy-tmp/peft/src/peft/tuners/lora/model.py", line 620, in merge_and_unload
+    return self._unload_and_optionally_merge(
+  File "/hy-tmp/peft/src/peft/tuners/lora/model.py", line 352, in _unload_and_optionally_merge
+    target.merge(safe_merge=safe_merge, adapter_names=adapter_names)
+  File "/hy-tmp/peft/src/peft/tuners/lora/layer.py", line 248, in merge
+    base_layer.weight.data += self.get_delta_weight(active_adapter)
+RuntimeError: The size of tensor a (0) must match the size of tensor b (4096) at non-singleton dimension 1
+
+CUDA_VISIBLE_DEVICES=3 python script.py
+CUDA_VISIBLE_DEVICES=4 python script.py
+
+ File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/logging/__init__.py", line 1085, in emit
+    msg = self.format(record)
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/logging/__init__.py", line 929, in format
+    return fmt.format(record)
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/logging/__init__.py", line 668, in format
+    record.message = record.getMessage()
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/logging/__init__.py", line 373, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "unlearn_forget_memorization2.py", line 71, in <module>
+    generated_prompt = generator(question, max_length=150, truncation=True)[0]['generated_text']
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/site-packages/transformers/pipelines/text_generation.py", line 240, in __call__
+    return super().__call__(text_inputs, **kwargs)
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/site-packages/transformers/pipelines/base.py", line 1167, in __call__
+    logger.warning_once(
+  File "/vol/home/lanlong/qzwang/llm_env/lib/python3.8/site-packages/transformers/utils/logging.py", line 329, in warning_once
+    self.warning(*args, **kwargs)
+Message: 'You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset'
+
+deepspeed --master_port=29501 --include localhost:2,3,4 script_tofu.py --deepspeed config/ds_config.json
+
+qgv8TfSYaLtFDaJh
+hpcllanlong
+
+finetune_llama2_7b_tofu_forget10_idk_rouge_retain_sen.log
+
+/usr/local/miniconda3/lib/python3.8/site-packages/transformers/trainer.py(3651)evaluation_loop()
+

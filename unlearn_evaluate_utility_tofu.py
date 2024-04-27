@@ -106,7 +106,8 @@ def main(args) -> None:
     device = accelerator.device
     model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     model.to(device)
-    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
     eval_dataset("real_authors_perturbed", model, tokenizer, log1, log2)
     eval_dataset("world_facts_perturbed", model, tokenizer, log3, log4)
     logging.info("Evaluating finished")

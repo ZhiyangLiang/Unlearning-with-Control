@@ -2,6 +2,39 @@ import yaml
 import copy
 import numpy as np
 from scipy.stats import sem, hmean, ks_2samp
+import json
+from datasets import Dataset
+import torch
+from transformers import DataCollatorForLanguageModeling
+
+def create_tofu_dataloader_from_dataset(data_path, tokenizer, batch_size=4):
+
+    results = {"input_ids": [], "attention_mask": [], "start_locs": []}
+    with open(data_path, 'r') as file:
+        for line in file:
+            # self.data.append(json.loads(line))
+            prompt = json.loads(line)["question"]
+            response = json.loads(line)["answer"]
+            text = f"### Question: {prompt}\n ### Answer: {response}"
+            tokenized = tokenizer(text, truncation=True, padding="max_length")
+            results["input_ids"].append(tokenized["input_ids"])
+            results["attention_mask"].append(tokenized["attention_mask"])
+            test_text = f"### Question: {prompt}\n ### Answer: "
+            test_tokenized = tokenizer(
+                test_text, truncation=True, padding="max_length"
+            )
+            results["start_locs"].append(len(test_tokenized["input_ids"]) - 1)
+
+    dataset = Dataset.from_dict(results)
+    forget_data, _, _ = torch.utils.data.random_split(
+        dataset, [int(len(dataset)), 0, 0]
+    )
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    forget_dataloader = torch.utils.data.DataLoader(
+        forget_data, batch_size=batch_size, collate_fn=data_collator, shuffle=True
+    )
+
+    return forget_dataloader
 
 def get_model_identifiers_from_yaml(model_family):
     #path is model_configs.yaml

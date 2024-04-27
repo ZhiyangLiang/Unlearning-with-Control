@@ -10,70 +10,21 @@ import transformers
 import os
 import yaml
 import argparse
+from torch.nn.parallel import DataParallel
+from utils import create_tofu_dataloader_from_dataset
 
 idx = 0
 cnt = 0
 attention_loss = 100.0
 
-def attention_mask_hook(module, inputs, outputs): # success try
-    global attention_loss, cnt
-    if cnt % 48 == 23:
-        part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.85, thre0.65, thre0.90, thre0.95
-        # part_loss = torch.where(outputs[1][0] < float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.15, thre0.35, thre0.05, thre0.10
-        attention_loss += part_loss
-    cnt += 1
-    return outputs
-
-# def get_rand_ans_loss(bad_batch, tokenizer, normal_ans, model, K=5, device="cuda:0"):
-#     bad_input_ids = bad_batch["input_ids"].to(device)
-#     rand_ans_list = random.sample(normal_ans, k=K)
-#     batch_random_features = []
-#     for batch_idx in range(bad_input_ids.shape[0]):
-#         single_input_id = bad_input_ids[batch_idx, :]
-#         ori_text = tokenizer.decode(single_input_id)
-#         # Get question.
-#         question = ori_text.split("###")[1].split("Question:")[-1].strip()
-#         question_prefix = f"### Question: {question}\n ### Answer: "
-#         tokenized_question_prefix = tokenizer(
-#             question_prefix, truncation=True, padding="max_length"
-#         )
-#         # Doesn't need to minus 1 because there's a starting token in the beginning.
-#         start_loc = len(tokenized_question_prefix)
-#
-#         # Get random answer.
-#         for rand_ans in rand_ans_list:
-#             random_sample = f"{question_prefix}{rand_ans}"
-#
-#             # Tokenize.
-#             tokenized_rs = tokenizer(
-#                 random_sample, truncation=True, padding="max_length"
-#             )
-#             batch_random_features.append(
-#                 {
-#                     "input_ids": tokenized_rs["input_ids"],
-#                     "attention_mask": tokenized_rs["attention_mask"],
-#                     "start_locs": start_loc,
-#                 }
-#             )
-#
-#     # Batchify.
-#     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
-#     batch_random = data_collator(batch_random_features)
-#
-#     # GD on answer.
-#     random_loss = get_answer_loss("gd", batch_random, model, device=device)
-#
-#     return random_loss
-#
-# random_loss = get_rand_ans_loss(
-#     # bad_batch,
-#     forget_batch,
-#     tokenizer,
-#     normal_ans,
-#     model,
-#     K=5,
-#     device=device,
-# )
+# def attention_mask_hook(module, inputs, outputs): # success try
+#     global attention_loss, cnt
+#     if cnt % 48 == 23:
+#         part_loss = torch.where(outputs[1][0] > float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.85, thre0.65, thre0.90, thre0.95
+#         # part_loss = torch.where(outputs[1][0] < float(args.threshold), outputs[1][0], torch.tensor(0.0, device=outputs[1][0].device)).sum()  # for thre0.15, thre0.35, thre0.05, thre0.10
+#         attention_loss += part_loss
+#     cnt += 1
+#     return outputs
 
 def get_batch_loss(output, labels):
     shifted_labels = labels[..., 1:].contiguous()
@@ -84,6 +35,41 @@ def get_batch_loss(output, labels):
     loss = loss_function(output.transpose(-1, -2), shifted_labels).sum(dim=-1)
 
     return loss
+
+def compute_loss_eval(batch, model):
+    input_ids, attention_mask, start_locs, labels = (
+        batch["input_ids"].to(model.device),
+        batch["attention_mask"].to(model.device),
+        batch["start_locs"],
+        batch["labels"].to(model.device),
+    )
+    outputs = model(input_ids, attention_mask=attention_mask)
+    loss_fct = torch.nn.CrossEntropyLoss(reduction="none")
+    # Shift one to predict next token.
+
+    shift_logits = outputs.logits[:, :-1, :]
+    shift_labels = labels[:, 1:]
+    losses = []
+    for bid in range(input_ids.shape[0]):
+        one_inp, one_st = input_ids[bid], start_locs[bid]
+
+        position_loss = loss_fct(shift_logits[bid], shift_labels[bid])
+
+        # Simply put equal weights on all answers.
+        position_weight = torch.zeros_like(one_inp)
+        assert len(position_weight) == len(position_loss) + 1
+        position_weight[one_st:] = 1  # only focus on answer part
+
+        # Ignore the padding part.
+        position_weight[one_inp == 1] = 0
+        if position_weight.sum() > 0:
+            position_weight = position_weight / position_weight.sum()
+
+        one_loss = (position_weight[:-1] * position_loss).sum()
+        losses.append(one_loss)
+    final_loss = torch.stack(losses).mean()
+
+    return final_loss
 
 class CustomTrainerForgetting(Trainer):
     def __init__(self, *args, **kwargs):
@@ -342,23 +328,81 @@ class CustomTrainerForgetting(Trainer):
         return (loss, outputs) if return_outputs else loss
 
     def prediction_step(self, model, inputs, prediction_loss_only: bool, ignore_keys=None):
-        input_ids, labels, attention_mask = inputs
-        # forward pass
-        with torch.no_grad():
-            outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
-            logits = outputs.logits
-            loss = outputs.loss
-        return (loss, logits, labels)
+        model.eval()
+        all_target_loss = []
+        all_untarget_loss = []
+        all_untarget_eval_loss = []
+        tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+        tokenizer.pad_token = tokenizer.eos_token
+        target_loader = create_tofu_dataloader_from_dataset(
+            f"locuslab/TOFU/forget01_perturbed.json", tokenizer, batch_size=args.batch_size
+        )
+        untarget_loader = create_tofu_dataloader_from_dataset(
+            f"locuslab/TOFU/retain99_2.json", tokenizer, batch_size=args.batch_size
+        )
+        untarget_loader_eval = create_tofu_dataloader_from_dataset(
+            f"locuslab/TOFU/retain99_3.json", tokenizer, batch_size=args.batch_size
+        )
+
+        for target_loss_batch, untarget_loss_batch, untarget_eval_loss_batch in zip(target_loader, untarget_loader, untarget_loader_eval):
+            target_loss = compute_loss_eval(target_loss_batch, model)
+            untarget_loss = compute_loss_eval(untarget_loss_batch, model)
+            untarget_eval_loss = compute_loss_eval(untarget_eval_loss_batch, model)
+            all_target_loss.append(target_loss)
+            all_untarget_loss.append(untarget_loss)
+            all_untarget_eval_loss.append(untarget_eval_loss)
+
+        all_target_loss = np.array(all_target_loss)
+        all_untarget_loss = np.array(all_untarget_loss)
+        all_untarget_eval_loss = np.array(all_untarget_eval_loss)
+        avg_target_loss = all_target_loss.mean()
+        avg_untarget_loss = all_untarget_loss.mean()
+        avg_untarget_eval_loss = all_untarget_eval_loss.mean()
+        print(f"prediction_step: avg_target_loss: {avg_target_loss}; avg_untarget_loss: {avg_untarget_loss}; avg_untarget_eval_loss: {avg_untarget_eval_loss}")
+
+        # return (loss, logits, labels)
+
+def compute_metrics():
+    all_target_loss = []
+    all_untarget_loss = []
+    all_untarget_eval_loss = []
+    target_loader = create_tofu_dataloader_from_dataset(
+        f"locuslab/TOFU/forget01_perturbed.json", tokenizer, batch_size=args.batch_size
+    )
+    untarget_loader = create_tofu_dataloader_from_dataset(
+        f"locuslab/TOFU/retain99_2.json", tokenizer, batch_size=args.batch_size
+    )
+    untarget_loader_eval = create_tofu_dataloader_from_dataset(
+        f"locuslab/TOFU/retain99_3.json", tokenizer, batch_size=args.batch_size
+    )
+
+    for target_loss_batch, untarget_loss_batch, untarget_eval_loss_batch in zip(target_loader, untarget_loader, untarget_loader_eval):
+        target_loss = compute_loss_eval(target_loss_batch, model)
+        untarget_loss = compute_loss_eval(untarget_loss_batch, model)
+        untarget_eval_loss = compute_loss_eval(untarget_eval_loss_batch, model)
+        all_target_loss.append(target_loss)
+        all_untarget_loss.append(untarget_loss)
+        all_untarget_eval_loss.append(untarget_eval_loss)
+
+    all_target_loss = np.array(all_target_loss)
+    all_untarget_loss = np.array(all_untarget_loss)
+    all_untarget_eval_loss = np.array(all_untarget_eval_loss)
+    avg_target_loss = all_target_loss.mean()
+    avg_untarget_loss = all_untarget_loss.mean()
+    avg_untarget_eval_loss = all_untarget_eval_loss.mean()
+    print(f"avg_target_loss: {avg_target_loss}; avg_untarget_loss: {avg_untarget_loss}; avg_untarget_eval_loss: {avg_untarget_eval_loss}")
 
 def main(args):
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
     global attention_loss
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
     tokenizer.pad_token = tokenizer.eos_token
     model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu", output_attentions=True)
+    # model = DataParallel(model)
     oracle_model = AutoModelForCausalLM.from_pretrained("models/finetune_opt1.3b_tofu")
 
-    for layer in model.model.decoder.layers:
-        layer.self_attn.register_forward_hook(attention_mask_hook)
+    # for layer in model.model.decoder.layers:
+        # layer.self_attn.register_forward_hook(attention_mask_hook)
 
     print("######################")
     print("Saving to: ", args.save_dir)
@@ -381,9 +425,9 @@ def main(args):
     num_devices = os.environ.get('WORLD_SIZE', 1)  # 获取环境变量WORLD_SIZE, 若没有则返回1
     print(f"num_devices: {num_devices}")
 
-    max_steps = args.num_epochs * len(torch_format_dataset) // (
-                batch_size * num_devices)
-    # max_steps = args.iter
+    # max_steps = args.num_epochs * len(torch_format_dataset) // (
+                # batch_size * int(num_devices))
+    max_steps = args.iter
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
@@ -399,16 +443,20 @@ def main(args):
         logging_steps=max(1, max_steps // 20),
         logging_dir=f'{args.save_dir}/logs',
         output_dir=args.save_dir,
-        save_steps=1e5,
+        # save_steps=1e5,
+        save_steps=max_steps,
+        eval_steps=10, # eval early stop
         weight_decay=0.01,
-        evaluation_strategy="no",
+        evaluation_strategy="steps", # eval early stop
+        deepspeed='config/ds_config.json',
     )
 
     trainer = CustomTrainerForgetting(
         model=model.cuda(),
         tokenizer=tokenizer,
         train_dataset=torch_format_dataset,
-        compute_metrics=None,
+        eval_dataset=torch_format_dataset, # eval early stop
+        compute_metrics=compute_metrics, # eval early stop
         # callbacks=[],
         args=training_args,
         data_collator=custom_data_collator_forget,
@@ -421,6 +469,7 @@ def main(args):
     model.save_pretrained(args.save_dir, from_pt=True)
 
 if __name__ == "__main__":
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
     os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
     os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
 
@@ -464,7 +513,7 @@ if __name__ == "__main__":
     parser.add_argument("--length", type=int)
 
     # parser.add_argument("--ga_threshold", type=float)
-    # parser.add_argument("--iter", type=int)
+    parser.add_argument("--iter", type=int)
     args = parser.parse_args()
 
     print(args)

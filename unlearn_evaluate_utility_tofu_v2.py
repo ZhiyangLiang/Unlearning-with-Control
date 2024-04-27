@@ -123,6 +123,7 @@ def main(args) -> None:
     model = AutoModelForCausalLM.from_pretrained(args.model_name, output_attentions=True)
     model.to(device)
     tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b")
+    # tokenizer = AutoTokenizer.from_pretrained("facebook/opt-2.7b")
     eval_dataset("retain_perturbed", model, tokenizer, log1, log2, log3)
     logging.info("Evaluating finished")
     return

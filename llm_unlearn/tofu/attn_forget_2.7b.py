@@ -207,16 +207,40 @@ class CustomTrainerForgetting(Trainer):
             loss = outputs.loss
 
         elif self.loss_type == "ga_mis_retain":
-            forget_inputs, mis_retain_inputs = inputs
+            forget_inputs, retain_inputs = inputs
             input_ids, labels, attention_mask = forget_inputs
             outputs = model(input_ids, labels=labels, attention_mask=attention_mask)
             forget_loss = outputs.loss
             forget_loss = forget_loss * -1
+            retain_input_ids, retain_labels, retain_attention_mask = retain_inputs
+            with torch.no_grad():
+                retain_outputs = self.oracle_model(retain_input_ids, labels=retain_labels,
+                                                   attention_mask=retain_attention_mask)
 
-            mis_retain_input_ids, mis_retain_labels, mis_retain_attention_mask = mis_retain_inputs
-            mis_retain_outputs = model(mis_retain_input_ids, labels=mis_retain_labels, attention_mask=mis_retain_attention_mask)
-            mis_retain_loss = mis_retain_outputs.loss
-            loss = forget_loss + mis_retain_loss
+            retain_probs = F.log_softmax(retain_outputs.logits, dim=-1)
+            retain_probs = retain_probs.view(-1, retain_outputs.logits.shape[-1])
+
+            current_outputs = model(retain_input_ids, labels=retain_labels, attention_mask=retain_attention_mask)
+            current_probs = F.log_softmax(current_outputs.logits, dim=-1)
+            current_probs = current_probs.view(-1, current_outputs.logits.shape[-1])
+
+            # minimum KL divergence
+            retain_loss = nn.functional.kl_div(current_probs, retain_probs, reduction='batchmean', log_target=True)
+
+            mismatch_question = "### Question: " + self.tokenizer.decode(input_ids[0]).split("### Question: ")[1].split("### Answer: ")[0] + "### Answer: "
+            mismatch_answer = self.tokenizer.decode(retain_input_ids[0]).split("### Answer: ")[1].split("</s>")[0]
+            mismatch_sen = mismatch_question + mismatch_answer
+            mismatch_input_ids = self.tokenizer.encode(mismatch_sen)
+            mismatch_masked = len(mismatch_input_ids)
+            while len(mismatch_input_ids) < args.length:
+                mismatch_input_ids.append(2)
+            mismatch_input_ids = mismatch_input_ids[:args.length]
+            mismatch_input_ids = torch.tensor([mismatch_input_ids])
+            mismatch_labels = torch.clone(mismatch_input_ids)
+            mismatch_labels[:, mismatch_masked + 1:] = -100
+            mismatch_outputs = model(input_ids, labels=mismatch_labels, attention_mask=attention_mask)
+            mismatch_loss = mismatch_outputs.loss
+            loss = forget_loss + retain_loss + mismatch_loss
 
         elif self.loss_type == "dpo":
             # idk_inputs, forget_inputs, retain_inputs = inputs
@@ -294,7 +318,7 @@ def main(args):
     print(f"num_devices: {num_devices}")
 
     max_steps = args.num_epochs * len(torch_format_dataset) // (
-                batch_size * num_devices)
+                batch_size * int(num_devices))
     print(f"max_steps: {max_steps}")
 
     training_args = transformers.TrainingArguments(
@@ -309,9 +333,11 @@ def main(args):
         logging_steps=max(1, max_steps // 20),
         logging_dir=f'{args.save_dir}/logs',
         output_dir=args.save_dir,
-        save_steps=1e5,
+        # save_steps=1e5,
+        save_steps=max_steps,
         weight_decay=0.01,
         evaluation_strategy="no",
+        deepspeed='config/ds_config.json',
     )
 
     trainer = CustomTrainerForgetting(
@@ -320,7 +346,7 @@ def main(args):
         train_dataset=torch_format_dataset,
         compute_metrics=None,
         # callbacks=[],
-        args=training_args,
+        args=training_args,mkae
         data_collator=custom_data_collator_forget,
         oracle_model=oracle_model.cuda(),
         forget_loss=args.forget_loss,
@@ -333,6 +359,7 @@ def main(args):
 if __name__ == "__main__":
     os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
     os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
 
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter

@@ -983,10 +983,26 @@ import os
 # print(cmd)
 # os.system(cmd)
 
-cmd = f'python attn_forget_2.7b.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt2.7b_tofu_forget10_grad_diff_m10_final --length=100 --threshold=0.8 --ga_threshold=-10'
+# cmd = f'python attn_forget_2.7b.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt2.7b_tofu_forget10_grad_diff_m10_final --length=100 --threshold=0.8 --ga_threshold=-10'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_2.7b.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt2.7b_tofu_forget10_grad_diff_m20_final --length=100 --threshold=0.8 --ga_threshold=-20'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python finetune.py --save_model=finetune_opt2.7b_tofu --yaml_name=finetune2.7b.yaml'
+# print(cmd)
+# os.system(cmd)
+
+# cmd = f'python attn_forget_2.7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget01.json --retain_data_path=locuslab/TOFU/retain99.json --save_dir=models/finetune_opt2.7b_tofu_forget1_ga_mis_retain --length=80 --threshold=0.8'
+# print(cmd)
+# os.system(cmd)
+
+cmd = f'python attn_forget_2.7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget05.json --retain_data_path=locuslab/TOFU/retain95.json --save_dir=models/finetune_opt2.7b_tofu_forget5_ga_mis_retain --length=80 --threshold=0.8'
 print(cmd)
 os.system(cmd)
 
-cmd = f'python attn_forget_2.7b.py --forget_loss=grad_diff --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt2.7b_tofu_forget10_grad_diff_m20_final --length=100 --threshold=0.8 --ga_threshold=-20'
+cmd = f'python attn_forget_2.7b.py --forget_loss=ga_mis_retain --forget_data_path=locuslab/TOFU/forget10.json --retain_data_path=locuslab/TOFU/retain90.json --save_dir=models/finetune_opt2.7b_tofu_forget10_ga_mis_retain --length=80 --threshold=0.8'
 print(cmd)
 os.system(cmd)

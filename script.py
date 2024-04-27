@@ -1827,17 +1827,17 @@ import os
 # os.system(cmd)
 
 # def myeval(model_name):
-#     cmd = f'python unlearn_evaluate_utility_tofu.py --file1=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_original.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_perturbed.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_original.log --file4=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_perturbed.log --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name}'
-#     print(cmd)
-#     os.system(cmd)
-#
-#     cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=finetune_opt1.3b_tofu_forget1_{model_name}_retain_original.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_retain_paraphrased.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_retain_perturbed.log --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name}'
-#     print(cmd)
-#     os.system(cmd)
-#
-#     cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name} --file1=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_sen.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_retain_sen.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_sen.log'
-#     print(cmd)
-#     os.system(cmd)
+    # cmd = f'python unlearn_evaluate_utility_tofu.py --file1=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_original.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_perturbed.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_original.log --file4=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_perturbed.log --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name}'
+    # print(cmd)
+    # os.system(cmd)
+
+    # cmd = f'python unlearn_evaluate_utility_tofu_v2.py --file1=finetune_opt1.3b_tofu_forget1_{model_name}_retain_original.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_retain_paraphrased.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_retain_perturbed.log --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name}'
+    # print(cmd)
+    # os.system(cmd)
+
+    # cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/finetune_opt1.3b_tofu_forget1_{model_name} --file1=finetune_opt1.3b_tofu_forget1_{model_name}_real_authors_sen.log --file2=finetune_opt1.3b_tofu_forget1_{model_name}_retain_sen.log --file3=finetune_opt1.3b_tofu_forget1_{model_name}_world_facts_sen.log'
+    # print(cmd)
+    # os.system(cmd)
 #
 # def myeval_5(model_name):
 #     cmd = f'python unlearn_evaluate_utility_tofu.py --file1=finetune_opt1.3b_tofu_forget5_{model_name}_real_authors_original.log --file2=finetune_opt1.3b_tofu_forget5_{model_name}_real_authors_perturbed.log --file3=finetune_opt1.3b_tofu_forget5_{model_name}_world_facts_original.log --file4=finetune_opt1.3b_tofu_forget5_{model_name}_world_facts_perturbed.log --model_name=models/finetune_opt1.3b_tofu_forget5_{model_name}'
@@ -4348,7 +4348,11 @@ def eval_metrics(model_name, data_name1, data_name2):
     print(cmd)
     os.system(cmd)
 
-    cmd = f'python unlearn_evaluate_utility_tofu_sen.py --model_name=models/{model_name} --file1={model_name}_sen.log --forget_data={data_name1} --retain_data={data_name2}'
+    cmd = f'python unlearn_evaluate_utility_tofu_sen2.py --model_name=models/{model_name} --file1={model_name}_sen.log --forget_data={data_name1} --retain_data={data_name2}'
+    print(cmd)
+    os.system(cmd)
+
+    cmd = f'python unlearn_evaluate_utility_tofu.py --file1={model_name}_real_authors_original.log --file2={model_name}_real_authors_perturbed.log --file3={model_name}_world_facts_original.log --file4={model_name}_world_facts_perturbed.log --model_name=models/{model_name}'
     print(cmd)
     os.system(cmd)
 
@@ -4356,7 +4360,11 @@ def eval_metrics(model_name, data_name1, data_name2):
     print(cmd)
     os.system(cmd)
 
-    cmd = f'python unlearn_forget_memorization.py --model_name=models/{model_name} --file1={model_name}_memorization.log --forget_data={data_name1} --retain_data={data_name2}'
+    cmd = f'python unlearn_evaluate_utility_tofu_v3.py --model_name=models/{model_name} --file1={model_name}_real_authors_sen.log --file2={model_name}_retain_sen.log --file3={model_name}_world_facts_sen.log'
+    print(cmd)
+    os.system(cmd)
+
+    cmd = f'python unlearn_forget_memorization2.py --model_name=models/{model_name} --file1={model_name}_memorization.log --forget_data={data_name1} --retain_data={data_name2}'
     print(cmd)
     os.system(cmd)
 
@@ -4379,20 +4387,46 @@ def eval_metrics(model_name, data_name1, data_name2):
 # eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it350_final", "forget01", "retain99")
 
 def eval_print(model_name):
+    # cmd = f'python unlearn_forget_quality_tofu.py --model_name={model_name} --retrain_model_name=finetune_opt1.3b_tofu_retrain99'
+    # print(cmd)
+    # os.system(cmd)
+    
+    # cmd = f'python unlearn_forget_quality_tofu.py --model_name={model_name} --retrain_model_name=finetune_opt1.3b_tofu_retrain95'
+    # print(cmd)
+    # os.system(cmd)
+    
+    cmd = f'python unlearn_forget_quality_tofu.py --model_name={model_name} --retrain_model_name=finetune_opt1.3b_tofu_retrain90'
+    print(cmd)
+    os.system(cmd)
+    
     # cmd = f'tail -n 2 {model_name}_memorization.log'
     # print(cmd)
     # os.system(cmd)
 
-    cmd = f'python unlearn_forget_quality_tofu.py --model_name={model_name} --retrain_model_name=finetune_opt1.3b_tofu_retrain99'
-    print(cmd)
-    os.system(cmd)
 
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it10_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it20_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it50_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it100_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it150_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it200_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it250_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it300_final")
-eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it350_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it10_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it20_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it50_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it100_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it150_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it200_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it250_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it300_final")
+# eval_print("finetune_opt1.3b_tofu_forget1_grad_diff_it350_final")
+
+os.environ['HTTP_PROXY'] = 'http://127.0.0.1:7890'
+os.environ['HTTPS_PROXY'] = 'http://127.0.0.1:7890'
+# eval_metrics("finetune_opt1.3b_tofu_forget1_ga_mis_retain", "forget01", "retain99")
+# eval_metrics("finetune_opt1.3b_tofu_forget5_ga_mis_retain", "forget05", "retain95")
+# eval_metrics("finetune_opt1.3b_tofu_forget10_ga_mis_retain", "forget10", "retain90")
+# eval_print("finetune_opt1.3b_tofu_forget1_ga_mis_retain")
+# eval_print("finetune_opt1.3b_tofu_forget5_ga_mis_retain")
+# eval_print("finetune_opt1.3b_tofu_forget10_ga_mis_retain")
+
+# eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it10_final", "forget01", "retain99")
+# eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it20_final", "forget01", "retain99")
+# eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it40_final", "forget01", "retain99")
+eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it60_final", "forget01", "retain99")
+eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it90_final", "forget01", "retain99")
+eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it120_final", "forget01", "retain99")
+eval_metrics("finetune_opt1.3b_tofu_forget1_grad_diff_it150_final", "forget01", "retain99")
