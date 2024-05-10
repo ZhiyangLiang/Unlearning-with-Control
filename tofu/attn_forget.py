@@ -433,8 +433,8 @@ def main(args):
     training_args = transformers.TrainingArguments(
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
-        gradient_accumulation_steps=4,
         # gradient_accumulation_steps=1,
+        gradient_accumulation_steps=4,
         warmup_steps=max(1, max_steps // 10),
         max_steps=max_steps,
         learning_rate=1e-5,
@@ -443,11 +443,11 @@ def main(args):
         logging_steps=max(1, max_steps // 20),
         logging_dir=f'{args.save_dir}/logs',
         output_dir=args.save_dir,
-        # save_steps=1e5,
         save_steps=max_steps,
-        eval_steps=10, # eval early stop
         weight_decay=0.01,
-        evaluation_strategy="steps", # eval early stop
+        # eval_steps=10, # eval early stop
+        # evaluation_strategy="steps", # eval early stop
+        evaluation_strategy="no",
         deepspeed='config/ds_config.json',
     )
 
@@ -455,8 +455,7 @@ def main(args):
         model=model.cuda(),
         tokenizer=tokenizer,
         train_dataset=torch_format_dataset,
-        eval_dataset=torch_format_dataset, # eval early stop
-        compute_metrics=compute_metrics, # eval early stop
+        # eval_dataset=torch_format_dataset, # eval early stop
         # callbacks=[],
         args=training_args,
         data_collator=custom_data_collator_forget,

@@ -1366,3 +1366,15 @@ finetune_llama2_7b_tofu_forget10_idk_rouge_retain_sen.log
 
 /usr/local/miniconda3/lib/python3.8/site-packages/transformers/trainer.py(3651)evaluation_loop()
 
+CUDA_VISIBLE_DEVICES=4 python script_tofu.py
+
+deepspeed --master_port=29501 --include localhost:3,4 script_tofu.py --deepspeed config/ds_config.json
+
+CUDA_VISIBLE_DEVICES=4 python script.py
+CUDA_VISIBLE_DEVICES=4 python unlearn_rouge_truth_ratio_eval.py
+CUDA_VISIBLE_DEVICES=4 python rouge_script.py
+
+model = LlamaForCausalLM.from_pretrained("decapoda-research/llama-7b-hf",
+    load_in_8bit=True,
+    device_map="auto",
+)
